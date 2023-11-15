@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Data.Entites
 {
-    public class ProductUser
+    public class ProductUser : ApplicationUser
     {
     }
 }

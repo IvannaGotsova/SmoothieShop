@@ -8,5 +8,8 @@ namespace SmoothieShop.Data.Data.Entites
 {
     public class Ingredient
     {
+        public int IngredientId { get; set; }
+        public string? Name { get; set; }
+        public double Calories { get; set; }
     }
 }
