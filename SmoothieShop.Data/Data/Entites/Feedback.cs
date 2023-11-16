@@ -10,7 +10,9 @@ namespace SmoothieShop.Data.Data.Entites
 {
     public class Feedback
     {
+        [Required]
         public int FeedbackId { get; set; }
+        [Required]
         public int CustomerId { get; set; }
         [Required]
         [StringLength(FeedbackMaxLengthRating)]

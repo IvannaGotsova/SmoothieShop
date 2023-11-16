@@ -9,7 +9,9 @@ namespace SmoothieShop.Data.Data.Entites
 {
     public class Order
     {
+        [Required]
         public int OrderId { get; set; }
+        [Required]
         public int CustomerId { get; set; }
         public List<int> Smoothies { get; set; } = new List<int>();
         [Required]

@@ -11,6 +11,7 @@ namespace SmoothieShop.Data.Data.Entites
 {
     public class Smoothie
     {
+        [Required]
         public int SmoothieId { get; set; }
         [Required]
         [StringLength(SmoothieMaxLengthName)]

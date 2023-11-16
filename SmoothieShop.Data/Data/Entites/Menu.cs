@@ -8,6 +8,5 @@ namespace SmoothieShop.Data.Data.Entites
 {
     public class Menu
     {
-
     }
 }

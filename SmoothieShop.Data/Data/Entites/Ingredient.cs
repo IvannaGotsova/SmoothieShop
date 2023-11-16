@@ -10,6 +10,7 @@ namespace SmoothieShop.Data.Data.Entites
 {
     public class Ingredient
     {
+        [Required]
         public int IngredientId { get; set; }
         [Required]
         [StringLength(IngredientMaxLengthName)]
