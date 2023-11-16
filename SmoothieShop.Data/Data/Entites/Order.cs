@@ -12,6 +12,6 @@ namespace SmoothieShop.Data.Data.Entites
         public int CustomerId { get; set; }
         public List<int> Smoothies { get; set; } = new List<int>();
         public decimal Price{ get; set; }
-
+        public DateTime Date { get; set; }
     }
 }
