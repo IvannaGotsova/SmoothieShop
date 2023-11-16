@@ -31,5 +31,13 @@ namespace SmoothieShop.Data.Data.DataConstants
             public const int CustomerMinLengthPhoneNumber = 2;
             public const int CustomerMaxLengthPhoneNumber = 100;
         }
+
+        public class FeedbackConstants
+        {
+            public const int FeedbackMinLengthRating = 1;
+            public const int FeedbackMaxLengthRating = 10;
+            public const int FeedbackMinLengthComments = 1;
+            public const int FeedbackMaxLengthComments = 10000;
+        }
     }
 }
