@@ -39,5 +39,11 @@ namespace SmoothieShop.Data.Data.DataConstants
             public const int FeedbackMinLengthComments = 1;
             public const int FeedbackMaxLengthComments = 10000;
         }
+
+        public class IngredientConstants
+        {
+            public const int IngredientMinLengthName = 1;
+            public const int IngredientMaxLengthName = 10;
+        }
     }
 }
