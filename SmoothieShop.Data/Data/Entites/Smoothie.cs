@@ -14,11 +14,15 @@ namespace SmoothieShop.Data.Data.Entites
         [Required]
         [StringLength(SmoothieMaxLengthName)]
         public string? Name { get; set; }
+        [Required]
         public List<Ingredient> Ingredients { get; set; } = new List<Ingredient> { };
+        [Required]
         [Range(typeof(double), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
         public double Size { get; set; }
+        [Required]
         [Range(typeof(decimal), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
         public decimal Price{ get; set; }
+        [Required]
         [Range(typeof(double), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
         public double Calories { get; set; }
     }
