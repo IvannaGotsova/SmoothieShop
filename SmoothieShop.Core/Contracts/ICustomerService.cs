@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Contracts
 {
-    public interface CustomerService
+    public interface ICustomerService
     {
     }
 }
