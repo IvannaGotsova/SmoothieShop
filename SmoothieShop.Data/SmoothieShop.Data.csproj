@@ -11,4 +11,16 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.20" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\CustomerUserModels\" />
+    <Folder Include="Models\FeedbackModels\" />
+    <Folder Include="Models\IngredientModels\" />
+    <Folder Include="Models\MenuModels\" />
+    <Folder Include="Models\SmoothieModels\" />
+    <Folder Include="Models\OrderModels\" />
+    <Folder Include="Models\ProductUserModels\" />
+    <Folder Include="Models\CustomerModels\" />
+    <Folder Include="Models\ApplicationUserModels\" />
+  </ItemGroup>
+
 </Project>
