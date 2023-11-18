@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SmoothieShop.Core\SmoothieShop.Core.csproj" />
     <ProjectReference Include="..\SmoothieShop.Data\SmoothieShop.Data.csproj" />
   </ItemGroup>
 

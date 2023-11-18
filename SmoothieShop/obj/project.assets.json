@@ -952,6 +952,16 @@
           }
         }
       },
+      "SmoothieShop.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/SmoothieShop.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SmoothieShop.Core.dll": {}
+        }
+      },
       "SmoothieShop.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2457,6 +2467,11 @@
         "version.txt"
       ]
     },
+    "SmoothieShop.Core/1.0.0": {
+      "type": "project",
+      "path": "../SmoothieShop.Core/SmoothieShop.Core.csproj",
+      "msbuildProject": "../SmoothieShop.Core/SmoothieShop.Core.csproj"
+    },
     "SmoothieShop.Data/1.0.0": {
       "type": "project",
       "path": "../SmoothieShop.Data/SmoothieShop.Data.csproj",
@@ -2470,6 +2485,7 @@
       "Microsoft.AspNetCore.Identity.UI >= 6.0.20",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.20",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.20",
+      "SmoothieShop.Core >= 1.0.0",
       "SmoothieShop.Data >= 1.0.0"
     ]
   },
@@ -2500,6 +2516,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\IG\\source\\repos\\SmoothieShop\\SmoothieShop.Core\\SmoothieShop.Core.csproj": {
+              "projectPath": "C:\\Users\\IG\\source\\repos\\SmoothieShop\\SmoothieShop.Core\\SmoothieShop.Core.csproj"
+            },
             "C:\\Users\\IG\\source\\repos\\SmoothieShop\\SmoothieShop.Data\\SmoothieShop.Data.csproj": {
               "projectPath": "C:\\Users\\IG\\source\\repos\\SmoothieShop\\SmoothieShop.Data\\SmoothieShop.Data.csproj"
             }
