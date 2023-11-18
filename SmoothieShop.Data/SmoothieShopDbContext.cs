@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SmoothieShop.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class SmoothieShopDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public SmoothieShopDbContext(DbContextOptions<SmoothieShopDbContext> options)
             : base(options)
         {
         }
