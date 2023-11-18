@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Seeds
 {
-    internal class MenuConfiguration : IEntityTypeConfiguration<Menu>
+    internal class CustomerUserConfiguration : IEntityTypeConfiguration<CustomerUser>
     {
-        public void Configure(EntityTypeBuilder<Menu> builder)
+        public void Configure(EntityTypeBuilder<CustomerUser> builder)
         {
             throw new NotImplementedException();
         }

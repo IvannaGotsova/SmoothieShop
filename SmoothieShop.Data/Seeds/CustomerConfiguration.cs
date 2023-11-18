@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Seeds
 {
-    internal class CustomerConfiguration
-    { 
+    internal class CustomerConfiguration : IEntityTypeConfiguration<Customer>
+    {
+        public void Configure(EntityTypeBuilder<Customer> builder)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

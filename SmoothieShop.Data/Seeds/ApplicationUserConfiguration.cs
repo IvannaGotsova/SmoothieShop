@@ -10,8 +10,12 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Seeds
 {
-    internal class ApplicationUserConfiguration
-    { 
+    internal class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
+    {
+        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

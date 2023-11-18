@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SmoothieShop.Data.Data.Entites;
+using SmoothieShop.Data.Seeds;
 
 namespace SmoothieShop.Data
 {
@@ -49,6 +50,18 @@ namespace SmoothieShop.Data
                .IsRequired();
 
 
+            if (this.seedDb)
+            {
+                builder.ApplyConfiguration(new ApplicationUserConfiguration());
+                builder.ApplyConfiguration(new CustomerConfiguration());
+                builder.ApplyConfiguration(new CustomerUserConfiguration());
+                builder.ApplyConfiguration(new FeedbackConfiguration());
+                builder.ApplyConfiguration(new IngredientConfiguration());
+                builder.ApplyConfiguration(new MenuConfiguration());
+                builder.ApplyConfiguration(new OrderConfiguration());
+                builder.ApplyConfiguration(new ProductUserConfiguration());
+                builder.ApplyConfiguration(new SmoothieConfiguration());
+            }
 
             base.OnModelCreating(builder);
         }
