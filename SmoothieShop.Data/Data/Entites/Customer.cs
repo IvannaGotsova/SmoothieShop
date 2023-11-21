@@ -27,6 +27,7 @@ namespace SmoothieShop.Data.Data.Entites
         [Required]
         [StringLength(CustomerMaxLengthAddress)]
         public string? Address { get; set; }
+        public IEnumerable<Order> Orders { get; set; } = new List<Order>();
 
     }
 }
