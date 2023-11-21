@@ -18,5 +18,7 @@ namespace SmoothieShop.Data.Data.Entites
         [Required]
         [Range(typeof(double), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
         public double Calories { get; set; }
+        [Required]
+        public string? IngredientInfo { get; set;} 
     }
 }
