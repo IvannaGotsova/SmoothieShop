@@ -8,5 +8,6 @@ namespace SmoothieShop.Data.Data.Entites
 {
     public class Menu
     {
+        public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
     }
 }
