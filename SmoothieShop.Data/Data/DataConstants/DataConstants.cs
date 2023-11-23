@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Data.DataConstants
 {
-    public  class DataConstants
+    public class DataConstants
     {
         public class SmoothieConstants
         {
