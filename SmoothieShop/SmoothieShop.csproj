@@ -20,8 +20,4 @@
     <ProjectReference Include="..\SmoothieShop.Data\SmoothieShop.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Views\" />
-  </ItemGroup>
-
 </Project>
