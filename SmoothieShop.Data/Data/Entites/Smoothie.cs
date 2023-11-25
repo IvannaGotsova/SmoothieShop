@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,5 +28,13 @@ namespace SmoothieShop.Data.Data.Entites
         [Required]
         [Range(typeof(double), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
         public double Calories { get; set; }
+        [Required]
+        public int MenuId { get; set; }
+        [ForeignKey(nameof(MenuId))]
+        public Menu? Menu { get; set; }
+        [Required]
+        public int OrderId { get; set; }
+        [ForeignKey(nameof(OrderId))]
+        public Order? Order { get; set; }
     }
 }
