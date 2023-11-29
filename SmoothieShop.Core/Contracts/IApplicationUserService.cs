@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SmoothieShop.Core.Contracts
 {
     /// <summary>
-    /// Holds Interface for Application user functionality.
+    /// Holds Interface for ApplicationUser functionality.
     /// </summary>
     public interface IApplicationUserService
     {
