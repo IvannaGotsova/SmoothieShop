@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Contracts
 {
+    /// <summary>
+    /// Holds Interface for ProductUser functionality.
+    /// </summary>
     public interface IProductUserService
     {
     }
