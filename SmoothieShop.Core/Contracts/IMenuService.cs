@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Contracts
 {
+    /// <summary>
+    /// Holds Interface for Menu functionality.
+    /// </summary>
     public interface IMenuService
     {
     }
