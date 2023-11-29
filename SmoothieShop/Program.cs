@@ -30,7 +30,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>
         options.User.RequireUniqueEmail = true;
 
     })
-    //.AddRoles<ApplicationRole>()
+    .AddRoles<ApplicationRole>()
     .AddEntityFrameworkStores<SmoothieShopDbContext>();
 
 builder.Services.AddControllersWithViews(
