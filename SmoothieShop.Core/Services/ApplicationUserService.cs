@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Services
 {
+    /// <summary>
+    /// Holds Interface for ApplicationUser functionality.
+    /// </summary>
     public class ApplicationUserService : IApplicationUserService
     {
     }
