@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Services
 {
+    /// <summary>
+    /// Holds Interface for Customer functionality.
+    /// </summary>
     public class CustomerService : ICustomerService
     {
     }
