@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Services
 {
+    /// <summary>
+    /// Holds Service for ProductUser functionality.
+    /// </summary>
     public class ProductUserService : IProductUserService
     {
     }
