@@ -8,6 +8,9 @@ using static SmoothieShop.Data.Data.DataConstants.DataConstants.FeedbackConstant
 
 namespace SmoothieShop.Data.Data.Entites
 {
+    /// <summary>
+    /// Holds Feedback class.
+    /// </summary>
     public class Feedback
     {
         [Required]
