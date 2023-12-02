@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Seeds
 {
+    /// <summary>
+    /// Holds ApplicationUser Configuration.
+    /// </summary>
     internal class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
