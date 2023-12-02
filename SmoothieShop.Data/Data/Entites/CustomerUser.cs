@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Data.Entites
 {
+    /// <summary>
+    /// Holds CustomerUser class.
+    /// </summary>
     public class CustomerUser : ApplicationUser
     {
         [Required]
