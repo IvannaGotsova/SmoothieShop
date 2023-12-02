@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Data.Entites
 {
+    /// <summary>
+    /// Holds Order class.
+    /// </summary>
     public class Order
     {
         [Required]
