@@ -8,6 +8,9 @@ using static SmoothieShop.Data.Data.DataConstants.DataConstants.CustomerConstant
 
 namespace SmoothieShop.Data.Data.Entites
 {
+    /// <summary>
+    /// Holds Customer class.
+    /// </summary>
     public class Customer
     {
         [Required]
