@@ -6,20 +6,30 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Data.DataConstants
 {
+    /// <summary>
+    /// Holds Constants for Data Entities.
+    /// </summary>
     public static class DataConstants      
     {
+        /// <summary>
+        /// Holds Constants for Smoothie class.
+        /// </summary>
         public class SmoothieConstants
         {
             public const int SmoothieMinLengthName = 3;
             public const int SmoothieMaxLengthName = 100;
         }
-
+        /// <summary>
+        /// Holds Constants for ApplicationUser class.
+        /// </summary>
         public class ApplicationUserConstants
         {
             public const int ApplicationUserMinLengthName = 2;
             public const int ApplicationUserMaxLengthName = 100;
         }
-
+        /// <summary>
+        /// Holds Constants for Customer class.
+        /// </summary>
         public class CustomerConstants
         {
             public const int CustomerMinLengthName = 2;
@@ -31,7 +41,9 @@ namespace SmoothieShop.Data.Data.DataConstants
             public const int CustomerMinLengthPhoneNumber = 2;
             public const int CustomerMaxLengthPhoneNumber = 100;
         }
-
+        /// <summary>
+        /// Holds Constants for Feedback class.
+        /// </summary>
         public class FeedbackConstants
         {
             public const int FeedbackMinLengthRating = 1;
@@ -39,7 +51,9 @@ namespace SmoothieShop.Data.Data.DataConstants
             public const int FeedbackMinLengthComments = 1;
             public const int FeedbackMaxLengthComments = 10000;
         }
-
+        /// <summary>
+        /// Holds Constants for Ingredient class.
+        /// </summary>
         public class IngredientConstants
         {
             public const int IngredientMinLengthName = 1;
