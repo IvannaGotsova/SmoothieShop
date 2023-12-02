@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Seeds
 {
+    /// <summary>
+    /// Holds Smoothie Configuration.
+    /// </summary>
     internal class SmoothieConfiguration : IEntityTypeConfiguration<Smoothie>
     {
         public void Configure(EntityTypeBuilder<Smoothie> builder)
