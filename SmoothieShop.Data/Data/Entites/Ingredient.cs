@@ -8,6 +8,9 @@ using static SmoothieShop.Data.Data.DataConstants.DataConstants.IngredientConsta
 
 namespace SmoothieShop.Data.Data.Entites
 {
+    /// <summary>
+    /// Holds Ingredient class.
+    /// </summary>
     public class Ingredient
     {
         [Required]

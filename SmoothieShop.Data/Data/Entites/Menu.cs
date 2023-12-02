@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Data.Entites
 {
+    /// <summary>
+    /// Holds Menu class.
+    /// </summary>
     public class Menu
     {
         [Required]
