@@ -10,6 +10,9 @@ using static SmoothieShop.Data.Data.DataConstants.DataConstants.SmoothieConstant
 
 namespace SmoothieShop.Data.Data.Entites
 {
+    /// <summary>
+    /// Holds Smoothie class.
+    /// </summary>
     public class Smoothie
     {
         [Required]
