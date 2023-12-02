@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Repositories
 {
+    /// <summary>
+    /// Holds Service for Repository functionality.
+    /// </summary>
     public class Repository : IRepository
     {
 

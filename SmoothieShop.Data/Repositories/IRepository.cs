@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Repositories
 {
+    /// <summary>
+    /// Holds Interface for Repository functionality.
+    /// </summary>
     public interface IRepository : IDisposable
     {
         IQueryable<T> All<T>() where T : class;
