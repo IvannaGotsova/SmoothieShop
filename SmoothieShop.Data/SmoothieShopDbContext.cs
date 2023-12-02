@@ -5,6 +5,9 @@ using SmoothieShop.Data.Seeds;
 
 namespace SmoothieShop.Data
 {
+    /// <summary>
+    /// Holds SmoothieShop DbContext.
+    /// </summary>
     public class SmoothieShopDbContext : IdentityDbContext<ApplicationUser>
     {
         private readonly bool seedDb;
