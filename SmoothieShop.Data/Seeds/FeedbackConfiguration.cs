@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Seeds
 {
+    /// <summary>
+    /// Holds Feedback Configuration.
+    /// </summary>
     internal class FeedbackConfiguration : IEntityTypeConfiguration<Feedback>
     {
         public void Configure(EntityTypeBuilder<Feedback> builder)
