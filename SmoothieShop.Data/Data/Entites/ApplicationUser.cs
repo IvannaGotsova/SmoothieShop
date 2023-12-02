@@ -10,6 +10,9 @@ using static SmoothieShop.Data.Data.DataConstants.DataConstants.ApplicationUserC
 
 namespace SmoothieShop.Data.Data.Entites
 {
+    /// <summary>
+    /// Holds ApplicationUser class.
+    /// </summary>
     public class ApplicationUser : IdentityUser
     {
         [Required]
