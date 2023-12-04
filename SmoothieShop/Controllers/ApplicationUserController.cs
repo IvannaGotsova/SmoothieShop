@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.ApplicationUserModels;
-using SmoothieShop.Models.AplplicationUserModels;
 
 namespace SmoothieShop.Controllers
 {
@@ -110,6 +109,40 @@ namespace SmoothieShop.Controllers
             TempData["message"] = $"Hello! Have a great time!";
 
             return View(modelToBeLogin);
+        }
+        /// <summary>
+        /// This method is used to login user.
+        /// </summary>
+        /// <param name="modelToBeLogin"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(LoginModelView modelToBeLogin)
+        {   //check if the model state is valid
+            if (!ModelState.IsValid)
+            {
+                return View(modelToBeLogin);
+            }
+
+            var userToBeLogin = await userManager
+                .FindByNameAsync(modelToBeLogin.UserName);
+            //check if the user is null
+            if (userToBeLogin != null)
+            {
+                var resultUserToBeLogin = await signInManager
+                    .PasswordSignInAsync(userToBeLogin, modelToBeLogin.Password, true, false);
+
+                if (resultUserToBeLogin.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+            }
+
+            ModelState.AddModelError("", "Invalid login attempt.");
+
+            return View(modelToBeLogin);
+
         }
     }
 }
