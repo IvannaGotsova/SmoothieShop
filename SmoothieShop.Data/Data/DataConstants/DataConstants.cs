@@ -26,6 +26,10 @@ namespace SmoothieShop.Data.Data.DataConstants
         {
             public const int ApplicationUserMinLengthName = 2;
             public const int ApplicationUserMaxLengthName = 100;
+            public const int ApplicationUserMinLengthEmail = 10;
+            public const int ApplicationUserMaxLengthEmail = 50;
+            public const int ApplicationUserMinLengthPassword = 5;
+            public const int ApplicationUserMaxLengthPassword = 20;
         }
         /// <summary>
         /// Holds Constants for Customer class.
