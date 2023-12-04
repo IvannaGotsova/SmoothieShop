@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Data.Data.Entites;
+using SmoothieShop.Data.Models.ApplicationUserModels;
 using SmoothieShop.Models.AplplicationUserModels;
 
 namespace SmoothieShop.Controllers
@@ -84,6 +85,31 @@ namespace SmoothieShop.Controllers
 
             return RedirectToAction("Login", "ApplicationUsers");
         }
+        /// <summary>
+        /// This method creates form for login.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Login()
+        {
 
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Home", new { area = "Admin" });
+            }
+
+            //check if the user is login already 
+            if (User?.Identity?.IsAuthenticated ?? false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            LoginModelView modelToBeLogin = new();
+
+            TempData["message"] = $"Hello! Have a great time!";
+
+            return View(modelToBeLogin);
+        }
     }
 }
