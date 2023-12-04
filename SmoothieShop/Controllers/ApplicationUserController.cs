@@ -44,5 +44,46 @@ namespace SmoothieShop.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// This method is used to register user.
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Register(RegisterModelView modelToBeRegistered)
+        {
+            //check if the model state is valid
+            if (!ModelState.IsValid)
+            {
+                return View(modelToBeRegistered);
+            }
+            //creates new ApplicationUser
+            ApplicationUser userToBeRegistered = new()
+            {
+                UserName = modelToBeRegistered.UserName,
+                Email = modelToBeRegistered.Email,
+                FirstName = modelToBeRegistered.FirstName,
+                LastName = modelToBeRegistered.LastName
+            };
+
+            var resultUserToBeRegistered = await userManager
+                .CreateAsync(userToBeRegistered, modelToBeRegistered.Password);
+            //check if the user registration is correct
+            if (!resultUserToBeRegistered.Succeeded)
+            {
+                foreach (var error in resultUserToBeRegistered.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View(modelToBeRegistered);
+            }
+
+
+
+            return RedirectToAction("Login", "ApplicationUsers");
+        }
+
     }
 }
