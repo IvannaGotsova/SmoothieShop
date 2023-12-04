@@ -20,7 +20,6 @@
     <Folder Include="Models\OrderModels\" />
     <Folder Include="Models\ProductUserModels\" />
     <Folder Include="Models\CustomerModels\" />
-    <Folder Include="Models\ApplicationUserModels\" />
   </ItemGroup>
 
 </Project>

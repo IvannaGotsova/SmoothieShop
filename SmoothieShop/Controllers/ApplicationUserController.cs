@@ -144,5 +144,17 @@ namespace SmoothieShop.Controllers
             return View(modelToBeLogin);
 
         }
+        /// <summary>
+        /// This method is used to logout user
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+
+            TempData["message"] = $"Goodbye! We are waiting for you to come back";
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
