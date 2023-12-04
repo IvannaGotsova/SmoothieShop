@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using static SmoothieShop.Data.Data.DataConstants.DataConstants.ApplicationUserConstants;
 
-namespace SmoothieShop.Models.AplplicationUserModels
+namespace SmoothieShop.Data.Models.ApplicationUserModels
 {
     public class RegisterModelView
     {
