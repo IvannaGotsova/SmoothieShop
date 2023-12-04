@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Models.ApplicationUserModels
 {
-    public class LoginModelView
+    public class LoginModelView 
     {
         [Required]
         public string UserName { get; set; } = null!;
