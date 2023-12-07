@@ -4,6 +4,9 @@ using System.Diagnostics;
 
 namespace SmoothieShop.Controllers
 {
+    /// <summary>
+    /// Controls Home functionalities.
+    /// </summary>
     public class HomeController : Controller
     {
 
