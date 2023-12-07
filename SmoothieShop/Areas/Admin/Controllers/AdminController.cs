@@ -2,6 +2,9 @@
 
 namespace SmoothieShop.Areas.Admin.Controllers
 {
+    /// <summary>
+    ///  Controls all functions of Admin;
+    /// </summary>
     [Area("Admin")]
     public class AdminController : Controller
     {
