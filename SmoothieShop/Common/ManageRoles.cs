@@ -3,6 +3,10 @@ using SmoothieShop.Data.Data.Entites;
 
 namespace SmoothieShop.Common
 {
+    /// <summary>
+    /// This method seed roles for the users.
+    /// </summary>
+    /// <param name="applicationBuilder"></param>
     public static class ManageRoles
     {
         public static IApplicationBuilder SeedUsersRoles(this IApplicationBuilder applicationBuilder)
@@ -19,7 +23,10 @@ namespace SmoothieShop.Common
 
             return applicationBuilder;
         }
-        
+        /// <summary>
+        /// This method creates roles for the users.
+        /// </summary>
+        /// <param name="roleManager"></param>
         private static void CreateRoles(RoleManager<ApplicationRole> roleManager)
         {
             Task
@@ -38,7 +45,10 @@ namespace SmoothieShop.Common
                  .GetAwaiter()
                  .GetResult();
         }
-        
+        /// <summary>
+        /// This method assign users to roles.
+        /// </summary>
+        /// <param name="userManager"></param>
         private static void AssignUsers(UserManager<ApplicationUser> userManager)
         {
             Task
