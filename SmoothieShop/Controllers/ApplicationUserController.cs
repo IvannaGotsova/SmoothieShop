@@ -6,6 +6,9 @@ using SmoothieShop.Data.Models.ApplicationUserModels;
 
 namespace SmoothieShop.Controllers
 {
+    /// <summary>
+    /// Controls user functionalities.
+    /// </summary>
     public class ApplicationUserController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;
