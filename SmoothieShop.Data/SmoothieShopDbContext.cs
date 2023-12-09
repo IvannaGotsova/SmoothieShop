@@ -27,7 +27,9 @@ namespace SmoothieShop.Data
 
             this.seedDb = seed;
         }
-
+        /// <summary>
+        /// Holds DbSets of the app.
+        /// </summary>
         public DbSet<Customer> Customer { get; set; } = null!;
         public DbSet<CustomerUser> CustomerUser { get; set; } = null!;
         public DbSet<Feedback> Feedback { get; set; } = null!;
@@ -36,7 +38,9 @@ namespace SmoothieShop.Data
         public DbSet<Order> Order { get; set; } = null!;
         public DbSet<ProductUser> ProductUser { get; set; } = null!;
         public DbSet<Smoothie> Smoothie { get; set; } = null!;
-
+        /// <summary>
+        /// Holds OnModelCreating functionality.
+        /// </summary>
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
@@ -52,7 +56,9 @@ namespace SmoothieShop.Data
                .HasMaxLength(60)
                .IsRequired();
 
-
+            /// <summary>
+            /// Holds Configurations of the app.
+            /// </summary>
             if (this.seedDb)
             {
                 builder.ApplyConfiguration(new ApplicationUserConfiguration());
