@@ -48,7 +48,7 @@ namespace SmoothieShop.Data
                .Entity<ApplicationUser>()
                .Property(u => u.FirstName)
                .HasMaxLength(60)
-               .IsRequired();
+               .IsRequired(); 
 
             builder
                .Entity<ApplicationUser>()
