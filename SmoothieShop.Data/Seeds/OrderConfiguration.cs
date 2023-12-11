@@ -16,7 +16,33 @@ namespace SmoothieShop.Data.Seeds
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            throw new NotImplementedException();
+            builder.HasData(CreateOrders());
+        }
+
+        private static List<Order> CreateOrders()
+        {
+            var orders = new List<Order>()
+            {
+                new Order()
+                {
+                   OrderId = 1,
+                   // Smoothies - to finished lately
+                   Price = 4.50M,
+                   // Date - to finish lately
+                   CustomerId = 1
+                },
+                 new Order()
+                {
+                   OrderId = 2,
+                   // Smoothies - to finished lately
+                   Price = 5.50M,
+                   // Date - to finish lately
+                   CustomerId = 1
+                },
+
+            };
+
+            return orders;
         }
     }
 }
