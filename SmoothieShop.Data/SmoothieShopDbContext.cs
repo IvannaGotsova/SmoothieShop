@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Seeds;
+using System.Reflection.Emit;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace SmoothieShop.Data
 {
@@ -30,6 +32,7 @@ namespace SmoothieShop.Data
         /// <summary>
         /// Holds DbSets of the app.
         /// </summary>
+        public DbSet<ApplicationUser> ApplicationUser { get; set; } = null!;
         public DbSet<Customer> Customer { get; set; } = null!;
         public DbSet<CustomerUser> CustomerUser { get; set; } = null!;
         public DbSet<Feedback> Feedback { get; set; } = null!;
@@ -43,6 +46,11 @@ namespace SmoothieShop.Data
         /// </summary>
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+
+            builder.Entity<ApplicationUser>()
+                .Property(u => u.Id)
+                .HasDefaultValueSql("newid()");
 
             builder
                .Entity<ApplicationUser>()
