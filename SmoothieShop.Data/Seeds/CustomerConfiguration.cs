@@ -31,17 +31,19 @@ namespace SmoothieShop.Data.Seeds
                    LastName = "Petrov",
                    Email = "guest1@guest.com",
                    PhoneNumber = "0000000000",
-                   Address = "Bulgaria"
+                   Address = "Bulgaria",
+                   // Orders - to finish lately 
                 },
 
-                  new Customer()
+                new Customer()
                 {
                    CustomerId = 2,
                    FirstName = "Dimitar",
                    LastName = "Dimitrov",
                    Email = "guest2@guest.com",
                    PhoneNumber = "0000000000",
-                   Address = "Bulgaria"
+                   Address = "Bulgaria",
+                   // Orders - to finish lately 
                 },
             };
 
