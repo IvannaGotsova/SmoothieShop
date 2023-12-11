@@ -19,6 +19,7 @@ namespace SmoothieShop.Data.Seeds
             builder.HasData(CreateIngredients());
         }
 
+        // A method used to seed DB with initial data of ingredients.
         private static List<Ingredient> CreateIngredients()
         {
             var ingredients = new List<Ingredient>()
