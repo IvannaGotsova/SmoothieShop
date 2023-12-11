@@ -22,6 +22,6 @@ namespace SmoothieShop.Data.Data.Entites
         public int Rating { get; set; }
         [Required]
         [StringLength(FeedbackMaxLengthComments)]
-        public string? Comments { get; set; }
+        public string? Comment { get; set; }
     }
 }
