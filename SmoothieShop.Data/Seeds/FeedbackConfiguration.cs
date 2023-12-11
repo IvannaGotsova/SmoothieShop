@@ -19,6 +19,7 @@ namespace SmoothieShop.Data.Seeds
             builder.HasData(CreateFeedbacks());
         }
 
+        // A method used to seed DB with initial data of feedbacks.
         private static List<Feedback> CreateFeedbacks()
         {
             var feedbacks = new List<Feedback>()
