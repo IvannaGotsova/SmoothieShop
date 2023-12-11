@@ -19,6 +19,7 @@ namespace SmoothieShop.Data.Seeds
             builder.HasData(CreateMenus());
         }
 
+        // A method used to seed DB with initial data of menus.
         private static List<Menu> CreateMenus()
         {
             var menus = new List<Menu>()
