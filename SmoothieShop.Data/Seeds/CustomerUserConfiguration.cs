@@ -16,7 +16,22 @@ namespace SmoothieShop.Data.Seeds
     {
         public void Configure(EntityTypeBuilder<CustomerUser> builder)
         {
-            throw new NotImplementedException();
+            builder.HasData(CreateCustomerUsers());
+        }
+
+        private static List<CustomerUser> CreateCustomerUsers()
+        {
+            var customerUsers = new List<CustomerUser>()
+            {
+                new CustomerUser()
+                {
+                   CustomerUserId = 1,
+                   // ApplicationUserId = 
+                },
+            
+            };
+
+            return customerUsers;
         }
     }
 }
