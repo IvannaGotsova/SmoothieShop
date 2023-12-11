@@ -16,6 +16,8 @@ namespace SmoothieShop.Data.Data.Entites
     public class ApplicationUser : IdentityUser
     {
         [Required]
+        public string Id { get; set; }
+        [Required]
         [StringLength(ApplicationUserMaxLengthName)]
         public string? FirstName { get; set; }
         [Required]
