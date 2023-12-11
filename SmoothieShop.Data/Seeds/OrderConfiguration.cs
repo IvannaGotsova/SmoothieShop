@@ -37,7 +37,7 @@ namespace SmoothieShop.Data.Seeds
                    // Smoothies - to finished lately
                    Price = 5.50M,
                    // Date - to finish lately
-                   CustomerId = 1
+                   CustomerId = 2
                 },
 
             };
