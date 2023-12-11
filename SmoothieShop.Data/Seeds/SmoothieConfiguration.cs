@@ -21,6 +21,8 @@ namespace SmoothieShop.Data.Seeds
         {
             builder.HasData(CreateSmoothies());
         }
+
+        // A method used to seed DB with initial data of smoothies.
         private static List<Smoothie> CreateSmoothies()
         {
             var smoothies = new List<Smoothie>()
