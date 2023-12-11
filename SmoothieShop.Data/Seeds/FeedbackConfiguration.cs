@@ -16,7 +16,33 @@ namespace SmoothieShop.Data.Seeds
     {
         public void Configure(EntityTypeBuilder<Feedback> builder)
         {
-            throw new NotImplementedException();
+            builder.HasData(CreateFeedbacks());
+        }
+
+        private static List<Feedback> CreateFeedbacks()
+        {
+            var feedbacks = new List<Feedback>()
+            {
+                new Feedback()
+                {
+                   FeedbackId = 1,
+                   CustomerId = 1,
+                   Rating = 10,
+                   Comment = "That was great smoothie."
+                },
+
+                 new Feedback()
+                {
+                   FeedbackId = 2,
+                   CustomerId = 2,
+                   Rating = 10,
+                   Comment = "That was amazing smoothie."
+                },
+
+
+            };
+
+            return feedbacks;
         }
     }
 }
