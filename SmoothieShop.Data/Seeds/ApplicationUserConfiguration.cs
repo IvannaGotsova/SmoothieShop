@@ -20,7 +20,7 @@ namespace SmoothieShop.Data.Seeds
             builder.HasData(CreateApplicationUsers());
         }
 
-
+        // A method used to seed DB with initial data of applicationusers.
         private static List<ApplicationUser> CreateApplicationUsers()
         {
             var applicationUsers = new List<ApplicationUser>();
