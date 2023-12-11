@@ -19,6 +19,7 @@ namespace SmoothieShop.Data.Seeds
             builder.HasData(CreateOrders());
         }
 
+        // A method used to seed DB with initial data of orders.
         private static List<Order> CreateOrders()
         {
             var orders = new List<Order>()
