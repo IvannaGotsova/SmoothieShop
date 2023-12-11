@@ -28,7 +28,7 @@ namespace SmoothieShop.Data.Seeds
 
             var applicationUser = new ApplicationUser()
             {
-                Id = "dea12856-c198-4129-b3f3-b893d8395082",
+                Id = Guid.NewGuid().ToString(),
                 UserName = "admin@admin.com",
                 NormalizedUserName = "admin@admin.com",
                 Email = "admin@admin.com",
@@ -44,7 +44,39 @@ namespace SmoothieShop.Data.Seeds
 
             applicationUser = new ApplicationUser()
             {
-                Id = "fire8756-c198-4129-b3f3-b893d8395082",
+                Id = Guid.NewGuid().ToString(),
+                UserName = "productUser@product.com",
+                NormalizedUserName = "productUser@product.com",
+                Email = "productUser@product.com",
+                NormalizedEmail = "productUser@product.com",
+                FirstName = "Stoqn",
+                LastName = "Stoqnov"
+            };
+
+            applicationUser.PasswordHash =
+                 hasher.HashPassword(applicationUser, "Product123");
+
+            applicationUsers.Add(applicationUser);
+
+            applicationUser = new ApplicationUser()
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName = "customerUser@customer.com",
+                NormalizedUserName = "customerUser@customer.com",
+                Email = "customerUser@customer.com",
+                NormalizedEmail = "customerUser@customer.com",
+                FirstName = "Yordan",
+                LastName = "Yordanov"
+            };
+
+            applicationUser.PasswordHash =
+                 hasher.HashPassword(applicationUser, "Customer123");
+
+            applicationUsers.Add(applicationUser);
+
+            applicationUser = new ApplicationUser()
+            {
+                Id = Guid.NewGuid().ToString(),
                 UserName = "guest1@guest.com",
                 NormalizedUserName = "guest1@guest.com",
                 Email = "guest1@guest.com",
@@ -60,7 +92,7 @@ namespace SmoothieShop.Data.Seeds
 
             applicationUser = new ApplicationUser()
             {
-                Id = "roof9675-c198-4129-b3f3-b893d8395082",
+                Id = Guid.NewGuid().ToString(),
                 UserName = "guest2@guest.com",
                 NormalizedUserName = "guest2@guest.com",
                 Email = "guest2@guest.com",
