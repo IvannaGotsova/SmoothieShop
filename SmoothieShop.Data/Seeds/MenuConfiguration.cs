@@ -16,7 +16,23 @@ namespace SmoothieShop.Data.Seeds
     {
         public void Configure(EntityTypeBuilder<Menu> builder)
         {
-            throw new NotImplementedException();
+            builder.HasData(CreateMenus());
+        }
+
+        private static List<Menu> CreateMenus()
+        {
+            var menus = new List<Menu>()
+            {
+                new Menu()
+                {
+                   MenuId = 1,
+                   // Smoothies - to finished lately
+                },
+
+             
+            };
+
+            return menus;
         }
     }
 }
