@@ -29,7 +29,7 @@ namespace SmoothieShop.Data.Seeds
             var applicationUser = new ApplicationUser()
             {
                 Id = Guid.NewGuid().ToString(),
-                UserName = "admin@admin.com",
+                UserName = "admin@admin.com", 
                 NormalizedUserName = "admin@admin.com",
                 Email = "admin@admin.com",
                 NormalizedEmail = "admin@admin.com",
