@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static SmoothieShop.Data.Data.DataConstants.DataConstants.MenuConstants;
 
 namespace SmoothieShop.Data.Data.Entites
 {
@@ -14,6 +15,9 @@ namespace SmoothieShop.Data.Data.Entites
     {
         [Required]
         public int MenuId { get; set; }
+        [Required]
+        [StringLength(MenuMaxLengthName)]
+        public string? MenuName { get; set; }
         public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
     }
 }
