@@ -33,7 +33,7 @@ namespace SmoothieShop.Data.Seeds
                    Email = "guest1@guest.com",
                    PhoneNumber = "0000000000",
                    Address = "Bulgaria",
-                   // Orders - to finish lately 
+                   //Orders - to finish lately 
                 },
 
                 new Customer()
