@@ -31,10 +31,14 @@ namespace SmoothieShop.Data.Seeds
                 {
                    SmoothieId = 1,
                    Name = "Banana Smoothie",
-                   // Ingredients - to finished lately
+                   Ingredients = new List<Ingredient>(){ 
+                                                      new Ingredient  { IngredientId = 1,
+                                                                        Name = "Banana",
+                                                                        Calories = 105,
+                                                                        IngredientInfo = "Bananas are berries, not fruits."} },
                    Size = 250,
                    Price = 4.50M,
-                   // Calories -  to finished lately
+                   Calories = 210, //to make a method to calculate automatically
                    MenuId = 1,
                    OrderId = 1,
                 },
@@ -43,10 +47,14 @@ namespace SmoothieShop.Data.Seeds
                 {
                    SmoothieId = 2,
                    Name = "Strawberry Smoothie",
-                   // Ingredients - to finished lately
+                   Ingredients = new List<Ingredient>(){
+                                                      new Ingredient  { IngredientId = 3,
+                                                                        Name = "Strawberry",
+                                                                        Calories = 32,
+                                                                        IngredientInfo = "Strawberries are not actually berries, but rather an accessory fruit."} },
                    Size = 250,
                    Price = 5.50M,
-                   // Calories -  to finished lately
+                   Calories =  480, //to make a method to calculate automatically
                    MenuId = 1,
                    OrderId = 2,
                 },
