@@ -31,7 +31,7 @@ namespace SmoothieShop.Data.Seeds
                 {
                    SmoothieId = 1,
                    Name = "Banana Smoothie",
-                   Ingredients = new List<Ingredient>(){ 
+                   Ingredients = new List<Ingredient>(){
                                                       new Ingredient  { IngredientId = 1,
                                                                         Name = "Banana",
                                                                         Calories = 105,
