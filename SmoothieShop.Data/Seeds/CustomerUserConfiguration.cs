@@ -27,7 +27,7 @@ namespace SmoothieShop.Data.Seeds
                 new CustomerUser()
                 {
                    CustomerUserId = 1,
-                   // ApplicationUserId - to finished lately
+                   ApplicationUserId = "customerUser@customer.com"
                 },
             
             };
