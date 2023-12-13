@@ -74,7 +74,7 @@ namespace SmoothieShop.Data.Seeds
                                                                                                              new Ingredient  { IngredientId = 3,
                                                                                                                                Name = "Strawberry",
                                                                                                                                Calories = 32,
-                                                                                                                               IngredientInfo = "Strawberries are not actually berries, but rather an accessory fruit."}}, 
+                                                                                                                               IngredientInfo = "Strawberries are not actually berries, but rather an accessory fruit."}},
                                                                                   Size = 250,
                                                                                   Price = 5.50M,
                                                                                   Calories =  480, //to make a method to calculate  automatic                        
@@ -82,7 +82,7 @@ namespace SmoothieShop.Data.Seeds
                                                                                   OrderId = 2,} },
                                                            Price = 5.50M,
                                                            Date = DateTime.ParseExact("12/12/2023", "dd/MM/yyyy", CultureInfo.InvariantCulture),
-                                                           CustomerId = 2
+                                                           CustomerId = 2} }
                 },
             };
 
