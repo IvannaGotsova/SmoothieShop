@@ -27,40 +27,7 @@ namespace SmoothieShop.Data.Seeds
                 new Menu()
                 {
                    MenuId = 1,
-                   MenuName = "Basic",
-                   Smoothies = new List<Smoothie>(){
-                                                new Smoothie()
-                                                {
-                                                SmoothieId = 1,
-                                                Name = "Banana Smoothie",
-                                                Ingredients = new List<Ingredient>(){
-                                                                            new Ingredient  { IngredientId = 1,
-                                                                                              Name = "Banana",
-                                                                                              Calories = 105,
-                                                                                              IngredientInfo = "Bananas are berries, not   fruits."} },
-                                                Size = 250,
-                                                Price = 4.50M,
-                                                Calories = 210, //to make a method to calculate automatically
-                                                MenuId = 1,
-                                                OrderId = 1,
-                                                },
-
-                                                new Smoothie()
-                                                {
-                                                SmoothieId = 2,
-                                                Name = "Strawberry Smoothie",
-                                                Ingredients = new List<Ingredient>(){
-                                                                             new Ingredient  { IngredientId = 3,
-                                                                                               Name = "Strawberry",
-                                                                                               Calories = 32,
-                                                                                               IngredientInfo = "Strawberries are not actually berries, but rather an accessory fruit."} },
-                                                Size = 250,
-                                                Price = 5.50M,
-                                                Calories =  480, //to make a method to calculate automatically
-                                                MenuId = 1,
-                                                OrderId = 2,
-                                                },
-                   }
+                   MenuName = "Basic"             
                 },            
             };
 
