@@ -15,14 +15,16 @@ namespace SmoothieShop.Data.Data.Entites
     /// </summary>
     public class ApplicationUser : IdentityUser
     {
-        [Required]
-        public string Id { get; set; }
+
         [Required]
         [StringLength(ApplicationUserMaxLengthName)]
         public string? FirstName { get; set; }
         [Required]
         [StringLength(ApplicationUserMaxLengthName)]
         public string? LastName { get; set; }
-
+        [Required]
+        public IEnumerable<CustomerUser> CustomerUsers = new List<CustomerUser>();
+        [Required]
+        public IEnumerable<ProductUser> ProductUsers = new List<ProductUser>();
     }
 }

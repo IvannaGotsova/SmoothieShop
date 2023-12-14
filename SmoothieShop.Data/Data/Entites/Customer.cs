@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,10 @@ namespace SmoothieShop.Data.Data.Entites
         [Required]
         [StringLength(CustomerMaxLengthAddress)]
         public string? Address { get; set; }
+        [Required]
+        public int CustomerUserId { get; set; }
+        [ForeignKey(nameof(CustomerUserId))]
+        public CustomerUser? CustomerUser { get; set; }
         [Required]
         public IEnumerable<Order> Orders { get; set; } = new List<Order>();
         [Required]

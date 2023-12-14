@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,10 @@ namespace SmoothieShop.Data.Data.Entites
         [Required]
         [StringLength(MenuMaxLengthName)]
         public string? MenuName { get; set; }
+        [Required]
+        public int ProductUserId { get; set; }
+        [ForeignKey(nameof(ProductUserId))]
+        public ProductUser? ProductUser { get; set; }
         [Required]
         public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
         [Required]
