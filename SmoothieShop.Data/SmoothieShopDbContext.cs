@@ -32,15 +32,17 @@ namespace SmoothieShop.Data
         /// <summary>
         /// Holds DbSets of the app.
         /// </summary>
-        public DbSet<ApplicationUser> ApplicationUser { get; set; } = null!;
-        public DbSet<Customer> Customer { get; set; } = null!;
-        public DbSet<CustomerUser> CustomerUser { get; set; } = null!;
-        public DbSet<Feedback> Feedback { get; set; } = null!;
-        public DbSet<Ingredient> Ingredient { get; set; } = null!;
-        public DbSet<Menu> Menu { get; set; } = null!;
-        public DbSet<Order> Order { get; set; } = null!;
-        public DbSet<ProductUser> ProductUser { get; set; } = null!;
-        public DbSet<Smoothie> Smoothie { get; set; } = null!;
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; } = null!;
+        public DbSet<Customer> Customers { get; set; } = null!;
+        public DbSet<CustomerUser> CustomerUsers { get; set; } = null!;
+        public DbSet<Feedback> Feedbacks { get; set; } = null!;
+        public DbSet<Ingredient> Ingredients { get; set; } = null!;
+        public DbSet<Menu> Menus { get; set; } = null!;
+        public DbSet<Order> Orders { get; set; } = null!;
+        public DbSet<ProductUser> ProductUsers { get; set; } = null!;
+        public DbSet<Smoothie> Smoothies { get; set; } = null!;
+        public DbSet<MenuOrder> MenuOrders { get; set; } = null!;
+        public DbSet<MenuSmoothie> MenuSmoothies { get; set; } = null!;
         /// <summary>
         /// Holds OnModelCreating functionality.
         /// </summary>
@@ -64,6 +66,15 @@ namespace SmoothieShop.Data
                .HasMaxLength(60)
                .IsRequired();
 
+            builder
+                .Entity<MenuOrder>()
+                .HasKey(mo => new { mo.MenuId, mo.OrderId });
+
+            builder
+                .Entity<MenuSmoothie>()
+                .HasKey(ms => new { ms.MenuId, ms.SmoothieId });
+               
+
             /// <summary>
             /// Holds Configurations of the app.
             /// </summary>
@@ -78,6 +89,8 @@ namespace SmoothieShop.Data
                 builder.ApplyConfiguration(new OrderConfiguration());
                 builder.ApplyConfiguration(new ProductUserConfiguration());
                 builder.ApplyConfiguration(new SmoothieConfiguration());
+                builder.ApplyConfiguration(new MenuOrderConfiguration());
+                builder.ApplyConfiguration(new MenuSmoothieConfiguration());
             }
 
             base.OnModelCreating(builder);
