@@ -30,33 +30,19 @@ namespace SmoothieShop.Data.Seeds
                 new Smoothie()
                 {
                    SmoothieId = 1,
-                   Name = "Banana Smoothie",
-                   Ingredients = new List<Ingredient>(){
-                                                      new Ingredient  { IngredientId = 1,
-                                                                        Name = "Banana",
-                                                                        Calories = 105,
-                                                                        IngredientInfo = "Bananas are berries, not fruits."} },
+                   SmoothieName = "Banana Smoothie",
                    Size = 250,
                    Price = 4.50M,
                    Calories = 210, //to make a method to calculate automatically
-                   MenuId = 1,
-                   OrderId = 1,
                 },
 
                  new Smoothie()
                 {
                    SmoothieId = 2,
-                   Name = "Strawberry Smoothie",
-                   Ingredients = new List<Ingredient>(){
-                                                      new Ingredient  { IngredientId = 3,
-                                                                        Name = "Strawberry",
-                                                                        Calories = 32,
-                                                                        IngredientInfo = "Strawberries are not actually berries, but rather an accessory fruit."} },
+                   SmoothieName = "Strawberry Smoothie",
                    Size = 250,
                    Price = 5.50M,
                    Calories =  480, //to make a method to calculate automatically
-                   MenuId = 1,
-                   OrderId = 2,
                 },
             };
 
