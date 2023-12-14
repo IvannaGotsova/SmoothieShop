@@ -43,6 +43,8 @@ namespace SmoothieShop.Data
         public DbSet<Smoothie> Smoothies { get; set; } = null!;
         public DbSet<MenuOrder> MenuOrders { get; set; } = null!;
         public DbSet<MenuSmoothie> MenuSmoothies { get; set; } = null!;
+        public DbSet<IngredientSmoothie> IngredientSmoothies { get; set; } = null!;
+        public DbSet<OrderSmoothie> OrderSmoothies { get; set; } = null!;
         /// <summary>
         /// Holds OnModelCreating functionality.
         /// </summary>
@@ -73,7 +75,15 @@ namespace SmoothieShop.Data
             builder
                 .Entity<MenuSmoothie>()
                 .HasKey(ms => new { ms.MenuId, ms.SmoothieId });
-               
+
+            builder
+                .Entity<IngredientSmoothie>()
+                .HasKey(iss => new { iss.IngredientId, iss.SmoothieId });
+
+            builder
+               .Entity<OrderSmoothie>()
+               .HasKey(os => new { os.OrderId, os.SmoothieId });
+
 
             /// <summary>
             /// Holds Configurations of the app.
@@ -91,6 +101,8 @@ namespace SmoothieShop.Data
                 builder.ApplyConfiguration(new SmoothieConfiguration());
                 builder.ApplyConfiguration(new MenuOrderConfiguration());
                 builder.ApplyConfiguration(new MenuSmoothieConfiguration());
+                builder.ApplyConfiguration(new OrderSmoothieConfiguration());
+                builder.ApplyConfiguration(new IngredientSmoothieConfiguration());
             }
 
             base.OnModelCreating(builder);
