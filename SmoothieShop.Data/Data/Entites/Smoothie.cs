@@ -19,10 +19,7 @@ namespace SmoothieShop.Data.Data.Entites
         public int SmoothieId { get; set; }
         [Required]
         [StringLength(SmoothieMaxLengthName)]
-        public string? Name { get; set; }
-        [Required]
-        public List<Ingredient> Ingredients { get; set; } = new List<Ingredient> { };
-        [Required]
+        public string? SmoothieName { get; set; }
         [Range(typeof(double), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
         public double Size { get; set; }
         [Required]
@@ -32,10 +29,10 @@ namespace SmoothieShop.Data.Data.Entites
         [Range(typeof(double), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
         public double Calories { get; set; }
         [Required]
-        public int MenuId { get; set; }
-        [ForeignKey(nameof(MenuId))]
-        public Menu? Menu { get; set; }
+        public List<Menu> Menus { get; set; } = new List<Menu> { };
         [Required]
         public List<Order> Orders { get; set; } = new List<Order> { };
+        [Required]
+        public List<Ingredient> Ingredients { get; set; } = new List<Ingredient> { };
     }
 }
