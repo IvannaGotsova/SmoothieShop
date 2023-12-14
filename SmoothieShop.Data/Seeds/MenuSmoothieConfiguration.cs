@@ -16,7 +16,28 @@ namespace SmoothieShop.Data.Seeds
     {
         public void Configure(EntityTypeBuilder<MenuSmoothie> builder)
         {
-            throw new NotImplementedException();
+            builder.HasData(CreateMenuSmoothies());
+        }
+
+        // A method used to seed DB with initial data of MenuSmoothies.
+        private static List<MenuSmoothie> CreateMenuSmoothies()
+        {
+            var menuSmoothies = new List<MenuSmoothie>()
+            {
+                new MenuSmoothie()
+                {
+                   MenuId = 1,
+                   SmoothieId = 1
+                },
+
+                 new MenuSmoothie()
+                {
+                   MenuId = 1,
+                   SmoothieId = 2
+                },
+            };
+
+            return menuSmoothies;
         }
     }
 }
