@@ -27,7 +27,8 @@ namespace SmoothieShop.Data.Seeds
                 new Menu()
                 {
                    MenuId = 1,
-                   MenuName = "Basic"             
+                   MenuName = "Basic",
+                   ProductUserId = 1
                 },            
             };
 

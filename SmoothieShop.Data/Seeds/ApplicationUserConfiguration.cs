@@ -28,7 +28,7 @@ namespace SmoothieShop.Data.Seeds
 
             var applicationUser = new ApplicationUser()
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = "admin@admin.com",
                 UserName = "admin@admin.com", 
                 NormalizedUserName = "admin@admin.com",
                 Email = "admin@admin.com",
@@ -44,7 +44,7 @@ namespace SmoothieShop.Data.Seeds
 
             applicationUser = new ApplicationUser()
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = "productUser@product.com",
                 UserName = "productUser@product.com",
                 NormalizedUserName = "productUser@product.com",
                 Email = "productUser@product.com",
@@ -60,7 +60,7 @@ namespace SmoothieShop.Data.Seeds
 
             applicationUser = new ApplicationUser()
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = "customerUser@customer.com",
                 UserName = "customerUser@customer.com",
                 NormalizedUserName = "customerUser@customer.com",
                 Email = "customerUser@customer.com",
@@ -76,7 +76,7 @@ namespace SmoothieShop.Data.Seeds
 
             applicationUser = new ApplicationUser()
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = "guest1@guest.com",
                 UserName = "guest1@guest.com",
                 NormalizedUserName = "guest1@guest.com",
                 Email = "guest1@guest.com",
@@ -92,7 +92,7 @@ namespace SmoothieShop.Data.Seeds
 
             applicationUser = new ApplicationUser()
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = "guest2@guest.com",
                 UserName = "guest2@guest.com",
                 NormalizedUserName = "guest2@guest.com",
                 Email = "guest2@guest.com",
