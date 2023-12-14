@@ -18,6 +18,7 @@ namespace SmoothieShop.Data.Data.Entites
         [Required]
         [StringLength(MenuMaxLengthName)]
         public string? MenuName { get; set; }
+        [Required]
         public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
     }
 }
