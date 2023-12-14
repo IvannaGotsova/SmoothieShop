@@ -36,8 +36,6 @@ namespace SmoothieShop.Data.Data.Entites
         [ForeignKey(nameof(MenuId))]
         public Menu? Menu { get; set; }
         [Required]
-        public int OrderId { get; set; }
-        [ForeignKey(nameof(OrderId))]
-        public Order? Order { get; set; }
+        public List<Order> Orders { get; set; } = new List<Order> { };
     }
 }
