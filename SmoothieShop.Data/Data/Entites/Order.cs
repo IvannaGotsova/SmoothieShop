@@ -25,7 +25,9 @@ namespace SmoothieShop.Data.Data.Entites
         [ForeignKey(nameof(CustomerId))]
         public Customer? Customer { get; set; }
         [Required]
-        public List<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
+        public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
+        [Required]
+        public IEnumerable<Menu> Menus { get; set; } = new List<Menu>();
 
     }
 }

@@ -29,10 +29,10 @@ namespace SmoothieShop.Data.Data.Entites
         [Range(typeof(double), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
         public double Calories { get; set; }
         [Required]
-        public List<Menu> Menus { get; set; } = new List<Menu> { };
+        public IEnumerable<Menu> Menus { get; set; } = new List<Menu> { };
         [Required]
-        public List<Order> Orders { get; set; } = new List<Order> { };
+        public IEnumerable<Order> Orders { get; set; } = new List<Order> { };
         [Required]
-        public List<Ingredient> Ingredients { get; set; } = new List<Ingredient> { };
+        public IEnumerable<Ingredient> Ingredients { get; set; } = new List<Ingredient> { };
     }
 }

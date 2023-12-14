@@ -24,10 +24,8 @@ namespace SmoothieShop.Data.Data.Entites
         public double Calories { get; set; }
         [Required]
         [StringLength(IngredientMaxLengthInfo)]
-        public string? IngredientInfo { get; set;}
+        public string? IngredientInfo { get; set; }
         [Required]
-        public int SmoothieId { get; set; }
-        [ForeignKey(nameof(SmoothieId))]
-        public Smoothie? Smoothie { get; set; }
+        public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
     }
 }
