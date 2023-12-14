@@ -52,9 +52,17 @@ namespace SmoothieShop.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<ApplicationUser>()
-                .Property(u => u.Id)
-                .HasDefaultValueSql("newid()");
+            builder
+                .Entity<ApplicationUser>()
+                .Property(u => u.UserName)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            builder
+                .Entity<ApplicationUser>()
+                .Property(u => u.Email)
+                .HasMaxLength(60)
+                .IsRequired();
 
             builder
                .Entity<ApplicationUser>()
