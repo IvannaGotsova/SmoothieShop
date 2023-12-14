@@ -27,7 +27,7 @@ namespace SmoothieShop.Data.Seeds
         {
             var customers = new List<Customer>()
             {
-                new Customer()
+                new Customer() 
                 {
                    CustomerId = 1,
                    FirstName = "Petar",
