@@ -27,7 +27,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\IG\\source\\repos\\SmoothieShop\\SmoothieShop.Data\\SmoothieShop.Data.csproj": {
+                "projectPath": "C:\\Users\\IG\\source\\repos\\SmoothieShop\\SmoothieShop.Data\\SmoothieShop.Data.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

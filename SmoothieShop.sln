@@ -7,7 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmoothieShop", "SmoothieSho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmoothieShop.Data", "SmoothieShop.Data\SmoothieShop.Data.csproj", "{120870E8-84A5-4F8B-99EC-9AFBCBFAD8E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmoothieShop.Core", "SmoothieShop.Core\SmoothieShop.Core.csproj", "{372A1593-554D-4B80-BF41-E63ABB28479F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmoothieShop.Core", "SmoothieShop.Core\SmoothieShop.Core.csproj", "{372A1593-554D-4B80-BF41-E63ABB28479F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{120870E8-84A5-4F8B-99EC-9AFBCBFAD8E7} = {120870E8-84A5-4F8B-99EC-9AFBCBFAD8E7}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
