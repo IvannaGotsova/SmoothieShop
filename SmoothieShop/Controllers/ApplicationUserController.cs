@@ -21,7 +21,10 @@ namespace SmoothieShop.Controllers
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
-
+        public IActionResult Index()
+        {
+            return View();
+        }
         /// <summary>
         /// This method creates form to register a user.
         /// </summary>
@@ -42,12 +45,6 @@ namespace SmoothieShop.Controllers
 
             return View(modelToBeRegistered);
         }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         /// <summary>
         /// This method is used to register user.
         /// </summary>
