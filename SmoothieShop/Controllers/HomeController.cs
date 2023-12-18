@@ -9,7 +9,10 @@ namespace SmoothieShop.Controllers
     /// </summary>
     public class HomeController : Controller
     {
-
+        /// <summary>
+        /// This method creates index page.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();
