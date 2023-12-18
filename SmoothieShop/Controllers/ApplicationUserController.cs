@@ -21,6 +21,10 @@ namespace SmoothieShop.Controllers
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
+        /// <summary>
+        /// This method creates index page for a user.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();
