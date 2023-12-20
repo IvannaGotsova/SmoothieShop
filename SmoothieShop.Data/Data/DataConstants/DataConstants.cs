@@ -63,7 +63,7 @@ namespace SmoothieShop.Data.Data.DataConstants
             public const int IngredientMinLengthName = 1;
             public const int IngredientMaxLengthName = 10;
             public const int IngredientMinLengthInfo = 1;
-            public const int IngredientMaxLengthInfo = 10;
+            public const int IngredientMaxLengthInfo = 1000;
         }
         /// <summary>
         /// Holds Constants for Menu class.
