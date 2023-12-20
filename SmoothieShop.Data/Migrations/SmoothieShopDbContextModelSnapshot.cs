@@ -294,6 +294,98 @@ namespace SmoothieShop.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "admin@admin.com",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a0c1621d-e5af-4a36-a183-da319abbccb8",
+                            Email = "admin@admin.com",
+                            EmailConfirmed = false,
+                            FirstName = "Ivan",
+                            LastName = "Ivanov",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "admin@admin.com",
+                            NormalizedUserName = "admin@admin.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMH48+D6AllfN8L9oQCwZWVCHfSqbU9/I5+o7CycsJDTFDj9FF/Z67cIj5opJ3MnhQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "2ddb4c08-798d-4e46-83f2-9328aaa91003",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com"
+                        },
+                        new
+                        {
+                            Id = "productUser@product.com",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b9ca09ce-1b5f-48b6-a140-cff5fe16d2fb",
+                            Email = "productUser@product.com",
+                            EmailConfirmed = false,
+                            FirstName = "Stoqn",
+                            LastName = "Stoqnov",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "productUser@product.com",
+                            NormalizedUserName = "productUser@product.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJLifgbh2C342b7DXNl+repjwAA0KlSewliA0RSL4zeKnIcCUZy06V4xjl35ULJ5YA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "f96d3be5-998a-46ff-a719-b51926f9b37d",
+                            TwoFactorEnabled = false,
+                            UserName = "productUser@product.com"
+                        },
+                        new
+                        {
+                            Id = "customerUser@customer.com",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e50d5ddf-1d33-4c7f-8105-48806751877d",
+                            Email = "customerUser@customer.com",
+                            EmailConfirmed = false,
+                            FirstName = "Yordan",
+                            LastName = "Yordanov",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "customerUser@customer.com",
+                            NormalizedUserName = "customerUser@customer.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFnen7B2VhzL7KKTfKrSDyDibAjCSuKcIhlfT5tijbYk5O/ncz+6ljCJQYJX79HpDA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "0a3656ee-846b-47c8-a97f-2233fe7b01a0",
+                            TwoFactorEnabled = false,
+                            UserName = "customerUser@customer.com"
+                        },
+                        new
+                        {
+                            Id = "guest1@guest.com",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c0b3fbaf-01c4-4eca-8e9d-1a22d62e4a0f",
+                            Email = "guest1@guest.com",
+                            EmailConfirmed = false,
+                            FirstName = "Petar",
+                            LastName = "Petrov",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "guest1@guest.com",
+                            NormalizedUserName = "guest1@guest.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG1vleKKMHVk0zakDZ8ht/T1aHm388yikSXIC+i75LQOGXpdYNEBgUrSJYSRuTyJOQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "63d13704-ac4f-4d99-9f9c-d608460fb805",
+                            TwoFactorEnabled = false,
+                            UserName = "guest1@guest.com"
+                        },
+                        new
+                        {
+                            Id = "guest2@guest.com",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "801f1274-729b-4c1f-be7b-1434ea65d03c",
+                            Email = "guest2@guest.com",
+                            EmailConfirmed = false,
+                            FirstName = "Dimitar",
+                            LastName = "Dimitrov",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "guest2@guest.com",
+                            NormalizedUserName = "guest2@guest.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAxOs3YZ8LW1h6aYeLsGZllwBzJeC808zaoc/PoF4ucAvz41xwv/URdgTiiQAzFFvQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "84c8866f-853d-48de-a4ed-e999de09f6a5",
+                            TwoFactorEnabled = false,
+                            UserName = "guest2@guest.com"
+                        });
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.Customer", b =>
@@ -337,6 +429,28 @@ namespace SmoothieShop.Data.Migrations
                     b.HasIndex("CustomerUserId");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            CustomerId = 1,
+                            Address = "Bulgaria",
+                            CustomerUserId = 1,
+                            Email = "guest1@guest.com",
+                            FirstName = "Petar",
+                            LastName = "Petrov",
+                            PhoneNumber = "0000000000"
+                        },
+                        new
+                        {
+                            CustomerId = 2,
+                            Address = "Bulgaria",
+                            CustomerUserId = 1,
+                            Email = "guest2@guest.com",
+                            FirstName = "Dimitar",
+                            LastName = "Dimitrov",
+                            PhoneNumber = "0000000000"
+                        });
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.CustomerUser", b =>
@@ -356,6 +470,13 @@ namespace SmoothieShop.Data.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("CustomerUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            CustomerUserId = 1,
+                            ApplicationUserId = "customerUser@customer.com"
+                        });
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.Feedback", b =>
@@ -383,6 +504,22 @@ namespace SmoothieShop.Data.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Feedbacks");
+
+                    b.HasData(
+                        new
+                        {
+                            FeedbackId = 1,
+                            Comment = "That was great smoothie.",
+                            CustomerId = 1,
+                            Rating = 10
+                        },
+                        new
+                        {
+                            FeedbackId = 2,
+                            Comment = "That was amazing smoothie.",
+                            CustomerId = 2,
+                            Rating = 10
+                        });
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.Ingredient", b =>
@@ -409,6 +546,29 @@ namespace SmoothieShop.Data.Migrations
                     b.HasKey("IngredientId");
 
                     b.ToTable("Ingredients");
+
+                    b.HasData(
+                        new
+                        {
+                            IngredientId = 1,
+                            Calories = 105.0,
+                            IngredientInfo = "Bananas are berries, not fruits.",
+                            IngredientName = "Banana"
+                        },
+                        new
+                        {
+                            IngredientId = 2,
+                            Calories = 42.0,
+                            IngredientInfo = "Kiwis are a type of berry and are related to strawberries and raspberries.",
+                            IngredientName = "Kiwi"
+                        },
+                        new
+                        {
+                            IngredientId = 3,
+                            Calories = 32.0,
+                            IngredientInfo = "Strawberries are not actually berries, but rather an accessory fruit.",
+                            IngredientName = "Strawberry"
+                        });
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.IngredientSmoothie", b =>
@@ -424,6 +584,18 @@ namespace SmoothieShop.Data.Migrations
                     b.HasIndex("SmoothieId");
 
                     b.ToTable("IngredientSmoothies");
+
+                    b.HasData(
+                        new
+                        {
+                            IngredientId = 1,
+                            SmoothieId = 1
+                        },
+                        new
+                        {
+                            IngredientId = 3,
+                            SmoothieId = 2
+                        });
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.Menu", b =>
@@ -447,6 +619,14 @@ namespace SmoothieShop.Data.Migrations
                     b.HasIndex("ProductUserId");
 
                     b.ToTable("Menus");
+
+                    b.HasData(
+                        new
+                        {
+                            MenuId = 1,
+                            MenuName = "Basic",
+                            ProductUserId = 1
+                        });
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.MenuOrder", b =>
@@ -462,6 +642,18 @@ namespace SmoothieShop.Data.Migrations
                     b.HasIndex("OrderId");
 
                     b.ToTable("MenuOrders");
+
+                    b.HasData(
+                        new
+                        {
+                            MenuId = 1,
+                            OrderId = 1
+                        },
+                        new
+                        {
+                            MenuId = 1,
+                            OrderId = 2
+                        });
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.MenuSmoothie", b =>
@@ -477,6 +669,18 @@ namespace SmoothieShop.Data.Migrations
                     b.HasIndex("SmoothieId");
 
                     b.ToTable("MenuSmoothies");
+
+                    b.HasData(
+                        new
+                        {
+                            MenuId = 1,
+                            SmoothieId = 1
+                        },
+                        new
+                        {
+                            MenuId = 1,
+                            SmoothieId = 2
+                        });
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.Order", b =>
@@ -501,6 +705,22 @@ namespace SmoothieShop.Data.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            OrderId = 1,
+                            CustomerId = 1,
+                            Date = new DateTime(2023, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 4.50m
+                        },
+                        new
+                        {
+                            OrderId = 2,
+                            CustomerId = 2,
+                            Date = new DateTime(2023, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 5.50m
+                        });
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.OrderSmoothie", b =>
@@ -516,6 +736,18 @@ namespace SmoothieShop.Data.Migrations
                     b.HasIndex("SmoothieId");
 
                     b.ToTable("OrderSmoothies");
+
+                    b.HasData(
+                        new
+                        {
+                            OrderId = 1,
+                            SmoothieId = 1
+                        },
+                        new
+                        {
+                            OrderId = 2,
+                            SmoothieId = 2
+                        });
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.ProductUser", b =>
@@ -535,6 +767,13 @@ namespace SmoothieShop.Data.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("ProductUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductUserId = 1,
+                            ApplicationUserId = "productUser@product.com"
+                        });
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.Smoothie", b =>
@@ -562,6 +801,24 @@ namespace SmoothieShop.Data.Migrations
                     b.HasKey("SmoothieId");
 
                     b.ToTable("Smoothies");
+
+                    b.HasData(
+                        new
+                        {
+                            SmoothieId = 1,
+                            Calories = 210.0,
+                            Price = 4.50m,
+                            Size = 250.0,
+                            SmoothieName = "Banana Smoothie"
+                        },
+                        new
+                        {
+                            SmoothieId = 2,
+                            Calories = 480.0,
+                            Price = 5.50m,
+                            Size = 250.0,
+                            SmoothieName = "Strawberry Smoothie"
+                        });
                 });
 
             modelBuilder.Entity("IngredientSmoothie", b =>

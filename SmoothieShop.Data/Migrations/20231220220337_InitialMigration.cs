@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SmoothieShop.Data.Migrations
 {
-    public partial class Initialmigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -58,7 +58,7 @@ namespace SmoothieShop.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IngredientName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Calories = table.Column<double>(type: "float", nullable: false),
-                    IngredientInfo = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
+                    IngredientInfo = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -421,16 +421,14 @@ namespace SmoothieShop.Data.Migrations
                         name: "FK_MenuOrder_Menus_MenusMenuId",
                         column: x => x.MenusMenuId,
                         principalTable: "Menus",
-                        principalColumn: "MenuId"
-                        //onDelete: ReferentialAction.Cascade
-                        );
+                        principalColumn: "MenuId");
+                        //onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_MenuOrder_Orders_OrdersOrderId",
                         column: x => x.OrdersOrderId,
                         principalTable: "Orders",
-                        principalColumn: "OrderId"
-                        //onDelete: ReferentialAction.Cascade
-                        );
+                        principalColumn: "OrderId");
+                       //onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -447,16 +445,14 @@ namespace SmoothieShop.Data.Migrations
                         name: "FK_MenuOrders_Menus_MenuId",
                         column: x => x.MenuId,
                         principalTable: "Menus",
-                        principalColumn: "MenuId"
-                        //onDelete: ReferentialAction.Cascade
-                        );
+                        principalColumn: "MenuId");
+                    //onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_MenuOrders_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
-                        principalColumn: "OrderId"
-                        //onDelete: ReferentialAction.Cascade
-                        );
+                        principalColumn: "OrderId");
+                    //onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -505,6 +501,116 @@ namespace SmoothieShop.Data.Migrations
                         principalTable: "Smoothies",
                         principalColumn: "SmoothieId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "admin@admin.com", 0, "a0c1621d-e5af-4a36-a183-da319abbccb8", "admin@admin.com", false, "Ivan", "Ivanov", false, null, "admin@admin.com", "admin@admin.com", "AQAAAAEAACcQAAAAEMH48+D6AllfN8L9oQCwZWVCHfSqbU9/I5+o7CycsJDTFDj9FF/Z67cIj5opJ3MnhQ==", null, false, "2ddb4c08-798d-4e46-83f2-9328aaa91003", false, "admin@admin.com" },
+                    { "customerUser@customer.com", 0, "e50d5ddf-1d33-4c7f-8105-48806751877d", "customerUser@customer.com", false, "Yordan", "Yordanov", false, null, "customerUser@customer.com", "customerUser@customer.com", "AQAAAAEAACcQAAAAEFnen7B2VhzL7KKTfKrSDyDibAjCSuKcIhlfT5tijbYk5O/ncz+6ljCJQYJX79HpDA==", null, false, "0a3656ee-846b-47c8-a97f-2233fe7b01a0", false, "customerUser@customer.com" },
+                    { "guest1@guest.com", 0, "c0b3fbaf-01c4-4eca-8e9d-1a22d62e4a0f", "guest1@guest.com", false, "Petar", "Petrov", false, null, "guest1@guest.com", "guest1@guest.com", "AQAAAAEAACcQAAAAEG1vleKKMHVk0zakDZ8ht/T1aHm388yikSXIC+i75LQOGXpdYNEBgUrSJYSRuTyJOQ==", null, false, "63d13704-ac4f-4d99-9f9c-d608460fb805", false, "guest1@guest.com" },
+                    { "guest2@guest.com", 0, "801f1274-729b-4c1f-be7b-1434ea65d03c", "guest2@guest.com", false, "Dimitar", "Dimitrov", false, null, "guest2@guest.com", "guest2@guest.com", "AQAAAAEAACcQAAAAEAxOs3YZ8LW1h6aYeLsGZllwBzJeC808zaoc/PoF4ucAvz41xwv/URdgTiiQAzFFvQ==", null, false, "84c8866f-853d-48de-a4ed-e999de09f6a5", false, "guest2@guest.com" },
+                    { "productUser@product.com", 0, "b9ca09ce-1b5f-48b6-a140-cff5fe16d2fb", "productUser@product.com", false, "Stoqn", "Stoqnov", false, null, "productUser@product.com", "productUser@product.com", "AQAAAAEAACcQAAAAEJLifgbh2C342b7DXNl+repjwAA0KlSewliA0RSL4zeKnIcCUZy06V4xjl35ULJ5YA==", null, false, "f96d3be5-998a-46ff-a719-b51926f9b37d", false, "productUser@product.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Ingredients",
+                columns: new[] { "IngredientId", "Calories", "IngredientInfo", "IngredientName" },
+                values: new object[,]
+                {
+                    { 1, 105.0, "Bananas are berries, not fruits.", "Banana" },
+                    { 2, 42.0, "Kiwis are a type of berry and are related to strawberries and raspberries.", "Kiwi" },
+                    { 3, 32.0, "Strawberries are not actually berries, but rather an accessory fruit.", "Strawberry" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Smoothies",
+                columns: new[] { "SmoothieId", "Calories", "Price", "Size", "SmoothieName" },
+                values: new object[,]
+                {
+                    { 1, 210.0, 4.50m, 250.0, "Banana Smoothie" },
+                    { 2, 480.0, 5.50m, 250.0, "Strawberry Smoothie" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "CustomerUsers",
+                columns: new[] { "CustomerUserId", "ApplicationUserId" },
+                values: new object[] { 1, "customerUser@customer.com" });
+
+            migrationBuilder.InsertData(
+                table: "IngredientSmoothies",
+                columns: new[] { "IngredientId", "SmoothieId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 3, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ProductUsers",
+                columns: new[] { "ProductUserId", "ApplicationUserId" },
+                values: new object[] { 1, "productUser@product.com" });
+
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "CustomerId", "Address", "CustomerUserId", "Email", "FirstName", "LastName", "PhoneNumber" },
+                values: new object[] { 1, "Bulgaria", 1, "guest1@guest.com", "Petar", "Petrov", "0000000000" });
+
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "CustomerId", "Address", "CustomerUserId", "Email", "FirstName", "LastName", "PhoneNumber" },
+                values: new object[] { 2, "Bulgaria", 1, "guest2@guest.com", "Dimitar", "Dimitrov", "0000000000" });
+
+            migrationBuilder.InsertData(
+                table: "Menus",
+                columns: new[] { "MenuId", "MenuName", "ProductUserId" },
+                values: new object[] { 1, "Basic", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Feedbacks",
+                columns: new[] { "FeedbackId", "Comment", "CustomerId", "Rating" },
+                values: new object[,]
+                {
+                    { 1, "That was great smoothie.", 1, 10 },
+                    { 2, "That was amazing smoothie.", 2, 10 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "MenuSmoothies",
+                columns: new[] { "MenuId", "SmoothieId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 1, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "OrderId", "CustomerId", "Date", "Price" },
+                values: new object[,]
+                {
+                    { 1, 1, new DateTime(2023, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 4.50m },
+                    { 2, 2, new DateTime(2023, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 5.50m }
+                });
+
+            migrationBuilder.InsertData(
+                table: "MenuOrders",
+                columns: new[] { "MenuId", "OrderId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 1, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "OrderSmoothies",
+                columns: new[] { "OrderId", "SmoothieId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 2 }
                 });
 
             migrationBuilder.CreateIndex(
