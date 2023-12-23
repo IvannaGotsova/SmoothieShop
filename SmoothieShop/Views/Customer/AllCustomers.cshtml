@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AllCustomersModel>
+
+
+@{
+    ViewBag.Title = "All Customers";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<a class="btn btn-warning" asp-controller="Customer" asp-action="AllCustomers"
+   sp-route-information="" class="btn btn-success">All Customers of the Smoothie Shop</a>
+<hr />
+
+<div class="text-center row">
+    @if (Model.Count()  > 0)
+    {
+        @foreach (var customer in Model)
+        {
+            <div class="card col-4" style="width: 20rem;">
+                <div class="card-body">
+
+                    <h5 class="card-title mt-1">@customer.FirstName</h5>
+                    <h5 class="card-title mt-1">@customer.LastName</h5>
+                    <h5 class="mb-0">Customer ID: @customer.CustomerId</h5>
+                    <p class="mb-0">Email: @customer.Email</p>
+                    <p class="mb-0">PhoneNumber: @customer.PhoneNumber</p>
+                    <p class="mb-0">Address: @customer.Address</p>
+                    <p class="mb-0">Orders: @customer.Orders.Count()</p>
+                    <p class="mb-0">Feedbacks: @customer.Feedbacks.Count()</p>
+                    <p class="mb-0">CustomerUserId: @customer.CustomerUserId</p>
+                </div>               
+            </div>
+        }
+    }
+    else 
+    {
+        <p class="mb-0">There are no customers yet!</p>
+    }
+ 
+</div>

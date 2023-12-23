@@ -1,0 +1,53 @@
+﻿@model DetailsCustomerModel
+
+@{
+    ViewBag.Title = $"Customer - {Model.FirstName} {Model.LastName}";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+   <div class="card col-4" style="width: 20rem; ">
+       <div class="card-body">
+            <input type="hidden" asp-for="@Model.CustomerUserId" />
+          <h5 class="card-title mt-1">@Model.CustomerId</h5>
+          <p class="mb-0">Comment: @Model.Email</p>
+          <p class="mb-0">Author: @Model.PhoneNumber</p>
+          <p class="mb-0">Author: @Model.Address</p>
+       </div>
+    </div>
+</div>
+
+@foreach (var order in @Model.Orders)
+{
+    <div class="text-center row">
+        <div class="card col-4" style="width: 20rem; ">
+            <input type="hidden" asp-for="@Model.Orders" />
+            <div class="card-body">
+
+                <p class="mb-0">Title: @order.OrderId</p>
+                <p class="mb-0">Description: @order.Price</p>
+                <p class="mb-0">Trip: @order.Date</p>
+
+            </div>
+        </div>
+    </div>
+}
+
+@foreach (var feedback in @Model.Feedbacks)
+{
+    <div class="text-center row">
+        <div class="card col-4" style="width: 20rem; ">
+            <input type="hidden" asp-for="@Model.Feedbacks" />
+            <div class="card-body">
+
+                <p class="mb-0">Title: @feedback.FeedbackId</p>
+                <p class="mb-0">Description: @feedback.Rating</p>
+                <p class="mb-0">Trip: @feedback.Comment</p>
+
+            </div>
+        </div>
+    </div>
+}

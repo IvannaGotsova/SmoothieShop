@@ -1,0 +1,49 @@
+﻿@model EditCustomerModel 
+
+@{
+    ViewBag.Title = "Edit Customer";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <input type="hidden" asp-for="@Model.CustomerId" />
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" placeholder="FirstName...">
+                <span asp-validation-for="FirstName" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <textarea asp-for="LastName" rows="4" class="form-control" placeholder="LastName..."></textarea>
+                <span asp-validation-for="LastName" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <textarea asp-for="Email" rows="4" class="form-control" placeholder="Email..."></textarea>
+                <span asp-validation-for="Email" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber"></label>
+                <textarea asp-for="PhoneNumber" rows="4" class="form-control" placeholder="Phone Number..."></textarea>
+                <span asp-validation-for="PhoneNumber" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address"></label>
+                <textarea asp-for="Address" rows="4" class="form-control" placeholder="Address..."></textarea>
+                <span asp-validation-for="Address" class="small text-danger"></span>
+
+            </div>
+            <div class="text-center">
+                <input class="btn btn-primary mt-3" type="submit" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
