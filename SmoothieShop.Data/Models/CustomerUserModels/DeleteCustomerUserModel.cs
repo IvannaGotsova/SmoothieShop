@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Models.CustomerUserModels
 {
+    /// <summary>
+    /// Holds DeleteCustomerUserModel class.
+    /// </summary>
     public class DeleteCustomerUserModel
     {
         [Required]
