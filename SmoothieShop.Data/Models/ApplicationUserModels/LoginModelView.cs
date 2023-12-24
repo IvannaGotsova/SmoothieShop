@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Models.ApplicationUserModels
 {
+    /// <summary>
+    /// Holds LoginModelView class.
+    /// </summary>
     public class LoginModelView 
     {
         [Required]
