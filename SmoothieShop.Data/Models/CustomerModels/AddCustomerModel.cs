@@ -10,6 +10,9 @@ using static SmoothieShop.Data.Data.DataConstants.DataConstants.CustomerConstant
 
 namespace SmoothieShop.Data.Models.CustomerModels
 {
+    /// <summary>
+    /// Holds AddCustomerModel class.
+    /// </summary>
     public class AddCustomerModel
     {
         [Required]
