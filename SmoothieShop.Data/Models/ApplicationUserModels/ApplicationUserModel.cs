@@ -9,6 +9,9 @@ using static SmoothieShop.Data.Data.DataConstants.DataConstants.ApplicationUserC
 
 namespace SmoothieShop.Data.Models.ApplicationUserModels
 {
+    /// <summary>
+    /// Holds ApplicationUserModel class.
+    /// </summary>
     public class ApplicationUserModel
     {
         public string Id { get; set; } = null!;
