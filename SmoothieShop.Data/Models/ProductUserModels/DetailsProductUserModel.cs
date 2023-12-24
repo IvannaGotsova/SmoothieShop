@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Models.ProductUserModels
 {
+    /// <summary>
+    /// Holds DetailsProductUserModel class.
+    /// </summary>
     public class DetailsProductUserModel
     {
         [Required]
