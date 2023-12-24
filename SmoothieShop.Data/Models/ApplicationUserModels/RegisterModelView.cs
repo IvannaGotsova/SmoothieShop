@@ -3,6 +3,9 @@ using static SmoothieShop.Data.Data.DataConstants.DataConstants.ApplicationUserC
 
 namespace SmoothieShop.Data.Models.ApplicationUserModels
 {
+    /// <summary>
+    /// Holds RegisterModelView class.
+    /// </summary>
     public class RegisterModelView
     {
         [Required]
