@@ -13,13 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\CustomerUserModels\" />
     <Folder Include="Models\FeedbackModels\" />
     <Folder Include="Models\IngredientModels\" />
     <Folder Include="Models\MenuModels\" />
     <Folder Include="Models\SmoothieModels\" />
     <Folder Include="Models\OrderModels\" />
-    <Folder Include="Models\ProductUserModels\" />
   </ItemGroup>
 
 </Project>
