@@ -190,7 +190,7 @@ namespace SmoothieShop.Core.Services
                    FeedbacksCount = c.Feedbacks.Count()
                }).FirstOrDefaultAsync();
 
-            //check if comment is null
+            //check if customer is null
             if (customer == null)
             {
                 throw new ArgumentNullException(null, nameof(customer));
