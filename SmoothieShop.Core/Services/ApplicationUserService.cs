@@ -169,6 +169,17 @@ namespace SmoothieShop.Core.Services
             this.data.Update<ApplicationUser>(user);
             await this.data.SaveChangesAsync();
         }
+        /// <summary>
+        /// This method returns IEnumerable of all applicationUsers used for Select.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<ApplicationUser>> GetApplicationUsersForSelect()
+        {
+            return await
+                this.data
+                .AllReadonly<ApplicationUser>()
+                .ToListAsync();
+        }
 
     }
 }
