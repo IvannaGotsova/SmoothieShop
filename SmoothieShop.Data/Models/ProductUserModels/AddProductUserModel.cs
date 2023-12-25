@@ -18,5 +18,7 @@ namespace SmoothieShop.Data.Models.ProductUserModels
         public string ApplicationUserId { get; set; } = null!;
         [ForeignKey(nameof(ApplicationUserId))]
         public ApplicationUser? ApplicationUser { get; set; }
+        [Required]
+        public IEnumerable<ApplicationUser> ApplicationUsers = new List<ApplicationUser>();
     }
 }
