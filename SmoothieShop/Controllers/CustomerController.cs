@@ -17,6 +17,10 @@ namespace SmoothieShop.Controllers
         {
             this.customerUserService = customerUserService;
         }
+        /// <summary>
+        /// This method returns index view.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();
@@ -46,8 +50,8 @@ namespace SmoothieShop.Controllers
         {
             var modelCustomer = new AddCustomerModel()
             {
-                //CustomerUsers = await
-                //customerUserService.GetCustomerUsersForSelect(),
+                CustomerUsers = await
+                customerUserService.GetCustomerUsersForSelect(),
             };
 
             return View(modelCustomer);
@@ -63,8 +67,8 @@ namespace SmoothieShop.Controllers
             //check if the model state is valid
             if (!ModelState.IsValid)
             {
-                //addCustomerModel.CustomerUsers = await
-                //customerUserService..GetCustomerUsersForSelect(),
+                addCustomerModel.CustomerUsers = await
+                customerUserService.GetCustomerUsersForSelect();
 
                 return View(addCustomerModel);
             }
@@ -82,8 +86,8 @@ namespace SmoothieShop.Controllers
             {
                 ModelState.AddModelError("", somethingWrong);
 
-                //addCustomerModel.CustomerUsers = await
-                //customerUserService..GetCustomerUsersForSelect(),
+                addCustomerModel.CustomerUsers = await
+                customerUserService.GetCustomerUsersForSelect();
 
                 return View(addCustomerModel);
             }
@@ -96,7 +100,7 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public async Task<IActionResult> DetailsCustomer(int customerId)
         {
-            //check if the comment is null
+            //check if the customer is null
             if (
                 await customerService
                 .GetCustomerDetailsById(customerId) == null)
@@ -127,7 +131,7 @@ namespace SmoothieShop.Controllers
         [HttpGet]
         public async Task<IActionResult> EditCustomer(int customerId)
         {
-            //check if the comment is null
+            //check if the customer is null
             if (await customerService
                 .GetCustomerDetailsById(customerId) == null)
             {
@@ -151,7 +155,7 @@ namespace SmoothieShop.Controllers
 
         }
         /// <summary>
-        /// This method is used to edit a particular comment with given id.
+        /// This method is used to edit a particular customer with given id.
         /// </summary>
         /// <param name="customerId"></param>
         /// <param name="editCustomerModel"></param>
@@ -159,7 +163,7 @@ namespace SmoothieShop.Controllers
         [HttpPost]
         public async Task<IActionResult> EditCustomer(int customerId, EditCustomerModel editCustomerModel)
         {
-            //check if the comment is null
+            //check if the customer is null
             if (await customerService
                 .GetCustomerDetailsById(customerId) == null)
             {
@@ -190,7 +194,7 @@ namespace SmoothieShop.Controllers
         [HttpGet]
         public async Task<IActionResult> DeleteCustomer(int customerId)
         {
-            //check if the comment is null
+            //check if the customer is null
             if (await customerService
                 .GetCustomerDetailsById(customerId) == null)
             {
@@ -219,7 +223,7 @@ namespace SmoothieShop.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteCustomer(DeleteCustomerModel deleteCustomerModel)
         {
-            //check if the comment is null
+            //check if the customer is null
             if (await customerService
                 .GetCustomerById(deleteCustomerModel.CustomerId) == null)
             {
