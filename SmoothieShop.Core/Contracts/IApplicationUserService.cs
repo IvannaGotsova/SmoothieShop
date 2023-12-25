@@ -53,5 +53,10 @@ namespace SmoothieShop.Core.Contracts
         /// <param name="userId"></param>
         /// <returns></returns>
         Task RemoveVIP(string userId);
+        /// <summary>
+        /// This method returns IEnumerable of all applicationUsers used for Select.
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<ApplicationUser>> GetApplicationUsersForSelect();
     }
 }
