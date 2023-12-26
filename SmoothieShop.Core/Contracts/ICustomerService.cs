@@ -31,7 +31,7 @@ namespace SmoothieShop.Core.Contracts
         /// <returns></returns>
         Task<IEnumerable<Customer>> GetCustomersForSelect();
         /// <summary>
-        /// This method returns Details of particular customer with given id.
+        /// This method returns Details of particular customer with a given id.
         /// </summary>
         /// <param name="customerId"></param>
         /// <returns></returns>
