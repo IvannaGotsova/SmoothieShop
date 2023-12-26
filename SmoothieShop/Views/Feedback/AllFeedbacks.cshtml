@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AllFeedbacksModel>
+
+
+@{
+    ViewBag.Title = "All Feedbacks";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<a class="btn btn-warning" asp-controller="Feedback" asp-action="AllFeedbacks"
+   sp-route-information="" class="btn btn-success">All Feedbacks of the Smoothie Shop</a>
+<hr />
+
+<div class="text-center row">
+    @if (Model.Count()  > 0)
+    {
+        @foreach (var feedback in Model)
+        {
+            <div class="card col-4" style="width: 20rem;">
+                <div class="card-body">
+                    <p class="mb-0">Feedback Id: @feedback.FeedbackId</p>
+                    <h5 class="card-title mt-1">@feedback.Rating</h5>
+                    <h5 class="card-title mt-1">@feedback.Comment</h5>
+                    <p class="mb-0">Customer Id: @feedback.CustomerId</p>
+                </div>               
+            </div>
+        }
+    }
+    else 
+    {
+        <p class="mb-0">There are no customers yet!</p>
+    }
+ 
+</div>
