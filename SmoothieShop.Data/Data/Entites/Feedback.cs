@@ -20,7 +20,7 @@ namespace SmoothieShop.Data.Data.Entites
         [StringLength(FeedbackMaxLengthRating)]
         public int Rating { get; set; }
         [Required]
-        [StringLength(FeedbackMaxLengthComments)]
+        [StringLength(FeedbackMaxLengthComment)]
         public string? Comment { get; set; }
         [Required]
         public int CustomerId { get; set; }
