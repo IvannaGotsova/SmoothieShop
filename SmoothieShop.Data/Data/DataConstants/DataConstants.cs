@@ -52,8 +52,8 @@ namespace SmoothieShop.Data.Data.DataConstants
         {
             public const int FeedbackMinLengthRating = 1;
             public const int FeedbackMaxLengthRating = 10;
-            public const int FeedbackMinLengthComments = 1;
-            public const int FeedbackMaxLengthComments = 10000;
+            public const int FeedbackMinLengthComment = 1;
+            public const int FeedbackMaxLengthComment = 10000;
         }
         /// <summary>
         /// Holds Constants for Ingredient class.
