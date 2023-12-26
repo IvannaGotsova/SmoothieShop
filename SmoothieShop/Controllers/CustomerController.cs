@@ -155,7 +155,7 @@ namespace SmoothieShop.Controllers
 
         }
         /// <summary>
-        /// This method is used to edit a particular customer with given id.
+        /// This method is used to edit a particular customer with a given id.
         /// </summary>
         /// <param name="customerId"></param>
         /// <param name="editCustomerModel"></param>
