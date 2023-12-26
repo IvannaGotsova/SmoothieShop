@@ -13,7 +13,7 @@ namespace SmoothieShop.Data.Models.FeedbackModels
     /// <summary>
     /// Holds DetaillsFeedbackModel class.
     /// </summary>
-    public class DetailsFeedbackModel
+    public class DetailsFeedbackModel  
     {
         [Required]
         public int FeedbackId { get; set; }

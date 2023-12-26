@@ -13,7 +13,7 @@ namespace SmoothieShop.Data.Models.FeedbackModels
     /// <summary>
     /// Holds AddFeedbackModel class.
     /// </summary>
-    public class AddFeedbackModel
+    public class AddFeedbackModel   
     {
         [Required]
         [StringLength(FeedbackMaxLengthRating, MinimumLength = FeedbackMinLengthRating)]
