@@ -30,7 +30,7 @@ namespace SmoothieShop.Core.Contracts
         /// <returns></returns>
         Task<IEnumerable<ProductUser>> GetProductUsersForSelect();
         /// <summary>
-        /// This method returns Details of particular productUser with given id.
+        /// This method returns Details of particular productUser with a given id.
         /// </summary>
         /// <param name="productUserId"></param>
         /// <returns></returns>
