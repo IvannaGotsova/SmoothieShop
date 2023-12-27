@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\IngredientModels\" />
     <Folder Include="Models\MenuModels\" />
     <Folder Include="Models\SmoothieModels\" />
     <Folder Include="Models\OrderModels\" />
