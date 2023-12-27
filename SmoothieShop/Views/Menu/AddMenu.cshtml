@@ -1,0 +1,33 @@
+﻿@model AddMenuModel
+
+@{
+    ViewBag.Title = "Add your new Menu";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="@Model.MenuName" class="form-label">Menu Menu Name</label>
+                <input asp-for="@Model.MenuName" class="form-control" aria-required="true" />
+                <span asp-validation-for="MenuName" class="text-danger"></span>
+                <label asp-for="@Model.ProductUserId" class="form-label">Menu Product User ID</label>
+                <input asp-for="@Model.ProductUserId" class="form-control" aria-required="true" />
+                <span asp-validation-for="ProductUserId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Add Menu" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
