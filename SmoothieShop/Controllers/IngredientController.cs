@@ -1,15 +1,238 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SmoothieShop.Core.Contracts;
+using SmoothieShop.Data.Models.IngredientModels;
+using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Controllers
-{
+{ 
+    /// <summary>
+    /// Controls Ingredient functionalities.
+    /// </summary>
     public class IngredientController : Controller
     {
+        private readonly IIngredientService ingredientService;
+        public IngredientController(IIngredientService ingredientService)
+        {
+            this.ingredientService = ingredientService;
+        }
         /// <summary>
-        /// Controls Ingredient functionalities.
+        /// This method returns index view.
         /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();
         }
+        /// <summary>
+        /// This method returns all available ingredients.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> AllIngredients()
+        {
+            try
+            {
+                var ingredients = await
+                    ingredientService
+                   .GetAllIngredients();
+
+                return View(ingredients);
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> AddIngredient()
+        {
+            var modelIngredient = new AddIngredientModel();
+
+            return View(modelIngredient);
+        }
+        /// <summary>
+        /// This method is used to add a ingredient.
+        /// </summary>
+        /// <param name="addIngredientModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> AddIngredient(AddIngredientModel addIngredientModel)
+        {
+            //check if the model state is valid
+            if (!ModelState.IsValid)
+            {
+                return View(addIngredientModel);
+            }
+
+            try
+            {
+                await ingredientService
+                    .Add(addIngredientModel);
+
+                TempData["message"] = $"You have successfully added a ingredient!";
+
+                return RedirectToAction("AllIngredients", "Ingredient");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return View(addIngredientModel);
+            }
+
+        }
+        /// <summary>
+        /// This method returns a details about particular ingredient with a given id.
+        /// </summary>
+        /// <param name="ingredientId"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> DetailsIngredient(int ingredientId)
+        {
+            //check if the ingredient is null
+            if (
+                await ingredientService
+                .GetIngredientDetailsById(ingredientId) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                var ingredientModel = await
+                ingredientService
+                .GetIngredientDetailsById(ingredientId);
+
+                return View(ingredientModel);
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+        }
+        /// <summary>
+        /// This metod creates a form for editing a particular ingredient with a given id.
+        /// </summary>
+        /// <param name="ingredientId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> EditIngredient(int ingredientId)
+        {
+            //check if the ingredient is null
+            if (await ingredientService
+                .GetIngredientDetailsById(ingredientId) == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var editFormModel = await
+                       ingredientService
+                       .EditCreateForm(ingredientId);
+
+                return View(editFormModel);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+        }
+        /// <summary>
+        /// This method is used to edit a particular ingredient with a given id.
+        /// </summary>
+        /// <param name="ingredientId"></param>
+        /// <param name="editIngredientModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> EditIngredient(int ingredientId, EditIngredientModel editIngredientModel)
+        {
+            //check if the ingredient is null
+            if (await ingredientService
+                .GetIngredientDetailsById(ingredientId) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                await ingredientService
+                    .Edit(ingredientId, editIngredientModel);
+
+                TempData["message"] = $"You have successfully edited a ingredient!";
+
+                return RedirectToAction("AllIngredients", "Ingredient");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return View(editIngredientModel);
+            }
+        }
+        /// <summary>
+        /// This metod creates a form for deleting a particular ingredient with a given id.
+        /// </summary>
+        /// <param name="ingredientId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> DeleteingredientId(int ingredientId)
+        {
+            //check if the ingredient is null
+            if (await ingredientService
+                .GetIngredientDetailsById(ingredientId) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                var editFormModel = await
+               ingredientService
+               .DeleteIngredientForm(ingredientId);
+
+                return View(editFormModel);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+        }
+        /// <summary>
+        /// This method is used to delete a particular ingredient.
+        /// </summary>
+        /// <param name="deleteIngredientModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> DeleteIngredient(DeleteIngredientModel deleteIngredientModel)
+        {
+            //check if the ingredient is null
+            if (await ingredientService
+                .GetIngredientById(deleteIngredientModel.IngredientId) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                await ingredientService
+                    .Delete(deleteIngredientModel.IngredientId);
+
+                TempData["message"] = $"You have successfully deleted a ingredient!";
+
+                return RedirectToAction("AllIngredients", "Ingredient");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return View(deleteIngredientModel);
+            }
+        }
+
     }
 }
+
