@@ -1,0 +1,28 @@
+﻿@model EditMenuModel 
+
+@{
+    ViewBag.Title = "Edit Menu";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <input type="hidden" asp-for="@Model.MenuId" />
+            <div class="form-group">
+                <label asp-for="MenuName"></label>
+                <input asp-for="MenuName" class="form-control" placeholder="Menu Name...">
+                <span asp-validation-for="MenuName" class="small text-danger"></span>
+            </div>
+            <div class="text-center">
+                <input class="btn btn-primary mt-3" type="submit" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
