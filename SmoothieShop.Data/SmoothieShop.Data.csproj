@@ -12,9 +12,4 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.20" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\SmoothieModels\" />
-    <Folder Include="Models\OrderModels\" />
-  </ItemGroup>
-
 </Project>
