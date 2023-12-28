@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AllOrdersModel>
+
+
+@{
+    ViewBag.Title = "All Orders";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<a class="btn btn-warning" asp-controller="Order" asp-action="AllOrders"
+   sp-route-information="" class="btn btn-success">All Orders of the Smoothie Shop</a>
+<hr />
+
+<div class="text-center row">
+    @if (Model.Count()  > 0)
+    {
+        @foreach (var order in Model)
+        {
+            <div class="card col-4" style="width: 20rem;">
+                <div class="card-body">
+                    <h5 class="card-title mt-1">@order.OrderId</h5>
+                    <p class="card-title mt-1">@order.Date</p>
+                    <p class="card-title mt-1">@order.Price</p>
+                    <p class="card-title mt-1">@order.CustomerId</p>
+                </div>               
+            </div>
+        }
+    }
+    else 
+    {
+        <p class="mb-0">There are no orders yet!</p>
+    }
+ 
+</div>
