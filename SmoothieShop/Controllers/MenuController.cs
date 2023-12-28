@@ -5,6 +5,9 @@ using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Controllers
 {
+    /// <summary>
+    /// Controls Menu functionalities.
+    /// </summary>
     public class MenuController : Controller
     {
         private readonly IMenuService menuService;
