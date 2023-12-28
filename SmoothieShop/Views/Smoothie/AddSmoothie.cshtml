@@ -1,0 +1,38 @@
+﻿@model AddSmoothieModel
+
+@{
+    ViewBag.Title = "Add your new Smoothie";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="@Model.SmoothieName" class="form-label">Smoothie Name</label>
+                <label asp-for="@Model.Price" class="form-label">Price</label>
+                 <label asp-for="@Model.Size" class="form-label">Size</label>
+                <label asp-for="@Model.Calories" class="form-label">Calories</label>
+                <select asp-for="@Model.Ingredients" class="form-control">
+                    @foreach (var ingredient in Model.Ingredients)
+                    {
+                        <option value="@ingredient.IngredientName">@ingredient.IngredientName</option>
+                    }
+                </select>
+                <span asp-validation-for="@Model.SmoothieName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Add Smoothie" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
