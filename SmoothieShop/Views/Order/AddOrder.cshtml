@@ -1,0 +1,30 @@
+﻿@model AddOrderModel  
+
+@{
+    ViewBag.Title = "Add your new Order";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="@Model.Date" class="form-label">Date</label>
+                <label asp-for="@Model.Price" class="form-label">Price</label>
+                <label asp-for="@Model.CustomerId" class="form-label">CustomerId</label>
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Add Order" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
