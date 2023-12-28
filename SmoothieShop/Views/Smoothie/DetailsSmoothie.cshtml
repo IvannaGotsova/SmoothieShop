@@ -1,0 +1,71 @@
+﻿@model DetailsSmoothieModel
+
+@{
+    ViewBag.Title = $"Smoothie - {Model.SmoothieName}";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+   <div class="card col-4" style="width: 20rem; ">
+       <div class="card-body">
+            <input type="hidden" asp-for="@Model.SmoothieId" />
+          <p class="card-title mt-1">@Model.Calories</p>
+          <p class="card-title mt-1">@Model.Size</p>
+          <p class="card-title mt-1">@Model.Price</p>
+       </div>
+    </div>
+</div>
+
+@foreach (var order in @Model.Orders)
+{
+    <div class="text-center row">
+        <div class="card col-4" style="width: 20rem; ">
+            <input type="hidden" asp-for="@Model.Orders" />
+            <div class="card-body">
+
+                <p class="mb-0">Title: @order.OrderId</p>
+                <p class="mb-0">Description: @order.Price</p>
+                <p class="mb-0">Trip: @order.Date</p>
+
+            </div>
+        </div>
+    </div>
+}
+
+@foreach (var menu in @Model.Menus)
+{
+    <div class="text-center row">
+        <div class="card col-4" style="width: 20rem; ">
+            <input type="hidden" asp-for="@Model.Menus" />
+            <div class="card-body">
+
+                <p class="mb-0">Order ID: @menu.MenuId</p>
+                <p class="mb-0">First Name: @menu.MenuName</p>
+                <p class="mb-0">Last Name @menu.ProductUserId</p>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+@foreach (var menu in @Model.Ingredients)
+{
+    <div class="text-center row">
+        <div class="card col-4" style="width: 20rem; ">
+            <input type="hidden" asp-for="@Model.Ingredients" />
+            <div class="card-body">
+
+                <p class="mb-0">Order ID: @menu.IngredientId</p>
+                <p class="mb-0">First Name: @menu.IngredientName</p>
+                <p class="mb-0">Last Name @menu.IngredientInfo</p>
+                <p class="mb-0">Last Name @menu.Calories</p>
+            </div>
+        </div>
+    </div>
+}
+
+
