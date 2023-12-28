@@ -15,6 +15,7 @@ namespace SmoothieShop.Controllers
         private readonly ICustomerUserService customerUserService;
         public CustomerController(ICustomerService customerService, ICustomerUserService customerUserService)
         {
+            this.customerService = customerService;
             this.customerUserService = customerUserService;
         }
         /// <summary>
