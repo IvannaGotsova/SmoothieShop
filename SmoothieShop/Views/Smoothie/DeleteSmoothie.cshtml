@@ -1,0 +1,28 @@
+﻿@model DeleteSmoothieModel 
+
+@{
+    ViewBag.Title = "Delete Smoothie";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<form asp-action="Delete">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label asp-for="SmoothieName" class="control-label"></label>
+                <input asp-for="SmoothieName" class="form-control" disabled="disabled" />
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" disabled="disabled" />
+                <label asp-for="Size" class="control-label"></label>
+                <input asp-for="Size" class="form-control" disabled="disabled" />
+                <label asp-for="Calories" class="control-label"></label>
+                <input asp-for="Calories" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Delete" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
