@@ -46,7 +46,7 @@ namespace SmoothieShop.Controllers
         [HttpGet]
         public async Task<IActionResult> AddMenu()
         {
-            var modelMenu = new AddMenuModel();
+            var modelMenu = await Task.Run(() => new AddMenuModel());
 
             return View(modelMenu);
         }
