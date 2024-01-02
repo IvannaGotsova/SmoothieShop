@@ -49,7 +49,8 @@ namespace SmoothieShop.Controllers
         [HttpGet]
         public async Task<IActionResult> AddFeedback()
         {
-            var modelFeedback = new AddFeedbackModel();
+            
+            var modelFeedback = await Task.Run(() => new AddFeedbackModel());
 
             return View(modelFeedback);
         }
