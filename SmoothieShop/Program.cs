@@ -11,6 +11,7 @@ using SmoothieShop.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<SmoothieShopDbContext>
     (options => {
@@ -60,6 +61,7 @@ var app = builder.Build();
 
 //app.SeedUsersRoles();
 
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
