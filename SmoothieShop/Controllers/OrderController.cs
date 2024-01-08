@@ -104,14 +104,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method returns a details about particular order with a given id.
         /// </summary>
-        /// <param name="orderId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> DetailsOrder(int orderId)
+        public async Task<IActionResult> DetailsOrder(int id)
         {
             //check if the order is null
             if (
                 await orderService
-                .GetOrderDetailsById(orderId) == null)
+                .GetOrderDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -120,7 +120,7 @@ namespace SmoothieShop.Controllers
             {
                 var orderModel = await
                 orderService
-                .GetOrderDetailsById(orderId);
+                .GetOrderDetailsById(id);
 
                 return View(orderModel);
             }
@@ -134,14 +134,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for editing a particular order with a given id.
         /// </summary>
-        /// <param name="orderId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> EditOrder(int orderId)
+        public async Task<IActionResult> EditOrder(int id)
         {
             //check if the order is null
             if (await orderService
-                .GetOrderDetailsById(orderId) == null)
+                .GetOrderDetailsById(id) == null)
             {
                 return BadRequest();
             }
@@ -150,7 +150,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                        orderService
-                       .EditCreateForm(orderId);
+                       .EditCreateForm(id);
 
                 return View(editFormModel);
             }
@@ -165,15 +165,15 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method is used to edit a particular order with a given id.
         /// </summary>
-        /// <param name="orderId"></param>
+        /// <param name="id"></param>
         /// <param name="editOrderModel"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> EditOrder(int orderId, EditOrderModel editOrderModel)
+        public async Task<IActionResult> EditOrder(int id, EditOrderModel editOrderModel)
         {
             //check if the order is null
             if (await orderService
-                .GetOrderDetailsById(orderId) == null)
+                .GetOrderDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -181,7 +181,7 @@ namespace SmoothieShop.Controllers
             try
             {
                 await orderService
-                    .Edit(orderId, editOrderModel);
+                    .Edit(id, editOrderModel);
 
                 TempData["message"] = $"You have successfully edited a order!";
 
@@ -197,14 +197,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for deleting a particular order with a given id.
         /// </summary>
-        /// <param name="orderId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> DeleteOrder(int orderId)
+        public async Task<IActionResult> DeleteOrder(int id)
         {
             //check if the order is null
             if (await orderService
-                .GetOrderDetailsById(orderId) == null)
+                .GetOrderDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -213,7 +213,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                orderService
-               .DeleteOrderForm(orderId);
+               .DeleteOrderForm(id);
 
                 return View(editFormModel);
             }
