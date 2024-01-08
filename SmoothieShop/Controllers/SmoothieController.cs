@@ -113,14 +113,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method returns a details about particular smoothie with a given id.
         /// </summary>
-        /// <param name="smoothieId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> DetailsSmoothie(int smoothieId)
+        public async Task<IActionResult> DetailsSmoothie(int id)
         {
             //check if the smoothie is null
             if (
                 await smoothieService
-                .GetSmoothieDetailsById(smoothieId) == null)
+                .GetSmoothieDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -129,7 +129,7 @@ namespace SmoothieShop.Controllers
             {
                 var smoothieModel = await
                 smoothieService
-                .GetSmoothieDetailsById(smoothieId);
+                .GetSmoothieDetailsById(id);
 
                 return View(smoothieModel);
             }
@@ -143,14 +143,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for editing a particular smoothie with a given id.
         /// </summary>
-        /// <param name="smoothieId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> EditSmoothie(int smoothieId)
+        public async Task<IActionResult> EditSmoothie(int id)
         {
             //check if the smoothie is null
             if (await smoothieService
-                .GetSmoothieDetailsById(smoothieId) == null)
+                .GetSmoothieDetailsById(id) == null)
             {
                 return BadRequest();
             }
@@ -159,7 +159,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                        smoothieService
-                       .EditCreateForm(smoothieId);
+                       .EditCreateForm(id);
 
                 return View(editFormModel);
             }
@@ -174,15 +174,15 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method is used to edit a particular smoothie with a given id.
         /// </summary>
-        /// <param name="smoothieId"></param>
+        /// <param name="id"></param>
         /// <param name="editSmoothieModel"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> EditSmoothie(int smoothieId, EditSmoothieModel editSmoothieModel)
+        public async Task<IActionResult> EditSmoothie(int id, EditSmoothieModel editSmoothieModel)
         {
             //check if the smoothie is null
             if (await smoothieService
-                .GetSmoothieDetailsById(smoothieId) == null)
+                .GetSmoothieDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -190,7 +190,7 @@ namespace SmoothieShop.Controllers
             try
             {
                 await smoothieService
-                    .Edit(smoothieId, editSmoothieModel);
+                    .Edit(id, editSmoothieModel);
 
                 TempData["message"] = $"You have successfully edited a smoothie!";
 
@@ -206,14 +206,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for deleting a particular smoothie with a given id.
         /// </summary>
-        /// <param name="smoothieId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> DeleteSmoothie(int smoothieId)
+        public async Task<IActionResult> DeleteSmoothie(int id)
         {
             //check if the smoothie is null
             if (await smoothieService
-                .GetSmoothieDetailsById(smoothieId) == null)
+                .GetSmoothieDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -222,7 +222,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                smoothieService
-               .DeleteSmoothieForm(smoothieId);
+               .DeleteSmoothieForm(id);
 
                 return View(editFormModel);
             }
