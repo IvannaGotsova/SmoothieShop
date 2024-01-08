@@ -91,14 +91,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method returns a details about particular productUser with a given id.
         /// </summary>
-        /// <param name="productUserId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> DetailsProductUser(int productUserId)
+        public async Task<IActionResult> DetailsProductUser(int id)
         {
             //check if the productUser is null
             if (
                 await productUserService
-                .GetProductUserDetailsById(productUserId) == null)
+                .GetProductUserDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -107,7 +107,7 @@ namespace SmoothieShop.Controllers
             {
                 var productUserModel = await
                 productUserService
-                .GetProductUserDetailsById(productUserId);
+                .GetProductUserDetailsById(id);
 
                 return View(productUserModel);
             }
@@ -121,14 +121,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for editing a particular productUser with a given id.
         /// </summary>
-        /// <param name="productUserId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> EditProductUser(int productUserId)
+        public async Task<IActionResult> EditProductUser(int id)
         {
             //check if the productUser is null
             if (await productUserService
-                .GetProductUserDetailsById(productUserId) == null)
+                .GetProductUserDetailsById(id) == null)
             {
                 return BadRequest();
             }
@@ -137,7 +137,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                        productUserService
-                       .EditCreateForm(productUserId);
+                       .EditCreateForm(id);
 
                 return View(editFormModel);
             }
@@ -152,15 +152,15 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method is used to edit a particular productUser with given id.
         /// </summary>
-        /// <param name="productUserId"></param>
+        /// <param name="id"></param>
         /// <param name="editProductUserModel"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> EditProductUser(int productUserId, EditProductUserModel editProductUserModel)
+        public async Task<IActionResult> EditProductUser(int id, EditProductUserModel editProductUserModel)
         {
             //check if the productUser is null
             if (await productUserService
-                .GetProductUserDetailsById(productUserId) == null)
+                .GetProductUserDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -168,7 +168,7 @@ namespace SmoothieShop.Controllers
             try
             {
                 await productUserService
-                    .Edit(productUserId, editProductUserModel);
+                    .Edit(id, editProductUserModel);
 
                 TempData["message"] = $"You have successfully edited a product user!";
 
@@ -184,14 +184,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for deleting a particular productUser with a given id.
         /// </summary>
-        /// <param name="productUserId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> DeleteProductUser(int productUserId)
+        public async Task<IActionResult> DeleteProductUser(int id)
         {
             //check if the productUser is null
             if (await productUserService
-                .GetProductUserDetailsById(productUserId) == null)
+                .GetProductUserDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -200,7 +200,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                productUserService
-               .DeleteProductUserForm(productUserId);
+               .DeleteProductUserForm(id);
 
                 return View(editFormModel);
             }
