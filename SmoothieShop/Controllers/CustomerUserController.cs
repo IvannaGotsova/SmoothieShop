@@ -96,14 +96,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method returns a details about particular customerUser with a given id.
         /// </summary>
-        /// <param name="customerUserId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> DetailsCustomerUser(int customerUserId)
+        public async Task<IActionResult> DetailsCustomerUser(int id)
         {
             //check if the customerUser is null
             if (
                 await customerUserService
-                .GetCustomerUserDetailsById(customerUserId) == null)
+                .GetCustomerUserDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -112,7 +112,7 @@ namespace SmoothieShop.Controllers
             {
                 var customerUserModel = await
                 customerUserService
-                .GetCustomerUserDetailsById(customerUserId);
+                .GetCustomerUserDetailsById(id);
 
                 return View(customerUserModel);
             }
@@ -126,14 +126,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for editing a particular customerUser with a given id.
         /// </summary>
-        /// <param name="customerUserId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> EditCustomerUser(int customerUserId)
+        public async Task<IActionResult> EditCustomerUser(int id)
         {
             //check if the customerUser is null
             if (await customerUserService
-                .GetCustomerUserDetailsById(customerUserId) == null)
+                .GetCustomerUserDetailsById(id) == null)
             {
                 return BadRequest();
             }
@@ -142,7 +142,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                        customerUserService
-                       .EditCreateForm(customerUserId);
+                       .EditCreateForm(id);
 
                 return View(editFormModel);
             }
@@ -157,15 +157,15 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method is used to edit a particular customerUser with given id.
         /// </summary>
-        /// <param name="customerUserId"></param>
+        /// <param name="id"></param>
         /// <param name="editCustomerUserModel"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> EditCustomerUser(int customerUserId, EditCustomerUserModel editCustomerUserModel)
+        public async Task<IActionResult> EditCustomerUser(int id, EditCustomerUserModel editCustomerUserModel)
         {
             //check if the customerUser is null
             if (await customerUserService
-                .GetCustomerUserDetailsById(customerUserId) == null)
+                .GetCustomerUserDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -173,7 +173,7 @@ namespace SmoothieShop.Controllers
             try
             {
                 await customerUserService
-                    .Edit(customerUserId, editCustomerUserModel);
+                    .Edit(id, editCustomerUserModel);
 
                 TempData["message"] = $"You have successfully edited a customer user!";
 
@@ -189,14 +189,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for deleting a particular customerUser with a given id.
         /// </summary>
-        /// <param name="customerUserId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> DeleteCustomerUser(int customerUserId)
+        public async Task<IActionResult> DeleteCustomerUser(int id)
         {
             //check if the customerUser is null
             if (await customerUserService
-                .GetCustomerUserDetailsById(customerUserId) == null)
+                .GetCustomerUserDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -205,7 +205,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                customerUserService
-               .DeleteCustomerUserForm(customerUserId);
+               .DeleteCustomerUserForm(id);
 
                 return View(editFormModel);
             }
