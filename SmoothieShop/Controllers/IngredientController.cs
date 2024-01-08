@@ -84,14 +84,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method returns a details about particular ingredient with a given id.
         /// </summary>
-        /// <param name="ingredientId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> DetailsIngredient(int ingredientId)
+        public async Task<IActionResult> DetailsIngredient(int id)
         {
             //check if the ingredient is null
             if (
                 await ingredientService
-                .GetIngredientDetailsById(ingredientId) == null)
+                .GetIngredientDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -100,7 +100,7 @@ namespace SmoothieShop.Controllers
             {
                 var ingredientModel = await
                 ingredientService
-                .GetIngredientDetailsById(ingredientId);
+                .GetIngredientDetailsById(id);
 
                 return View(ingredientModel);
             }
@@ -114,14 +114,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for editing a particular ingredient with a given id.
         /// </summary>
-        /// <param name="ingredientId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> EditIngredient(int ingredientId)
+        public async Task<IActionResult> EditIngredient(int id)
         {
             //check if the ingredient is null
             if (await ingredientService
-                .GetIngredientDetailsById(ingredientId) == null)
+                .GetIngredientDetailsById(id) == null)
             {
                 return BadRequest();
             }
@@ -130,7 +130,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                        ingredientService
-                       .EditCreateForm(ingredientId);
+                       .EditCreateForm(id);
 
                 return View(editFormModel);
             }
@@ -143,15 +143,15 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method is used to edit a particular ingredient with a given id.
         /// </summary>
-        /// <param name="ingredientId"></param>
+        /// <param name="id"></param>
         /// <param name="editIngredientModel"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> EditIngredient(int ingredientId, EditIngredientModel editIngredientModel)
+        public async Task<IActionResult> EditIngredient(int id, EditIngredientModel editIngredientModel)
         {
             //check if the ingredient is null
             if (await ingredientService
-                .GetIngredientDetailsById(ingredientId) == null)
+                .GetIngredientDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -159,7 +159,7 @@ namespace SmoothieShop.Controllers
             try
             {
                 await ingredientService
-                    .Edit(ingredientId, editIngredientModel);
+                    .Edit(id, editIngredientModel);
 
                 TempData["message"] = $"You have successfully edited a ingredient!";
 
@@ -175,14 +175,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for deleting a particular ingredient with a given id.
         /// </summary>
-        /// <param name="ingredientId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> DeleteingredientId(int ingredientId)
+        public async Task<IActionResult> DeleteIngredient(int id)
         {
             //check if the ingredient is null
             if (await ingredientService
-                .GetIngredientDetailsById(ingredientId) == null)
+                .GetIngredientDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -191,7 +191,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                ingredientService
-               .DeleteIngredientForm(ingredientId);
+               .DeleteIngredientForm(id);
 
                 return View(editFormModel);
             }
