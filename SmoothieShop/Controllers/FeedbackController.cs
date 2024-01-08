@@ -88,14 +88,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method returns a details about particular feedback with a given id.
         /// </summary>
-        /// <param name="feedbackId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> DetailsFeedback(int feedbackId)
+        public async Task<IActionResult> DetailsFeedback(int id)
         {
             //check if the feedback is null
             if (
                 await feedbackService
-                .GetFeedbackDetailsById(feedbackId) == null)
+                .GetFeedbackDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -104,7 +104,7 @@ namespace SmoothieShop.Controllers
             {
                 var feedbackModel = await
                 feedbackService
-                .GetFeedbackDetailsById(feedbackId);
+                .GetFeedbackDetailsById(id);
 
                 return View(feedbackModel);
             }
@@ -118,14 +118,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for editing a particular feedback with a given id.
         /// </summary>
-        /// <param name="feedbackId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> EditFeedback(int feedbackId)
+        public async Task<IActionResult> EditFeedback(int id)
         {
             //check if the feedback is null
             if (await feedbackService
-                .GetFeedbackDetailsById(feedbackId) == null)
+                .GetFeedbackDetailsById(id) == null)
             {
                 return BadRequest();
             }
@@ -134,7 +134,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                        feedbackService
-                       .EditCreateForm(feedbackId);
+                       .EditCreateForm(id);
 
                 return View(editFormModel);
             }
@@ -147,15 +147,15 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method is used to edit a particular feedback with a given id.
         /// </summary>
-        /// <param name="feedbackId"></param>
+        /// <param name="id"></param>
         /// <param name="editFeedbackModel"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> EditFeedback(int feedbackId, EditFeedbackModel editFeedbackModel)
+        public async Task<IActionResult> EditFeedback(int id, EditFeedbackModel editFeedbackModel)
         {
             //check if the feedback is null
             if (await feedbackService
-                .GetFeedbackDetailsById(feedbackId) == null)
+                .GetFeedbackDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -163,7 +163,7 @@ namespace SmoothieShop.Controllers
             try
             {
                 await feedbackService
-                    .Edit(feedbackId, editFeedbackModel);
+                    .Edit(id, editFeedbackModel);
 
                 TempData["message"] = $"You have successfully edited a feedback!";
 
@@ -179,14 +179,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for deleting a particular feedback with a given id.
         /// </summary>
-        /// <param name="feedbackId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> DeletefeedbackId(int feedbackId)
+        public async Task<IActionResult> Deleteid(int id)
         {
             //check if the feedback is null
             if (await feedbackService
-                .GetFeedbackDetailsById(feedbackId) == null)
+                .GetFeedbackDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -195,7 +195,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                feedbackService
-               .DeleteFeedbackForm(feedbackId);
+               .DeleteFeedbackForm(id);
 
                 return View(editFormModel);
             }
