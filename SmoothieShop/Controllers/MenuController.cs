@@ -84,14 +84,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method returns a details about particular menu with a given id.
         /// </summary>
-        /// <param name="menuId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> DetailsMenu(int menuId)
+        public async Task<IActionResult> DetailsMenu(int id)
         {
             //check if the menu is null
             if (
                 await menuService
-                .GetMenuDetailsById(menuId) == null)
+                .GetMenuDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -100,7 +100,7 @@ namespace SmoothieShop.Controllers
             {
                 var menuModel = await
                 menuService
-                .GetMenuDetailsById(menuId);
+                .GetMenuDetailsById(id);
 
                 return View(menuModel);
             }
@@ -114,14 +114,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for editing a particular menu with a given id.
         /// </summary>
-        /// <param name="menuId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> EditMenu(int menuId)
+        public async Task<IActionResult> EditMenu(int id)
         {
             //check if the menu is null
             if (await menuService
-                .GetMenuDetailsById(menuId) == null)
+                .GetMenuDetailsById(id) == null)
             {
                 return BadRequest();
             }
@@ -130,7 +130,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                        menuService
-                       .EditCreateForm(menuId);
+                       .EditCreateForm(id);
 
                 return View(editFormModel);
             }
@@ -145,15 +145,15 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This method is used to edit a particular menu with a given id.
         /// </summary>
-        /// <param name="menuId"></param>
+        /// <param name="id"></param>
         /// <param name="editMenuModel"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> EditMenu(int menuId, EditMenuModel editMenuModel)
+        public async Task<IActionResult> EditMenu(int id, EditMenuModel editMenuModel)
         {
             //check if the menu is null
             if (await menuService
-                .GetMenuDetailsById(menuId) == null)
+                .GetMenuDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -161,7 +161,7 @@ namespace SmoothieShop.Controllers
             try
             {
                 await menuService
-                    .Edit(menuId, editMenuModel);
+                    .Edit(id, editMenuModel);
 
                 TempData["message"] = $"You have successfully edited a menu!";
 
@@ -177,14 +177,14 @@ namespace SmoothieShop.Controllers
         /// <summary>
         /// This metod creates a form for deleting a particular menu with a given id.
         /// </summary>
-        /// <param name="menuId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> DeleteMenu(int menuId)
+        public async Task<IActionResult> DeleteMenu(int id)
         {
             //check if the menu is null
             if (await menuService
-                .GetMenuDetailsById(menuId) == null)
+                .GetMenuDetailsById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -193,7 +193,7 @@ namespace SmoothieShop.Controllers
             {
                 var editFormModel = await
                menuService
-               .DeleteMenuForm(menuId);
+               .DeleteMenuForm(id);
 
                 return View(editFormModel);
             }
