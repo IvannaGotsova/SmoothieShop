@@ -171,6 +171,7 @@ namespace SmoothieShop.Core.Services
                    SmoothieId = s.SmoothieId,
                    SmoothieName = s.SmoothieName,
                    Size = s.Size,
+                   Price = s.Price,
                    Calories = s.Calories,
                    OrdersCount = s.Orders.Count(),
                    MenusCount = s.Menus.Count(),
