@@ -14,9 +14,21 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3">
                 <label asp-for="@Model.SmoothieName" class="form-label">Smoothie Name</label>
-                <label asp-for="@Model.Price" class="form-label">Price</label>
-                 <label asp-for="@Model.Size" class="form-label">Size</label>
-                <label asp-for="@Model.Calories" class="form-label">Calories</label>
+                <input asp-for="@Model.SmoothieName" class="form-control" aria-required="true" />
+                <span asp-validation-for="SmoothieName" class="text-danger"></span>
+
+                <label asp-for="@Model.Price" class="form-label">Smoothie Price</label>
+                <input asp-for="@Model.Price" class="form-control" aria-required="true" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+
+                <label asp-for="@Model.Size" class="form-label">Smoothie Size</label>
+                <input asp-for="@Model.Size" class="form-control" aria-required="true" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+
+                <label asp-for="@Model.Calories" class="form-label">Smoothie Calories</label>
+                <input asp-for="@Model.Calories" class="form-control" aria-required="true" />
+                <span asp-validation-for="Calories" class="text-danger"></span>
+
                 <select asp-for="@Model.Ingredients" class="form-control">
                     @foreach (var ingredient in Model.Ingredients)
                     {
