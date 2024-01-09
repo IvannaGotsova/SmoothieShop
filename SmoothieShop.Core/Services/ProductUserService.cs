@@ -128,7 +128,7 @@ namespace SmoothieShop.Core.Services
             var productUser = await
               this.data
               .AllReadonly<ProductUser>()
-              .Where(c => c.ProductUserId == productUserId)
+              .Where(pu => pu.ProductUserId == productUserId)
               .FirstOrDefaultAsync();
 
             //check if productUser is null
@@ -149,7 +149,8 @@ namespace SmoothieShop.Core.Services
             var productUser = await
                this.data
                .AllReadonly<ProductUser>()
-               .Include(pu => pu.Menus)
+               //.Include(pu => pu.Menus)
+               .Where(pu => pu.ProductUserId == productUserId)
                .Select(pu => new DetailsProductUserModel()
                {
                    ProductUserId = pu.ProductUserId,
