@@ -12,17 +12,17 @@
         <form method="post">
             <input type="hidden" asp-for="@Model.SmoothieId" />
             <div class="form-group">
-                <label asp-for="SmoothieName"></label>
+                <label asp-for="SmoothieName">Smoothie Name</label>
                 <input asp-for="SmoothieName" class="form-control" placeholder="Smoothie Name...">
                 <span asp-validation-for="SmoothieName" class="small text-danger"></span>
-                <label asp-for="Price"></label>
-                <input asp-for="Price" class="form-control" placeholder="Price...">
+                <label asp-for="Price">Smoothie Price</label>
+                <input asp-for="Price" class="form-control" placeholder="Smoothie Price...">
                 <span asp-validation-for="Price" class="small text-danger"></span>
-                <label asp-for="Size"></label>
-                <input asp-for="Size" class="form-control" placeholder="Size...">
+                <label asp-for="Size">Smoothie Size</label>
+                <input asp-for="Size" class="form-control" placeholder="Smoothie Size...">
                 <span asp-validation-for="Size" class="small text-danger"></span>
-                <label asp-for="Calories"></label>
-                <input asp-for="Calories" class="form-control" placeholder="Calories...">
+                <label asp-for="Calories">Smoothie Calories</label>
+                <input asp-for="Calories" class="form-control" placeholder="Smoothie Calories...">
                 <span asp-validation-for="Calories" class="small text-danger"></span>
             </div>
             <div class="text-center">
