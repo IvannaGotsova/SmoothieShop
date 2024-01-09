@@ -98,7 +98,7 @@ namespace SmoothieShop.Controllers
             //check if the productUser is null
             if (
                 await productUserService
-                .GetProductUserDetailsById(id) == null)
+                .GetProductUserById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -191,7 +191,7 @@ namespace SmoothieShop.Controllers
         {
             //check if the productUser is null
             if (await productUserService
-                .GetProductUserDetailsById(id) == null)
+                .GetProductUserById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
