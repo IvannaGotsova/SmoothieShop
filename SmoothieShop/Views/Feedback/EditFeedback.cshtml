@@ -12,12 +12,12 @@
         <form method="post">
             <input type="hidden" asp-for="@Model.FeedbackId" />
             <div class="form-group">
-                <label asp-for="Rating"></label>
+                <label asp-for="Rating">Feedback Rating</label>
                 <input asp-for="Rating" class="form-control" placeholder="Rating...">
                 <span asp-validation-for="Rating" class="small text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Comment"></label>
+                <label asp-for="Comment">Feedback Comment</label>
                 <textarea asp-for="Comment" rows="4" class="form-control" placeholder="Comment..."></textarea>
                 <span asp-validation-for="Comment" class="small text-danger"></span>
             </div>
