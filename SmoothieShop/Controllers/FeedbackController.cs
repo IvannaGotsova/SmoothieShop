@@ -182,7 +182,7 @@ namespace SmoothieShop.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Deleteid(int id)
+        public async Task<IActionResult> DeleteFeedback(int id)
         {
             //check if the feedback is null
             if (await feedbackService
