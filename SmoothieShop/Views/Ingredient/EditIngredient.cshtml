@@ -12,17 +12,17 @@
         <form method="post">
             <input type="hidden" asp-for="@Model.IngredientId" />
             <div class="form-group">
-                <label asp-for="IngredientName"></label>
+                <label asp-for="IngredientName">Ingredient Name</label>
                 <input asp-for="IngredientName" class="form-control" placeholder="Ingredient Name...">
                 <span asp-validation-for="IngredientName" class="small text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IngredientInfo"></label>
+                <label asp-for="IngredientInfo">Ingredient Information</label>
                 <textarea asp-for="IngredientInfo" rows="4" class="form-control" placeholder="Ingredient Info..."></textarea>
                 <span asp-validation-for="IngredientInfo" class="small text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Calories"></label>
+                <label asp-for="Calories">Ingredient Calories</label>
                 <textarea asp-for="Calories" rows="4" class="form-control" placeholder="Calories..."></textarea>
                 <span asp-validation-for="Calories" class="small text-danger"></span>
             </div>
