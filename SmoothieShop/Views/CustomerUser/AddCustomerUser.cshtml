@@ -13,7 +13,7 @@
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3">
-                <label asp-for="@Model.ApplicationUsers" class="form-label">ApplicationUser Id</label>
+                <label asp-for="@Model.ApplicationUsers" class="form-label">Application User Id</label>
                 <select asp-for="@Model.ApplicationUsers" class="form-control">
                     @foreach (var applicationUser in Model.ApplicationUsers)
                     {
