@@ -149,7 +149,7 @@ namespace SmoothieShop.Core.Services
             var customerUser = await
                this.data
                .AllReadonly<CustomerUser>()
-               .Include(cu => cu.Customers)
+               //.Include(cu => cu.Customers)
                .Select(cu => new DetailsCustomerUserModel()
                {
                    CustomerUserId = cu.CustomerUserId,
