@@ -103,7 +103,7 @@ namespace SmoothieShop.Controllers
             //check if the customerUser is null
             if (
                 await customerUserService
-                .GetCustomerUserDetailsById(id) == null)
+                .GetCustomerUserById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -133,7 +133,7 @@ namespace SmoothieShop.Controllers
         {
             //check if the customerUser is null
             if (await customerUserService
-                .GetCustomerUserDetailsById(id) == null)
+                .GetCustomerUserById(id) == null)
             {
                 return BadRequest();
             }
@@ -165,7 +165,7 @@ namespace SmoothieShop.Controllers
         {
             //check if the customerUser is null
             if (await customerUserService
-                .GetCustomerUserDetailsById(id) == null)
+                .GetCustomerUserById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
@@ -196,7 +196,7 @@ namespace SmoothieShop.Controllers
         {
             //check if the customerUser is null
             if (await customerUserService
-                .GetCustomerUserDetailsById(id) == null)
+                .GetCustomerUserById(id) == null)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
