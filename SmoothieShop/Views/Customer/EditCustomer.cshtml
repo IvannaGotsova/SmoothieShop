@@ -12,27 +12,27 @@
         <form method="post">
             <input type="hidden" asp-for="@Model.CustomerId" />
             <div class="form-group">
-                <label asp-for="FirstName"></label>
+                <label asp-for="FirstName">Customer First Name</label>
                 <input asp-for="FirstName" class="form-control" placeholder="First Name...">
                 <span asp-validation-for="FirstName" class="small text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LastName"></label>
+                <label asp-for="LastName">Customer Last Name</label>
                 <textarea asp-for="LastName" rows="4" class="form-control" placeholder="Last Name..."></textarea>
                 <span asp-validation-for="LastName" class="small text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email"></label>
+                <label asp-for="Email">Customer Email</label>
                 <textarea asp-for="Email" rows="4" class="form-control" placeholder="Email..."></textarea>
                 <span asp-validation-for="Email" class="small text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhoneNumber"></label>
+                <label asp-for="PhoneNumber">Customer Phone Number</label>
                 <textarea asp-for="PhoneNumber" rows="4" class="form-control" placeholder="Phone Number..."></textarea>
                 <span asp-validation-for="PhoneNumber" class="small text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address"></label>
+                <label asp-for="Address">Customer Address</label>
                 <textarea asp-for="Address" rows="4" class="form-control" placeholder="Address..."></textarea>
                 <span asp-validation-for="Address" class="small text-danger"></span>
 
