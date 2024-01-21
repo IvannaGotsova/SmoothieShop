@@ -9,8 +9,9 @@ using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 namespace SmoothieShop.Areas.Admin.Controllers
 {
     /// <summary>
-    /// Controls Feedback functionalities.
+    /// Controls Feedback functionalities of Admin.
     /// </summary>
+    [Area("Admin")]
     public class FeedbackController : Controller
     {
         private readonly IFeedbackService feedbackService;
