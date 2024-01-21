@@ -7,8 +7,9 @@ using SmoothieShop.Data.Models.ApplicationUserModels;
 namespace SmoothieShop.Areas.Admin.Controllers
 {
     /// <summary>
-    /// Controls user functionalities.
+    /// Controls user functionalities of Admin.
     /// </summary>
+    [Area("Admin")]
     public class ApplicationUserController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;
