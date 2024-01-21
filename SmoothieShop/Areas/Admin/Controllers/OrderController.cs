@@ -4,10 +4,11 @@ using SmoothieShop.Data.Models.OrderModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Areas.Admin.Controllers
-{        
+{
     /// <summary>
-    /// Controls Order functionalities.
+    /// Controls Order functionalities of Admin.
     /// </summary>
+    [Area("Admin")]
     public class OrderController : Controller
     {
         private readonly IOrderService orderService;
