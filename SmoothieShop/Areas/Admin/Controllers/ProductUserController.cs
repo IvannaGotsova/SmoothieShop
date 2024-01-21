@@ -5,6 +5,10 @@ using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Areas.Admin.Controllers
 {
+    /// <summary>
+    /// Controls ProductUser functionalities of Admin.
+    /// </summary>
+    [Area("Admin")]
     public class ProductUserController : Controller
     {
         private readonly IProductUserService productUserService;
