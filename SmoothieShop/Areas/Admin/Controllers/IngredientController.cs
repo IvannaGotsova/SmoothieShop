@@ -4,10 +4,11 @@ using SmoothieShop.Data.Models.IngredientModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Areas.Admin.Controllers
-{ 
+{
     /// <summary>
-    /// Controls Ingredient functionalities.
+    /// Controls Ingredient functionalities of Admin.
     /// </summary>
+    [Area("Admin")]
     public class IngredientController : Controller
     {
         private readonly IIngredientService ingredientService;
