@@ -7,8 +7,9 @@ using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 namespace SmoothieShop.Areas.Admin.Controllers
 {
     /// <summary>
-    /// Controls Customer functionalities.
+    /// Controls Customer functionalities of Admin.
     /// </summary>
+    [Area("Admin")]
     public class CustomerController : Controller
     {
         private readonly ICustomerService customerService;
