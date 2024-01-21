@@ -5,10 +5,11 @@ using SmoothieShop.Data.Models.SmoothieModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Areas.Admin.Controllers
-{ 
+{
     /// <summary>
-    /// Controls Smoothie functionalities.
+    /// Controls Smoothie functionalities of Admin.
     /// </summary>
+    [Area("Admin")]
     public class SmoothieController : Controller
     {
         private readonly ISmoothieService smoothieService;
