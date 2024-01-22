@@ -8,6 +8,7 @@ using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Repositories;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Core.Services;
+using SmoothieShop.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,7 +60,7 @@ builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 
-//app.SeedUsersRoles();
+app.SeedUsersRoles();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
