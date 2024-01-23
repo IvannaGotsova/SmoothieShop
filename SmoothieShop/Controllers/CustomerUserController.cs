@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Data.Entites;
