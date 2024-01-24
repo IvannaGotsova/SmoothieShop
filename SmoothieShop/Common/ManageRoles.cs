@@ -44,6 +44,38 @@ namespace SmoothieShop.Common
                  })
                  .GetAwaiter()
                  .GetResult();
+
+            Task
+                 .Run(async () =>
+                 {
+                     if (await roleManager.RoleExistsAsync("CustomerUser") == false)
+                     {
+                         var roleToBeCreated = new ApplicationRole()
+                         {
+                             Name = "CustomerUser"
+                         };
+
+                         var resultCreateRole = await roleManager.CreateAsync(roleToBeCreated);
+                     }
+                 })
+                 .GetAwaiter()
+                 .GetResult();
+
+            Task
+                 .Run(async () =>
+                 {
+                     if (await roleManager.RoleExistsAsync("ProductUser") == false)
+                     {
+                         var roleToBeCreated = new ApplicationRole()
+                         {
+                             Name = "ProductUser"
+                         };
+
+                         var resultCreateRole = await roleManager.CreateAsync(roleToBeCreated);
+                     }
+                 })
+                 .GetAwaiter()
+                 .GetResult();
         }
         /// <summary>
         /// This method assign users to roles.
@@ -72,6 +104,58 @@ namespace SmoothieShop.Common
                      {
                          userToBeAssigned = await userManager.FindByEmailAsync("admin@admin.com");
                          await userManager.AddToRoleAsync(userToBeAssigned, "Admin");
+                     }
+                 })
+                 .GetAwaiter()
+                 .GetResult();
+
+            Task
+                 .Run(async () =>
+                 {
+                     var userToBeAssigned = new ApplicationUser();
+
+                     if (await userManager.FindByNameAsync("customerUser@customer.com") == null)
+                     {
+                         userToBeAssigned.UserName = "customerUser@customer.com";
+                         userToBeAssigned.Email = "customerUser@customer.com";
+
+                         var resultFromCreatingUser = await userManager.CreateAsync(userToBeAssigned, "Customer123");
+
+                         if (resultFromCreatingUser.Succeeded)
+                         {
+                             await userManager.AddToRoleAsync(userToBeAssigned, "CustomerUser");
+                         }
+                     }
+                     else
+                     {
+                         userToBeAssigned = await userManager.FindByEmailAsync("customerUser@customer.com");
+                         await userManager.AddToRoleAsync(userToBeAssigned, "CustomerUser");
+                     }
+                 })
+                 .GetAwaiter()
+                 .GetResult();
+
+            Task
+                 .Run(async () =>
+                 {
+                     var userToBeAssigned = new ApplicationUser();
+
+                     if (await userManager.FindByNameAsync("productUser@product.com") == null)
+                     {
+                         userToBeAssigned.UserName = "productUser@product.com";
+                         userToBeAssigned.Email = "productUser@product.com";
+
+                         var resultFromCreatingUser = await userManager.CreateAsync(userToBeAssigned, "Product123");
+
+                         if (resultFromCreatingUser.Succeeded)
+                         {
+                             await userManager.AddToRoleAsync(userToBeAssigned, "ProductUser");
+                         }
+                     }
+                     else
+                     {
+                         userToBeAssigned = await userManager.FindByEmailAsync("productUser@product.com");
+                         await userManager.AddToRoleAsync(userToBeAssigned, "ProductUser");
                      }
                  })
                  .GetAwaiter()
