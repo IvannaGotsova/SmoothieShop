@@ -45,6 +45,7 @@ namespace SmoothieShop.Data
         public DbSet<MenuSmoothie> MenuSmoothies { get; set; } = null!;
         public DbSet<IngredientSmoothie> IngredientSmoothies { get; set; } = null!;
         public DbSet<OrderSmoothie> OrderSmoothies { get; set; } = null!;
+        public DbSet<ApplicationRole> ApplicationRoles { get; set; } = null!;
         /// <summary>
         /// Holds OnModelCreating functionality.
         /// </summary>
