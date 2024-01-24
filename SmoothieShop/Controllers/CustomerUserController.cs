@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Web;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Core.Services;
@@ -9,6 +10,7 @@ using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Controllers
 {
+    [Authorize(Roles = "CustomerUser")]
     /// <summary>
     /// Controls CustomerUser functionalities.
     /// </summary>
