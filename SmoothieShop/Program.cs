@@ -70,12 +70,14 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
+    app.UseStatusCodePages();
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseHsts();
 
 app.UseRouting();
 
