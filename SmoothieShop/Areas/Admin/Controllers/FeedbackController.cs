@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Data.Entites;
@@ -8,10 +9,11 @@ using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     /// <summary>
     /// Controls Feedback functionalities of Admin.
     /// </summary>
-    [Area("Admin")]
     public class FeedbackController : Controller
     {
         private readonly IFeedbackService feedbackService;
