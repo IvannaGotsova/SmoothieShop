@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Common;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Models.CustomerModels;
@@ -6,10 +7,11 @@ using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     /// <summary>
     /// Controls Customer functionalities of Admin.
     /// </summary>
-    [Area("Admin")]
     public class CustomerController : Controller
     {
         private readonly ICustomerService customerService;
