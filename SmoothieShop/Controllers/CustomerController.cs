@@ -7,10 +7,10 @@ using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Controllers
 {
+    [Authorize(Roles = "CustomerUser")]
     /// <summary>
     /// Controls Customer functionalities.
     /// </summary>
-    [Authorize(Roles = "CustomerUser")]
     public class CustomerController : Controller
     {
         private readonly ICustomerService customerService;
