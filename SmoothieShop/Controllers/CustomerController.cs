@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Common;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Models.CustomerModels;
@@ -9,6 +10,7 @@ namespace SmoothieShop.Controllers
     /// <summary>
     /// Controls Customer functionalities.
     /// </summary>
+    [Authorize(Roles = "CustomerUser")]
     public class CustomerController : Controller
     {
         private readonly ICustomerService customerService;
