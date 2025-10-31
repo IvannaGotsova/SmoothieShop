@@ -6,7 +6,6 @@ using SmoothieShop.Data.Models.ApplicationUserModels;
 
 namespace SmoothieShop.Controllers
 {
-    [Authorize(Roles = "Admin")]
     /// <summary>
     /// Controls user functionalities.
     /// </summary>
