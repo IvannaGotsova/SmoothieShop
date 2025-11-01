@@ -17,7 +17,7 @@ namespace SmoothieShop.Core.Contracts
         /// This method returns IEnumerable of all users.
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<ApplicationUserModel>> GetApplicationUsers();
+        Task<IEnumerable<AllApplicationUsersModel>> GetApplicationUsers();
         /// <summary>
         /// This method returns IEnumerable of all VIP users.
         /// </summary>

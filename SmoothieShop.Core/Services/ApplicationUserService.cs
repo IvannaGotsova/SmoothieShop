@@ -78,7 +78,7 @@ namespace SmoothieShop.Core.Services
         /// This method returns IEnumerable of all users.
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<ApplicationUserModel>> GetApplicationUsers()
+        public async Task<IEnumerable<AllApplicationUsersModel>> GetApplicationUsers()
         {
             var allUsers = await
                 this.data
@@ -86,7 +86,7 @@ namespace SmoothieShop.Core.Services
                 .ToListAsync();
 
             return allUsers
-                .Select(u => new ApplicationUserModel()
+                .Select(u => new AllApplicationUsersModel()
                 {
                     Id = u.Id,
                     UserName = u.UserName,
