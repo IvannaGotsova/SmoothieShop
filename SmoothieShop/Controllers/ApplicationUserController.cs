@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.ApplicationUserModels;
 
@@ -13,13 +14,16 @@ namespace SmoothieShop.Controllers
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly IApplicationUserService applicationUser;
 
         public ApplicationUserController(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            IApplicationUserService applicationUserService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.applicationUser = applicationUserService;
         }
         /// <summary>
         /// This method creates index page for a user.
@@ -159,6 +163,26 @@ namespace SmoothieShop.Controllers
             TempData["message"] = $"Goodbye! We are waiting for you to come back";
 
             return RedirectToAction("Index", "Home");
+        }
+        /// <summary>
+        /// This method returns all available application users.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> AllApplicationUsers()
+        {
+            try
+            {
+                var applicationUsers = await
+                    applicationUser
+                   .GetApplicationUsers();
+
+                return View(applicationUsers);
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
         }
     }
 }
