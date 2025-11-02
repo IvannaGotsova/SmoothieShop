@@ -1,0 +1,38 @@
+﻿@model EditApplicationUserModel
+
+@{
+    ViewBag.Title = "Edit Application User";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <input type="hidden" asp-for="@Model.Id" />
+            <div class="form-group">
+                <label asp-for="UserName">Application User UserName</label>
+                <textarea asp-for="UserName" rows="4" class="form-control" placeholder="UserName..."></textarea>
+                <span asp-validation-for="UserName" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName">Application User First Name</label>
+                <input asp-for="FirstName" class="form-control" placeholder="First Name...">
+                <span asp-validation-for="FirstName" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName">Application User Last Name</label>
+                <textarea asp-for="LastName" rows="4" class="form-control" placeholder="Last Name..."></textarea>
+                <span asp-validation-for="LastName" class="small text-danger"></span>
+            </div>
+            <div class="text-center">
+                <input class="btn btn-primary mt-3" type="submit" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

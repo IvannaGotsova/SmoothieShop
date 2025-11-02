@@ -1,0 +1,30 @@
+﻿@model DeleteApplicationUserModel
+
+@{
+    ViewBag.Title = "Delete Application";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<form asp-action="Delete">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label">Application User  UserName</label>
+                <input asp-for="UserName" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">Application User First Name</label>
+                <input asp-for="FirstName" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Application User Last Name</label>
+                <input asp-for="LastName" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Delete" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>

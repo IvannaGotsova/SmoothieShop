@@ -1,0 +1,38 @@
+﻿@model AddApplicationUserModel
+
+@{
+    ViewBag.Title = "Add your new Application User";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="@Model.UserName" class="form-label">Application User UserName</label>
+                <input asp-for="@Model.UserName" class="form-control" aria-required="true" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+                <label asp-for="@Model.FirstName" class="form-label">Application User First Name</label>
+                <input asp-for="@Model.FirstName" class="form-control" aria-required="true" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+                <label asp-for="@Model.LastName" class="form-label">Application User Last Name</label>
+                <input asp-for="@Model.LastName" class="form-control" aria-required="true" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Add Application User" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+@{
+}
