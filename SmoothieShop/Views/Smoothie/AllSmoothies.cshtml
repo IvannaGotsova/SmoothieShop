@@ -9,8 +9,10 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-<a class="btn btn-warning" asp-controller="Smoothie" asp-action="AllSmoothies"
-   sp-route-information="" class="btn btn-success">All Smoothies of the Smoothie Shop</a>
+<a class="btn btn-warning" asp-controller="Home" asp-action="Index"
+   sp-route-information="" class="btn btn-success">HOME</a>
+<a class="btn btn-warning" asp-controller="Smoothie" asp-action="AddSmoothie"
+   sp-route-information="" class="btn btn-success">Add Smoothie</a>
 <hr />
 
 <div class="text-center row">
@@ -25,7 +27,16 @@
                     <p class="card-title mt-1">Smoothie Price: @smoothie.Price</p>
                      <p class="card-title mt-1">Smoothie Size: @smoothie.Size</p>
                     <p class="card-title mt-1">Smoothie Calories: @smoothie.Calories</p>
-                </div>               
+                </div>
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="DetailsSmoothie" asp-route-id="@smoothie.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Details Smoothie</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="EditSmoothie" asp-route-id="@smoothie.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Edit Smoothie</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="DeleteSmoothie" asp-route-id="@smoothie.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Delete Smoothie</a>
+                <hr />
             </div>
         }
     }

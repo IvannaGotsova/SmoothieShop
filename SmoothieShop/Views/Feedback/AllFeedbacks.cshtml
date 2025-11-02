@@ -9,8 +9,10 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-<a class="btn btn-warning" asp-controller="Feedback" asp-action="AllFeedbacks"
-   sp-route-information="" class="btn btn-success">All Feedbacks of the Smoothie Shop</a>
+<a class="btn btn-warning" asp-controller="Home" asp-action="Index"
+   sp-route-information="" class="btn btn-success">HOME</a>
+<a class="btn btn-warning" asp-controller="Feedback" asp-action="AddFeedback"
+   sp-route-information="" class="btn btn-success">Add Feedback</a>
 <hr />
 
 <div class="text-center row">
@@ -24,13 +26,22 @@
                     <h5 class="card-title mt-1">Feedback Rating: @feedback.Rating</h5>
                     <h5 class="card-title mt-1">Feedback Comment: @feedback.Comment</h5>
                     <p class="mb-0">Feedback Customer ID: @feedback.CustomerId</p>
-                </div>               
+                </div>
+                <a class="btn btn-warning" asp-controller="Feedback" asp-action="DetailsFeedback" asp-route-id="@feedback.FeedbackId"
+                   sp-route-information="" class="btn btn-success">Details Feedback</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Feedback" asp-action="EditFeedback" asp-route-id="@feedback.FeedbackId"
+                   sp-route-information="" class="btn btn-success">Edit Feedback</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Feedback" asp-action="DeleteFeedback" asp-route-id="@feedback.FeedbackId"
+                   sp-route-information="" class="btn btn-success">Delete Feedback</a>
+                <hr />
             </div>
         }
     }
     else 
     {
-        <p class="mb-0">There are no customers yet!</p>
+        <p class="mb-0">There are no feedbacks yet!</p>
     }
  
 </div>

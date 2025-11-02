@@ -9,8 +9,10 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-<a class="btn btn-warning" asp-controller="Menu" asp-action="AllMenus"
-   sp-route-information="" class="btn btn-success">All Menus of the Smoothie Shop</a>
+<a class="btn btn-warning" asp-controller="Home" asp-action="Index"
+   sp-route-information="" class="btn btn-success">HOME</a>
+<a class="btn btn-warning" asp-controller="Menu" asp-action="AddMenu"
+   sp-route-information="" class="btn btn-success">Add Menu</a>
 <hr />
 
 <div class="text-center row">
@@ -24,7 +26,16 @@
                     <h5 class="card-title mt-1">Menu Name: @menu.MenuName</h5>
                     <h5 class="mb-0">Menu ID: @menu.MenuId</h5>
                     <p class="mb-0">Menu Product User ID: @menu.ProductUserId</p>
-                </div>               
+                </div>
+                <a class="btn btn-warning" asp-controller="Menu" asp-action="DetailsMenu" asp-route-id="@menu.MenuId"
+                   sp-route-information="" class="btn btn-success">Details Menu</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Menu" asp-action="EditMenu" asp-route-id="@menu.MenuId"
+                   sp-route-information="" class="btn btn-success">Edit Menu</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Menu" asp-action="DeleteMenu" asp-route-id="@menu.MenuId"
+                   sp-route-information="" class="btn btn-success">Delete Menu</a>
+                <hr />
             </div>
         }
     }

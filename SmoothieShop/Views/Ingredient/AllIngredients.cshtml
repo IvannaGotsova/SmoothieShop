@@ -9,8 +9,10 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-<a class="btn btn-warning" asp-controller="Ingredient" asp-action="AllIngredients"
-   sp-route-information="" class="btn btn-success">All Ingredients of the Smoothie Shop</a>
+<a class="btn btn-warning" asp-controller="Home" asp-action="Index"
+   sp-route-information="" class="btn btn-success">HOME</a>
+<a class="btn btn-warning" asp-controller="Ingredient" asp-action="AddIngredient"
+   sp-route-information="" class="btn btn-success">Add Ingredient</a>
 <hr />
 
 <div class="text-center row">
@@ -24,7 +26,16 @@
                     <p class="mb-0">Ingredient Name: @ingredient.IngredientName</p>
                     <p class="mb-0">Ingredient Information: @ingredient.IngredientInfo</p>
                     <p class="mb-0">Ingredient Calories: @ingredient.Calories</p>
-                </div>               
+                </div>
+                <a class="btn btn-warning" asp-controller="Ingredient" asp-action="DetailsIngredient" asp-route-id="@ingredient.IngredientId"
+                   sp-route-information="" class="btn btn-success">Details Ingredient</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Ingredient" asp-action="EditIngredient" asp-route-id="@ingredient.IngredientId"
+                   sp-route-information="" class="btn btn-success">Edit Ingredient</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Ingredient" asp-action="DeleteIngredient" asp-route-id="@ingredient.IngredientId"
+                   sp-route-information="" class="btn btn-success">Delete Ingredient</a>
+                <hr />
             </div>
         }
     }

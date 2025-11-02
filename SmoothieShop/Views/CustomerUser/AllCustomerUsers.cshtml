@@ -9,8 +9,10 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-<a class="btn btn-warning" asp-controller="CustomerUser" asp-action="AllCustomerUsers"
-   sp-route-information="" class="btn btn-success">All Customer Users of the Smoothie Shop</a>
+<a class="btn btn-warning" asp-controller="Home" asp-action="Index"
+   sp-route-information="" class="btn btn-success">HOME</a>
+<a class="btn btn-warning" asp-controller="CustomUser" asp-action="AddCustomerUser"
+   sp-route-information="" class="btn btn-success">Add Customer User</a>
 <hr />
 
 <div class="text-center row">
@@ -23,7 +25,16 @@
 
                     <h5 class="card-title mt-1">Customer User ID: @customerUser.CustomerUserId</h5>
                     <h5 class="card-title mt-1">Application User ID: @customerUser.ApplicationUserId</h5>
-                </div>               
+                </div>
+                <a class="btn btn-warning" asp-controller="CustomerUser" asp-action="DetailsCustomerUser" asp-route-id="@customerUser.CustomerUserId"
+                   sp-route-information="" class="btn btn-success">Details Customer User</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="CustomerUser" asp-action="EditCustomerUser" asp-route-id="@customerUser.CustomerUserId"
+                   sp-route-information="" class="btn btn-success">Edit Customer User</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="CustomerUser" asp-action="DeleteCustomerUser" asp-route-id="@customerUser.CustomerUserId"
+                   sp-route-information="" class="btn btn-success">Delete Customer User</a>
+                <hr />
             </div>
         }
     }

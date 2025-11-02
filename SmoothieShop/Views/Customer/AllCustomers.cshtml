@@ -9,8 +9,10 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-<a class="btn btn-warning" asp-controller="Customer" asp-action="AllCustomers"
-   sp-route-information="" class="btn btn-success">All Customers of the Smoothie Shop</a>
+<a class="btn btn-warning" asp-controller="Home" asp-action="Index"
+   sp-route-information="" class="btn btn-success">HOME</a>
+<a class="btn btn-warning" asp-controller="Customer" asp-action="AddCustomer"
+   sp-route-information="" class="btn btn-success">Add Customer</a>
 <hr />
 
 <div class="text-center row">
@@ -30,7 +32,16 @@
                     <p class="mb-0">Customer Orders: @customer.Orders.Count()</p>
                     <p class="mb-0">Customer Feedbacks: @customer.Feedbacks.Count()</p>
                     <p class="mb-0">Customer User ID: @customer.CustomerUserId</p>
-                </div>               
+                </div>
+                <a class="btn btn-warning" asp-controller="Customer" asp-action="DetailsCustomer" asp-route-id="@customer.CustomerId"
+                   sp-route-information="" class="btn btn-success">Details Customer</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Customer" asp-action="EditCustomer" asp-route-id="@customer.CustomerId"
+                   sp-route-information="" class="btn btn-success">Edit Customer</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Customer" asp-action="DeleteCustomer" asp-route-id="@customer.CustomerId"
+                   sp-route-information="" class="btn btn-success">Delete Customer</a>
+                <hr />
             </div>
         }
     }

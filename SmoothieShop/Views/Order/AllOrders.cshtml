@@ -9,8 +9,10 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-<a class="btn btn-warning" asp-controller="Order" asp-action="AllOrders"
-   sp-route-information="" class="btn btn-success">All Orders of the Smoothie Shop</a>
+<a class="btn btn-warning" asp-controller="Home" asp-action="Index"
+   sp-route-information="" class="btn btn-success">HOME</a>
+<a class="btn btn-warning" asp-controller="Order" asp-action="AddOrder"
+   sp-route-information="" class="btn btn-success">Add Order</a>
 <hr />
 
 <div class="text-center row">
@@ -24,7 +26,16 @@
                     <p class="card-title mt-1">Order Date: @order.Date</p>
                     <p class="card-title mt-1">Order Price: @order.Price</p>
                     <p class="card-title mt-1">Order Customer ID: @order.CustomerId</p>
-                </div>               
+                </div>
+                <a class="btn btn-warning" asp-controller="Order" asp-action="DetailsOrder" asp-route-id="@order.OrderId"
+                   sp-route-information="" class="btn btn-success">Details Order</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Order" asp-action="EditOrder" asp-route-id="@order.OrderId"
+                   sp-route-information="" class="btn btn-success">Edit Order</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Order" asp-action="DeleteOrder" asp-route-id="@order.OrderId"
+                   sp-route-information="" class="btn btn-success">Delete Order</a>
+                <hr />
             </div>
         }
     }
