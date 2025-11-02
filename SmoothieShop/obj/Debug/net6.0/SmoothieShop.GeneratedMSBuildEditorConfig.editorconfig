@@ -44,8 +44,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Views/ApplicationUser/AddApplicationUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwbGljYXRpb25Vc2VyXEFkZEFwcGxpY2F0aW9uVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Views/ApplicationUser/AllApplicationUsers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwbGljYXRpb25Vc2VyXEFsbEFwcGxpY2F0aW9uVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Views/ApplicationUser/DeleteApplicationUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwbGljYXRpb25Vc2VyXERlbGV0ZUFwcGxpY2F0aW9uVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Views/ApplicationUser/DetailsApplicationUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwbGljYXRpb25Vc2VyXERldGFpbHNBcHBsaWNhdGlvblVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Views/ApplicationUser/EditApplicationUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwbGljYXRpb25Vc2VyXEVkaXRBcHBsaWNhdGlvblVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Views/ApplicationUser/Index.cshtml]

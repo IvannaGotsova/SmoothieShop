@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmoothieShop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2bc651ad6512bd1945a0b8ebe8bc4a0ed1cdb43c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff82fdb18dddef545587dc0428af6893c0b39554")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmoothieShop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmoothieShop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
