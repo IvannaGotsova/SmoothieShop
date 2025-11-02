@@ -1,0 +1,30 @@
+﻿@using SmoothieShop.Areas.Admin.Models
+
+@model EditApplicationUserModel
+
+<form asp-action="EditApplicationUser" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="NewUserName"></label>
+        <input asp-for="NewUserName" class="form-control" placeholder="@Model.OldUserName" />
+        <span asp-validation-for="NewUserName" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="NewFirstName"></label>
+        <input asp-for="NewFirstName" class="form-control" placeholder="@Model.NewFirstName" />
+        <span asp-validation-for="NewFirstName" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="NewLastName"></label>
+        <input asp-for="NewLastName" class="form-control" placeholder="@Model.OldLastName" />
+        <span asp-validation-for="NewLastName" class="text-danger"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Edit Applcation User</button>
+</form>
