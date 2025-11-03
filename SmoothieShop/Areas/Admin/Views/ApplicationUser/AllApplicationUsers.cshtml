@@ -13,8 +13,6 @@
 
 <a class="btn btn-warning" asp-controller="Home" asp-action="Index"
    sp-route-information="" class="btn btn-success">HOME</a>
-<a class="btn btn-warning" asp-controller="ApplicationUser" asp-action="AddApplicationUser"
-   sp-route-information="" class="btn btn-success">Add Application User</a>
 <hr />
 
 <div class="text-center row">
@@ -28,13 +26,13 @@
                     <h3 class="card-title mt-1">Application User First Name: @applicationUser.FirstName</h3>
                     <h3 class="card-title mt-1">Application User Last Name: @applicationUser.LastName</h3>
                 </div>
-                <a class="btn btn-warning" asp-controller="ApplicationUser" asp-action="DetailsApplicationUser"
-                   sp-route-information="" class="btn btn-success">Details Application User</a>
-                <hr />
-                <a class="btn btn-warning" asp-controller="ApplicationUser" asp-action="EditApplicationUser"
+                <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="EditApplicationUser" asp-route-id="@applicationUser.Id"
                    sp-route-information="" class="btn btn-success">Edit Application User</a>
                 <hr />
-                <a class="btn btn-warning" asp-controller="ApplicationUser" asp-action="DeleteApplicationUser"
+                <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="ChangePasswordApplicationUser" asp-route-id="@applicationUser.Id"
+                   sp-route-information="" class="btn btn-success">Change Password Application User</a>
+                <hr />
+                <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="DeleteApplicationUser" asp-route-id="@applicationUser.Id"
                    sp-route-information="" class="btn btn-success">Delete Application User</a>
                 <hr />
             </div>
