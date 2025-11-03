@@ -141,7 +141,7 @@ namespace SmoothieShop.Core.Services
                 throw new ArgumentNullException(null, nameof(user));
             }
 
-           //user.IsVIP = true;
+            //user.IsVIP = true;
 
             this.data.Update<ApplicationUser>(user);
             await this.data.SaveChangesAsync();
@@ -183,4 +183,3 @@ namespace SmoothieShop.Core.Services
 
     }
 }
-
