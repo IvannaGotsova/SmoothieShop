@@ -28,6 +28,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYXRpb25Vc2VyXEFsbEFwcGxpY2F0aW9uVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/ApplicationUser/ChangePasswordApplicationUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYXRpb25Vc2VyXENoYW5nZVBhc3N3b3JkQXBwbGljYXRpb25Vc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/ApplicationUser/DeleteApplicationUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYXRpb25Vc2VyXERlbGV0ZUFwcGxpY2F0aW9uVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/ApplicationUser/EditApplicationUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYXRpb25Vc2VyXEVkaXRBcHBsaWNhdGlvblVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
