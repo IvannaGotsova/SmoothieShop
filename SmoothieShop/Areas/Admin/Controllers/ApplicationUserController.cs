@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SmoothieShop.Areas.Admin.Models;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Data.Entites;
@@ -187,5 +189,110 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> EditApplicationUser(string id)
+        {
+            var user = await userManager.FindByIdAsync(id);
+            if (user == null) return NotFound("");
+
+            var editApplicationUserModel = new Models.EditApplicationUserModel
+            {
+                Id = user.Id,
+                NewUserName = user.UserName,
+                NewFirstName = user.FirstName,
+                NewLastName = user.LastName
+              
+            };
+
+            return View(editApplicationUserModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditApplicationUser(Models.EditApplicationUserModel editApplicationUserModel)
+        {
+            var user = await userManager.FindByIdAsync(editApplicationUserModel.Id);
+            if (user == null) return NotFound();
+
+            user.UserName = editApplicationUserModel.NewUserName;
+            user.NormalizedUserName = userManager.NormalizeName(editApplicationUserModel.NewUserName);
+
+            user.FirstName = editApplicationUserModel.NewFirstName; ;
+            user.NormalizedUserName = userManager.NormalizeName(editApplicationUserModel.NewFirstName);
+
+            user.LastName = editApplicationUserModel.NewLastName; 
+            user.NormalizedUserName = userManager.NormalizeName(editApplicationUserModel.NewLastName);
+
+            var result = await userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                return Ok("Application User edited successfully.");
+            }
+
+            return BadRequest(result.Errors);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ChangePasswordApplicationUser(string id)
+        {
+            var user = await userManager.FindByIdAsync(id);
+            if (user == null) return NotFound("");
+
+            var changePasswordApplicationUserModel = new Models.ChangePasswordApplicationUserModel
+            {
+                Id = user.Id
+
+            };
+
+            return View(changePasswordApplicationUserModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePasswordApplicationUser(Models.ChangePasswordApplicationUserModel changePasswordApplicationUserModel)
+        {
+            var user = await userManager.FindByIdAsync(changePasswordApplicationUserModel.Id);
+            if (user == null) return NotFound();
+
+            var result = await userManager.ChangePasswordAsync(user, changePasswordApplicationUserModel.OldPassword, changePasswordApplicationUserModel.NewPassword);
+            if (result.Succeeded)
+            {
+                return Ok("Password changed successfully.");
+            }
+
+            return BadRequest(result.Errors);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteApplicationUser(string id)
+        {
+            var user = await userManager.FindByIdAsync(id);
+            if (user == null) return NotFound("");
+
+            var deleteApplicationUserModel = new Models.DeleteApplicationUserModel
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+            };
+
+            return View(deleteApplicationUserModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteApplicationUser(Models.DeleteApplicationUserModel deleteApplicationUserModel)
+        {
+            var user = await userManager.FindByIdAsync(deleteApplicationUserModel.Id);
+            if (user == null) return NotFound();
+
+            var result = await userManager.DeleteAsync(user);
+
+            if (result.Succeeded)
+            {
+                return Ok("Application User deleted successfully.");
+            }
+
+            return BadRequest(result.Errors);
+        }
+
     }
 }
