@@ -294,5 +294,36 @@ namespace SmoothieShop.Areas.Admin.Controllers
             return BadRequest(result.Errors);
         }
 
+        /// <summary>
+        /// This method returns a details about particular application user with a given id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> DetailsApplicationUser(string id)
+        {
+            //check if the application user is null
+            if (
+                await applicationUser
+                .GetApplicationUserDetailsById(id) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                var applicationUserModel = await
+                applicationUser
+                .GetApplicationUserDetailsById(id);
+
+                return View(applicationUserModel);
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+        }
+
     }
 }
