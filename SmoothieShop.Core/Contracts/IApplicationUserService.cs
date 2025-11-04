@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SmoothieShop.Data.Data.Entites;
+using SmoothieShop.Data.Models.ApplicationUserModels;
+using SmoothieShop.Data.Models.CustomerUserModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SmoothieShop.Data.Data.Entites;
-using SmoothieShop.Data.Models.ApplicationUserModels;
 
 namespace SmoothieShop.Core.Contracts
 {
@@ -58,5 +59,11 @@ namespace SmoothieShop.Core.Contracts
         /// </summary>
         /// <returns></returns>
         Task<IEnumerable<ApplicationUser>> GetApplicationUsersForSelect();
+        /// <summary>
+        /// This method returns Details of particular applicationUser with a given id.
+        /// </summary>
+        /// <param name="applicationUserId"></param>
+        /// <returns></returns>
+        Task<DetailsApplicationUserModel> GetApplicationUserDetailsById(string applicationUserId);
     }
 }
