@@ -2,6 +2,7 @@
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.ApplicationUserModels;
+using SmoothieShop.Data.Models.CustomerUserModels;
 using SmoothieShop.Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -179,6 +180,34 @@ namespace SmoothieShop.Core.Services
                 this.data
                 .AllReadonly<ApplicationUser>()
                 .ToListAsync();
+        }
+
+        /// <summary>
+        /// This method returns Details of particular applicationUser with a given id.
+        /// </summary>
+        /// <param name="applicationUserId"></param>
+        /// <returns></returns>
+        public async Task<DetailsApplicationUserModel> GetApplicationUserDetailsById(string applicationUserId)
+        {
+            var applicationUser = await
+               this.data
+               .AllReadonly<ApplicationUser>()
+               //.Include(au => au.Applications)
+               .Select(au => new DetailsApplicationUserModel()
+               {
+                   Id = au.Id,
+                   UserName = au.UserName,
+                   FirstName = au.FirstName,
+                   LastName = au.LastName
+               }).FirstOrDefaultAsync();
+
+            //check if appplicationUser is null
+            if (applicationUser == null)
+            {
+                throw new ArgumentNullException(null, nameof(applicationUser));
+            }
+
+            return applicationUser;
         }
 
     }
