@@ -1,0 +1,23 @@
+﻿@using SmoothieShop.Areas.Admin.Models
+
+@model DetailsApplicationUserModel
+
+@{
+    ViewBag.Title = $"Application User - {Model.UserName}";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+    <div class="card col-4" style="width: 20rem; ">
+        <div class="card-body">
+            <input type="hidden" asp-for="@Model.Id" />
+            <h5 class="card-title mt-1">Application User ID: @Model.Id</h5>
+            <p class="mb-0">Application User UserName: @Model.UserName</p>
+            <p class="mb-0">Application User First Name: @Model.FirstName</p>
+            <p class="mb-0">Application User Last Name: @Model.LastName</p>
+        </div>
+    </div>
+</div>
