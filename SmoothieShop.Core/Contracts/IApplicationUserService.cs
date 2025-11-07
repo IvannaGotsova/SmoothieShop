@@ -1,6 +1,5 @@
 ﻿using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.ApplicationUserModels;
-using SmoothieShop.Data.Models.CustomerUserModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
