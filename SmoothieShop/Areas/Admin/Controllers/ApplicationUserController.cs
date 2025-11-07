@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SmoothieShop.Areas.Admin.Models;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Data.Entites;
@@ -311,7 +310,7 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             try
             {
-                var applicationUserModel = await
+                DetailsApplicationUserModel applicationUserModel = await
                 applicationUser
                 .GetApplicationUserDetailsById(id);
 
