@@ -192,6 +192,7 @@ namespace SmoothieShop.Core.Services
             var applicationUser = await
                this.data
                .AllReadonly<ApplicationUser>()
+               .Where(au => au.Id == applicationUserId)
                //.Include(au => au.Applications)
                .Select(au => new DetailsApplicationUserModel()
                {
