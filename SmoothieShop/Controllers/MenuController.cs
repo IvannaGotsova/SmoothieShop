@@ -44,6 +44,7 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> AddMenu()
         {
@@ -56,6 +57,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="addMenuModel"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> AddMenu(AddMenuModel addMenuModel)
         {
@@ -110,13 +112,13 @@ namespace SmoothieShop.Controllers
 
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This metod creates a form for editing a particular menu with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> EditMenu(int id)
         {
@@ -139,9 +141,6 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
-
-
         }
         /// <summary>
         /// This method is used to edit a particular menu with a given id.
@@ -149,6 +148,7 @@ namespace SmoothieShop.Controllers
         /// <param name="id"></param>
         /// <param name="editMenuModel"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> EditMenu(int id, EditMenuModel editMenuModel)
         {
@@ -180,6 +180,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> DeleteMenu(int id)
         {
@@ -209,6 +210,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="deleteMenuModel"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteMenu(DeleteMenuModel deleteMenuModel)
         {
