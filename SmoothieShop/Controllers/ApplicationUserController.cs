@@ -7,6 +7,7 @@ using SmoothieShop.Data.Models.ApplicationUserModels;
 
 namespace SmoothieShop.Controllers
 {
+    [Authorize]
     /// <summary>
     /// Controls user functionalities.
     /// </summary>
@@ -164,6 +165,7 @@ namespace SmoothieShop.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        []
         /// <summary>
         /// This method returns all available application users.
         /// </summary>
