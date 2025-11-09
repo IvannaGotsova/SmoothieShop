@@ -51,6 +51,7 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> AddSmoothie()
         {
@@ -71,6 +72,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="addSmoothieModel"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> AddSmoothie(AddSmoothieModel addSmoothieModel)
         {
@@ -146,6 +148,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> EditSmoothie(int id)
         {
@@ -178,6 +181,7 @@ namespace SmoothieShop.Controllers
         /// <param name="id"></param>
         /// <param name="editSmoothieModel"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> EditSmoothie(int id, EditSmoothieModel editSmoothieModel)
         {
@@ -209,6 +213,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> DeleteSmoothie(int id)
         {
@@ -238,6 +243,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="deleteSmoothieModel"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteSmoothie(DeleteSmoothieModel deleteSmoothieModel)
         {
