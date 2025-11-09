@@ -49,6 +49,7 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> AddOrder()
         {
@@ -67,6 +68,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="addOrderModel"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> AddOrder(AddOrderModel addOrderModel)
         {
