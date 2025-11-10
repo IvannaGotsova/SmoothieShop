@@ -6,7 +6,7 @@ using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Controllers
 {
-    [Authorize(Roles = "ProductUser, Admin")]
+    [Authorize]
     /// <summary>
     /// Controls Ingredient functionalities.
     /// </summary>
@@ -45,6 +45,7 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> AddIngredient()
         {
@@ -57,6 +58,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="addIngredientModel"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> AddIngredient(AddIngredientModel addIngredientModel)
         {
@@ -118,6 +120,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> EditIngredient(int id)
         {
@@ -148,6 +151,7 @@ namespace SmoothieShop.Controllers
         /// <param name="id"></param>
         /// <param name="editIngredientModel"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> EditIngredient(int id, EditIngredientModel editIngredientModel)
         {
@@ -179,6 +183,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> DeleteIngredient(int id)
         {
@@ -208,6 +213,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="deleteIngredientModel"></param>
         /// <returns></returns>
+        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteIngredient(DeleteIngredientModel deleteIngredientModel)
         {
