@@ -1,0 +1,19 @@
+﻿@using SmoothieShop.Areas.Admin.Models
+
+@model ApplicationUserModel
+
+@{
+    ViewData["Title"] = "Index page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome!</h1>
+    <p>We are very glad to see you here!</p>
+</div>
+
+<a class="btn btn-warning" asp-controller="Home" asp-action="Index"
+   sp-route-information="" class="btn btn-success">HOME</a>
+
+<a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="AllApplicationUsers"
+   sp-route-information="" class="btn btn-success">All Application Users</a>
+

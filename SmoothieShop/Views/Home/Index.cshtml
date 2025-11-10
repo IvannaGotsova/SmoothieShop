@@ -20,6 +20,10 @@
     {
         <a class="btn btn-warning" asp-area="" asp-controller="Feedback" asp-action="Index"
         sp-route-information="" class="btn btn-success">Feedbacks</a>
+
+        <a class="btn btn-warning" asp-area="" asp-controller="Ingredient" asp-action="Index"
+           sp-route-information="" class="btn btn-success">Ingredients</a>
+
     }
 
     @if (this.User.IsInRole("Admin"))
@@ -42,10 +46,7 @@
 
     @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
     {
-        <a class="btn btn-warning" asp-area="" asp-controller="Ingredient" asp-action="Index"
-           sp-route-information="" class="btn btn-success">Ingredients</a>
-
-        <a class="btn btn-warning" asp-area="" asp-controller="Order" asp-action="Index"
+        <a class="btn btn-warning" asp-area="" asp-controller="Order" asp-action="AllOrders"
            sp-route-information="" class="btn btn-success">Orders</a>
     }
 </div>
