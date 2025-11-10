@@ -122,6 +122,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "CustomerUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> EditFeedback(int id)
         {
@@ -152,6 +153,7 @@ namespace SmoothieShop.Controllers
         /// <param name="id"></param>
         /// <param name="editFeedbackModel"></param>
         /// <returns></returns>
+        [Authorize(Roles = "CustomerUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> EditFeedback(int id, EditFeedbackModel editFeedbackModel)
         {
@@ -183,6 +185,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "CustomerUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> DeleteFeedback(int id)
         {
@@ -212,6 +215,7 @@ namespace SmoothieShop.Controllers
         /// </summary>
         /// <param name="deleteFeedbackModel"></param>
         /// <returns></returns>
+        [Authorize(Roles = "CustomerUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteFeedback(DeleteFeedbackModel deleteFeedbackModel)
         {
