@@ -12,8 +12,11 @@
 
 <a class="btn btn-warning" asp-controller="Home" asp-action="Index"
    sp-route-information="" class="btn btn-success">HOME</a>
-<a class="btn btn-warning" asp-controller="Smoothie" asp-action="AddSmoothie"
-   sp-route-information="" class="btn btn-success">Add Smoothie</a>
+@if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+{
+    <a class="btn btn-warning" asp-controller="Smoothie" asp-action="AddSmoothie"
+       sp-route-information="" class="btn btn-success">Add Smoothie</a>
+}
 <hr />
 
 <div class="text-center row">
@@ -32,12 +35,15 @@
                 <a class="btn btn-warning" asp-controller="Smoothie" asp-action="DetailsSmoothie" asp-route-id="@smoothie.SmoothieId"
                    sp-route-information="" class="btn btn-success">Details Smoothie</a>
                 <hr />
-                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="EditSmoothie" asp-route-id="@smoothie.SmoothieId"
-                   sp-route-information="" class="btn btn-success">Edit Smoothie</a>
-                <hr />
-                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="DeleteSmoothie" asp-route-id="@smoothie.SmoothieId"
-                   sp-route-information="" class="btn btn-success">Delete Smoothie</a>
-                <hr />
+                @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+                {
+                    <a class="btn btn-warning" asp-controller="Smoothie" asp-action="EditSmoothie" asp-route-id="@smoothie.SmoothieId"
+                       sp-route-information="" class="btn btn-success">Edit Smoothie</a>
+                    <hr />
+                    <a class="btn btn-warning" asp-controller="Smoothie" asp-action="DeleteSmoothie" asp-route-id="@smoothie.SmoothieId"
+                       sp-route-information="" class="btn btn-success">Delete Smoothie</a>
+                    <hr />
+                }
             </div>
         }
     }

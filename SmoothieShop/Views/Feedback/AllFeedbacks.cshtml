@@ -30,12 +30,15 @@
                 <a class="btn btn-warning" asp-controller="Feedback" asp-action="DetailsFeedback" asp-route-id="@feedback.FeedbackId"
                    sp-route-information="" class="btn btn-success">Details Feedback</a>
                 <hr />
-                <a class="btn btn-warning" asp-controller="Feedback" asp-action="EditFeedback" asp-route-id="@feedback.FeedbackId"
-                   sp-route-information="" class="btn btn-success">Edit Feedback</a>
-                <hr />
-                <a class="btn btn-warning" asp-controller="Feedback" asp-action="DeleteFeedback" asp-route-id="@feedback.FeedbackId"
-                   sp-route-information="" class="btn btn-success">Delete Feedback</a>
-                <hr />
+                @if (this.User.IsInRole("CustomerUser") || this.User.IsInRole("Admin"))
+                {
+                    <a class="btn btn-warning" asp-controller="Feedback" asp-action="EditFeedback" asp-route-id="@feedback.FeedbackId"
+                       sp-route-information="" class="btn btn-success">Edit Feedback</a>
+                    <hr />
+                    <a class="btn btn-warning" asp-controller="Feedback" asp-action="DeleteFeedback" asp-route-id="@feedback.FeedbackId"
+                       sp-route-information="" class="btn btn-success">Delete Feedback</a>
+                    <hr />
+                }
             </div>
         }
     }

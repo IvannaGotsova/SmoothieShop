@@ -30,12 +30,15 @@
                 <a class="btn btn-warning" asp-controller="Order" asp-action="DetailsOrder" asp-route-id="@order.OrderId"
                    sp-route-information="" class="btn btn-success">Details Order</a>
                 <hr />
-                <a class="btn btn-warning" asp-controller="Order" asp-action="EditOrder" asp-route-id="@order.OrderId"
-                   sp-route-information="" class="btn btn-success">Edit Order</a>
-                <hr />
-                <a class="btn btn-warning" asp-controller="Order" asp-action="DeleteOrder" asp-route-id="@order.OrderId"
-                   sp-route-information="" class="btn btn-success">Delete Order</a>
-                <hr />
+                @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+                {
+                    <a class="btn btn-warning" asp-controller="Order" asp-action="EditOrder" asp-route-id="@order.OrderId"
+                       sp-route-information="" class="btn btn-success">Edit Order</a>
+                    <hr />
+                    <a class="btn btn-warning" asp-controller="Order" asp-action="DeleteOrder" asp-route-id="@order.OrderId"
+                       sp-route-information="" class="btn btn-success">Delete Order</a>
+                    <hr />
+                }
             </div>
         }
     }
