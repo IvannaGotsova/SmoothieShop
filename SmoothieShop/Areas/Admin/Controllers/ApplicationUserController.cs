@@ -168,7 +168,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-        [Authorize(Roles = "CustomerUser, Admin")]
         [HttpGet]
         /// <summary>
         /// This method returns all available application users.
