@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmoothieShop.Data;
 
@@ -11,9 +12,10 @@ using SmoothieShop.Data;
 namespace SmoothieShop.Data.Migrations
 {
     [DbContext(typeof(SmoothieShopDbContext))]
-    partial class SmoothieShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251111114538_AddIsVipCustomer")]
+    partial class AddIsVipCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
