@@ -42,6 +42,19 @@
                 <a class="btn btn-warning" asp-controller="Customer" asp-action="DeleteCustomer" asp-route-id="@customer.CustomerId"
                    sp-route-information="" class="btn btn-success">Delete Customer</a>
                 <hr />
+                @if (customer.isVip)
+                {
+                    <a class="btn btn-warning" asp-controller="Customer" asp-action="NotVipCustomer" asp-route-id="@customer.CustomerId"
+                       sp-route-information="" class="btn btn-success">Not Vip Customer</a>
+                    <hr />
+                }
+                else
+                {
+                    <a class="btn btn-warning" asp-controller="Customer" asp-action="VipCustomer" asp-route-id="@customer.CustomerId"
+                       sp-route-information="" class="btn btn-success">Vip Customer</a>
+                    <hr />
+                }
+               
             </div>
         }
     }
