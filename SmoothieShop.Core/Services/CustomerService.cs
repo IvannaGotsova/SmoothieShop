@@ -209,5 +209,39 @@ namespace SmoothieShop.Core.Services
                 .AllReadonly<Customer>()
                 .ToListAsync();
         }
+
+        public async Task VipCustomer(int customerId)
+        {
+            var customer = await
+               this.data
+               .AllReadonly<Customer>()
+               .Where(c => c.CustomerId == customerId)
+               .FirstOrDefaultAsync();
+
+            //check if customer is null
+            if (customer == null)
+            {
+                throw new ArgumentNullException(null, nameof(customer));
+            }
+
+            customer.isVip = true;
+        }
+
+        public async Task NotVipCustomer(int customerId)
+        {
+            var customer = await
+               this.data
+               .AllReadonly<Customer>()
+               .Where(c => c.CustomerId == customerId)
+               .FirstOrDefaultAsync();
+
+            //check if customer is null
+            if (customer == null)
+            {
+                throw new ArgumentNullException(null, nameof(customer));
+            }
+
+            customer.isVip = false;
+        }
     }
 }

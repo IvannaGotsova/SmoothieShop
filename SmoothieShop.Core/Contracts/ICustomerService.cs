@@ -67,5 +67,10 @@ namespace SmoothieShop.Core.Contracts
         /// <param name="customerId"></param>
         /// <returns></returns>
         Task Delete(int customerId);
+
+        Task VipCustomer(int customerId);
+
+        Task NotVipCustomer(int customerId);
+
     }
 }

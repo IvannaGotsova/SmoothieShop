@@ -250,5 +250,56 @@ namespace SmoothieShop.Controllers
             }
         }
 
+        public async Task<IActionResult> VipCustomer(int id)
+        {
+            //check if the customer is null
+            if (await customerService
+                .GetCustomerById(id) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                await customerService
+                    .VipCustomer(id);
+
+                TempData["message"] = $"You have successfully give a customer vip status!";
+
+                return RedirectToAction("AllCustomers", "Customer");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+        }
+
+        public async Task<IActionResult> NotVipCustomer(int id)
+        {
+            //check if the customer is null
+            if (await customerService
+                .GetCustomerById(id) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                await customerService
+                    .NotVipCustomer(id);
+
+                TempData["message"] = $"You have successfully give a customer not vip status!";
+
+                return RedirectToAction("AllCustomers", "Customer");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+        }
     }
 }
