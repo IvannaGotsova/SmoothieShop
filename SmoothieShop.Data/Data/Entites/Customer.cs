@@ -31,6 +31,7 @@ namespace SmoothieShop.Data.Data.Entites
         [Required]
         [StringLength(CustomerMaxLengthAddress)]
         public string? Address { get; set; }
+        public bool isVip { get; set; } = false;
         [Required]
         public int CustomerUserId { get; set; }
         [ForeignKey(nameof(CustomerUserId))]
