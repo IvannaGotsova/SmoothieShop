@@ -139,7 +139,8 @@ namespace SmoothieShop.Core.Services
                     PhoneNumber = c.PhoneNumber,
                     Email = c.Email,
                     Address = c.Address,
-                    CustomerUserId = c.CustomerUserId
+                    CustomerUserId = c.CustomerUserId,
+                    isVip = c.isVip
                 })
                 .ToList();
         }
@@ -186,6 +187,7 @@ namespace SmoothieShop.Core.Services
                    Email = c.Email,
                    Address = c.Address,
                    CustomerUserId = c.CustomerUserId,
+                   isVip = c.isVip,
                    OrdersCount = c.Orders.Count(),
                    FeedbacksCount = c.Feedbacks.Count()
                }).FirstOrDefaultAsync();
@@ -225,6 +227,9 @@ namespace SmoothieShop.Core.Services
             }
 
             customer.isVip = true;
+
+            this.data.Update<Customer>(customer);
+            await this.data.SaveChangesAsync();
         }
 
         public async Task NotVipCustomer(int customerId)
@@ -242,6 +247,9 @@ namespace SmoothieShop.Core.Services
             }
 
             customer.isVip = false;
+
+            this.data.Update<Customer>(customer);
+            await this.data.SaveChangesAsync();
         }
     }
 }
