@@ -66,5 +66,7 @@ namespace SmoothieShop.Core.Contracts
         /// <param name="smoothieId"></param>
         /// <returns></returns>
         Task Delete(int smoothieId);
+
+        int Count();
     }
 }

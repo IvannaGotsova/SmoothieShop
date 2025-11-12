@@ -40,6 +40,15 @@ namespace SmoothieShop.Core.Services
             await this.data.AddAsync(feedbackToBeAdded);
             await this.data.SaveChangesAsync();
         }
+
+        public int Count()
+        {
+            return
+                this.data
+                .AllReadonly<Feedback>()
+                .Count();
+        }
+
         /// <summary>
         /// This method deletes a particular feddback with a given id.
         /// </summary>

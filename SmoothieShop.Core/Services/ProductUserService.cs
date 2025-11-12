@@ -37,6 +37,15 @@ namespace SmoothieShop.Core.Services
             await this.data.AddAsync(productUserToBeAdded);
             await this.data.SaveChangesAsync();
         }
+
+        public int Count()
+        {
+            return
+                this.data
+                .AllReadonly<ProductUser>()
+                .Count();
+        }
+
         /// <summary>
         /// This method deletes a particular productUser with a given id.
         /// </summary>

@@ -38,6 +38,15 @@ namespace SmoothieShop.Core.Services
             await this.data.AddAsync(menuToBeAdded);
             await this.data.SaveChangesAsync();
         }
+
+        public int Count()
+        {
+            return
+                this.data
+                .AllReadonly<Menu>()
+                .Count();
+        }
+
         /// <summary>
         /// This method deletes a particular menu with a given id.
         /// </summary>

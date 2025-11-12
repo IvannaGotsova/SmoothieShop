@@ -72,5 +72,7 @@ namespace SmoothieShop.Core.Contracts
 
         Task NotVipCustomer(int customerId);
 
+        int Count();
+
     }
 }

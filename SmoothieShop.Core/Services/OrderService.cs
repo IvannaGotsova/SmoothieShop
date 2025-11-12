@@ -39,6 +39,15 @@ namespace SmoothieShop.Core.Services
             await this.data.AddAsync(orderToBeAdded);
             await this.data.SaveChangesAsync();
         }
+
+        public int Count()
+        {
+            return
+                 this.data
+                 .AllReadonly<Order>()
+                 .Count();
+        }
+
         /// <summary>
         /// This method deletes a particular order with a given id.
         /// </summary>

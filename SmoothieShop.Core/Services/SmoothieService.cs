@@ -40,6 +40,15 @@ namespace SmoothieShop.Core.Services
             await this.data.AddAsync(smoothieToBeAdded);
             await this.data.SaveChangesAsync();
         }
+
+        public int Count()
+        {
+            return
+                this.data
+                .AllReadonly<Smoothie>()
+                .Count();
+        }
+
         /// <summary>
         /// This method deletes a particular smoothie with a given id.
         /// </summary>

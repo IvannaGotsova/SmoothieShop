@@ -251,5 +251,13 @@ namespace SmoothieShop.Core.Services
             this.data.Update<Customer>(customer);
             await this.data.SaveChangesAsync();
         }
+
+        public int Count()
+        {
+            return
+                this.data
+                .AllReadonly<Customer>()
+                .Count();
+        }
     }
 }

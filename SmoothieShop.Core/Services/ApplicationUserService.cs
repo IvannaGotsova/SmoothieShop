@@ -211,5 +211,12 @@ namespace SmoothieShop.Core.Services
             return applicationUser;
         }
 
+        public int Count()
+        {
+            return
+                this.data
+                .AllReadonly<ApplicationUser>()
+                .Count();
+        }
     }
 }
