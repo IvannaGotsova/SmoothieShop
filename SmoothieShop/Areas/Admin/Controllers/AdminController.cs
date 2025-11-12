@@ -21,6 +21,19 @@ namespace SmoothieShop.Areas.Admin.Controllers
         private readonly IProductUserService productUserService;
         private readonly ISmoothieService smoothieService;
 
+        public AdminController(IApplicationUserService applicationUser, ICustomerService customerService, ICustomerUserService customerUserService, IFeedbackService feedbackService, IIngredientService ingredientService, IMenuService menuService, IOrderService orderService, IProductUserService productUserService, ISmoothieService smoothieService)
+        {
+            this.applicationUser = applicationUser;
+            this.customerService = customerService;
+            this.customerUserService = customerUserService;
+            this.feedbackService = feedbackService;
+            this.ingredientService = ingredientService;
+            this.menuService = menuService;
+            this.orderService = orderService;
+            this.productUserService = productUserService;
+            this.smoothieService = smoothieService;
+        }
+
         public IActionResult Index()
         {
             return View();
