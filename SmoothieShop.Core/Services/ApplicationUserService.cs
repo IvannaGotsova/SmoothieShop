@@ -124,53 +124,6 @@ namespace SmoothieShop.Core.Services
                 .ToList();
         }
         /// <summary>
-        /// This method gives a particular user with given id VIP Status.
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        public async Task MakeVIP(string userId)
-        {
-
-            var user = await
-                this.data
-                .AllReadonly<ApplicationUser>()
-                .Where(au => au.Id == userId)
-                .FirstOrDefaultAsync();
-            //check if user is null
-            if (user == null)
-            {
-                throw new ArgumentNullException(null, nameof(user));
-            }
-
-            //user.IsVIP = true;
-
-            this.data.Update<ApplicationUser>(user);
-            await this.data.SaveChangesAsync();
-        }
-        /// <summary>
-        /// This method removes VIP Status from a particular user with given id .
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        public async Task RemoveVIP(string userId)
-        {
-            var user = await
-                this.data
-                .AllReadonly<ApplicationUser>()
-                .Where(au => au.Id == userId)
-                .FirstOrDefaultAsync();
-            //check if user is null
-            if (user == null)
-            {
-                throw new ArgumentNullException(null, nameof(user));
-            }
-
-            //user.IsVIP = false;
-
-            this.data.Update<ApplicationUser>(user);
-            await this.data.SaveChangesAsync();
-        }
-        /// <summary>
         /// This method returns IEnumerable of all applicationUsers used for Select.
         /// </summary>
         /// <returns></returns>

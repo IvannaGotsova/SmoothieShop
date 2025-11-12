@@ -42,18 +42,6 @@ namespace SmoothieShop.Core.Contracts
         /// <returns></returns>
         Task Delete(string userId);
         /// <summary>
-        /// This method gives a particular user with a given id VIP Status.
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        Task MakeVIP(string userId);
-        /// <summary>
-        /// This method removes VIP Status from a particular user with a given id .
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        Task RemoveVIP(string userId);
-        /// <summary>
         /// This method returns IEnumerable of all applicationUsers used for Select.
         /// </summary>
         /// <returns></returns>
