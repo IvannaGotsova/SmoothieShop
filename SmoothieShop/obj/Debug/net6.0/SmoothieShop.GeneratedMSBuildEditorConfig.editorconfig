@@ -20,6 +20,42 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 6.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/Admin/AllApplicationUsersCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWxsQXBwbGljYXRpb25Vc2Vyc0NvdW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/Admin/AllCustomersCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWxsQ3VzdG9tZXJzQ291bnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/Admin/AllCustomerUsersCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWxsQ3VzdG9tZXJVc2Vyc0NvdW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/Admin/AllFeedbacksCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWxsRmVlZGJhY2tzQ291bnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/Admin/AllIngredientsCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWxsSW5ncmVkaWVudHNDb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/Admin/AllMenusCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWxsTWVudXNDb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/Admin/AllOrdersCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWxsT3JkZXJzQ291bnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/Admin/AllProductUsersCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWxsUHJvZHVjdFVzZXJzQ291bnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/Admin/AllSmoothiesCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cQWxsU21vb3RoaWVzQ291bnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/IG/source/repos/SmoothieShop/SmoothieShop/Areas/Admin/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
