@@ -39,6 +39,11 @@ namespace SmoothieShop.Areas.Admin.Controllers
             return View();
         }
 
+        public IActionResult AllCounts()
+        {
+            return View();
+        }
+
         public IActionResult AllApplicationUsersCount()
         {
             try

@@ -28,6 +28,9 @@
 
     @if (this.User.IsInRole("Admin"))
     {
+        <a class="btn btn-warning" asp-controller="Admin" asp-action="Home"
+           sp-route-information="" class="btn btn-success">Admin Page</a>
+
         <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="Index"
         sp-route-information="" class="btn btn-success">All Users</a>
 
