@@ -92,7 +92,7 @@ namespace SmoothieShop.Controllers
 
 
 
-            return RedirectToAction("Login", "ApplicationUsers");
+            return RedirectToAction("Login", "ApplicationUser");
         }
         /// <summary>
         /// This method creates form for login.

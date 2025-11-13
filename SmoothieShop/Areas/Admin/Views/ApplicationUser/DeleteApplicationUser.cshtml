@@ -1,7 +1,7 @@
 ﻿@using SmoothieShop.Areas.Admin.Models
 @model DeleteApplicationUserModel
 
-<form asp-action="DeleteApplicationUserUser" method="post">
+<form asp-action="DeleteApplicationUser" method="post">
     <input asp-for="Id" type="hidden" />
 
     <p>Are you sure you want to delete user <strong>@Model.UserName</strong>?</p>
