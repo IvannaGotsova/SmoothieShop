@@ -31,7 +31,7 @@
                     <p class="mb-0">Customer Address: @customer.Address</p>
                     <p class="mb-0">Customer Orders: @customer.Orders.Count()</p>
                     <p class="mb-0">Customer Feedbacks: @customer.Feedbacks.Count()</p>
-                    <p class="mb-0">Customer User ID: @customer.CustomerUserId</p>
+                    <p class="mb-0">Application User ID: @customer.ApplicationUserId</p>
                 </div>
                 <a class="btn btn-warning" asp-controller="Customer" asp-action="DetailsCustomer" asp-route-id="@customer.CustomerId"
                    sp-route-information="" class="btn btn-success">Details Customer</a>

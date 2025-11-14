@@ -21,14 +21,14 @@
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="@Model.CustomerUserId" class="form-label">Customer User ID</label>
-                <select asp-for="@Model.CustomerUserId" class="form-control">
-                    @foreach (var customerUser in Model.CustomerUsers)
+                <label asp-for="@Model.ApplicationUserId" class="form-label">Application User ID</label>
+                <select asp-for="@Model.ApplicationUserId" class="form-control">
+                    @foreach (var applicationUser in Model.ApplicationUsers)
                     {
-                        <option value="@customerUser.CustomerUserId">@customerUser.CustomerUserId</option>
+                        <option value="@applicationUser.Id">@applicationUser.Id</option>
                     }
                 </select>
-                <span asp-validation-for="CustomerUserId" class="text-danger"></span>
+                <span asp-validation-for="ApplicationUserId" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="@Model.PhoneNumber" class="form-label">Customer Phone Number </label>

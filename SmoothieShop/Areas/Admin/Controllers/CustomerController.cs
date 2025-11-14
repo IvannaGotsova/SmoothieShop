@@ -15,11 +15,11 @@ namespace SmoothieShop.Areas.Admin.Controllers
     public class CustomerController : Controller
     {
         private readonly ICustomerService customerService;
-        private readonly ICustomerUserService customerUserService;
-        public CustomerController(ICustomerService customerService, ICustomerUserService customerUserService)
+        private readonly IApplicationUserService applicationUserService;
+        public CustomerController(ICustomerService customerService, IApplicationUserService applicationUserService)
         {
             this.customerService = customerService;
-            this.customerUserService = customerUserService;
+            this.applicationUserService = applicationUserService;
         }
         /// <summary>
         /// This method returns index view.
@@ -54,8 +54,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
         {
             var modelCustomer = new AddCustomerModel()
             {
-                CustomerUsers = await
-                customerUserService.GetCustomerUsersForSelect(),
+                ApplicationUsers = await
+                applicationUserService.GetApplicationUsersForSelect(),
             };
 
             return View(modelCustomer);
@@ -71,8 +71,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
             //check if the model state is valid
             if (!ModelState.IsValid)
             {
-                addCustomerModel.CustomerUsers = await
-                customerUserService.GetCustomerUsersForSelect();
+                addCustomerModel.ApplicationUsers = await
+                applicationUserService.GetApplicationUsersForSelect();
 
                 return View(addCustomerModel);
             }
@@ -90,8 +90,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
             {
                 ModelState.AddModelError("", somethingWrong);
 
-                addCustomerModel.CustomerUsers = await
-                customerUserService.GetCustomerUsersForSelect();
+                addCustomerModel.ApplicationUsers = await
+                applicationUserService.GetApplicationUsersForSelect();
 
                 return View(addCustomerModel);
             }
