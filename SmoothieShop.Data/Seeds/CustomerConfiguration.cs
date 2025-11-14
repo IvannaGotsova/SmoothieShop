@@ -35,7 +35,7 @@ namespace SmoothieShop.Data.Seeds
                    Email = "guest1@guest.com",
                    PhoneNumber = "0000000000",
                    Address = "Bulgaria",        
-                   CustomerUserId = 1
+                   ApplicationUserId = "guest1@guest.com"
                 },
 
                 new Customer()
@@ -46,7 +46,7 @@ namespace SmoothieShop.Data.Seeds
                    Email = "guest2@guest.com",
                    PhoneNumber = "0000000000",
                    Address = "Bulgaria",
-                   CustomerUserId = 1
+                   ApplicationUserId = "guest2@guest.com"
                 },
             };
 

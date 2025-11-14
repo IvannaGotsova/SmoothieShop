@@ -37,8 +37,7 @@ namespace SmoothieShop.Core.Services
                 LastName = addCustomerModel.LastName,
                 PhoneNumber = addCustomerModel.PhoneNumber,
                 Address = addCustomerModel.Address,
-                Email = addCustomerModel.Email,
-                CustomerUserId = addCustomerModel.CustomerUserId
+                Email = addCustomerModel.Email
             };
 
             await this.data.AddAsync(customerToBeAdded);
@@ -71,8 +70,7 @@ namespace SmoothieShop.Core.Services
                 LastName = customerToBeDeleted.LastName,
                 PhoneNumber = customerToBeDeleted.PhoneNumber,
                 Address = customerToBeDeleted.Address,
-                Email = customerToBeDeleted.Email,
-                CustomerUserId = customerToBeDeleted.CustomerUserId
+                Email = customerToBeDeleted.Email
             };
 
             return deleteCustomerModel;
@@ -93,7 +91,6 @@ namespace SmoothieShop.Core.Services
             customerToBeEdited.PhoneNumber = editCustomerModel.PhoneNumber;
             customerToBeEdited.Email = editCustomerModel.Email;
             customerToBeEdited.Address = editCustomerModel.Address;
-            customerToBeEdited.CustomerUserId = editCustomerModel.CustomerUserId;
 
             this.data.Update<Customer>(customerToBeEdited);
             await this.data.SaveChangesAsync();
@@ -114,8 +111,7 @@ namespace SmoothieShop.Core.Services
                 LastName = customerToBeEdited.LastName,
                 PhoneNumber = customerToBeEdited.PhoneNumber,
                 Email = customerToBeEdited.Email,
-                Address = customerToBeEdited.Address,
-                CustomerUserId = customerToBeEdited.CustomerUserId
+                Address = customerToBeEdited.Address
             };
 
             return editCustomerModel;
@@ -139,7 +135,6 @@ namespace SmoothieShop.Core.Services
                     PhoneNumber = c.PhoneNumber,
                     Email = c.Email,
                     Address = c.Address,
-                    CustomerUserId = c.CustomerUserId,
                     isVip = c.isVip
                 })
                 .ToList();
@@ -186,7 +181,6 @@ namespace SmoothieShop.Core.Services
                    PhoneNumber = c.PhoneNumber,
                    Email = c.Email,
                    Address = c.Address,
-                   CustomerUserId = c.CustomerUserId,
                    isVip = c.isVip,
                    OrdersCount = c.Orders.Count(),
                    FeedbacksCount = c.Feedbacks.Count()

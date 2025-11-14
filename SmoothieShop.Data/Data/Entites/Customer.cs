@@ -33,9 +33,9 @@ namespace SmoothieShop.Data.Data.Entites
         public string? Address { get; set; }
         public bool isVip { get; set; } = false;
         [Required]
-        public int CustomerUserId { get; set; }
-        [ForeignKey(nameof(CustomerUserId))]
-        public CustomerUser? CustomerUser { get; set; }
+        public string ApplicationUserId { get; set; } = null!;
+        [ForeignKey(nameof(ApplicationUserId))]
+        public ApplicationUser? ApplicationUser { get; set; }
         [Required]
         public IEnumerable<Order> Orders { get; set; } = new List<Order>();
         [Required]

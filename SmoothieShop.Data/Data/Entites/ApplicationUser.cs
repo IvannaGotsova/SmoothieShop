@@ -23,6 +23,8 @@ namespace SmoothieShop.Data.Data.Entites
         [StringLength(ApplicationUserMaxLengthName)]
         public string? LastName { get; set; }
         [Required]
+        public IEnumerable<Customer> Customers = new List<Customer>();
+        [Required]
         public IEnumerable<CustomerUser> CustomerUsers = new List<CustomerUser>();
         [Required]
         public IEnumerable<ProductUser> ProductUsers = new List<ProductUser>();

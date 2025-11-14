@@ -163,7 +163,6 @@ namespace SmoothieShop.Core.Services
                {
                    CustomerUserId = cu.CustomerUserId,
                    ApplicationUserId = cu.ApplicationUserId,
-                   CustomersCount = cu.Customers.Count()
                }).FirstOrDefaultAsync();
 
             //check if customerUser is null

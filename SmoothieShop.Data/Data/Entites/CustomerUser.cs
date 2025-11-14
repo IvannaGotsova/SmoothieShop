@@ -19,8 +19,6 @@ namespace SmoothieShop.Data.Data.Entites
         public string ApplicationUserId { get; set; } = null!;
         [ForeignKey(nameof(ApplicationUserId))]
         public ApplicationUser? ApplicationUser { get; set; }
-        [Required]
-        public IEnumerable<Customer> Customers = new List<Customer>();
 
     }
 }
