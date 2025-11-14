@@ -8,7 +8,7 @@ using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Repositories;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Core.Services;
-using SmoothieShop.Common;
+using SmoothieShop.Common.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 

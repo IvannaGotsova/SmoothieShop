@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using SmoothieShop.Data.Data.Entites;
 
-namespace SmoothieShop.Common
+namespace SmoothieShop.Common.Common
 {
     /// <summary>
     /// This method seed roles for the users.

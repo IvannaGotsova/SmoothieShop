@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmoothieShop.Core", "Smooth
 		{120870E8-84A5-4F8B-99EC-9AFBCBFAD8E7} = {120870E8-84A5-4F8B-99EC-9AFBCBFAD8E7}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{91536787-69B4-464D-8040-5DC93575089E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{372A1593-554D-4B80-BF41-E63ABB28479F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{372A1593-554D-4B80-BF41-E63ABB28479F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{372A1593-554D-4B80-BF41-E63ABB28479F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91536787-69B4-464D-8040-5DC93575089E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91536787-69B4-464D-8040-5DC93575089E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91536787-69B4-464D-8040-5DC93575089E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91536787-69B4-464D-8040-5DC93575089E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

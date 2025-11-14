@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace SmoothieShop.Common
+namespace SmoothieShop.Common.Common
 {
     /// <summary>
     /// This class returns information about current(login) user.
