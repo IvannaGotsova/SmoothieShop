@@ -17,5 +17,17 @@
             <p class="mb-0">Application User First Name: @Model.FirstName</p>
             <p class="mb-0">Application User Last Name: @Model.LastName</p>
         </div>
+        <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="DetailsApplicationUser" asp-route-id="@Model.Id"
+           sp-route-information="" class="btn btn-success">Details Application User</a>
+        <hr />
+        <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="EditApplicationUser" asp-route-id="@Model.Id"
+           sp-route-information="" class="btn btn-success">Edit Application User</a>
+        <hr />
+        <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="DeleteApplicationUser" asp-route-id="@Model.Id"
+           sp-route-information="" class="btn btn-success">Delete Application User</a>
+        <hr />
+        <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="ChangePasswordApplicationUser" asp-route-id="@Model.Id"
+           sp-route-information="" class="btn btn-success">Change Password Application User</a>
+        <hr />
     </div>
 </div>
