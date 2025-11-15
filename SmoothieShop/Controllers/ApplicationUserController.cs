@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.ApplicationUserModels;
+using static SmoothieShop.Common.Common.GetCurrentUser;
+
 
 namespace SmoothieShop.Controllers
 {
@@ -194,6 +196,30 @@ namespace SmoothieShop.Controllers
             }
 
             return BadRequest(result.Errors);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> ApplicationUserMyProfile()
+        {
+            string currentUserId = User.GetCurrentUserId();
+
+            var currentUser = await applicationUser
+                .GetApplicaionUserById(currentUserId);
+
+            if (currentUser == null)
+            {
+                return BadRequest("No such ApplicationUser");
+            }
+
+            var applicationUserMyProfile = new ApplicationUserMyProfile
+            {
+                Id = currentUser.Id,
+                UserName = currentUser.UserName,
+                FirstName = currentUser.FirstName,
+                LastName = currentUser.LastName
+            };
+
+            return View(applicationUserMyProfile);
         }
     }
 }
