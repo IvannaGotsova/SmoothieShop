@@ -54,5 +54,7 @@ namespace SmoothieShop.Core.Contracts
         Task<DetailsApplicationUserModel> GetApplicationUserDetailsById(string applicationUserId);
 
         int Count();
+
+
     }
 }
