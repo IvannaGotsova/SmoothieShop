@@ -77,6 +77,24 @@ namespace SmoothieShop.Data
                .HasMaxLength(60)
                .IsRequired();
 
+            builder.Entity<Customer>()
+                .HasOne(c => c.ApplicationUser)
+                .WithOne(u => u.Customer)
+                .HasForeignKey<Customer>(c => c.ApplicationUserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<CustomerUser>()
+                .HasOne(c => c.ApplicationUser)
+                .WithOne(u => u.CustomerUser)
+                .HasForeignKey<CustomerUser>(c => c.ApplicationUserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<ProductUser>()
+                .HasOne(p => p.ApplicationUser)
+                .WithOne(u => u.ProductUser)
+                .HasForeignKey<ProductUser>(c => c.ApplicationUserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             builder
                 .Entity<MenuOrder>()
                 .HasKey(mo => new { mo.MenuId, mo.OrderId });
