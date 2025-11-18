@@ -19,15 +19,24 @@ namespace SmoothieShop.Areas.Admin.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly IApplicationUserService applicationUser;
+        private readonly ICustomerService customerService;
+        private readonly ICustomerUserService customerUserService;
+        private readonly IProductUserService productUserService;
 
         public ApplicationUserController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            IApplicationUserService applicationUser)
+            IApplicationUserService applicationUser,
+            ICustomerService customerService,
+            ICustomerUserService customerUserService,
+            IProductUserService productUserService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.applicationUser = applicationUser;
+            this.customerService = customerService;
+            this.customerUserService = customerUserService;
+            this.productUserService = productUserService;
         }
         /// <summary>
         /// This method creates index page for a user.
@@ -324,6 +333,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
 
         }
+
+
 
     }
 }
