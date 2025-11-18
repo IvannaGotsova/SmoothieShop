@@ -13,12 +13,13 @@ namespace SmoothieShop.Data.Data.Entites
     /// </summary>
     public class ProductUser 
     {
+        [Key]
         [Required]
         public int ProductUserId { get; set; }
         [Required]
-        public string ApplicationUserId { get; set; } = null!;
+        public string ApplicationUserId { get; set; }
         [ForeignKey(nameof(ApplicationUserId))]
-        public ApplicationUser? ApplicationUser { get; set; }
+        public ApplicationUser? ApplicationUser { get; set; } = null!;
         [Required]
         public IEnumerable<Menu> Menus = new List<Menu>();
     }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -22,11 +23,8 @@ namespace SmoothieShop.Data.Data.Entites
         [Required]
         [StringLength(ApplicationUserMaxLengthName)]
         public string? LastName { get; set; }
-        [Required]
-        public IEnumerable<Customer> Customers = new List<Customer>();
-        [Required]
-        public IEnumerable<CustomerUser> CustomerUsers = new List<CustomerUser>();
-        [Required]
-        public IEnumerable<ProductUser> ProductUsers = new List<ProductUser>();
+        public Customer? Customer { get; set; }
+        public CustomerUser? CustomerUser { get; set; }
+        public ProductUser? ProductUser { get; set; }
     }
 }

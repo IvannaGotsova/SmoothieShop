@@ -14,6 +14,7 @@ namespace SmoothieShop.Data.Data.Entites
     /// </summary>
     public class Customer
     {
+        [Key]
         [Required]
         public int CustomerId { get; set; }
         [Required]
@@ -33,9 +34,9 @@ namespace SmoothieShop.Data.Data.Entites
         public string? Address { get; set; }
         public bool isVip { get; set; } = false;
         [Required]
-        public string ApplicationUserId { get; set; } = null!;
+        public string ApplicationUserId { get; set; } 
         [ForeignKey(nameof(ApplicationUserId))]
-        public ApplicationUser? ApplicationUser { get; set; }
+        public ApplicationUser? ApplicationUser { get; set; }  = null!; 
         [Required]
         public IEnumerable<Order> Orders { get; set; } = new List<Order>();
         [Required]
