@@ -21,10 +21,6 @@ namespace SmoothieShop.Core.Services
         }
         public SearchResultModel Search(string query)
         {
-            var ingredients = data
-                .AllReadonly<Ingredient>()
-                .Where(i => i.IngredientName.Contains(query) || i.IngredientInfo.Contains(query))
-                .ToList();
 
             var smoothies = data
                 .AllReadonly<Smoothie>()
@@ -38,7 +34,6 @@ namespace SmoothieShop.Core.Services
 
             return new SearchResultModel
             {
-                Ingredients = ingredients,
                 Smoothies = smoothies,
                 Menus = menus
             };

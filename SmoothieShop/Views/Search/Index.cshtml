@@ -3,27 +3,12 @@
 
 <h2>Search Results</h2>
 
-@if (!Model.Ingredients.Any() && !Model.Smoothies.Any() && !Model.Menus.Any())
+@if (!Model.Smoothies.Any() && !Model.Menus.Any())
 {
     <p>No results found.</p>
 }
 else
 {
-    <h5>Ingredients</h5>
-    <table class="table">
-        <tr>
-            <th>Ingredient Name</th>
-        </tr>
-        @foreach (var ingredient in Model.Ingredients)
-        {
-            <tr>
-                <td>
-                    @Html.ActionLink(ingredient.IngredientName, "DetailsIngredient", "Ingredient", new { id = ingredient.IngredientId }, null)
-                </td>
-            </tr>
-        }
-    </table>
-
     <h5>Smoothies</h5>
     <table class="table">
         <tr>
