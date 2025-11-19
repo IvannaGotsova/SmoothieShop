@@ -1,14 +1,15 @@
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using SmoothieShop.Data;
+using SmoothieShop.Common.Common;
 using SmoothieShop.Core;
-using SmoothieShop.Data.Data.Entites;
-using SmoothieShop.Data.Repositories;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Core.Services;
-using SmoothieShop.Common.Common;
+using SmoothieShop.Data;
+using SmoothieShop.Data.Data.Entites;
+using SmoothieShop.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,7 @@ builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IProductUserService, ProductUserService>();
 builder.Services.AddScoped<ISmoothieService, SmoothieService>();
+builder.Services.AddScoped<ISearchService, SearchService>();
 
 builder.Services.AddMemoryCache();
 

@@ -1,0 +1,57 @@
+﻿@using SmoothieShop.Data.Models.SearchModels
+@model SearchResultModel 
+
+<h2>Search Results</h2>
+
+@if (!Model.Ingredients.Any() && !Model.Smoothies.Any() && !Model.Menus.Any())
+{
+    <p>No results found.</p>
+}
+else
+{
+    <h5>Ingredients</h5>
+    <table class="table">
+        <tr>
+            <th>Ingredient Name</th>
+        </tr>
+        @foreach (var ingredient in Model.Ingredients)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(ingredient.IngredientName, "DetailsIngredient", "Ingredient", new { id = ingredient.IngredientId }, null)
+                </td>
+            </tr>
+        }
+    </table>
+
+    <h5>Smoothies</h5>
+    <table class="table">
+        <tr>
+            <th>Smoothie Name</th>
+        </tr>
+        @foreach (var smoothie in Model.Smoothies)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(smoothie.SmoothieName, "DetailsSmoothie", "Smoothie", new { id = smoothie.SmoothieId }, null)
+                </td>
+            </tr>
+        }
+    </table>
+
+    <h5>Menus</h5>
+    <table class="table">
+        <tr>
+            <th>Menu Name</th>
+        </tr>
+        @foreach (var menu in Model.Menus)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(menu.MenuName, "DetailsMenu", "Menu", new { id = menu.MenuId }, null)
+                </td>
+            </tr>
+        }
+    </table>
+
+}

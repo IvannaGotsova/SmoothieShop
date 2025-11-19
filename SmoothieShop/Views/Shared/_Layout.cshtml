@@ -27,6 +27,11 @@
                             <a class="navbar-brand" asp-area="" asp-controller="ApplicationUser" asp-action="ApplicationUserMyProfile">My Profile</a>
                         }
                     </ul>
+                    <form asp-controller="Search" asp-action="Index" method="get">
+                        <input type="text" name="query" placeholder="Search menus, smoothies, ingredients..." />
+                        <button type="submit">Search</button>
+                    </form>
+
                     <partial name="_LoginPartial" />
                 </div>
             </div>
