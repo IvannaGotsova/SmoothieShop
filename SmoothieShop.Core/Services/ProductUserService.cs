@@ -115,6 +115,7 @@ namespace SmoothieShop.Core.Services
         {
             var productUsers = await data
                  .AllReadonly<ProductUser>()
+                 .Include(pu => pu.ApplicationUser)
                  .ToListAsync();
                  
 
@@ -137,6 +138,7 @@ namespace SmoothieShop.Core.Services
             var productUser = await
               this.data
               .AllReadonly<ProductUser>()
+              .Include(pu => pu.ApplicationUser)
               .Where(pu => pu.ProductUserId == productUserId)
               .FirstOrDefaultAsync();
 
@@ -158,6 +160,7 @@ namespace SmoothieShop.Core.Services
             var productUser = await
                this.data
                .AllReadonly<ProductUser>()
+               .Include(pu => pu.ApplicationUser)
                //.Include(pu => pu.Menus)
                .Where(pu => pu.ProductUserId == productUserId)
                .Select(pu => new DetailsProductUserModel()
@@ -184,6 +187,7 @@ namespace SmoothieShop.Core.Services
             return await
                 this.data
                 .AllReadonly<ProductUser>()
+                .Include(pu => pu.ApplicationUser)
                 .ToListAsync();
         }
     }
