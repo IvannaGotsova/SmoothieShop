@@ -116,6 +116,7 @@ namespace SmoothieShop.Core.Services
         {
             var customerUsers = await data
                  .AllReadonly<CustomerUser>()
+                 .Include(cu => cu.ApplicationUser)
                  .ToListAsync();
 
             return customerUsers
@@ -137,6 +138,7 @@ namespace SmoothieShop.Core.Services
             var customerUser = await
               this.data
               .AllReadonly<CustomerUser>()
+              .Include(cu => cu.ApplicationUser)
               .Where(c => c.CustomerUserId == customerUserId)
               .FirstOrDefaultAsync();
 
@@ -158,6 +160,7 @@ namespace SmoothieShop.Core.Services
             var customerUser = await
                this.data
                .AllReadonly<CustomerUser>()
+               .Include(cu => cu.ApplicationUser)
                //.Include(cu => cu.Customers)
                .Select(cu => new DetailsCustomerUserModel()
                {
@@ -182,6 +185,7 @@ namespace SmoothieShop.Core.Services
             return await
                 this.data
                 .AllReadonly<CustomerUser>()
+                .Include(cu => cu.ApplicationUser)
                 .ToListAsync();
         }
     }
