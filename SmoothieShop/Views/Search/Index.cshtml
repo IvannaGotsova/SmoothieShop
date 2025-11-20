@@ -1,10 +1,16 @@
 ﻿@using SmoothieShop.Data.Models.SearchModels
-@model SearchResultModel 
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Identity 
+
+@model SearchResultModel
 
 <h2>Search Results</h2>
 
 @if (!Model.Smoothies.Any() && !Model.Menus.Any())
 {
+    <h5>Smoothies</h5>
+    <p>No results found.</p>
+    <h5>Menus</h5>
     <p>No results found.</p>
 }
 else
@@ -38,5 +44,163 @@ else
             </tr>
         }
     </table>
+}
 
+
+@if (User.Identity.IsAuthenticated)
+{
+    @if (!Model.Ingredients.Any() && !Model.Feedbacks.Any())
+    {
+        <h5>Ingredients</h5>
+        <p>No results found.</p>
+        <h5>Feedbacks</h5>
+        <p>No results found.</p>
+    }
+    else
+    {
+        <h5>Ingredients</h5>
+        <table class="table">
+            <tr>
+                <th>Ingredient Name</th>
+            </tr>
+            @foreach (var ingredient in Model.Ingredients)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(ingredient.IngredientName, "DetailsIngredient", "Ingredient", new { id = ingredient.IngredientId }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+
+        <h5>Feedbacks</h5>
+        <table class="table">
+            <tr>
+                <th>Feedback Name</th>
+            </tr>
+            @foreach (var feedback in Model.Feedbacks)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(feedback.Comment, "DetailsFeedback", "Feedback", new { id = feedback.FeedbackId }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+}
+
+
+@if (User.IsInRole("Admin") || User.IsInRole("CustomerUser"))
+{
+    @if (!Model.Customers.Any())
+    {
+        <h5>Customers</h5>
+        <p>No results found.</p>
+    }
+    else
+    {
+        <h5>Customers</h5>
+        <table class="table">
+            <tr>
+                <th>Customer Name</th>
+            </tr>
+            @foreach (var customer in Model.Customers)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink($"{customer.FirstName} {customer.LastName}", "DetailsCustomer", "Customer", new { id = customer.CustomerId }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+}
+
+
+@if (User.IsInRole("Admin") || User.IsInRole("ProductUser"))
+{
+    @if (!Model.Orders.Any())
+    {
+        <h5>Orders</h5>
+        <p>No results found.</p>
+    }
+    else
+    {
+        <h5>Orders</h5>
+        <table class="table">
+            <tr>
+                <th>Order Name</th>
+            </tr>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(order.OrderId.ToString(), "DetailsOrder", "Order", new { id = order.OrderId }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+}
+
+
+@if (User.IsInRole("Admin"))
+{
+    @if (!Model.CustomerUsers.Any() && !Model.ProductUsers.Any() && !Model.ApplicationUsers.Any())
+    {
+        <h5>Customer Users</h5>
+        <p>No results found.</p>
+        <h5>Product Users</h5>
+        <p>No results found.</p>
+        <h5>Application Users</h5>
+        <p>No results found.</p>
+    }
+    else
+    {
+        <h5>Customer Users</h5>
+        <table class="table">
+            <tr>
+                <th>Customer User Name</th>
+            </tr>
+            @foreach (var customerUser in Model.CustomerUsers)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(customerUser.ApplicationUser.UserName, "DetailsCustomerUser", "CustomerUser", new { id = customerUser.CustomerUserId }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+
+        <h5>Product Users</h5>
+        <table class="table">
+            <tr>
+                <th>Product User Name</th>
+            </tr>
+            @foreach (var productUser in Model.ProductUsers)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(productUser.ApplicationUser.UserName, "DetailsProductUser", "ProductUser", new { id = productUser.ProductUserId }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+
+        <h5>Application Users</h5>
+        <table class="table">
+            <tr>
+                <th>Application User Name</th>
+            </tr>
+            @foreach (var applicationUser in Model.ApplicationUsers)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(applicationUser.UserName, "DetailsApplicationUser", "ApplicationUser", new { id = applicationUser.Id }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
 }
