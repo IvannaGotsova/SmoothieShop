@@ -294,5 +294,28 @@ namespace SmoothieShop.Controllers
             }
         }
 
+        [Authorize]
+        public async Task<IActionResult> SmoothieMenus(int id)
+        {
+            //check if the smoothie is null
+            if (await smoothieService
+                .GetSmoothieById(id) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                var menus = await smoothieService.GetMenusBySmoothie(id);
+
+                return View(menus);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return RedirectToAction("AllSmoothies", "Smoothie", new { area = "" });
+            }
+        }
     }
 }
