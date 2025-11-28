@@ -164,9 +164,15 @@ namespace SmoothieShop.Core.Services
             return menus;
         }
 
-        public Task<IEnumerable<Order>> GetOrdersBySmoothie(int smoothieId)
+        public async Task<IEnumerable<Order>> GetOrdersBySmoothie(int smoothieId)
         {
-            throw new NotImplementedException();
+            var orders = data
+               .AllReadonly<OrderSmoothie>()
+               .Where(os => os.SmoothieId == smoothieId)
+               .Select(os => os.Order)
+               .ToList();
+
+            return orders;
         }
 
 
