@@ -7,9 +7,10 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-<form asp-action="Delete">
+<form asp-action="DeleteSmoothie">
     <div class="row">
         <div class="col-md-8">
+            <input type="hidden" asp-for="@Model.SmoothieId" />
             <div class="form-group">
                 <label asp-for="SmoothieName" class="control-label">Smoothie Name</label>
                 <input asp-for="SmoothieName" class="form-control" disabled="disabled" />
