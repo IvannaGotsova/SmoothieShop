@@ -1,4 +1,5 @@
 ﻿using SmoothieShop.Data.Data.Entites;
+using SmoothieShop.Data.Models.IngredientModels;
 using SmoothieShop.Data.Models.SmoothieModels;
 using System;
 using System.Collections.Generic;
@@ -68,5 +69,9 @@ namespace SmoothieShop.Core.Contracts
         Task Delete(int smoothieId);
 
         int Count();
+
+        Task<IEnumerable<Menu>> GetMenusBySmoothie(int smoothieId);
+        Task<IEnumerable<Order>> GetOrdersBySmoothie(int smoothieId);
+        Task<IEnumerable<Ingredient>> GetIngredientsBySmoothie(int smoothieId);
     }
 }

@@ -37,6 +37,9 @@
                 <hr />
                 @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
                 {
+                    <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieIngredients" asp-route-id="@smoothie.SmoothieId"
+                       sp-route-information="" class="btn btn-success">Ingredients</a>
+                    <hr />
                     <a class="btn btn-warning" asp-controller="Smoothie" asp-action="EditSmoothie" asp-route-id="@smoothie.SmoothieId"
                        sp-route-information="" class="btn btn-success">Edit Smoothie</a>
                     <hr />

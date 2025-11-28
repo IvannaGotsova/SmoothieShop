@@ -140,6 +140,30 @@ namespace SmoothieShop.Core.Services
                 })
                 .ToList();
         }
+
+        public async Task<IEnumerable<Ingredient>>GetIngredientsBySmoothie(int smoothieId)
+        {
+
+            var ingredients = data
+                .AllReadonly<IngredientSmoothie>()
+                .Where(ism => ism.SmoothieId == smoothieId)
+                .Select(ism => ism.Ingredient)
+                .ToList();
+
+            return ingredients;
+        }
+
+        public Task<IEnumerable<Menu>> GetMenusBySmoothie(int smoothieId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Order>> GetOrdersBySmoothie(int smoothieId)
+        {
+            throw new NotImplementedException();
+        }
+
+
         /// <summary>
         /// This method returns a particular smoothie with a given id.
         /// </summary>
@@ -195,6 +219,8 @@ namespace SmoothieShop.Core.Services
 
             return smoothie;
         }
+
+
         /// <summary>
         /// This method returns IEnumerable of all smoothies used for Select.
         /// </summary>
