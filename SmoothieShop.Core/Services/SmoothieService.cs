@@ -111,6 +111,28 @@ namespace SmoothieShop.Core.Services
             smoothieToBeEdited.Calories = editSmoothieModel.Calories;
 
             this.data.Update<Smoothie>(smoothieToBeEdited);
+
+            var ingredietsSmoothisToDelete = await
+               this.data
+               .AllReadonly<IngredientSmoothie>()
+               .Where(ism => ism.SmoothieId == smoothieId)
+               .ToListAsync();
+
+            this.data.DeleteRange<IngredientSmoothie>(ingredietsSmoothisToDelete);
+
+
+            foreach (var ingredient in editSmoothieModel.IngredientsIds)
+            {
+                var ingredientSmoothieToBeEdited = new IngredientSmoothie()
+                {
+                    IngredientId = ingredient,
+                    Smoothie = smoothieToBeEdited
+
+                };
+
+                await this.data.AddAsync(ingredientSmoothieToBeEdited);
+            }
+
             await this.data.SaveChangesAsync();
         }
         /// <summary>

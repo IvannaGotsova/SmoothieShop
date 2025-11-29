@@ -165,6 +165,9 @@ namespace SmoothieShop.Controllers
                        smoothieService
                        .EditCreateForm(id);
 
+                editFormModel.Ingredients = await
+                ingredientService.GetIngredientsForSelect();
+
                 return View(editFormModel);
             }
             catch (Exception)
@@ -199,11 +202,15 @@ namespace SmoothieShop.Controllers
 
                 TempData["message"] = $"You have successfully edited a smoothie!";
 
-                return RedirectToAction("AllSmoothies", "Smoothie");
+                return RedirectToAction("DetailsSmoothie", "Smoothie", new { area = "", id = id });
+
             }
             catch (Exception)
             {
                 ModelState.AddModelError("", somethingWrong);
+
+                editSmoothieModel.Ingredients = await
+                ingredientService.GetIngredientsForSelect();
 
                 return View(editSmoothieModel);
             }

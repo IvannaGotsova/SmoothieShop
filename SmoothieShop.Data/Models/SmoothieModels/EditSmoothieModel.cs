@@ -33,5 +33,6 @@ namespace SmoothieShop.Data.Models.SmoothieModels
         public IEnumerable<Order> Orders { get; set; } = new List<Order> { };
         [Required]
         public IEnumerable<Ingredient> Ingredients { get; set; } = new List<Ingredient> { };
+        public List<int> IngredientsIds { get; set; } = new List<int>();
     }
 }
