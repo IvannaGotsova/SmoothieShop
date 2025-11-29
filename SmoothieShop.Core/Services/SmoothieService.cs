@@ -35,9 +35,23 @@ namespace SmoothieShop.Core.Services
                 Price = addSmoothieModel.Price,
                 Size = addSmoothieModel.Size,
                 Calories = addSmoothieModel.Calories,
+                IngredientsSmoothies = new List<IngredientSmoothie>()
             };
 
             await this.data.AddAsync(smoothieToBeAdded);
+
+            foreach (var ingredient in addSmoothieModel.IngredientsIds)
+            {
+                var ingredientSmoothieToBeAdded = new IngredientSmoothie()
+                {
+                    IngredientId = ingredient,
+                    Smoothie  = smoothieToBeAdded
+
+                };
+
+                await this.data.AddAsync(ingredientSmoothieToBeAdded);
+            }
+
             await this.data.SaveChangesAsync();
         }
 
