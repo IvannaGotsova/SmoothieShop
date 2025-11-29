@@ -27,5 +27,9 @@ namespace SmoothieShop.Data.Data.Entites
         public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
         [Required]
         public IEnumerable<Order> Orders { get; set; } = new List<Order> { };
+        public IEnumerable<MenuSmoothie> MenusSmoothies { get; set; } = new List<MenuSmoothie>();
+        public IEnumerable<MenuOrder> MenusOrders { get; set; } = new List<MenuOrder>();
+
+
     }
 }
