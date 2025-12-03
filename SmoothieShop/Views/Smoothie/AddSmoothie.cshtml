@@ -31,13 +31,28 @@
 
                 <label asp-for="@Model.IngredientsIds" class="form-label">Add Ingredients for the Smoothie</label>
                 <br>
-                <select multiple="multiple" class="multi-select" id="@Model.IngredientsIds" asp-for="@Model.IngredientsIds" asp-items="ViewBag.Ingredients" class="form-control">
+
+                <select multiple="multiple"
+                        class="multi-select form-control"
+                        id="ingredientsSelect"
+                        asp-for="@Model.IngredientsIds"
+                        asp-items="ViewBag.Ingredients">
                     @foreach (var ingredient in Model.Ingredients)
                     {
-                        <option value="@ingredient.IngredientId">@ingredient.IngredientName</option>
+                        <option value="@ingredient.IngredientId" data-calories="@ingredient.Calories">
+                            @ingredient.IngredientName
+                        </option>
                     }
                 </select>
+
                 <span asp-validation-for="IngredientsIds" class="text-danger"></span>
+
+                <br />
+
+                <button type="button" id="calculateBtn" class="btn btn-primary mt-2">Calculate Calories</button>
+
+                <div id="caloriesResult" class="mt-2 text-success fw-bold"></div>
+
             </div>
             <div class="mb-3">
                 <input class="btn btn-primary" type="submit" value="Add Smoothie" />
@@ -49,4 +64,18 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.getElementById("calculateBtn").addEventListener("click", function () {
+            let select = document.getElementById("ingredientsSelect");
+            let selectedOptions = Array.from(select.selectedOptions);
+
+            let totalCalories = selectedOptions.reduce((sum, option) => {
+                return sum + parseInt(option.getAttribute("data-calories"));
+            }, 0);
+
+            document.getElementById("caloriesResult").innerText =
+                "Total Calories: " + totalCalories;
+        });
+    </script>
 }
