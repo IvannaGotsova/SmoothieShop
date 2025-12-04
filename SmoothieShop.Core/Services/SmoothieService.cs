@@ -151,6 +151,7 @@ namespace SmoothieShop.Core.Services
                 Size = smoothieToBeEdited.Size,
                 Price = smoothieToBeEdited.Price,
                 Calories = smoothieToBeEdited.Calories,
+                SelectedIngredientsIds = smoothieToBeEdited.Ingredients.Select(i => i.IngredientId).ToList()
             };
 
             return editSmoothieModel;
