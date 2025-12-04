@@ -49,7 +49,7 @@
 
                 <br />
 
-                <button type="button" id="calculateBtn" class="btn btn-primary mt-2">Calculate Calories</button>
+                <button type="button" id="calculateBtn" class="btn btn-primary mt-2">Calculate Calories Per 100g</button>
 
                 <div id="caloriesResult" class="mt-2 text-success fw-bold"></div>
 
@@ -71,7 +71,7 @@
             let selectedOptions = Array.from(select.selectedOptions);
 
             let totalCalories = selectedOptions.reduce((sum, option) => {
-                return sum + parseInt(option.getAttribute("data-calories"));
+                return sum + parseInt(option.getAttribute("data-calories")) / selectedOptions.length;
             }, 0);
 
             document.getElementById("caloriesResult").innerText =
