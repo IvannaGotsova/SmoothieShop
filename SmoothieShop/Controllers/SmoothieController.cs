@@ -168,6 +168,9 @@ namespace SmoothieShop.Controllers
                 editFormModel.Ingredients = await
                 ingredientService.GetIngredientsForSelect();
 
+                editFormModel.SelectedIngredientsIds = await
+                smoothieService.GetIngredientsIdsBySmoothie(id);
+
                 return View(editFormModel);
             }
             catch (Exception)
