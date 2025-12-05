@@ -35,7 +35,6 @@ namespace SmoothieShop.Core.Services
                 Price = addSmoothieModel.Price,
                 Size = addSmoothieModel.Size,
                 Calories = addSmoothieModel.Calories,
-                IngredientsSmoothies = new List<IngredientSmoothie>()
             };
 
             await this.data.AddAsync(smoothieToBeAdded);
@@ -121,7 +120,7 @@ namespace SmoothieShop.Core.Services
             this.data.DeleteRange<IngredientSmoothie>(ingredietsSmoothisToDelete);
 
 
-            foreach (var ingredient in editSmoothieModel.IngredientsIds)
+            foreach (var ingredient in editSmoothieModel.SelectedIngredientsIds)
             {
                 var ingredientSmoothieToBeEdited = new IngredientSmoothie()
                 {
@@ -151,7 +150,8 @@ namespace SmoothieShop.Core.Services
                 Size = smoothieToBeEdited.Size,
                 Price = smoothieToBeEdited.Price,
                 Calories = smoothieToBeEdited.Calories,
-                SelectedIngredientsIds = smoothieToBeEdited.Ingredients.Select(i => i.IngredientId).ToList()
+                IngredientsIds = smoothieToBeEdited.IngredientsSmoothies.Select(ism => ism.IngredientId).ToList(),
+                IngredientsSmoothies = new List<IngredientSmoothie>()
             };
 
             return editSmoothieModel;
@@ -188,6 +188,17 @@ namespace SmoothieShop.Core.Services
                 .ToList();
 
             return ingredients;
+        }
+
+        public async Task<IEnumerable<int>> GetIngredientsIdsBySmoothie(int smoothieId)
+        {
+            var ingredientsIds = data
+                .AllReadonly<IngredientSmoothie>()
+                .Where(ism => ism.SmoothieId == smoothieId)
+                .Select(ism => ism.IngredientId)
+                .ToList();
+
+            return ingredientsIds;
         }
 
         public async Task<IEnumerable<Menu>> GetMenusBySmoothie(int smoothieId)
