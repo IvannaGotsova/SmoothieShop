@@ -26,10 +26,14 @@
                 <span asp-validation-for="Calories" class="small text-danger"></span>
                 <label asp-for="@Model.IngredientsIds" class="form-label">Add Ingredients for the Smoothie</label>
                 <br>
-                <select multiple="multiple" class="multi-select" id="@Model.IngredientsIds" asp-for="@Model.IngredientsIds" asp-items="ViewBag.Ingredients" class="form-control">
+                <select multiple="multiple" class="multi-select form-control"
+                        asp-for="SelectedIngredientsIds" id="ingredientsSelect">
                     @foreach (var ingredient in Model.Ingredients)
                     {
-                        <option value="@ingredient.IngredientId">@ingredient.IngredientName</option>
+                        <option value="@ingredient.IngredientId"
+                                (Model.SelectedIngredientsIds.Contains(ingredient.IngredientId) ? "preselected" : "" )>
+                            @ingredient.IngredientName
+                        </option>
                     }
                 </select>
                 <span asp-validation-for="IngredientsIds" class="text-danger"></span>
