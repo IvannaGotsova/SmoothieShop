@@ -287,8 +287,7 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("AllSmoothies", "Smoothie", new { area = "" });
             }
         }
-
-        [Authorize]
+        otte
         public async Task<IActionResult> SmoothieMenus(int id)
         {
             //check if the smoothie is null
