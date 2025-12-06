@@ -13,14 +13,10 @@ namespace SmoothieShop.Controllers
     public class SmoothieController : Controller
     {
         private readonly ISmoothieService smoothieService;
-        private readonly IMenuService menuService;
-        private readonly IOrderService orderService;
         private readonly IIngredientService ingredientService;
-        public SmoothieController(ISmoothieService smoothieService, IMenuService menuUserService, IOrderService orderService, IIngredientService ingredientService)
+        public SmoothieController(ISmoothieService smoothieService, IIngredientService ingredientService)
         {
             this.smoothieService = smoothieService;
-            this.menuService = menuUserService;
-            this.orderService = orderService;
             this.ingredientService = ingredientService;
         }
         /// <summary>
