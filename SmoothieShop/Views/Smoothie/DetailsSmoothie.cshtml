@@ -22,6 +22,12 @@
           <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieOrders" asp-route-id="@Model.SmoothieId"
                sp-route-information="" class="btn btn-success">Orders</a>
           <br />
+            <hr />
+          <a class="btn btn-warning" asp-controller="Smoothie" asp-action="EditSmoothie" asp-route-id="@Model.SmoothieId"
+               sp-route-information="" class="btn btn-success">Edit Smoothie</a>
+          <hr />
+          <a class="btn btn-warning" asp-controller="Smoothie" asp-action="DeleteSmoothie" asp-route-id="@Model.SmoothieId"
+               sp-route-information="" class="btn btn-success">Delete Smoothie</a>
 
        </div>
     </div>
