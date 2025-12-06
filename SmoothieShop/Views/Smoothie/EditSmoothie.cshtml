@@ -30,14 +30,19 @@
                         asp-for="SelectedIngredientsIds" id="ingredientsSelect">
                     @foreach (var ingredient in Model.Ingredients)
                     {
-                        <option value="@ingredient.IngredientId"
-                                (Model.SelectedIngredientsIds.Contains(ingredient.IngredientId) ? "preselected" : "" )>
+                        <option value="@ingredient.IngredientId" data-calories="@ingredient.Calories"
+                                (Model.SelectedIngredientsIds.Contains(ingredient.IngredientId) ? "selected" : "" )>
                             @ingredient.IngredientName
                         </option>
                     }
                 </select>
                 <span asp-validation-for="IngredientsIds" class="text-danger"></span>
             </div>
+
+            <button type="button" id="calculateBtn" class="btn btn-primary mt-2">Calculate Calories Per 100g</button>
+
+            <div id="caloriesResult" class="mt-2 text-success fw-bold"></div>
+
             <div class="text-center">
                 <input class="btn btn-primary mt-3" type="submit" value="Save" />
             </div>
@@ -47,4 +52,20 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+
+    <script>
+        document.getElementById("calculateBtn").addEventListener("click", function () {
+            let select = document.getElementById("ingredientsSelect");
+            let selectedOptions = Array.from(select.selectedOptions);
+
+            let totalCalories = selectedOptions.reduce((sum, option) => {
+                return sum + parseInt(option.getAttribute("data-calories")) / selectedOptions.length;
+            }, 0);
+
+            document.getElementById("caloriesResult").innerText =
+                "Total Calories: " + totalCalories;
+        });
+    </script>
+
 }
