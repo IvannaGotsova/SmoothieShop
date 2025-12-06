@@ -57,10 +57,6 @@ namespace SmoothieShop.Controllers
         {
             var modelSmoothie = new AddSmoothieModel()
             {
-                Menus = await
-                menuService.GetMenusForSelect(),
-                Orders = await
-                orderService.GetOrdersForSelect(),
                 Ingredients = await
                 ingredientService.GetIngredientsForSelect(),
             };
@@ -79,10 +75,6 @@ namespace SmoothieShop.Controllers
             //check if the model state is valid
             if (!ModelState.IsValid)
             {
-                addSmoothieModel.Menus = await
-                menuService.GetMenusForSelect();
-                addSmoothieModel.Orders = await
-                orderService.GetOrdersForSelect();
                 addSmoothieModel.Ingredients = await
                 ingredientService.GetIngredientsForSelect();
 
@@ -102,10 +94,6 @@ namespace SmoothieShop.Controllers
             {
                 ModelState.AddModelError("", somethingWrong);
 
-                addSmoothieModel.Menus = await
-                menuService.GetMenusForSelect();
-                addSmoothieModel.Orders = await
-                orderService.GetOrdersForSelect();
                 addSmoothieModel.Ingredients = await
                 ingredientService.GetIngredientsForSelect();
 
