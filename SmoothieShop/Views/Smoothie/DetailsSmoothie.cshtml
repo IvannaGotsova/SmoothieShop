@@ -15,20 +15,28 @@
           <p class="card-title mt-1">Smoothie Calories: @Model.Calories</p>
           <p class="card-title mt-1">Smoothie Size: @Model.Size</p>
           <p class="card-title mt-1">Smoothie Price: @Model.Price</p>
-          <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieIngredients" asp-route-id="@Model.SmoothieId"
-               sp-route-information="" class="btn btn-success">Ingredients</a>
-          <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieMenus" asp-route-id="@Model.SmoothieId"
-               sp-route-information="" class="btn btn-success">Menus</a>
-          <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieOrders" asp-route-id="@Model.SmoothieId"
-               sp-route-information="" class="btn btn-success">Orders</a>
-          <br />
-            <hr />
-          <a class="btn btn-warning" asp-controller="Smoothie" asp-action="EditSmoothie" asp-route-id="@Model.SmoothieId"
-               sp-route-information="" class="btn btn-success">Edit Smoothie</a>
-          <hr />
-          <a class="btn btn-warning" asp-controller="Smoothie" asp-action="DeleteSmoothie" asp-route-id="@Model.SmoothieId"
-               sp-route-information="" class="btn btn-success">Delete Smoothie</a>
 
+            @if (this.User?.Identity?.IsAuthenticated ?? false)
+            {
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieIngredients" asp-route-id="@Model.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Ingredients</a>
+            }
+
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieMenus" asp-route-id="@Model.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Menus</a>
+
+            @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+            {
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieOrders" asp-route-id="@Model.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Orders</a>
+                <br />
+                <hr />
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="EditSmoothie" asp-route-id="@Model.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Edit Smoothie</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="DeleteSmoothie" asp-route-id="@Model.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Delete Smoothie</a>
+            }
        </div>
     </div>
 </div>
