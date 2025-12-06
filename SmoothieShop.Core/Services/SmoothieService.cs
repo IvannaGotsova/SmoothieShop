@@ -181,44 +181,44 @@ namespace SmoothieShop.Core.Services
         public async Task<IEnumerable<Ingredient>>GetIngredientsBySmoothie(int smoothieId)
         {
 
-            var ingredients = data
+            var ingredients = await data
                 .AllReadonly<IngredientSmoothie>()
                 .Where(ism => ism.SmoothieId == smoothieId)
                 .Select(ism => ism.Ingredient)
-                .ToList();
+                .ToListAsync();
 
             return ingredients;
         }
 
         public async Task<IEnumerable<int>> GetIngredientsIdsBySmoothie(int smoothieId)
         {
-            var ingredientsIds = data
+            var ingredientsIds = await data
                 .AllReadonly<IngredientSmoothie>()
                 .Where(ism => ism.SmoothieId == smoothieId)
                 .Select(ism => ism.IngredientId)
-                .ToList();
+                .ToListAsync();
 
             return ingredientsIds;
         }
 
         public async Task<IEnumerable<Menu>> GetMenusBySmoothie(int smoothieId)
         {
-            var menus = data
+            var menus = await data
                 .AllReadonly<MenuSmoothie>()
                 .Where(ms => ms.SmoothieId == smoothieId)
                 .Select(ms => ms.Menu)
-                .ToList();
+                .ToListAsync();
 
             return menus;
         }
 
         public async Task<IEnumerable<Order>> GetOrdersBySmoothie(int smoothieId)
         {
-            var orders = data
+            var orders = await data
                .AllReadonly<OrderSmoothie>()
                .Where(os => os.SmoothieId == smoothieId)
                .Select(os => os.Order)
-               .ToList();
+               .ToListAsync();
 
             return orders;
         }
