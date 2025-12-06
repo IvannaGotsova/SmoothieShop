@@ -17,6 +17,12 @@
           <p class="card-title mt-1">Smoothie Price: @Model.Price</p>
           <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieIngredients" asp-route-id="@Model.SmoothieId"
                sp-route-information="" class="btn btn-success">Ingredients</a>
+          <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieMenus" asp-route-id="@Model.SmoothieId"
+               sp-route-information="" class="btn btn-success">Menus</a>
+          <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieOrders" asp-route-id="@Model.SmoothieId"
+               sp-route-information="" class="btn btn-success">Orders</a>
+          <br />
+
        </div>
     </div>
 </div>
