@@ -13,6 +13,16 @@
        <div class="card-body">
             <input type="hidden" asp-for="@Model.CustomerUserId" />
             <h5 class="card-title mt-1">Application User ID: @Model.ApplicationUserId</h5>
+
+            <a class="btn btn-warning" asp-controller="CustomerUser" asp-action="DetailsCustomerUser" asp-route-id="@Model.CustomerUserId"
+               sp-route-information="" class="btn btn-success">Details Customer User</a>
+            <hr />
+            <a class="btn btn-warning" asp-controller="CustomerUser" asp-action="EditCustomerUser" asp-route-id="@Model.CustomerUserId"
+               sp-route-information="" class="btn btn-success">Edit Customer User</a>
+            <hr />
+            <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="DetailsApplicationUser" asp-route-id="@Model.ApplicationUserId"
+               sp-route-information="" class="btn btn-success">Details ApplicationUser</a>
+            <hr />
        </div>
     </div>
 </div>
