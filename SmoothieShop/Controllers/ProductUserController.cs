@@ -246,6 +246,21 @@ namespace SmoothieShop.Controllers
                 return View(deleteProductUserModel);
             }
         }
+        public async Task<IActionResult> ProductUserMenus(int id)
+        {
+            try
+            {
+                var productUserMenus = await
+                    productUserService
+                   .GetMenusByProductUserId(id);
 
+                return View(productUserMenus);
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+        }
     }
 }
