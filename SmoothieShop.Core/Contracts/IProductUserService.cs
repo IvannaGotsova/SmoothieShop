@@ -1,4 +1,5 @@
 ﻿using SmoothieShop.Data.Data.Entites;
+using SmoothieShop.Data.Models.MenuModels;
 using SmoothieShop.Data.Models.ProductUserModels;
 using System;
 using System.Collections.Generic;
@@ -68,5 +69,7 @@ namespace SmoothieShop.Core.Contracts
         Task Delete(int productUserId);
 
         int Count();
+
+        Task<IEnumerable<DetailsMenuModel>> GetMenusByProductUserId(int productUserId);
     }
 }
