@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
+using SmoothieShop.Data.Models.MenuModels;
 using SmoothieShop.Data.Models.ProductUserModels;
 using SmoothieShop.Data.Repositories;
 using System;
@@ -128,6 +129,26 @@ namespace SmoothieShop.Core.Services
                 })
                 .ToList();
         }
+
+        public async Task<IEnumerable<DetailsMenuModel>> GetMenusByProductUserId(int productUserId)
+        {
+            var menus = await
+                this.data
+                .AllReadonly<Menu>()
+                .Where(pu => pu.ProductUserId == productUserId)
+                .Select(m => new DetailsMenuModel()
+                {
+                    MenuId = m.MenuId,
+                    MenuName = m.MenuName,
+                    ProductUserId = m.ProductUserId,
+                    OrdersCount = m.Orders.Count(),
+                    SmoothiesCount = m.Smoothies.Count(),
+                }).ToListAsync();
+
+            return menus;
+
+        }
+
         /// <summary>
         /// This method returns a particular productUser with a given id.
         /// </summary>
