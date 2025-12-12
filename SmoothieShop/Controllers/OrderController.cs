@@ -55,6 +55,7 @@ namespace SmoothieShop.Controllers
         {
             var modelOrder = new AddOrderModel()
             {
+                Date = DateTime.Now,
                 Menus = await
                 menuService.GetMenusForSelect(),
                 Smoothies = await
