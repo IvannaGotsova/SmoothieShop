@@ -1,13 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SmoothieShop.Common.Common;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.OrderModels;
+using SmoothieShop.Data.Models.SmoothieModels;
 using SmoothieShop.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Claims;
+using static SmoothieShop.Common.Common.GetCurrentUser;
 
 namespace SmoothieShop.Core.Services
 {
@@ -32,11 +40,36 @@ namespace SmoothieShop.Core.Services
             var orderToBeAdded = new Order()
             {
                 Price = addOrderModel.Price,
-                Date = addOrderModel.Date,
-                CustomerId = addOrderModel.CustomerId
+                Date = DateTime.Now,
+                CustomerId = addOrderModel.CustomerId            
             };
 
             await this.data.AddAsync(orderToBeAdded);
+
+            foreach (var menu in addOrderModel.MenusIds)
+            {
+                var menuOrderToBeAdded = new MenuOrder()
+                {
+                    MenuId = menu,
+                    Order = orderToBeAdded
+
+                };
+
+                await this.data.AddAsync(menuOrderToBeAdded);
+            }
+
+            foreach (var smoothie in addOrderModel.SmoothiesIds)
+            {
+                var smoothieOrdderToBeAdded = new OrderSmoothie()
+                {
+                    SmoothieId = smoothie,
+                    Order = orderToBeAdded
+
+                };
+
+                await this.data.AddAsync(smoothieOrdderToBeAdded);
+            }
+
             await this.data.SaveChangesAsync();
         }
 
