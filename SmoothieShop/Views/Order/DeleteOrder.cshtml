@@ -10,6 +10,7 @@
 <form asp-action="DeleteOrder">
     <div class="row">
         <div class="col-md-8">
+            <input type="hidden" asp-for="@Model.OrderId" />
             <div class="form-group">
                 <label asp-for="Price" class="control-label">Order Price</label>
                 <input asp-for="Price" class="form-control" disabled="disabled" />

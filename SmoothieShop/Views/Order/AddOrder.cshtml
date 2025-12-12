@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3">
                 <label asp-for="@Model.Date" class="form-label">Order Date</label>
-                <input asp-for="@Model.Date" class="form-control" aria-required="true" />
+                <input asp-for="@Model.Date" class="form-control" aria-required="true" placeholder="Date of Order"/>
                 <span asp-validation-for="Date" class="text-danger"></span>
 
                 <label asp-for="@Model.Price" class="form-label">Order Price</label>
@@ -24,6 +24,44 @@
                 <label asp-for="@Model.CustomerId" class="form-label">Order Customer ID</label>
                 <input asp-for="@Model.CustomerId" class="form-control" aria-required="true" />
                 <span asp-validation-for="CustomerId" class="text-danger"></span>
+
+                <label asp-for="@Model.MenusIds" class="form-label">Add Menus for the Order</label>
+                <br>
+                <select multiple="multiple"
+                        class="multi-select form-control"
+                        id="menusSelect"
+                        asp-for="@Model.MenusIds"
+                        asp-items="ViewBag.Menus">
+                    @foreach (var menu in Model.Menus)
+                    {
+                        <option value="@menu.MenuId" data-price="@menu.Price">
+                            @menu.MenuName
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="MenusIds" class="text-danger"></span>
+                <br />
+
+                <label asp-for="@Model.SmoothiesIds" class="form-label">Add Smoothies for the Order</label>
+                <br>
+                <select multiple="multiple"
+                        class="multi-select form-control"
+                        id="smoothiesSelect"
+                        asp-for="@Model.SmoothiesIds"
+                        asp-items="ViewBag.Smoothies">
+                    @foreach (var smoothie in Model.Smoothies)
+                    {
+                        <option value="@smoothie.SmoothieId" data-price="@smoothie.Price">
+                            @smoothie.SmoothieName
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="SmoothiesIds" class="text-danger"></span>
+                <br />
+
+
+                <button type="button" id="calculateBtn" class="btn btn-primary mt-2">Calculate Price</button>
+                <div id="priceResult" class="mt-2 text-success fw-bold"></div>
 
             </div>
             <div class="mb-3">
@@ -36,4 +74,23 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.getElementById("calculateBtn").addEventListener("click", function () {
+            let selectMenus = document.getElementById("menusSelect");
+            let selectSmoothies = document.getElementById("smoothiesSelect");
+
+            let selectedOptions = [
+            ...Array.from(selectMenus.selectedOptions),
+            ...Array.from(selectSmoothies.selectedOptions)
+            ];
+
+            let totalprice = selectedOptions.reduce((sum, option) => {
+                return sum + parseFloat(option.getAttribute("data-price"));
+            }, 0);
+
+            document.getElementById("priceResult").innerText =
+                "Total Price: " + totalprice.toFixed(2);
+        });
+    </script>
 }
