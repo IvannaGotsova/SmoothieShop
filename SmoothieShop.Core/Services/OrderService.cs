@@ -88,6 +88,7 @@ namespace SmoothieShop.Core.Services
         /// <returns></returns>
         public async Task Delete(int orderId)
         {
+ 
             await this.data.DeleteAsync<Order>(orderId);
             await this.data.SaveChangesAsync();
         }
