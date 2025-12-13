@@ -16,7 +16,7 @@ namespace SmoothieShop.Data.Data.Entites
         [Required]
         public int OrderId { get; set; }
         [Required]
-        [Range(typeof(double), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
+        [Range(typeof(decimal), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
         public decimal Price{ get; set; }
         [Required]
         public DateTime Date { get; set; }
@@ -24,10 +24,8 @@ namespace SmoothieShop.Data.Data.Entites
         public int CustomerId { get; set; }
         [ForeignKey(nameof(CustomerId))]
         public Customer? Customer { get; set; }
-        [Required]
         public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
         public IEnumerable<OrderSmoothie> OrdersSmoothies { get; set; } = new List<OrderSmoothie>();
-        [Required]
         public IEnumerable<Menu> Menus { get; set; } = new List<Menu>();
 
     }
