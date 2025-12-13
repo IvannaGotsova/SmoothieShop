@@ -20,6 +20,9 @@ namespace SmoothieShop.Data.Data.Entites
         [StringLength(MenuMaxLengthName)]
         public string? MenuName { get; set; }
         [Required]
+        [Range(typeof(decimal), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
+        public decimal Price { get; set; }
+        [Required]
         public int ProductUserId { get; set; }
         [ForeignKey(nameof(ProductUserId))]
         public ProductUser? ProductUser { get; set; }
