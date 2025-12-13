@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SmoothieShop.Core.Contracts;
+using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Models.OrderModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
@@ -15,11 +17,13 @@ namespace SmoothieShop.Controllers
         private readonly IOrderService orderService;
         private readonly IMenuService menuService;
         private readonly ISmoothieService smoothiesService;
-        public OrderController(IOrderService orderService, IMenuService menuService, ISmoothieService smoothiesService)
+        private readonly ICustomerService customerService;
+        public OrderController(IOrderService orderService, IMenuService menuService, ISmoothieService smoothiesService, ICustomerService customerService)
         {
             this.orderService = orderService;
             this.menuService = menuService;
             this.smoothiesService = smoothiesService;
+            this.customerService = customerService;
         }
         /// <summary>
         /// This method returns index view.
