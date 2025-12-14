@@ -264,5 +264,51 @@ namespace SmoothieShop.Controllers
             }
         }
 
+        public async Task<IActionResult> OrderMenus(int id)
+        {
+            //check if the order is null
+            if (await orderService
+                .GetOrderById(id) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                var menus = await orderService.GetMenusByOrder(id);
+
+                return View(menus);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return RedirectToAction("AllOrders", "Order", new { area = "" });
+            }
+        }
+
+        public async Task<IActionResult> OrderSmoothies(int id)
+        {
+            //check if the order is null
+            if (await orderService
+                .GetOrderById(id) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                var smoothies = await orderService.GetSmoothiesByOrder(id);
+
+                return View(smoothies);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return RedirectToAction("AllOrders", "Order", new { area = "" });
+            }
+        }
+
     }
 }
