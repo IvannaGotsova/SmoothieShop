@@ -13,38 +13,11 @@
        <div class="card-body">
             <input type="hidden" asp-for="@Model.OrderId" />
           <h5 class="card-title mt-1">Order Customer ID: @Model.CustomerId</h5>
+            <div class="card-body">
+                <h5 class="card-title mt-1">Order ID: @Model.OrderId</h5>
+                <p class="card-title mt-1">Order Date: @Model.Date</p>
+                <p class="card-title mt-1">Order Price: @Model.Price</p>
+            </div>
        </div>
     </div>
 </div>
-
-@foreach (var menu in @Model.Menus)
-{
-    <div class="text-center row">
-        <div class="card col-4" style="width: 20rem; ">
-            <input type="hidden" asp-for="@Model.Menus" />
-            <div class="card-body">
-
-                <p class="mb-0">Order ID: @menu.MenuId</p>
-                <p class="mb-0">First Name: @menu.MenuName</p>
-                <p class="mb-0">Last Name @menu.ProductUserId</p>
-
-            </div>
-        </div>
-    </div>
-}
-
-@foreach (var smoothie in @Model.Smoothies)
-{
-    <div class="text-center row">
-        <div class="card col-4" style="width: 20rem; ">
-            <input type="hidden" asp-for="@Model.Smoothies" />
-            <div class="card-body">
-
-                <p class="mb-0">Title: @smoothie.SmoothieId</p>
-                <p class="mb-0">Description: @smoothie.SmoothieName</p>
-                <p class="mb-0">Trip: @smoothie.Calories</p>
-
-            </div>
-        </div>
-    </div>
-}
