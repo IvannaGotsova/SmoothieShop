@@ -88,7 +88,22 @@ namespace SmoothieShop.Core.Services
         /// <returns></returns>
         public async Task Delete(int orderId)
         {
- 
+            var menusOrders = await
+                this.data
+                .AllReadonly<MenuOrder>()
+                .Where(mo => mo.OrderId == orderId)
+                .ToListAsync();
+
+            this.data.RemoveRange(menusOrders);
+
+            var smoothiesOrders = await
+                this.data
+                .AllReadonly<OrderSmoothie>()
+                .Where(mo => mo.OrderId == orderId)
+                .ToListAsync();
+
+            this.data.RemoveRange(smoothiesOrders);
+
             await this.data.DeleteAsync<Order>(orderId);
             await this.data.SaveChangesAsync();
         }
