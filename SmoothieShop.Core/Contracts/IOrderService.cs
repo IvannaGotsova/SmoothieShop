@@ -68,5 +68,8 @@ namespace SmoothieShop.Core.Contracts
         Task Delete(int orderId);
 
         int Count();
+
+        Task<IEnumerable<Smoothie>> GetSmoothiesByOrder(int orderId);
+        Task<IEnumerable<Menu>> GetMenusByOrder(int orderId);
     }
 }

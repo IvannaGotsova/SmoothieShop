@@ -184,6 +184,18 @@ namespace SmoothieShop.Core.Services
                 })
                 .ToList();
         }
+
+        public async Task<IEnumerable<Menu>> GetMenusByOrder(int orderId)
+        {
+            var menus = await data
+               .AllReadonly<MenuOrder>()
+               .Where(mo => mo.OrderId == orderId)
+               .Select(mo => mo.Menu)
+               .ToListAsync();
+
+            return menus;
+        }
+
         /// <summary>
         /// This method returns a particular order with a given id.
         /// </summary>
@@ -246,6 +258,17 @@ namespace SmoothieShop.Core.Services
                 this.data
                 .AllReadonly<Order>()
                 .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Smoothie>> GetSmoothiesByOrder(int orderId)
+        {
+            var smoothies = await data
+               .AllReadonly<OrderSmoothie>()
+               .Where(os => os.OrderId == orderId)
+               .Select(os => os.Smoothie)
+               .ToListAsync();
+
+            return smoothies;
         }
     }
 }
