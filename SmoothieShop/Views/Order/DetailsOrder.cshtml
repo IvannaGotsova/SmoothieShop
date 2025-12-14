@@ -18,6 +18,23 @@
                 <p class="card-title mt-1">Order Date: @Model.Date</p>
                 <p class="card-title mt-1">Order Price: @Model.Price</p>
             </div>
+            <hr />
+            @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+            {
+                <a class="btn btn-warning" asp-controller="Order" asp-action="OrderMenus" asp-route-id="@Model.OrderId"
+                   sp-route-information="" class="btn btn-success">Menus in Order</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Order" asp-action="OrderSmoothies" asp-route-id="@Model.OrderId"
+                   sp-route-information="" class="btn btn-success">Smoothies in Order</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Order" asp-action="EditOrder" asp-route-id="@Model.OrderId"
+                   sp-route-information="" class="btn btn-success">Edit Order</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Order" asp-action="DeleteOrder" asp-route-id="@Model.OrderId"
+                   sp-route-information="" class="btn btn-success">Delete Order</a>
+                <hr />
+            }
        </div>
+
     </div>
 </div>
