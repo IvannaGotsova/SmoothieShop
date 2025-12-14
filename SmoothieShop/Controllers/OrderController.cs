@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Core.Services;
+using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.OrderModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
+using static SmoothieShop.Common.Common.GetCurrentUser;
 
 namespace SmoothieShop.Controllers
 {
@@ -18,12 +21,19 @@ namespace SmoothieShop.Controllers
         private readonly IMenuService menuService;
         private readonly ISmoothieService smoothiesService;
         private readonly ICustomerService customerService;
-        public OrderController(IOrderService orderService, IMenuService menuService, ISmoothieService smoothiesService, ICustomerService customerService)
+        private readonly IApplicationUserService applicationUser;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
+
+        public OrderController(IOrderService orderService, IMenuService menuService, ISmoothieService smoothiesService, ICustomerService customerService, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IApplicationUserService applicationUserService)
         {
             this.orderService = orderService;
             this.menuService = menuService;
             this.smoothiesService = smoothiesService;
             this.customerService = customerService;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.applicationUser = applicationUserService;
         }
         /// <summary>
         /// This method returns index view.
@@ -57,6 +67,7 @@ namespace SmoothieShop.Controllers
         [HttpGet]
         public async Task<IActionResult> AddOrder()
         {
+
             var modelOrder = new AddOrderModel()
             {
                 Date = DateTime.Now,
@@ -64,6 +75,8 @@ namespace SmoothieShop.Controllers
                 menuService.GetMenusForSelect(),
                 Smoothies = await
                 smoothiesService.GetSmoothiesForSelect(),
+                Customers = await
+                customerService.GetCustomersForSelect()
             };
 
             return View(modelOrder);
@@ -80,10 +93,13 @@ namespace SmoothieShop.Controllers
             //check if the model state is valid
             if (!ModelState.IsValid)
             {
+
                 addOrderModel.Menus = await
                 menuService.GetMenusForSelect();
                 addOrderModel.Smoothies = await
                 smoothiesService.GetSmoothiesForSelect();
+                addOrderModel.Customers = await
+                customerService.GetCustomersForSelect();
 
                 return View(addOrderModel);
             }
@@ -105,6 +121,8 @@ namespace SmoothieShop.Controllers
                 menuService.GetMenusForSelect();
                 addOrderModel.Smoothies = await
                 smoothiesService.GetSmoothiesForSelect();
+                addOrderModel.Customers = await
+                customerService.GetCustomersForSelect();
 
                 return View(addOrderModel);
             }
