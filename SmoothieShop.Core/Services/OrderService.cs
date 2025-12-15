@@ -40,8 +40,7 @@ namespace SmoothieShop.Core.Services
             var orderToBeAdded = new Order()
             {
                 Price = addOrderModel.Price,
-                Date = DateTime.Now,
-                CustomerId = addOrderModel.CustomerId            
+                Date = DateTime.Now         
             };
 
             await this.data.AddAsync(orderToBeAdded);
@@ -160,6 +159,7 @@ namespace SmoothieShop.Core.Services
                 Price = orderToBeEdited.Price,
                 Date = orderToBeEdited.Date,
                 CustomerId = orderToBeEdited.CustomerId
+
             };
 
             return editOrderModel;
