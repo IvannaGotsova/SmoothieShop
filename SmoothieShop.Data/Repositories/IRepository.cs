@@ -29,5 +29,6 @@ namespace SmoothieShop.Data.Repositories
         void DeleteRange<T>(Expression<Func<T, bool>> deleteWhereClause) where T : class;
         void Detach<T>(T entity) where T : class;
         Task<int> SaveChangesAsync();
+        void RemoveRange<TEntity>(IEnumerable<TEntity> entities) where TEntity : class;
     }
 }
