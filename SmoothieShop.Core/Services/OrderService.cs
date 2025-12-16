@@ -10,11 +10,13 @@ using SmoothieShop.Data.Models.SmoothieModels;
 using SmoothieShop.Data.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using System.Security.Claims;
 using static SmoothieShop.Common.Common.GetCurrentUser;
 
 namespace SmoothieShop.Core.Services
@@ -142,6 +144,50 @@ namespace SmoothieShop.Core.Services
             orderToBeEdited.CustomerId = editOrderModel.CustomerId;
 
             this.data.Update<Order>(orderToBeEdited);
+
+            var menusOrdersToDelete = await
+              this.data
+              .AllReadonly<MenuOrder>()
+              .Where(mo => mo.OrderId == orderId)
+              .ToListAsync();
+
+            this.data.DeleteRange<MenuOrder>(menusOrdersToDelete);
+
+
+            foreach (var menu in editOrderModel.SelectedMenusIds)
+            {
+                var menusOrdersToBeEdited = new MenuOrder ()
+                {
+                    MenuId = menu,
+                    Order = orderToBeEdited
+
+                };
+
+                await this.data.AddAsync(menusOrdersToBeEdited);
+            }
+
+
+            var smoothiesOrderToDelete = await
+              this.data
+              .AllReadonly<OrderSmoothie>()
+              .Where(os => os.OrderId == orderId)
+              .ToListAsync();
+
+            this.data.DeleteRange<OrderSmoothie>(smoothiesOrderToDelete);
+
+
+            foreach (var smoothie in editOrderModel.SelectedSmoothiesIds)
+            {
+                var smoothiesOrdersToBeEdited = new OrderSmoothie()
+                {
+                    SmoothieId = smoothie,
+                    Order = orderToBeEdited
+
+                };
+
+                await this.data.AddAsync(smoothiesOrdersToBeEdited);
+            }
+
             await this.data.SaveChangesAsync();
         }
         /// <summary>
@@ -158,11 +204,17 @@ namespace SmoothieShop.Core.Services
             {
                 Price = orderToBeEdited.Price,
                 Date = orderToBeEdited.Date,
-                CustomerId = orderToBeEdited.CustomerId
+                //CustomersIds = orderToBeEdited.Customer,
+                MenusIds = orderToBeEdited.MenusOrders.Select(mo => mo.OrderId).ToList(),
+                MenusOrders = new List<MenuOrder>(),
+                SmoothiesIds = orderToBeEdited.OrdersSmoothies.Select(os => os.OrderId).ToList(),
+                OrderssSmoothies = new List<OrderSmoothie>()
 
             };
 
             return editOrderModel;
+
+
         }
         /// <summary>
         /// This method returns IEnumerable of all orders.
@@ -194,6 +246,17 @@ namespace SmoothieShop.Core.Services
                .ToListAsync();
 
             return menus;
+        }
+
+        public async Task<IEnumerable<int>> GetMenusIdsByOrder(int orderId)
+        {
+            var menusIds = await data
+                .AllReadonly<MenuOrder>()
+                .Where(mo => mo.OrderId == orderId)
+                .Select(mo => mo.MenuId)
+                .ToListAsync();
+
+            return menusIds;
         }
 
         /// <summary>
@@ -269,6 +332,17 @@ namespace SmoothieShop.Core.Services
                .ToListAsync();
 
             return smoothies;
+        }
+
+        public async Task<IEnumerable<int>> GetSmoothiesIdsByOrder(int orderId)
+        {
+            var smoothiesIds = await data
+                 .AllReadonly<OrderSmoothie>()
+                 .Where(os => os.OrderId == orderId)
+                 .Select(os => os.SmoothieId)
+                 .ToListAsync();
+
+            return smoothiesIds;
         }
     }
 }
