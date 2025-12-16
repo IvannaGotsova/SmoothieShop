@@ -179,6 +179,18 @@ namespace SmoothieShop.Controllers
                        orderService
                        .EditCreateForm(id);
 
+                editFormModel.Menus = await
+                menuService.GetMenusForSelect();
+
+                editFormModel.SelectedMenusIds = await
+                orderService.GetMenusIdsByOrder(id);
+
+                editFormModel.Smoothies = await
+                smoothiesService.GetSmoothiesForSelect();
+
+                editFormModel.SelectedSmoothiesIds = await
+                orderService.GetSmoothiesIdsByOrder(id);
+
                 return View(editFormModel);
             }
             catch (Exception)
@@ -217,6 +229,12 @@ namespace SmoothieShop.Controllers
             catch (Exception)
             {
                 ModelState.AddModelError("", somethingWrong);
+
+                editOrderModel.Menus = await
+                menuService.GetMenusForSelect();
+
+                editOrderModel.Smoothies = await
+                smoothiesService.GetSmoothiesForSelect();
 
                 return View(editOrderModel);
             }
