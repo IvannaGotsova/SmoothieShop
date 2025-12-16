@@ -21,6 +21,37 @@
                 <label asp-for="CustomerId">Order Customer ID</label>
                 <input asp-for="CustomerId" class="form-control" placeholder="CustomerId...">
                 <span asp-validation-for="CustomerId" class="small text-danger"></span>
+
+                <br>
+                <select multiple="multiple" class="multi-select form-control"
+                        asp-for="SelectedMenusIds" id="menusSelect">
+                    @foreach (var menu in Model.Menus)
+                    {
+                        <option value="@menu.MenuId" data-price="@menu.Price"
+                                (Model.SelectedMenusIds.Contains(menu.MenuId) ? "selected" : "" )>
+                            @menu.MenuName
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="MenusIds" class="text-danger"></span>
+
+                <br>
+                <select multiple="multiple" class="multi-select form-control"
+                        asp-for="SelectedSmoothiesIds" id="smoothiesSelect">
+                    @foreach (var smoothie in Model.Smoothies)
+                    {
+                        <option value="@smoothie.SmoothieId" data-price="@smoothie.Price"
+                                (Model.SelectedSmoothiesIds.Contains(smoothie.SmoothieId) ? "selected" : "" )>
+                            @smoothie.SmoothieName
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="SmoothiesIds" class="text-danger"></span>
+                <br />
+
+                <button type="button" id="calculateBtn" class="btn btn-primary mt-2">Calculate Price</button>
+                <div id="priceResult" class="mt-2 text-success fw-bold"></div>
+
             </div>
             <div class="text-center">
                 <input class="btn btn-primary mt-3" type="submit" value="Save" />
@@ -31,4 +62,23 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.getElementById("calculateBtn").addEventListener("click", function () {
+            let selectMenus = document.getElementById("menusSelect");
+            let selectSmoothies = document.getElementById("smoothiesSelect");
+
+            let selectedOptions = [
+            ...Array.from(selectMenus.selectedOptions),
+            ...Array.from(selectSmoothies.selectedOptions)
+            ];
+
+            let totalprice = selectedOptions.reduce((sum, option) => {
+                return sum + parseFloat(option.getAttribute("data-price"));
+            }, 0);
+
+            document.getElementById("priceResult").innerText =
+                "Total Price: " + totalprice.toFixed(2);
+        });
+    </script>
 }
