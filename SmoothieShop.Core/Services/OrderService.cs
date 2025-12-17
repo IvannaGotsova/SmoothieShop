@@ -204,11 +204,11 @@ namespace SmoothieShop.Core.Services
             {
                 Price = orderToBeEdited.Price,
                 Date = orderToBeEdited.Date,
-                //CustomersIds = orderToBeEdited.Customer,
+                CustomerId = orderToBeEdited.Customer.CustomerId,
                 MenusIds = orderToBeEdited.MenusOrders.Select(mo => mo.OrderId).ToList(),
                 MenusOrders = new List<MenuOrder>(),
                 SmoothiesIds = orderToBeEdited.OrdersSmoothies.Select(os => os.OrderId).ToList(),
-                OrderssSmoothies = new List<OrderSmoothie>()
+                OrdersSmoothies = new List<OrderSmoothie>()
 
             };
 
@@ -269,6 +269,8 @@ namespace SmoothieShop.Core.Services
             var order = await
                this.data
                .AllReadonly<Order>()
+               .Include(o => o.Customer)
+               .ThenInclude(c => c.ApplicationUser)
                .Where(o => o.OrderId == orderId)
                .FirstOrDefaultAsync();
 
@@ -292,6 +294,7 @@ namespace SmoothieShop.Core.Services
                .AllReadonly<Order>()
                .Include(o => o.Smoothies)
                .Include(o => o.Menus)
+               .Include(o => o.Customer)
                .Where(o => o.OrderId == orderId)
                .Select(o => new DetailsOrderModel()
                {
@@ -299,6 +302,8 @@ namespace SmoothieShop.Core.Services
                    Price = o.Price,
                    Date = o.Date,
                    CustomerId = o.CustomerId,
+                   CustomerName = o.Customer.ApplicationUser.FirstName + " " + o.Customer.ApplicationUser.LastName,
+                   CustomerUserName = o.Customer.ApplicationUser.UserName,
                    SmoothiesCount = o.Smoothies.Count(),
                    MenusCount = o.Menus.Count()
                }).FirstOrDefaultAsync();
