@@ -1,4 +1,5 @@
-﻿@model AddOrderModel  
+﻿@using SmoothieShop.Common.Common
+@model AddOrderModel  
 
 @{
     ViewBag.Title = "Add your new Order";
@@ -21,45 +22,53 @@
                 <input asp-for="@Model.Price" class="form-control" aria-required="true" />
                 <span asp-validation-for="Price" class="text-danger"></span>
 
-                <label asp-for="@Model.CustomerId" class="form-label">Order Customer ID</label>
-                <input asp-for="@Model.CustomerId" class="form-control" aria-required="true" />
-                <span asp-validation-for="CustomerId" class="text-danger"></span>
+                @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+                {
+                    <div class="mb-3">
+                        <label asp-for="CustomerId" class="form-label">Customer Name</label>
+                        <select asp-for="CustomerId" class="form-control">
+                            @foreach (var customer in Model.Customers)
+                            {
+                                <option value="@customer.CustomerId">@customer.FirstName @customer.LastName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CustomerId" class="text-danger"></span>
+                    </div>
 
-                <label asp-for="@Model.MenusIds" class="form-label">Add Menus for the Order</label>
-                <br>
-                <select multiple="multiple"
-                        class="multi-select form-control"
-                        id="menusSelect"
-                        asp-for="@Model.MenusIds"
-                        asp-items="ViewBag.Menus">
-                    @foreach (var menu in Model.Menus)
-                    {
-                        <option value="@menu.MenuId" data-price="@menu.Price">
-                            @menu.MenuName
-                        </option>
-                    }
-                </select>
-                <span asp-validation-for="MenusIds" class="text-danger"></span>
-                <br />
+                    <label asp-for="@Model.MenusIds" class="form-label">Add Menus for the Order</label>
+                    <br>
+                    <select multiple="multiple"
+                            class="multi-select form-control"
+                            id="menusSelect"
+                            asp-for="@Model.MenusIds"
+                            asp-items="ViewBag.Menus">
+                        @foreach (var menu in Model.Menus)
+                        {
+                            <option value="@menu.MenuId" data-price="@menu.Price">
+                                @menu.MenuName
+                            </option>
+                        }
+                    </select>
+                    <span asp-validation-for="MenusIds" class="text-danger"></span>
+                    <br />
 
-                <label asp-for="@Model.SmoothiesIds" class="form-label">Add Smoothies for the Order</label>
-                <br>
-                <select multiple="multiple"
-                        class="multi-select form-control"
-                        id="smoothiesSelect"
-                        asp-for="@Model.SmoothiesIds"
-                        asp-items="ViewBag.Smoothies">
-                    @foreach (var smoothie in Model.Smoothies)
-                    {
-                        <option value="@smoothie.SmoothieId" data-price="@smoothie.Price">
-                            @smoothie.SmoothieName
-                        </option>
-                    }
-                </select>
-                <span asp-validation-for="SmoothiesIds" class="text-danger"></span>
-                <br />
-
-
+                    <label asp-for="@Model.SmoothiesIds" class="form-label">Add Smoothies for the Order</label>
+                    <br>
+                    <select multiple="multiple"
+                            class="multi-select form-control"
+                            id="smoothiesSelect"
+                            asp-for="@Model.SmoothiesIds"
+                            asp-items="ViewBag.Smoothies">
+                        @foreach (var smoothie in Model.Smoothies)
+                        {
+                            <option value="@smoothie.SmoothieId" data-price="@smoothie.Price">
+                                @smoothie.SmoothieName
+                            </option>
+                        }
+                    </select>
+                    <span asp-validation-for="SmoothiesIds" class="text-danger"></span>
+                    <br />
+                }
                 <button type="button" id="calculateBtn" class="btn btn-primary mt-2">Calculate Price</button>
                 <div id="priceResult" class="mt-2 text-success fw-bold"></div>
 
