@@ -191,6 +191,12 @@ namespace SmoothieShop.Controllers
                 editFormModel.SelectedSmoothiesIds = await
                 orderService.GetSmoothiesIdsByOrder(id);
 
+                editFormModel.Customers = await
+                customerService.GetCustomersForSelect();
+
+                editFormModel.SelectedSmoothiesIds = await
+                orderService.GetSmoothiesIdsByOrder(id);
+
                 return View(editFormModel);
             }
             catch (Exception)
