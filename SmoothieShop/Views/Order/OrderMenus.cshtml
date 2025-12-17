@@ -1,0 +1,25 @@
+﻿@using SmoothieShop.Data.Data.Entites
+@model IEnumerable<Menu>
+
+<h2>Menus for Order</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Menu Id</th>
+            <th>Menu Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var menu in Model)
+        {
+            <tr>
+                <td>@menu.MenuId</td>
+                <td>@menu.MenuName</td>
+                <td>
+                    @Html.ActionLink("View Details", "DetailsMenu", "Menu", new { id = menu.MenuId }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
