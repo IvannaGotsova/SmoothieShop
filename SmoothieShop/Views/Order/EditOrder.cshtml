@@ -18,36 +18,48 @@
                 <label asp-for="Date">Order Date</label>
                 <input asp-for="Date" class="form-control" placeholder="Date..">
                 <span asp-validation-for="Date" class="small text-danger"></span>
-                <label asp-for="CustomerId">Order Customer ID</label>
-                <input asp-for="CustomerId" class="form-control" placeholder="CustomerId...">
-                <span asp-validation-for="CustomerId" class="small text-danger"></span>
 
-                <br>
-                <select multiple="multiple" class="multi-select form-control"
-                        asp-for="SelectedMenusIds" id="menusSelect">
-                    @foreach (var menu in Model.Menus)
-                    {
-                        <option value="@menu.MenuId" data-price="@menu.Price"
-                                (Model.SelectedMenusIds.Contains(menu.MenuId) ? "selected" : "" )>
-                            @menu.MenuName
-                        </option>
-                    }
-                </select>
-                <span asp-validation-for="MenusIds" class="text-danger"></span>
+                 @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+                {
+                    <div class="mb-3">
+                        <label asp-for="CustomerId" class="form-label">Customer Name</label>
+                        <select asp-for="CustomerId" class="form-control">
+                            @foreach (var customer in Model.Customers)
+                            {
+                                <option value="@customer.CustomerId">@customer.FirstName @customer.LastName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CustomerId" class="text-danger"></span>
+                    </div>
 
-                <br>
-                <select multiple="multiple" class="multi-select form-control"
-                        asp-for="SelectedSmoothiesIds" id="smoothiesSelect">
-                    @foreach (var smoothie in Model.Smoothies)
-                    {
-                        <option value="@smoothie.SmoothieId" data-price="@smoothie.Price"
-                                (Model.SelectedSmoothiesIds.Contains(smoothie.SmoothieId) ? "selected" : "" )>
-                            @smoothie.SmoothieName
-                        </option>
-                    }
-                </select>
-                <span asp-validation-for="SmoothiesIds" class="text-danger"></span>
-                <br />
+                    <br>
+                    <select multiple="multiple" class="multi-select form-control"
+                            asp-for="SelectedMenusIds" id="menusSelect">
+                        @foreach (var menu in Model.Menus)
+                        {
+                            <option value="@menu.MenuId" data-price="@menu.Price"
+                                    (Model.SelectedMenusIds.Contains(menu.MenuId) ? "selected" : "" )>
+                                @menu.MenuName
+                            </option>
+                        }
+                    </select>
+                    <span asp-validation-for="MenusIds" class="text-danger"></span>
+
+
+                    <br>
+                    <select multiple="multiple" class="multi-select form-control"
+                            asp-for="SelectedSmoothiesIds" id="smoothiesSelect">
+                        @foreach (var smoothie in Model.Smoothies)
+                        {
+                            <option value="@smoothie.SmoothieId" data-price="@smoothie.Price"
+                                    (Model.SelectedSmoothiesIds.Contains(smoothie.SmoothieId) ? "selected" : "" )>
+                                @smoothie.SmoothieName
+                            </option>
+                        }
+                    </select>
+                    <span asp-validation-for="SmoothiesIds" class="text-danger"></span>
+                    <br />
+                }
 
                 <button type="button" id="calculateBtn" class="btn btn-primary mt-2">Calculate Price</button>
                 <div id="priceResult" class="mt-2 text-success fw-bold"></div>
