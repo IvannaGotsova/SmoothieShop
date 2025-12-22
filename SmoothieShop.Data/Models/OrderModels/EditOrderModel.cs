@@ -43,10 +43,12 @@ namespace SmoothieShop.Data.Models.OrderModels
 
         public IEnumerable<Customer> Customers { get; set; } = new List<Customer>();
         public IEnumerable<int> SelectedMenusIds { get; set; } = new List<int>();
-        public IEnumerable<OrderSmoothie> OrderssSmoothies { get; set; } = new List<OrderSmoothie> { };
+        public IEnumerable<OrderSmoothie> OrdersSmoothies { get; set; } = new List<OrderSmoothie> { };
         public IEnumerable<int> SelectedSmoothiesIds { get; set; } = new List<int>();
         public IEnumerable<MenuOrder> MenusOrders { get; set; } = new List<MenuOrder> { };
         public List<int>? CustomersIds { get; set; } = new List<int>();
+
+        public IEnumerable<int> SelectedCustomersIds { get; set; } = new List<int>();
 
     }
 }
