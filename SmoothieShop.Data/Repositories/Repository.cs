@@ -128,6 +128,10 @@ namespace SmoothieShop.Data.Repositories
             DeleteRange(entities);
         }
 
+        public void RemoveRange<TEntity>(IEnumerable<TEntity> entities) where TEntity : class
+        {
+            Context.Set<TEntity>().RemoveRange(entities);
+        }
 
     }
 }
