@@ -38,5 +38,7 @@ namespace SmoothieShop.Data.Models.OrderModels
                     new[] { nameof(MenusIds), nameof(SmoothiesIds) });
             }
         }
+
+        public IEnumerable<Customer> Customers { get; set; } = new List<Customer>();
     }
 }
