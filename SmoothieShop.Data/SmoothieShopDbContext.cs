@@ -99,6 +99,12 @@ namespace SmoothieShop.Data
                 .Entity<MenuOrder>()
                 .HasKey(mo => new { mo.MenuId, mo.OrderId });
 
+            builder.Entity<MenuOrder>()
+    .HasOne(mo => mo.Order)
+    .WithMany(o => o.MenusOrders)
+    .HasForeignKey(mo => mo.OrderId)
+    .OnDelete(DeleteBehavior.Cascade);
+
             builder
                 .Entity<MenuSmoothie>()
                 .HasKey(ms => new { ms.MenuId, ms.SmoothieId });
@@ -111,6 +117,11 @@ namespace SmoothieShop.Data
                .Entity<OrderSmoothie>()
                .HasKey(os => new { os.OrderId, os.SmoothieId });
 
+            builder.Entity<OrderSmoothie>()
+    .HasOne(mo => mo.Order)
+    .WithMany(o => o.OrdersSmoothies)
+    .HasForeignKey(mo => mo.OrderId)
+    .OnDelete(DeleteBehavior.Cascade);
 
             /// <summary>
             /// Holds Configurations of the app.
