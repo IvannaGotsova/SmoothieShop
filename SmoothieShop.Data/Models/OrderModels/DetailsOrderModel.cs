@@ -29,5 +29,8 @@ namespace SmoothieShop.Data.Models.OrderModels
         public IEnumerable<Menu> Menus { get; set; } = new List<Menu>();
         public int SmoothiesCount { get; set; }
         public int MenusCount { get; set; }
+        [Required]
+        public string CustomerName { get; set; }
+        public string CustomerUserName { get; set; }
     }
 }
