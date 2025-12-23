@@ -22,6 +22,9 @@ namespace SmoothieShop.Data.Models.MenuModels
         [Range(typeof(decimal), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
         public decimal Price { get; set; }
         [Required]
+        [Range(typeof(double), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
+        public double Calories { get; set; }
+        [Required]
         public int ProductUserId { get; set; }
         [ForeignKey(nameof(ProductUserId))]
         public ProductUser? ProductUser { get; set; }
