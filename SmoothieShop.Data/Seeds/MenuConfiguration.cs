@@ -29,7 +29,8 @@ namespace SmoothieShop.Data.Seeds
                    MenuId = 1,
                    MenuName = "Basic",
                    ProductUserId = 1,
-                   Price = 10
+                   Price = 10,
+                   Calories = 100
                 },            
             };
 
