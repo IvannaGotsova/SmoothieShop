@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
+using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Models.MenuModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
@@ -235,6 +236,53 @@ namespace SmoothieShop.Controllers
                 ModelState.AddModelError("", somethingWrong);
 
                 return View(deleteMenuModel);
+            }
+        }
+        [Authorize]
+        public async Task<IActionResult> MenuOrders(int id)
+        {
+            //check if the menu is null
+            if (await menuService
+                .GetMenuById(id) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                var orders = await menuService.GetOrdersByMenu(id);
+
+                return View(orders);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return RedirectToAction("AllMenus", "Menu", new { area = "" });
+            }
+        }
+
+        [Authorize]
+        public async Task<IActionResult> MenuSmoothies(int id)
+        {
+            //check if the menu is null
+            if (await menuService
+                .GetMenuById(id) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                var smoothies = await menuService.GetSmoothiesByMenu(id);
+
+                return View(smoothies);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return RedirectToAction("AllMenus", "Menu", new { area = "" });
             }
         }
 
