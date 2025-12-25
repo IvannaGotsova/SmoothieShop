@@ -135,12 +135,10 @@ namespace SmoothieShop.Core.Services
             var menus = await
                 this.data
                 .AllReadonly<Menu>()
-                .Where(pu => pu.ProductUserId == productUserId)
                 .Select(m => new DetailsMenuModel()
                 {
                     MenuId = m.MenuId,
                     MenuName = m.MenuName,
-                    ProductUserId = m.ProductUserId,
                     OrdersCount = m.Orders.Count(),
                     SmoothiesCount = m.Smoothies.Count(),
                 }).ToListAsync();
@@ -187,8 +185,7 @@ namespace SmoothieShop.Core.Services
                .Select(pu => new DetailsProductUserModel()
                {
                    ProductUserId = pu.ProductUserId,
-                   ApplicationUserId = pu.ApplicationUserId,
-                   MenusCount = pu.Menus.Count()
+                   ApplicationUserId = pu.ApplicationUserId
                }).FirstOrDefaultAsync();
 
             //check if productUser is null
