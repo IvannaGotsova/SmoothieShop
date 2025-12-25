@@ -306,7 +306,7 @@ namespace SmoothieShop.Data.Migrations
                         {
                             Id = "admin@admin.com",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2ad2ccbc-ef41-43eb-bf7c-b4c681e18010",
+                            ConcurrencyStamp = "b3658be5-516f-4967-9ce7-94808611d1f5",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             FirstName = "Ivan",
@@ -314,9 +314,9 @@ namespace SmoothieShop.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@admin.com",
                             NormalizedUserName = "admin@admin.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHbhlRvn1YOFOcyp7QdbAzBuL9kxjY2iHj/gXTLt/aVz3fmMwx8C/le9c74TT8ehjg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDgOEEEIDiPwpVennGpHbe/lzdDGFgxn1isxgso/Lt0rNfJWNRvXYPnxrxCpuHdefw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "67c1fb8d-5621-48f4-816e-d9ca968736f2",
+                            SecurityStamp = "70a8d23f-3f6d-440b-a00a-5947da6e19a2",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         },
@@ -324,7 +324,7 @@ namespace SmoothieShop.Data.Migrations
                         {
                             Id = "productUser@product.com",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4ef9f016-4a3f-4953-8d82-71f5bae831c6",
+                            ConcurrencyStamp = "0f143f0a-45e8-4d4b-9790-a5ae9bbaeb21",
                             Email = "productUser@product.com",
                             EmailConfirmed = false,
                             FirstName = "Stoqn",
@@ -332,9 +332,9 @@ namespace SmoothieShop.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "productUser@product.com",
                             NormalizedUserName = "productUser@product.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBq7p15tHpPlfidNASRaGZDIwYRSTPY6dP+4p/G/NmG27kTA6m89Ap/jGOrvqXJ4pw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJcHknSAJlggWbM+ZpfkMbQGxHCP0o7kFVfI4ajz3eZLN5xd/SVn0aca5CrpE1TVpg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d6d85cb4-a369-4a4f-b317-974e65eedf52",
+                            SecurityStamp = "db6884d9-8e5b-410e-87cd-85d140c6235e",
                             TwoFactorEnabled = false,
                             UserName = "productUser@product.com"
                         },
@@ -342,7 +342,7 @@ namespace SmoothieShop.Data.Migrations
                         {
                             Id = "customerUser@customer.com",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "24b60f3a-842a-4623-ad6a-4b509bf2ec2a",
+                            ConcurrencyStamp = "d6a725fc-f9f0-4188-8666-85d3f535223c",
                             Email = "customerUser@customer.com",
                             EmailConfirmed = false,
                             FirstName = "Yordan",
@@ -350,9 +350,9 @@ namespace SmoothieShop.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "customerUser@customer.com",
                             NormalizedUserName = "customerUser@customer.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJIkzv7n2MIDkgG7gbR9ytZoPsY1wuVYiQmgfto7+m0+s3Di9QvYgOGgLTMWDKoKWA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKy6CH71tcZjxyzasxHZOmCci7IcFmi2CFagyLaZHxkNqHV/UtqowWQCu79Sy+4m6A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fff44dee-5ab0-42e6-bbff-4d02ffacdd57",
+                            SecurityStamp = "be2dde67-0bca-4165-933c-32a1ebb516b2",
                             TwoFactorEnabled = false,
                             UserName = "customerUser@customer.com"
                         },
@@ -360,7 +360,7 @@ namespace SmoothieShop.Data.Migrations
                         {
                             Id = "guest1@guest.com",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4b88e3fc-397f-482f-bcf0-b4777e6ab87c",
+                            ConcurrencyStamp = "6c530c1f-df82-4115-ab12-055189d090ef",
                             Email = "guest1@guest.com",
                             EmailConfirmed = false,
                             FirstName = "Petar",
@@ -368,9 +368,9 @@ namespace SmoothieShop.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "guest1@guest.com",
                             NormalizedUserName = "guest1@guest.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEStj2LpF9jXHm0GwCw2CLuAwG6pZy6ExpatqwS7m4pzyUMPbw3+L5nSglu27IXgew==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPF5bOdL9lA5eQmel29GWMIp04j02HXIolPU7Bss7Qfot+MKMU68nzmZclFTkFgpzQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8e1fec52-8033-4cb6-bf82-a5493ce4adaa",
+                            SecurityStamp = "dc20fc79-6cfb-465b-85dc-e1e47e3ebb6f",
                             TwoFactorEnabled = false,
                             UserName = "guest1@guest.com"
                         },
@@ -378,7 +378,7 @@ namespace SmoothieShop.Data.Migrations
                         {
                             Id = "guest2@guest.com",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1708355d-2c0d-44b9-a226-bf2b66bda734",
+                            ConcurrencyStamp = "594b0629-80e0-47c6-8483-351f2b20eadb",
                             Email = "guest2@guest.com",
                             EmailConfirmed = false,
                             FirstName = "Dimitar",
@@ -386,9 +386,9 @@ namespace SmoothieShop.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "guest2@guest.com",
                             NormalizedUserName = "guest2@guest.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGAOiFU48ISkENgEFXwM+QX/gwXXmyEnTXplQKhm3OIXj5AzDEfEkWO4hME1pcQHUg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOKL2vUciIBs0ZXtNm0rrHjmkksXt2Fd0qWyXlcipxfBP4Iz66jSd+DKrjUjMv4pSw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "283b624d-2abb-46dc-971d-1d6352509469",
+                            SecurityStamp = "23b19df8-d2ef-4d2d-ab3e-2f38dd7d0312",
                             TwoFactorEnabled = false,
                             UserName = "guest2@guest.com"
                         });
@@ -631,12 +631,7 @@ namespace SmoothieShop.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProductUserId")
-                        .HasColumnType("int");
-
                     b.HasKey("MenuId");
-
-                    b.HasIndex("ProductUserId");
 
                     b.ToTable("Menus");
 
@@ -646,8 +641,7 @@ namespace SmoothieShop.Data.Migrations
                             MenuId = 1,
                             Calories = 100.0,
                             MenuName = "Basic",
-                            Price = 10m,
-                            ProductUserId = 1
+                            Price = 10m
                         });
                 });
 
@@ -1012,17 +1006,6 @@ namespace SmoothieShop.Data.Migrations
                     b.Navigation("Ingredient");
 
                     b.Navigation("Smoothie");
-                });
-
-            modelBuilder.Entity("SmoothieShop.Data.Data.Entites.Menu", b =>
-                {
-                    b.HasOne("SmoothieShop.Data.Data.Entites.ProductUser", "ProductUser")
-                        .WithMany()
-                        .HasForeignKey("ProductUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ProductUser");
                 });
 
             modelBuilder.Entity("SmoothieShop.Data.Data.Entites.MenuOrder", b =>
