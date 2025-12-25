@@ -2,6 +2,8 @@
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.MenuModels;
+using SmoothieShop.Data.Models.OrderModels;
+using SmoothieShop.Data.Models.SmoothieModels;
 using SmoothieShop.Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -32,10 +34,24 @@ namespace SmoothieShop.Core.Services
             var menuToBeAdded = new Menu()
             {
                 MenuName = addMenuModel.MenuName,
-                ProductUserId = addMenuModel.ProductUserId
+                Price = addMenuModel.Price,
+                Calories = addMenuModel.Calories,
             };
 
             await this.data.AddAsync(menuToBeAdded);
+
+            foreach (var smoothie in addMenuModel.SmoothiesIds)
+            {
+                var smoothieMenuToBeAdded = new MenuSmoothie()
+                {
+                    SmoothieId = smoothie,
+                    Menu = menuToBeAdded
+
+                };
+
+                await this.data.AddAsync(smoothieMenuToBeAdded);
+            }
+
             await this.data.SaveChangesAsync();
         }
 
@@ -54,6 +70,14 @@ namespace SmoothieShop.Core.Services
         /// <returns></returns>
         public async Task Delete(int menuId)
         {
+            var smoothiesMenus = await
+                this.data
+                .AllReadonly<MenuSmoothie>()
+                .Where(ms => ms.MenuId == menuId)
+                .ToListAsync();
+
+            this.data.RemoveRange(smoothiesMenus);
+
             await this.data.DeleteAsync<Menu>(menuId);
             await this.data.SaveChangesAsync();
         }
@@ -70,8 +94,7 @@ namespace SmoothieShop.Core.Services
             var deleteMenuModel = new DeleteMenuModel()
             {
                 MenuId = menuToBeDeleted.MenuId,
-                MenuName = menuToBeDeleted.MenuName,
-                ProductUserId = menuToBeDeleted.ProductUserId
+                MenuName = menuToBeDeleted.MenuName
             };
 
             return deleteMenuModel;
@@ -88,9 +111,32 @@ namespace SmoothieShop.Core.Services
                 GetMenuById(menuId);
 
             menuToBeEdited.MenuName = editMenuModel.MenuName;
-            menuToBeEdited.ProductUserId = editMenuModel.ProductUserId;
+            menuToBeEdited.Price = editMenuModel.Price;
+            menuToBeEdited.Calories = editMenuModel.Calories;
 
             this.data.Update<Menu>(menuToBeEdited);
+
+            var smoothiesMenusToDelete = await
+              this.data
+              .AllReadonly<MenuSmoothie>()
+              .Where(ms => ms.MenuId == menuId)
+              .ToListAsync();
+
+            this.data.DeleteRange<MenuSmoothie>(smoothiesMenusToDelete);
+
+
+            foreach (var smoothie in editMenuModel.SelectedSmoothiesIds)
+            {
+                var smoothiesMenusToBeEdited = new MenuSmoothie()
+                {
+                    SmoothieId = smoothie,
+                    Menu = menuToBeEdited
+
+                };
+
+                await this.data.AddAsync(smoothiesMenusToBeEdited);
+            }
+
             await this.data.SaveChangesAsync();
         }
         /// <summary>
@@ -106,7 +152,10 @@ namespace SmoothieShop.Core.Services
             var editMenuModel = new EditMenuModel()
             {
                 MenuName = menuToBeEdited.MenuName,
-                ProductUserId = menuToBeEdited.ProductUserId
+                Price = menuToBeEdited.Price,
+                Calories = menuToBeEdited.Calories,
+                SmoothiesIds = menuToBeEdited.MenusSmoothies.Select(ms => ms.MenuId).ToList(),
+                SmoothiesMenus = new List<MenuSmoothie>()
             };
 
             return editMenuModel;
@@ -126,7 +175,8 @@ namespace SmoothieShop.Core.Services
                 {
                     MenuId = m.MenuId,
                     MenuName = m.MenuName,
-                    ProductUserId = m.ProductUserId
+                    Price = m.Price,
+                    Calories = m.Calories
                 })
                 .ToList();
         }
@@ -168,7 +218,8 @@ namespace SmoothieShop.Core.Services
                {
                    MenuId = m.MenuId,
                    MenuName = m.MenuName,
-                   ProductUserId = m.ProductUserId,
+                   Price = m.Price,
+                   Calories = m.Calories,
                    OrdersCount = m.Orders.Count(),
                    SmoothiesCount = m.Smoothies.Count(),
                }).FirstOrDefaultAsync();
@@ -213,6 +264,17 @@ namespace SmoothieShop.Core.Services
                 .ToListAsync();
 
             return smoothies;
+        }
+
+        public async Task<IEnumerable<int>> GetSmoothiesIdsByMenu(int menuId)
+        {
+            var smoothiesIds = await data
+                 .AllReadonly<MenuSmoothie>()
+                 .Where(ms => ms.MenuId == menuId)
+                 .Select(ms => ms.SmoothieId)
+                 .ToListAsync();
+
+            return smoothiesIds;
         }
     }
 }
