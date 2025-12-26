@@ -10,6 +10,7 @@
 <form asp-action="DeleteMenu">
     <div class="row">
         <div class="col-md-8">
+            <input type="hidden" asp-for="@Model.MenuId" />
             <div class="form-group">
                 <label asp-for="MenuName" class="control-label">Menu Name</label>
                 <input asp-for="MenuName" class="form-control" disabled="disabled" />
