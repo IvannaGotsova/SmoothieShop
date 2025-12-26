@@ -15,6 +15,38 @@
                 <label asp-for="MenuName">Menu Name</label>
                 <input asp-for="MenuName" class="form-control" placeholder="Menu Name...">
                 <span asp-validation-for="MenuName" class="small text-danger"></span>
+
+                <label asp-for="Price">Menu Price</label>
+                <input asp-for="Price" class="form-control" placeholder="Menu Price...">
+                <span asp-validation-for="Price" class="small text-danger"></span>
+
+                <label asp-for="Calories">Menu Calories</label>
+                <input asp-for="Calories" class="form-control" placeholder="Menu Calories...">
+                <span asp-validation-for="Calories" class="small text-danger"></span>
+
+                @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+                {
+
+                    <label asp-for="@Model.SelectedSmoothiesIds" class="form-label">Add Smoothies for the Menu</label>
+                    <br>
+                    <select multiple="multiple" class="multi-select form-control"
+                            asp-for="SelectedSmoothiesIds" id="smoothiesSelect">
+                        @foreach (var smoothie in Model.Smoothies)
+                        {
+                            <option value="@smoothie.SmoothieId" data-calories="@smoothie.Price"
+                                    (Model.SelectedSmoothiesIds.Contains(smoothie.SmoothieId) ? "selected" : "" )>
+                                @smoothie.SmoothieName
+                            </option>
+                        }
+                    </select>
+                    <span asp-validation-for="SmoothiesIds" class="text-danger"></span>
+                    <br />
+                }
+
+                <button type="button" id="calculateBtn" class="btn btn-primary mt-2">Calculate Calories For the Menu</button>
+
+                <div id="caloriesResult" class="mt-2 text-success fw-bold"></div>
+
             </div>
             <div class="text-center">
                 <input class="btn btn-primary mt-3" type="submit" value="Save" />
@@ -25,4 +57,19 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.getElementById("calculateBtn").addEventListener("click", function () {
+            let select = document.getElementById("smoothiesSelect");
+            let selectedOptions = Array.from(select.selectedOptions);
+
+            let totalCalories = selectedOptions.reduce((sum, option) => {
+                return sum + parseInt(option.getAttribute("data-calories"));
+            }, 0);
+
+            document.getElementById("caloriesResult").innerText =
+                "Total Calories: " + totalCalories;
+        });
+    </script>
+
 }
