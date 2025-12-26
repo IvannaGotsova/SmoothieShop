@@ -14,39 +14,25 @@
             <input type="hidden" asp-for="@Model.MenuId" />
           <h5 class="card-title mt-1">Menu ID: @Model.MenuId</h5>
           <p class="mb-0">Menu Name: @Model.MenuName</p>
-          <p class="mb-0">Menu Product User ID: @Model.ProductUserId</p>
+            <p class="mb-0">Menu Price: @Model.Price</p>
+            <p class="mb-0">Menu Calories: @Model.Calories</p>
+            <hr />
+            @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+            {
+                <a class="btn btn-warning" asp-controller="Menu" asp-action="MenuOrders" asp-route-id="@Model.MenuId"
+                   sp-route-information="" class="btn btn-success">Orders for the Menu</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Menu" asp-action="MenuSmoothies" asp-route-id="@Model.MenuId"
+                   sp-route-information="" class="btn btn-success">Smoothies for the Menu</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Menu" asp-action="EditMenu" asp-route-id="@Model.MenuId"
+                   sp-route-information="" class="btn btn-success">Edit Menu</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Menu" asp-action="DeleteMenu" asp-route-id="@Model.MenuId"
+                   sp-route-information="" class="btn btn-success">Delete Menu</a>
+                <hr />
+            }
        </div>
     </div>
 </div>
 
-@foreach (var order in @Model.Orders)
-{
-    <div class="text-center row">
-        <div class="card col-4" style="width: 20rem; ">
-            <input type="hidden" asp-for="@Model.Orders" />
-            <div class="card-body">
-
-                <p class="mb-0">Title: @order.OrderId</p>
-                <p class="mb-0">Description: @order.Price</p>
-                <p class="mb-0">Trip: @order.Date</p>
-
-            </div>
-        </div>
-    </div>
-}
-
-@foreach (var smoothie in @Model.Smoothies)
-{
-    <div class="text-center row">
-        <div class="card col-4" style="width: 20rem; ">
-            <input type="hidden" asp-for="@Model.Smoothies" />
-            <div class="card-body">
-
-                <p class="mb-0">Title: @smoothie.SmoothieId</p>
-                <p class="mb-0">Description: @smoothie.SmoothieName</p>
-                <p class="mb-0">Trip: @smoothie.Calories</p>
-
-            </div>
-        </div>
-    </div>
-}
