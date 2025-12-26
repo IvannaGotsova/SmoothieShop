@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Models.MenuModels;
+using SmoothieShop.Data.Models.OrderModels;
+using SmoothieShop.Data.Models.SmoothieModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Controllers
@@ -13,9 +15,12 @@ namespace SmoothieShop.Controllers
     public class MenuController : Controller
     {
         private readonly IMenuService menuService;
-        public MenuController(IMenuService menuService)
+        private readonly ISmoothieService smoothieService;
+
+        public MenuController(IMenuService menuService, ISmoothieService smoothieService)
         {
             this.menuService = menuService;
+            this.smoothieService = smoothieService;
         }
         /// <summary>
         /// This method returns index view.
@@ -49,7 +54,11 @@ namespace SmoothieShop.Controllers
         [HttpGet]
         public async Task<IActionResult> AddMenu()
         {
-            var modelMenu = await Task.Run(() => new AddMenuModel());
+            var modelMenu = new AddMenuModel()
+            {
+                Smoothies = await
+                smoothieService.GetSmoothiesForSelect()
+            };
 
             return View(modelMenu);
         }
@@ -65,6 +74,9 @@ namespace SmoothieShop.Controllers
             //check if the model state is valid
             if (!ModelState.IsValid)
             {
+                addMenuModel.Smoothies = await
+                smoothieService.GetSmoothiesForSelect();
+
                 return View(addMenuModel);
             }
 
@@ -80,6 +92,9 @@ namespace SmoothieShop.Controllers
             catch (Exception)
             {
                 ModelState.AddModelError("", somethingWrong);
+
+                addMenuModel.Smoothies = await
+                smoothieService.GetSmoothiesForSelect();
 
                 return View(addMenuModel);
             }
@@ -136,6 +151,12 @@ namespace SmoothieShop.Controllers
                        menuService
                        .EditCreateForm(id);
 
+                editFormModel.Smoothies = await
+                smoothieService.GetSmoothiesForSelect();
+
+                editFormModel.SelectedSmoothiesIds = await
+                menuService.GetSmoothiesIdsByMenu(id);
+
                 return View(editFormModel);
             }
             catch (Exception)
@@ -172,6 +193,9 @@ namespace SmoothieShop.Controllers
             catch (Exception)
             {
                 ModelState.AddModelError("", somethingWrong);
+
+                editMenuModel.Smoothies = await
+                smoothieService.GetSmoothiesForSelect();
 
                 return View(editMenuModel);
             }
