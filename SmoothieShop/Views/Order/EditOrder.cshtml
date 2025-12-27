@@ -19,7 +19,7 @@
                 <input asp-for="Date" class="form-control" placeholder="Date..">
                 <span asp-validation-for="Date" class="small text-danger"></span>
 
-                 @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+                @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
                 {
                     <div class="mb-3">
                         <label asp-for="CustomerId" class="form-label">Customer Name</label>
@@ -32,7 +32,7 @@
                         <span asp-validation-for="CustomerId" class="text-danger"></span>
                     </div>
 
-                    <br>
+                    <label asp-for="@Model.SelectedMenusIds" class="form-label">Add Menus for the Order</label>
                     <select multiple="multiple" class="multi-select form-control"
                             asp-for="SelectedMenusIds" id="menusSelect">
                         @foreach (var menu in Model.Menus)
@@ -45,8 +45,7 @@
                     </select>
                     <span asp-validation-for="MenusIds" class="text-danger"></span>
 
-
-                    <br>
+                    <label asp-for="@Model.SelectedSmoothiesIds" class="form-label">Add Smoothies for the Order</label>
                     <select multiple="multiple" class="multi-select form-control"
                             asp-for="SelectedSmoothiesIds" id="smoothiesSelect">
                         @foreach (var smoothie in Model.Smoothies)
