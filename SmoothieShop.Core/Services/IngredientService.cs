@@ -2,6 +2,7 @@
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.IngredientModels;
+using SmoothieShop.Data.Models.SmoothieModels;
 using SmoothieShop.Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,14 @@ namespace SmoothieShop.Core.Services
         /// <returns></returns>
         public async Task Delete(int ingredientId)
         {
+            var smoothiesIngredients = await
+                this.data
+                .AllReadonly<IngredientSmoothie>()
+                .Where(ism => ism.IngredientId == ingredientId)
+                .ToListAsync();
+
+            this.data.RemoveRange(smoothiesIngredients);
+
             await this.data.DeleteAsync<Ingredient>(ingredientId);
             await this.data.SaveChangesAsync();
         }
@@ -70,6 +79,7 @@ namespace SmoothieShop.Core.Services
 
             var deleteIngredientModel = new DeleteIngredientModel()
             {
+                IngredientId = ingredientToBeDeleted.IngredientId,
                 IngredientInfo = ingredientToBeDeleted.IngredientInfo,
                 IngredientName = ingredientToBeDeleted.IngredientName,
                 Calories = ingredientToBeDeleted.Calories
@@ -194,6 +204,17 @@ namespace SmoothieShop.Core.Services
                 this.data
                 .AllReadonly<Ingredient>()
                 .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Smoothie>> GetSmoothiesByIngredient(int ingredientId)
+        {
+            var smoothies = await data
+                .AllReadonly<IngredientSmoothie>()
+                .Where(ism => ism.IngredientId == ingredientId)
+                .Select(ism => ism.Smoothie)
+                .ToListAsync();
+
+            return smoothies;
         }
     }
 }
