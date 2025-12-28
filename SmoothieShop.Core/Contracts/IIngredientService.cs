@@ -68,5 +68,7 @@ namespace SmoothieShop.Core.Contracts
         Task Delete(int ingredientId);
 
         int Count();
+
+        Task<IEnumerable<Smoothie>> GetSmoothiesByIngredient(int ingredientId);
     }
 }
