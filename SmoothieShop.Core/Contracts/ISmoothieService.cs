@@ -73,7 +73,6 @@ namespace SmoothieShop.Core.Contracts
         Task<IEnumerable<Menu>> GetMenusBySmoothie(int smoothieId);
         Task<IEnumerable<Order>> GetOrdersBySmoothie(int smoothieId);
         Task<IEnumerable<Ingredient>> GetIngredientsBySmoothie(int smoothieId);
-
         Task<IEnumerable<int>> GetIngredientsIdsBySmoothie(int smoothieId);
     }
 }
