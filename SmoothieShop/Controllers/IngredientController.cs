@@ -196,11 +196,11 @@ namespace SmoothieShop.Controllers
 
             try
             {
-                var editFormModel = await
+                var deleteFormModel = await
                ingredientService
                .DeleteIngredientForm(id);
 
-                return View(editFormModel);
+                return View(deleteFormModel);
             }
             catch (Exception)
             {
