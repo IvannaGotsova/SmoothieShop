@@ -10,6 +10,7 @@
 <form asp-action="DeleteIngredient">
     <div class="row">
         <div class="col-md-8">
+            <input type="hidden" asp-for="@Model.IngredientId" />
             <div class="form-group">
                 <label asp-for="IngredientName" class="control-label">Ingredient Name</label>
                 <input asp-for="IngredientName" class="form-control" disabled="disabled" />
