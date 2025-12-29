@@ -69,5 +69,9 @@ namespace SmoothieShop.Core.Contracts
         Task Delete(int feedbackId);
 
         int Count();
+
+        Task <string> GetFeedbackUserName(int customerId);
+
+        Task<IEnumerable<Feedback>> GetAllFeedbacksByCustomer(int customerId);
     }
 }
