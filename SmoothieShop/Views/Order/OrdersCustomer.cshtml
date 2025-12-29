@@ -1,0 +1,25 @@
+﻿@using SmoothieShop.Data.Data.Entites
+@model IEnumerable<Order>
+
+<h2>Orders from Customer</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order Id</th>
+            <th>Order Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.Date</td>
+                <td>
+                    @Html.ActionLink("View Details", "DetailsOrder", "Order", new { id = order.OrderId }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
