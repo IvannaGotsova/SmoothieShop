@@ -33,8 +33,7 @@ namespace SmoothieShop.Core.Services
             var feedbackToBeAdded = new Feedback()
             {
                 Rating = addFeedbackModel.Rating,
-                Comment = addFeedbackModel.Comment,
-                CustomerId = addFeedbackModel.CustomerId
+                Comment = addFeedbackModel.Comment
             };
 
             await this.data.AddAsync(feedbackToBeAdded);
@@ -121,6 +120,7 @@ namespace SmoothieShop.Core.Services
         {
             var feedbacks = await data
                 .AllReadonly<Feedback>()
+                .Include(f => f.Customer)
                 .ToListAsync();
 
 
@@ -134,6 +134,18 @@ namespace SmoothieShop.Core.Services
                 })
                 .ToList();
         }
+
+        public async Task<IEnumerable<Feedback>> GetAllFeedbacksByCustomer(int customerId)
+        {
+            var feedbacks = await data
+                .AllReadonly<Feedback>()
+                .Include(f => f.Customer)
+                .Where(f => f.CustomerId == customerId)
+                .ToListAsync();
+
+            return feedbacks;
+        }
+
         /// <summary>
         /// This method returns a particular feedback with a given id.
         /// </summary>
@@ -193,6 +205,18 @@ namespace SmoothieShop.Core.Services
                 this.data
                 .AllReadonly<Feedback>()
                 .ToListAsync();
+        }
+
+        public async Task<string> GetFeedbackUserName(int customerId)
+        {
+            var customer = await
+                this.data
+                .AllReadonly<Customer>()
+                .Include(c => c.ApplicationUser)
+                .Where(c => c.CustomerId == customerId)
+                .FirstOrDefaultAsync();
+
+            return customer.ApplicationUser.UserName;
         }
     }
 }
