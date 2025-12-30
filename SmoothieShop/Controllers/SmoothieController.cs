@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
+using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.SmoothieModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
@@ -326,6 +327,30 @@ namespace SmoothieShop.Controllers
                 var orders = await smoothieService.GetOrdersBySmoothie(id);
 
                 return View(orders);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return RedirectToAction("AllSmoothies", "Smoothie", new { area = "" });
+            }
+        }
+
+        [Authorize(Roles = "CustomerUser, Admin")]
+        public async Task<IActionResult> SmoothiesCustomer(int id)
+        {
+            //check if the customer is null
+            if (await smoothieService
+                .GetAllSmoothiesByCustomer(id) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                var smoothes = await smoothieService.GetAllSmoothiesByCustomer(id);
+
+                return View(smoothes);
             }
             catch (Exception)
             {
