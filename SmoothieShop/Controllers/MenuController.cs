@@ -310,6 +310,30 @@ namespace SmoothieShop.Controllers
             }
         }
 
+        [Authorize(Roles = "CustomerUser, Admin")]
+        public async Task<IActionResult> MenusCustomer(int id)
+        {
+            //check if the customer is null
+            if (await menuService
+                .GetAllMenusByCustomer(id) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                var menus = await menuService.GetAllMenusByCustomer(id);
+
+                return View(menus);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return RedirectToAction("AllMenus", "Menu", new { area = "" });
+            }
+        }
+
     }
 }
 
