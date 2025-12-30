@@ -74,5 +74,8 @@ namespace SmoothieShop.Core.Contracts
 
         int Count();
 
+        int GetCurrentUserCustomerId(string currentUserId);
+
+        string GetCustomerApplicationUsername(int customerId);
     }
 }
