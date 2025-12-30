@@ -350,5 +350,29 @@ namespace SmoothieShop.Controllers
             }
         }
 
+        [Authorize(Roles = "CustomerUser, Admin")]
+        public async Task<IActionResult> OrdersCustomer(int id)
+        {
+            //check if the customer is null
+            if (await orderService
+                .GetAllOrdersByCustomer(id) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                var orders = await orderService.GetAllOrdersByCustomer(id);
+
+                return View(orders);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return RedirectToAction("AllOrders", "Order", new { area = "" });
+            }
+        }
+
     }
 }
