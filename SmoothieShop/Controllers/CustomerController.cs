@@ -15,10 +15,12 @@ namespace SmoothieShop.Controllers
     {
         private readonly ICustomerService customerService;
         private readonly IApplicationUserService applicationUserService;
-        public CustomerController(ICustomerService customerService, IApplicationUserService applicationUserService)
+        private readonly IFeedbackService feedbackService;
+        public CustomerController(ICustomerService customerService, IApplicationUserService applicationUserService, IFeedbackService feedbackService)
         {
             this.customerService = customerService;
             this.applicationUserService = applicationUserService;
+            this.feedbackService = feedbackService;
         }
         /// <summary>
         /// This method returns index view.
