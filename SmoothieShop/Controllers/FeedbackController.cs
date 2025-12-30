@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SmoothieShop.Common.Common;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.CustomerModels;
 using SmoothieShop.Data.Models.FeedbackModels;
+using static SmoothieShop.Common.Common.GetCurrentUser;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Controllers
@@ -16,9 +18,12 @@ namespace SmoothieShop.Controllers
     public class FeedbackController : Controller
     {
         private readonly IFeedbackService feedbackService;
-        public FeedbackController(IFeedbackService feedbackService)
+        private readonly ICustomerService customerService;
+
+        public FeedbackController(IFeedbackService feedbackService, ICustomerService customerService)
         {
             this.feedbackService = feedbackService;
+            this.customerService = customerService;
         }
         /// <summary>
         /// This method returns index view.
@@ -40,6 +45,11 @@ namespace SmoothieShop.Controllers
                     feedbackService
                    .GetAllFeedbacks();
 
+                foreach (var feedback in feedbacks)
+                {
+                    feedback.FeedbackUserName = customerService.GetCustomerApplicationUsername(feedback.CustomerId);
+                }
+
                 return View(feedbacks);
             }
             catch (Exception)
@@ -51,8 +61,19 @@ namespace SmoothieShop.Controllers
         [HttpGet]
         public async Task<IActionResult> AddFeedback()
         {
-            
+            var currentUserId = User.GetCurrentUserId();
+            var currentUserUsername = User.GetCurrentUserName();
+            var customerId = customerService.GetCurrentUserCustomerId(currentUserId);
+            var customer = customerService.GetCustomerById(customerId);
+
+            if (await Task.Run(() => customer.Result == null))
+                return RedirectToAction("Error", "Home", new { area = "" });
+
+            if (await Task.Run(() => !customer.Result.isVip))
+                return RedirectToAction("Error", "Home", new { area = "" });
+
             var modelFeedback = await Task.Run(() => new AddFeedbackModel());
+          
 
             return View(modelFeedback);
         }
@@ -64,6 +85,14 @@ namespace SmoothieShop.Controllers
         [HttpPost]
         public async Task<IActionResult> AddFeedback(AddFeedbackModel addFeedbackModel)
         {
+            var currentUserId = User.GetCurrentUserId();
+            var currentUserUsername = User.GetCurrentUserName();
+            var customerId = customerService.GetCurrentUserCustomerId(currentUserId);
+            var customer = customerService.GetCustomerById(customerId);
+
+            addFeedbackModel.CustomerId = customerId;
+            addFeedbackModel.Customer = await customer;
+
             //check if the model state is valid
             if (!ModelState.IsValid)
             {
@@ -107,6 +136,8 @@ namespace SmoothieShop.Controllers
                 var feedbackModel = await
                 feedbackService
                 .GetFeedbackDetailsById(id);
+
+                feedbackModel.FeedbackUserName = customerService.GetCustomerApplicationUsername(feedbackModel.CustomerId);
 
                 return View(feedbackModel);
             }
@@ -198,11 +229,13 @@ namespace SmoothieShop.Controllers
 
             try
             {
-                var editFormModel = await
-               feedbackService
+                var deleteFormModel = await
+                feedbackService
                .DeleteFeedbackForm(id);
 
-                return View(editFormModel);
+                deleteFormModel.FeedbackUserName = customerService.GetCustomerApplicationUsername(deleteFormModel.CustomerId);
+
+                return View(deleteFormModel);
             }
             catch (Exception)
             {
@@ -239,7 +272,32 @@ namespace SmoothieShop.Controllers
             {
                 ModelState.AddModelError("", somethingWrong);
 
+                deleteFeedbackModel.FeedbackUserName = customerService.GetCustomerApplicationUsername(deleteFeedbackModel.CustomerId);
+
                 return View(deleteFeedbackModel);
+            }
+        }
+        [Authorize(Roles = "CustomerUser, Admin")]
+        public async Task<IActionResult> FeedbacksCustomer(int id)
+        {
+            //check if the customer is null
+            if (await feedbackService
+                .GetAllFeedbacksByCustomer(id) == null)
+            {
+                return RedirectToAction("Error", "Home", new { area = "" });
+            }
+
+            try
+            {
+                var feedbacks = await feedbackService.GetAllFeedbacksByCustomer(id);
+
+                return View(feedbacks);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", somethingWrong);
+
+                return RedirectToAction("AllFeedbacks", "Feedback", new { area = "" });
             }
         }
 
