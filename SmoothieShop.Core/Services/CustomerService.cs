@@ -37,7 +37,8 @@ namespace SmoothieShop.Core.Services
                 LastName = addCustomerModel.LastName,
                 PhoneNumber = addCustomerModel.PhoneNumber,
                 Address = addCustomerModel.Address,
-                Email = addCustomerModel.Email
+                Email = addCustomerModel.Email,
+                ApplicationUserId = addCustomerModel.ApplicationUserId
             };
 
             await this.data.AddAsync(customerToBeAdded);
@@ -170,6 +171,7 @@ namespace SmoothieShop.Core.Services
             var customer = await
                this.data
                .AllReadonly<Customer>()
+               .Include(c => c.ApplicationUser)
                .Include(c => c.Orders)
                .Include(c => c.Feedbacks)
                .Where(c => c.CustomerId == customerId)
@@ -182,6 +184,7 @@ namespace SmoothieShop.Core.Services
                    Email = c.Email,
                    Address = c.Address,
                    isVip = c.isVip,
+                   ApplicationUser = c.ApplicationUser,
                    OrdersCount = c.Orders.Count(),
                    FeedbacksCount = c.Feedbacks.Count()
                }).FirstOrDefaultAsync();
@@ -252,6 +255,30 @@ namespace SmoothieShop.Core.Services
                 this.data
                 .AllReadonly<Customer>()
                 .Count();
+        }
+
+        public int GetCurrentUserCustomerId(string currentUserId)
+        {
+            return 
+                this.data
+                .AllReadonly<Customer>()
+                .Include(c => c.ApplicationUser)
+                .Where(c => c.ApplicationUserId == currentUserId)
+                .Select(c => c.CustomerId)
+                .FirstOrDefault();
+
+        }
+
+        public string GetCustomerApplicationUsername(int customerId)
+        {
+            var applicationUser =
+                this.data
+                .AllReadonly<Customer>()
+                .Where(c => c.CustomerId == customerId)
+                .Select(c => c.ApplicationUser)
+                .FirstOrDefault();
+
+            return applicationUser.UserName;
         }
     }
 }
