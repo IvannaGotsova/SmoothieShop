@@ -34,7 +34,7 @@ namespace SmoothieShop.Data.Models.CustomerModels
         public string? Address { get; set; }
         public bool isVip { get; set; }
         [Required]
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
         [ForeignKey(nameof(ApplicationUserId))]
         public ApplicationUser? ApplicationUser { get; set; }
         [Required]
