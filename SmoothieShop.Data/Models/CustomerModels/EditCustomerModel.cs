@@ -32,8 +32,9 @@ namespace SmoothieShop.Data.Models.CustomerModels
         [Required]
         [StringLength(CustomerMaxLengthAddress, MinimumLength = CustomerMinLengthAddress)]
         public string? Address { get; set; }
+        public bool isVip { get; set; } = false;
         [Required]
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
         [ForeignKey(nameof(ApplicationUserId))]
         public ApplicationUser? ApplicationUser { get; set; }
 
