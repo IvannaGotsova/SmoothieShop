@@ -10,6 +10,7 @@
 <form asp-action="DeleteCustomer">
     <div class="row">
         <div class="col-md-8">
+            <input type="hidden" asp-for="@Model.CustomerId" />
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label">Customer First Name</label>
                 <input asp-for="FirstName" class="form-control" disabled="disabled" />
