@@ -16,39 +16,27 @@
           <p class="mb-0">Customer Email: @Model.Email</p>
           <p class="mb-0">Customer Phone Number: @Model.PhoneNumber</p>
           <p class="mb-0">Customer Address: @Model.Address</p>
-          <p class="mb-0">Customer Status: @Model.isVip</p>
+            <p class="mb-0">Customer UserName: @Model.ApplicationUser.UserName</p>
+          <p class="mb-0">Customer Vip: @Model.isVip</p>
+            <br>
+
+            @if (this.User.IsInRole("CustomerUser") || this.User.IsInRole("Admin"))
+            {
+                <a class="btn btn-warning" asp-controller="Feedback" asp-action="FeedbacksCustomer" asp-route-id="@Model.CustomerId"
+                   sp-route-information="" class="btn btn-success">Feedbacks</a>
+                <hr />
+
+                <a class="btn btn-warning" asp-controller="Order" asp-action="OrdersCustomer" asp-route-id="@Model.CustomerId"
+                   sp-route-information="" class="btn btn-success">Orders</a>
+                <hr />
+                 
+                <a class="btn btn-warning" asp-controller="Menu" asp-action="MenusCustomer" asp-route-id="@Model.CustomerId"
+                   sp-route-information="" class="btn btn-success">Menus</a>
+                <hr />
+
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="smoothiesCustomer" asp-route-id="@Model.CustomerId"
+                   sp-route-information="" class="btn btn-success">Smoothies</a>
+            }
        </div>
     </div>
 </div>
-
-@foreach (var order in @Model.Orders)
-{
-    <div class="text-center row">
-        <div class="card col-4" style="width: 20rem; ">
-            <input type="hidden" asp-for="@Model.Orders" />
-            <div class="card-body">
-
-                <p class="mb-0">Title: @order.OrderId</p>
-                <p class="mb-0">Description: @order.Price</p>
-                <p class="mb-0">Trip: @order.Date</p>
-
-            </div>
-        </div>
-    </div>
-}
-
-@foreach (var feedback in @Model.Feedbacks)
-{
-    <div class="text-center row">
-        <div class="card col-4" style="width: 20rem; ">
-            <input type="hidden" asp-for="@Model.Feedbacks" />
-            <div class="card-body">
-
-                <p class="mb-0">Title: @feedback.FeedbackId</p>
-                <p class="mb-0">Description: @feedback.Rating</p>
-                <p class="mb-0">Trip: @feedback.Comment</p>
-
-            </div>
-        </div>
-    </div>
-}
