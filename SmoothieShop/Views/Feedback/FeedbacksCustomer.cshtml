@@ -1,0 +1,25 @@
+﻿@using SmoothieShop.Data.Data.Entites
+@model IEnumerable<Feedback>
+
+<h2>Feedbacks from Customer</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Feedback Id</th>
+            <th>Feedback Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var feedback in Model)
+        {
+            <tr>
+                <td>@feedback.FeedbackId</td>
+                <td>@feedback.Rating</td>
+                <td>
+                    @Html.ActionLink("View Details", "DetailsFeedback", "Feedback", new { id = feedback.FeedbackId }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
