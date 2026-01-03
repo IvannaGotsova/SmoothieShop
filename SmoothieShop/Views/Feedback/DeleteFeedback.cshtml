@@ -10,14 +10,13 @@
 <form asp-action="DeleteFeedback">
     <div class="row">
         <div class="col-md-8">
+            <input type="hidden" asp-for="@Model.FeedbackId" />
             <div class="form-group">
-                <label asp-for="Rating" class="control-label">Feedback Rating</label>
-                <input asp-for="Rating" class="form-control" disabled="disabled" />
+                <h5 class="card-title mt-1">Feedback Rating: @Model.Rating</h5>
+                <h5 class="card-title mt-1">Feedback Comment: @Model.Comment</h5>
+                <h5 class="card-title mt-1">Feedback Customer: @Model.FeedbackUserName</h5>
             </div>
-            <div class="form-group">
-                <label asp-for="Comment" class="control-label">Feedback Comment</label>
-                <input asp-for="Comment" class="form-control" disabled="disabled" />
-            </div>
+            
             <div class="form-group">
                 <input type="submit" value="Delete" class="btn btn-primary" />
             </div>
