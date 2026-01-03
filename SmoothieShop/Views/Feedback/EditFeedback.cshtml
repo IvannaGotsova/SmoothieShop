@@ -13,7 +13,7 @@
             <input type="hidden" asp-for="@Model.FeedbackId" />
             <div class="form-group">
                 <label asp-for="Rating">Feedback Rating</label>
-                <input asp-for="Rating" class="form-control" placeholder="Rating...">
+                <input asp-for="Rating" min="1" max="10" class="form-control" placeholder="Rating...">
                 <span asp-validation-for="Rating" class="small text-danger"></span>
             </div>
             <div class="form-group">
