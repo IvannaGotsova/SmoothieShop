@@ -22,10 +22,8 @@
         {
             <div class="card col-4" style="width: 20rem;">
                 <div class="card-body">
-                    <p class="mb-0">Feedback ID: @feedback.FeedbackId</p>
                     <h5 class="card-title mt-1">Feedback Rating: @feedback.Rating</h5>
-                    <h5 class="card-title mt-1">Feedback Comment: @feedback.Comment</h5>
-                    <p class="mb-0">Feedback Customer ID: @feedback.CustomerId</p>
+                    <p class="mb-0">Feedback Customer: @feedback.FeedbackUserName</p>
                 </div>
                 <a class="btn btn-warning" asp-controller="Feedback" asp-action="DetailsFeedback" asp-route-id="@feedback.FeedbackId"
                    sp-route-information="" class="btn btn-success">Details Feedback</a>
