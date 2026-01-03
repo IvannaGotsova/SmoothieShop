@@ -10,18 +10,15 @@
 <div class="row">
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
         <form method="post">
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="mb-3">
-                <label asp-for="@Model.Rating" class="form-label">Feedback Rating</label>
-                <input asp-for="@Model.Rating" class="form-control" aria-required="true" />
-                <span asp-validation-for="Rating" class="text-danger"></span>
-                <label asp-for="@Model.Comment" class="form-label">Feedback Comment</label>
-                <input asp-for="@Model.Comment" class="form-control" aria-required="true" />
-                <span asp-validation-for="Comment" class="text-danger"></span>
-                <label asp-for="@Model.CustomerId" class="form-label">Feedback Customer ID</label>
-                <input asp-for="@Model.CustomerId" class="form-control" aria-required="true" />
-                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="Rating">Feedback Rating</label>
+                <input asp-for="Rating" min="1" max="10" class="form-control" placeholder="Rating...">
+                <span asp-validation-for="Rating" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment">Feedback Comment</label>
+                <textarea asp-for="Comment" rows="4" class="form-control" placeholder="Comment..."></textarea>
+                <span asp-validation-for="Comment" class="small text-danger"></span>
             </div>
             <div class="mb-3">
                 <input class="btn btn-primary" type="submit" value="Add Feedback" />
