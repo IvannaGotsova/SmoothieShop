@@ -12,9 +12,21 @@
    <div class="card col-4" style="width: 20rem; ">
        <div class="card-body">
             <input type="hidden" asp-for="@Model.FeedbackId" />
-          <h5 class="card-title mt-1">Feedback Customer ID: @Model.CustomerId</h5>
-          <p class="mb-0">Feedback Rating: @Model.Rating</p>
-          <p class="mb-0">Feedback Comment: @Model.Comment</p>
+          <h5 class="mb-0">Feedback Rating: @Model.Rating</h5>
+          <h3 class="mb-0">Feedback Customer: @Model.FeedbackUserName</h3>
+          <h1 class="mb-0">Feedback Comment: @Model.Comment</h1>
+
+
+            <hr />
+            @if (this.User.IsInRole("CustomerUser") || this.User.IsInRole("Admin"))
+            {
+                <a class="btn btn-warning" asp-controller="Feedback" asp-action="EditFeedback" asp-route-id="@Model.FeedbackId"
+                   sp-route-information="" class="btn btn-success">Edit Feedback</a>
+                <hr />
+                <a class="btn btn-warning" asp-controller="Feedback" asp-action="DeleteFeedback" asp-route-id="@Model.FeedbackId"
+                   sp-route-information="" class="btn btn-success">Delete Feedback</a>
+                <hr />
+            }
        </div>
     </div>
 </div>
