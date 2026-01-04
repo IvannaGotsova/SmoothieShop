@@ -18,7 +18,7 @@ namespace SmoothieShop.Data.Models.FeedbackModels
         [Required]
         public int FeedbackId { get; set; }
         [Required]
-        [StringLength(FeedbackMaxLengthRating, MinimumLength = FeedbackMinLengthRating)]
+        [Range(FeedbackMinLengthRating, FeedbackMaxLengthRating)]
         public int Rating { get; set; }
         [Required]
         [StringLength(FeedbackMaxLengthComment, MinimumLength = FeedbackMinLengthComment)]
