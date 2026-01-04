@@ -18,14 +18,13 @@ namespace SmoothieShop.Data.Models.FeedbackModels
         [Required]
         public int FeedbackId { get; set; }
         [Required]
-        [StringLength(FeedbackMaxLengthRating, MinimumLength = FeedbackMinLengthRating)]
+        [Range(FeedbackMinLengthRating, FeedbackMaxLengthRating)]
         public int Rating { get; set; }
         [Required]
         [StringLength(FeedbackMaxLengthComment, MinimumLength = FeedbackMinLengthComment)]
         public string? Comment { get; set; }
-        [Required]
         public int CustomerId { get; set; }
-        [ForeignKey(nameof(CustomerId))]
-        public Customer? Customer { get; set; }
+        [Required]
+        public string? FeedbackUserName { get; set; }
     }
 }
