@@ -25,7 +25,6 @@ namespace SmoothieShop.Data.Models.IngredientModels
         [Required]
         [StringLength(IngredientMaxLengthInfo, MinimumLength = IngredientMinLengthInfo)]
         public string? IngredientInfo { get; set; }
-        [Required]
         public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
     }
 }
