@@ -18,7 +18,7 @@
                 <p class="card-title mt-1">Order Date: @Model.Date</p>
                 <p class="card-title mt-1">Order Price: @Model.Price</p>
                 <p class="card-title mt-1">Order Customer Name: @Model.CustomerName</p>
-                <p class="card-title mt-1">Order Customer Name: @Model.CustomerUserName</p>
+                <p class="card-title mt-1">Order Customer UserName: @Model.CustomerUserName</p>
             </div>
             <hr />
             @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
