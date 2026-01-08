@@ -237,6 +237,17 @@ namespace SmoothieShop.Core.Services
                 .ToList();
         }
 
+        public async Task<IEnumerable<Order>> GetAllOrdersByCustomer(int customerId)
+        {
+            var orders = await data
+                .AllReadonly<Customer>()
+                .Where(c => c.CustomerId == customerId)
+                .SelectMany(o => o.Orders)
+                .ToListAsync();
+
+            return orders;
+        }
+
         public async Task<IEnumerable<Menu>> GetMenusByOrder(int orderId)
         {
             var menus = await data
