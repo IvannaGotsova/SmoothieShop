@@ -28,9 +28,9 @@ namespace SmoothieShop.Data.Models.MenuModels
         public int ProductUserId { get; set; }
         [ForeignKey(nameof(ProductUserId))]
         public ProductUser? ProductUser { get; set; }
-        [Required]
         public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
-        [Required]
         public IEnumerable<Order> Orders { get; set; } = new List<Order> { };
+        public List<int> SmoothiesIds { get; set; } = new List<int>();
+
     }
 }
