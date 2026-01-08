@@ -33,8 +33,11 @@ namespace SmoothieShop.Core.Services
             var feedbackToBeAdded = new Feedback()
             {
                 Rating = addFeedbackModel.Rating,
-                Comment = addFeedbackModel.Comment
+                Comment = addFeedbackModel.Comment,
+                CustomerId = addFeedbackModel.CustomerId
             };
+
+
 
             await this.data.AddAsync(feedbackToBeAdded);
             await this.data.SaveChangesAsync();
@@ -70,9 +73,10 @@ namespace SmoothieShop.Core.Services
 
             var deleteFeedbackModel = new DeleteFeedbackModel()
             {
+                FeedbackId = feedbackToBeDeleted.FeedbackId,
                 Rating = feedbackToBeDeleted.Rating,
                 Comment = feedbackToBeDeleted.Comment,
-                CustomerId = feedbackToBeDeleted.CustomerId
+                CustomerId = feedbackToBeDeleted.CustomerId,
             };
 
             return deleteFeedbackModel;
@@ -121,6 +125,7 @@ namespace SmoothieShop.Core.Services
             var feedbacks = await data
                 .AllReadonly<Feedback>()
                 .Include(f => f.Customer)
+                .ThenInclude(c => c.ApplicationUser)
                 .ToListAsync();
 
 
