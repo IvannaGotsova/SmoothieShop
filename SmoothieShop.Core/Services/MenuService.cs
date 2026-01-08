@@ -7,9 +7,9 @@ using SmoothieShop.Data.Models.SmoothieModels;
 using SmoothieShop.Data.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Providers.Entities;
 
 namespace SmoothieShop.Core.Services
 {
@@ -180,6 +180,21 @@ namespace SmoothieShop.Core.Services
                 })
                 .ToList();
         }
+
+        public async Task<IEnumerable<Menu>> GetAllMenusByCustomer(int customerId)
+        {
+            var menus = await data
+               .AllReadonly<Customer>()
+               .Where(c => c.CustomerId == customerId)
+               .SelectMany(m => m.Orders)
+               .SelectMany(o => o.MenusOrders)
+               .Select(mo => mo.Menu)
+               .Distinct()
+               .ToListAsync();
+
+            return menus;
+        }
+
         /// <summary>
         /// This method returns a particular menu with a given id.
         /// </summary>
