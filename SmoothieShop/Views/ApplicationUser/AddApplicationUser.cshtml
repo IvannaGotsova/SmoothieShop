@@ -12,6 +12,7 @@
         <form method="post">
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="mb-3">
                 <label asp-for="@Model.UserName" class="form-label">Application User UserName</label>
                 <input asp-for="@Model.UserName" class="form-control" aria-required="true" />
@@ -23,16 +24,16 @@
                 <input asp-for="@Model.LastName" class="form-control" aria-required="true" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
+
             <div class="mb-3">
                 <input class="btn btn-primary" type="submit" value="Add Application User" />
             </div>
+
         </form>
     </div>
 </div>
 
-
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-@{
-}
+
