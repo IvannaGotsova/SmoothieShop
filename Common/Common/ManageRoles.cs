@@ -11,6 +11,11 @@ namespace SmoothieShop.Common.Common
     /// <param name="applicationBuilder"></param>
     public static class ManageRoles
     {
+        /// <summary>
+        /// This method seeds roles for the users.
+        /// </summary>
+        /// <param name="applicationBuilder"></param>
+        /// <returns></returns>
         public static IApplicationBuilder SeedUsersRoles(this IApplicationBuilder applicationBuilder)
         {
             using var scopedServices = applicationBuilder.ApplicationServices.CreateScope();
@@ -164,7 +169,6 @@ namespace SmoothieShop.Common.Common
                  .GetResult();
 
         }
-
     }
 }
 
