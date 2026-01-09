@@ -1,63 +1,65 @@
 ﻿@model IEnumerable<AllCustomersModel>
 
-
 @{
     ViewBag.Title = "All Customers";
 }
-
 
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
 <a class="btn btn-warning" asp-controller="Home" asp-action="Index"
    sp-route-information="" class="btn btn-success">HOME</a>
+
 <a class="btn btn-warning" asp-controller="Customer" asp-action="AddCustomer"
    sp-route-information="" class="btn btn-success">Add Customer</a>
 <hr />
 
 <div class="text-center row">
-    @if (Model.Count()  > 0)
+@if (Model.Count()  > 0)
+{
+    @foreach (var customer in Model)
     {
-        @foreach (var customer in Model)
-        {
-            <div class="card col-4" style="width: 20rem;">
-                <div class="card-body">
+        <div class="card col-4" style="width: 20rem;">
 
-                    <h5 class="card-title mt-1">Customer First Name: @customer.FirstName</h5>
-                    <h5 class="card-title mt-1">Customer Last Name: @customer.LastName</h5>
-                    <h5 class="mb-0">Customer ID: @customer.CustomerId</h5>
-                    <p class="mb-0">Customer Email: @customer.Email</p>
-                    <p class="mb-0">Customer PhoneNumber: @customer.PhoneNumber</p>
-                    <p class="mb-0">Customer Address: @customer.Address</p>
-                </div>
-                <a class="btn btn-warning" asp-controller="Customer" asp-action="DetailsCustomer" asp-route-id="@customer.CustomerId"
-                   sp-route-information="" class="btn btn-success">Details Customer</a>
-                <hr />
-                <a class="btn btn-warning" asp-controller="Customer" asp-action="EditCustomer" asp-route-id="@customer.CustomerId"
-                   sp-route-information="" class="btn btn-success">Edit Customer</a>
-                <hr />
-                <a class="btn btn-warning" asp-controller="Customer" asp-action="DeleteCustomer" asp-route-id="@customer.CustomerId"
-                   sp-route-information="" class="btn btn-success">Delete Customer</a>
-                <hr />
-                @if (customer.isVip)
-                {
-                    <a class="btn btn-warning" asp-controller="Customer" asp-action="NotVipCustomer" asp-route-id="@customer.CustomerId"
-                       sp-route-information="" class="btn btn-success">Not Vip Customer</a>
-                    <hr />
-                }
-                else
-                {
-                    <a class="btn btn-warning" asp-controller="Customer" asp-action="VipCustomer" asp-route-id="@customer.CustomerId"
-                       sp-route-information="" class="btn btn-success">Vip Customer</a>
-                    <hr />
-                }
-               
+            <div class="card-body">
+
+                <h5 class="card-title mt-1">Customer First Name: @customer.FirstName</h5>
+                <h5 class="card-title mt-1">Customer Last Name: @customer.LastName</h5>
+                <h5 class="mb-0">Customer ID: @customer.CustomerId</h5>
+                <p class="mb-0">Customer Email: @customer.Email</p>
+                <p class="mb-0">Customer PhoneNumber: @customer.PhoneNumber</p>
+                <p class="mb-0">Customer Address: @customer.Address</p>
             </div>
-        }
+
+            <a class="btn btn-warning" asp-controller="Customer" asp-action="DetailsCustomer" asp-route-id="@customer.CustomerId"
+               sp-route-information="" class="btn btn-success">Details Customer</a>
+            <hr />
+
+            <a class="btn btn-warning" asp-controller="Customer" asp-action="EditCustomer" asp-route-id="@customer.CustomerId"
+               sp-route-information="" class="btn btn-success">Edit Customer</a>
+            <hr />
+
+            <a class="btn btn-warning" asp-controller="Customer" asp-action="DeleteCustomer" asp-route-id="@customer.CustomerId"
+               sp-route-information="" class="btn btn-success">Delete Customer</a>
+            <hr />
+
+            @if (customer.isVip)
+            {
+                <a class="btn btn-warning" asp-controller="Customer" asp-action="NotVipCustomer" asp-route-id="@customer.CustomerId"
+                   sp-route-information="" class="btn btn-success">Not Vip Customer</a>
+                <hr />
+            }
+            else
+            {
+                <a class="btn btn-warning" asp-controller="Customer" asp-action="VipCustomer" asp-route-id="@customer.CustomerId"
+                   sp-route-information="" class="btn btn-success">Vip Customer</a>
+                <hr />
+            }
+        </div>
     }
-    else 
-    {
-        <p class="mb-0">There are no customers yet!</p>
-    }
- 
+}
+else 
+{
+    <p class="mb-0">There are no customers yet!</p>
+}
 </div>

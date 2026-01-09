@@ -4,7 +4,6 @@
     ViewBag.Title = $"Customer - {Model.FirstName} {Model.LastName}";
 }
 
-
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
@@ -12,31 +11,32 @@
    <div class="card col-4" style="width: 20rem; ">
        <div class="card-body">
             <input type="hidden" asp-for="@Model.ApplicationUserId" />
+
           <h5 class="card-title mt-1">Customer ID: @Model.CustomerId</h5>
           <p class="mb-0">Customer Email: @Model.Email</p>
           <p class="mb-0">Customer Phone Number: @Model.PhoneNumber</p>
           <p class="mb-0">Customer Address: @Model.Address</p>
-            <p class="mb-0">Customer UserName: @Model.ApplicationUser.UserName</p>
+          <p class="mb-0">Customer UserName: @Model.ApplicationUser.UserName</p>
           <p class="mb-0">Customer Vip: @Model.isVip</p>
-            <br>
+          <br>
 
-            @if (this.User.IsInRole("CustomerUser") || this.User.IsInRole("Admin"))
-            {
-                <a class="btn btn-warning" asp-controller="Feedback" asp-action="FeedbacksCustomer" asp-route-id="@Model.CustomerId"
-                   sp-route-information="" class="btn btn-success">Feedbacks</a>
-                <hr />
+       @if (this.User.IsInRole("CustomerUser") || this.User.IsInRole("Admin"))
+       {
+           <a class="btn btn-warning" asp-controller="Feedback" asp-action="FeedbacksCustomer" asp-route-id="@Model.CustomerId"
+              sp-route-information="" class="btn btn-success">Feedbacks</a>
+           <hr />
 
-                <a class="btn btn-warning" asp-controller="Order" asp-action="OrdersCustomer" asp-route-id="@Model.CustomerId"
-                   sp-route-information="" class="btn btn-success">Orders</a>
-                <hr />
-                 
-                <a class="btn btn-warning" asp-controller="Menu" asp-action="MenusCustomer" asp-route-id="@Model.CustomerId"
-                   sp-route-information="" class="btn btn-success">Menus</a>
-                <hr />
+           <a class="btn btn-warning" asp-controller="Order" asp-action="OrdersCustomer" asp-route-id="@Model.CustomerId"
+              sp-route-information="" class="btn btn-success">Orders</a>
+           <hr />
+            
+           <a class="btn btn-warning" asp-controller="Menu" asp-action="MenusCustomer" asp-route-id="@Model.CustomerId"
+              sp-route-information="" class="btn btn-success">Menus</a>
+           <hr />
 
-                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothiesCustomer" asp-route-id="@Model.CustomerId"
-                   sp-route-information="" class="btn btn-success">Smoothies</a>
-            }
+           <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothiesCustomer" asp-route-id="@Model.CustomerId"
+              sp-route-information="" class="btn btn-success">Smoothies</a>
+       }
        </div>
     </div>
 </div>
