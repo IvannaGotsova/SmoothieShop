@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SmoothieShop.Common;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Models.CustomerModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
@@ -16,7 +15,9 @@ namespace SmoothieShop.Controllers
         private readonly ICustomerService customerService;
         private readonly IApplicationUserService applicationUserService;
         private readonly IFeedbackService feedbackService;
-        public CustomerController(ICustomerService customerService, IApplicationUserService applicationUserService, IFeedbackService feedbackService)
+        public CustomerController(ICustomerService customerService,
+                                  IApplicationUserService applicationUserService,
+                                  IFeedbackService feedbackService)
         {
             this.customerService = customerService;
             this.applicationUserService = applicationUserService;
@@ -50,6 +51,10 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// This method is used to add a customer.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddCustomer()
         {
@@ -96,7 +101,6 @@ namespace SmoothieShop.Controllers
 
                 return View(addCustomerModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular customer with a given id.
@@ -123,10 +127,8 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This metod creates a form for editing a particular customer with a given id.
@@ -155,9 +157,6 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
-
-
         }
         /// <summary>
         /// This method is used to edit a particular customer with a given id.
@@ -218,7 +217,6 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This method is used to delete a particular customer.
@@ -251,7 +249,11 @@ namespace SmoothieShop.Controllers
                 return View(deleteCustomerModel);
             }
         }
-
+        /// <summary>
+        /// This method makes the user vip
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> VipCustomer(int id)
         {
             //check if the customer is null
@@ -277,7 +279,11 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
-
+        /// <summary>
+        /// This method makes the user not vip
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> NotVipCustomer(int id)
         {
             //check if the customer is null

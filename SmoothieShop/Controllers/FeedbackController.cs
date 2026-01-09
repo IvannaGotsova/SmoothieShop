@@ -2,9 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Common.Common;
 using SmoothieShop.Core.Contracts;
-using SmoothieShop.Core.Services;
-using SmoothieShop.Data.Data.Entites;
-using SmoothieShop.Data.Models.CustomerModels;
 using SmoothieShop.Data.Models.FeedbackModels;
 using static SmoothieShop.Common.Common.GetCurrentUser;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
@@ -20,7 +17,8 @@ namespace SmoothieShop.Controllers
         private readonly IFeedbackService feedbackService;
         private readonly ICustomerService customerService;
 
-        public FeedbackController(IFeedbackService feedbackService, ICustomerService customerService)
+        public FeedbackController(IFeedbackService feedbackService,
+                                  ICustomerService customerService)
         {
             this.feedbackService = feedbackService;
             this.customerService = customerService;
@@ -54,10 +52,13 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// This method is used to add a feedback.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddFeedback()
         {
@@ -73,7 +74,6 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
 
             var modelFeedback = await Task.Run(() => new AddFeedbackModel());
-          
 
             return View(modelFeedback);
         }
@@ -114,7 +114,6 @@ namespace SmoothieShop.Controllers
 
                 return View(addFeedbackModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular feedback with a given id.
@@ -143,17 +142,15 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
+        [Authorize(Roles = "CustomerUser, Admin")]
         /// <summary>
         /// This metod creates a form for editing a particular feedback with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize(Roles = "CustomerUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> EditFeedback(int id)
         {
@@ -176,15 +173,14 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
+        [Authorize(Roles = "CustomerUser, Admin")]
         /// <summary>
         /// This method is used to edit a particular feedback with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="editFeedbackModel"></param>
         /// <returns></returns>
-        [Authorize(Roles = "CustomerUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> EditFeedback(int id, EditFeedbackModel editFeedbackModel)
         {
@@ -211,12 +207,12 @@ namespace SmoothieShop.Controllers
                 return View(editFeedbackModel);
             }
         }
+        [Authorize(Roles = "CustomerUser, Admin")]
         /// <summary>
         /// This metod creates a form for deleting a particular feedback with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize(Roles = "CustomerUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> DeleteFeedback(int id)
         {
@@ -241,14 +237,13 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
+        [Authorize(Roles = "CustomerUser, Admin")]
         /// <summary>
         /// This method is used to delete a particular feedback.
         /// </summary>
         /// <param name="deleteFeedbackModel"></param>
         /// <returns></returns>
-        [Authorize(Roles = "CustomerUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteFeedback(DeleteFeedbackModel deleteFeedbackModel)
         {
@@ -278,6 +273,11 @@ namespace SmoothieShop.Controllers
             }
         }
         [Authorize(Roles = "CustomerUser, Admin")]
+        /// <summary>
+        /// This method returns all feedbacks of a customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> FeedbacksCustomer(int id)
         {
             //check if the customer is null
@@ -300,7 +300,6 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("AllFeedbacks", "Feedback", new { area = "" });
             }
         }
-
     }
 }
 

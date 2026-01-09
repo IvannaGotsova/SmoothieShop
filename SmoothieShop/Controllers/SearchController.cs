@@ -3,6 +3,9 @@ using SmoothieShop.Core.Contracts;
 
 namespace SmoothieShop.Controllers
 {
+    /// <summary>
+    /// Controls Search functionalities.
+    /// </summary>
     public class SearchController : Controller
     {
         private readonly ISearchService searchService;

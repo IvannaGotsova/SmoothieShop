@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
-using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Models.IngredientModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
@@ -42,11 +41,14 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
         [Authorize(Roles = "ProductUser, Admin")]
+        /// <summary>
+        /// This method is used to add a ingredient.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddIngredient()
         {
@@ -54,12 +56,12 @@ namespace SmoothieShop.Controllers
 
             return View(modelIngredient);
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This method is used to add a ingredient.
         /// </summary>
         /// <param name="addIngredientModel"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> AddIngredient(AddIngredientModel addIngredientModel)
         {
@@ -84,7 +86,6 @@ namespace SmoothieShop.Controllers
 
                 return View(addIngredientModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular ingredient with a given id.
@@ -111,17 +112,15 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This metod creates a form for editing a particular ingredient with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> EditIngredient(int id)
         {
@@ -144,15 +143,14 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This method is used to edit a particular ingredient with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="editIngredientModel"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> EditIngredient(int id, EditIngredientModel editIngredientModel)
         {
@@ -179,12 +177,12 @@ namespace SmoothieShop.Controllers
                 return View(editIngredientModel);
             }
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This metod creates a form for deleting a particular ingredient with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> DeleteIngredient(int id)
         {
@@ -207,14 +205,13 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This method is used to delete a particular ingredient.
         /// </summary>
         /// <param name="deleteIngredientModel"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteIngredient(DeleteIngredientModel deleteIngredientModel)
         {
@@ -241,8 +238,12 @@ namespace SmoothieShop.Controllers
                 return View(deleteIngredientModel);
             }
         }
-
         [Authorize(Roles = "ProductUser, Admin")]
+        /// <summary>
+        /// This method returns all smoothies of a ingredient
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> IngredientSmoothies(int id)
         {
             //check if the ingredient is null
@@ -265,7 +266,6 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("AllIngredients", "Ingredient", new { area = "" });
             }
         }
-
     }
 }
 

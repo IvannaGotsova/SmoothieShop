@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using SmoothieShop.Core.Contracts;
-using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.OrderModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
-using static SmoothieShop.Common.Common.GetCurrentUser;
 
 namespace SmoothieShop.Controllers
 {
@@ -25,7 +22,13 @@ namespace SmoothieShop.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
 
-        public OrderController(IOrderService orderService, IMenuService menuService, ISmoothieService smoothiesService, ICustomerService customerService, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IApplicationUserService applicationUserService)
+        public OrderController(IOrderService orderService,
+                               IMenuService menuService,
+                               ISmoothieService smoothiesService,
+                               ICustomerService customerService,
+                               UserManager<ApplicationUser> userManager,
+                               SignInManager<ApplicationUser> signInManager,
+                               IApplicationUserService applicationUserService)
         {
             this.orderService = orderService;
             this.menuService = menuService;
@@ -59,11 +62,14 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
         [AllowAnonymous]
+        /// <summary>
+        /// This method is used to add a order.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddOrder()
         {
@@ -81,19 +87,18 @@ namespace SmoothieShop.Controllers
 
             return View(modelOrder);
         }
+        [AllowAnonymous]
         /// <summary>
         /// This method is used to add a order.
         /// </summary>
         /// <param name="addOrderModel"></param>
         /// <returns></returns>
-        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> AddOrder(AddOrderModel addOrderModel)
         {
             //check if the model state is valid
             if (!ModelState.IsValid)
             {
-
                 addOrderModel.Menus = await
                 menuService.GetMenusForSelect();
                 addOrderModel.Smoothies = await
@@ -126,7 +131,6 @@ namespace SmoothieShop.Controllers
 
                 return View(addOrderModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular order with a given id.
@@ -153,10 +157,8 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This metod creates a form for editing a particular order with a given id.
@@ -194,16 +196,12 @@ namespace SmoothieShop.Controllers
                 editFormModel.Customers = await
                 customerService.GetCustomersForSelect();
 
-
                 return View(editFormModel);
             }
             catch (Exception)
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
-
-
         }
         /// <summary>
         /// This method is used to edit a particular order with a given id.
@@ -270,7 +268,6 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This method is used to delete a particular order.
@@ -303,7 +300,11 @@ namespace SmoothieShop.Controllers
                 return View(deleteOrderModel);
             }
         }
-
+        /// <summary>
+        /// This method returns all menus in a order
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OrderMenus(int id)
         {
             //check if the order is null
@@ -326,7 +327,11 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("AllOrders", "Order", new { area = "" });
             }
         }
-
+        /// <summary>
+        /// This method returns all smoothies in a order
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OrderSmoothies(int id)
         {
             //check if the order is null
@@ -349,8 +354,12 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("AllOrders", "Order", new { area = "" });
             }
         }
-
         [Authorize(Roles = "CustomerUser, Admin")]
+        /// <summary>
+        /// This method returns all orders by a customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OrdersCustomer(int id)
         {
             //check if the customer is null
@@ -373,6 +382,5 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("AllOrders", "Order", new { area = "" });
             }
         }
-
     }
 }

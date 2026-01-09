@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
-using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Models.MenuModels;
-using SmoothieShop.Data.Models.OrderModels;
-using SmoothieShop.Data.Models.SmoothieModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
 namespace SmoothieShop.Controllers
@@ -17,7 +14,8 @@ namespace SmoothieShop.Controllers
         private readonly IMenuService menuService;
         private readonly ISmoothieService smoothieService;
 
-        public MenuController(IMenuService menuService, ISmoothieService smoothieService)
+        public MenuController(IMenuService menuService,
+                              ISmoothieService smoothieService)
         {
             this.menuService = menuService;
             this.smoothieService = smoothieService;
@@ -46,11 +44,14 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
         [Authorize(Roles = "ProductUser, Admin")]
+        /// <summary>
+        /// This method is used to add a menu.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddMenu()
         {
@@ -62,12 +63,12 @@ namespace SmoothieShop.Controllers
 
             return View(modelMenu);
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This method is used to add a menu.
         /// </summary>
         /// <param name="addMenuModel"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> AddMenu(AddMenuModel addMenuModel)
         {
@@ -98,7 +99,6 @@ namespace SmoothieShop.Controllers
 
                 return View(addMenuModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular menu with a given id.
@@ -125,16 +125,15 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This metod creates a form for editing a particular menu with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> EditMenu(int id)
         {
@@ -164,13 +163,13 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This method is used to edit a particular menu with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="editMenuModel"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> EditMenu(int id, EditMenuModel editMenuModel)
         {
@@ -200,12 +199,12 @@ namespace SmoothieShop.Controllers
                 return View(editMenuModel);
             }
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This metod creates a form for deleting a particular menu with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> DeleteMenu(int id)
         {
@@ -228,14 +227,13 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This method is used to delete a particular menu.
         /// </summary>
         /// <param name="deleteMenuModel"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteMenu(DeleteMenuModel deleteMenuModel)
         {
@@ -263,6 +261,11 @@ namespace SmoothieShop.Controllers
             }
         }
         [Authorize]
+        /// <summary>
+        /// This method returns all orders of a menu
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> MenuOrders(int id)
         {
             //check if the menu is null
@@ -285,8 +288,12 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("AllMenus", "Menu", new { area = "" });
             }
         }
-
         [Authorize]
+        /// <summary>
+        /// This method returns all smoothies in a menu
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> MenuSmoothies(int id)
         {
             //check if the menu is null
@@ -309,8 +316,12 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("AllMenus", "Menu", new { area = "" });
             }
         }
-
         [Authorize(Roles = "CustomerUser, Admin")]
+        /// <summary>
+        /// This method returns all menus ordered by a customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> MenusCustomer(int id)
         {
             //check if the customer is null
@@ -333,7 +344,6 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("AllMenus", "Menu", new { area = "" });
             }
         }
-
     }
 }
 

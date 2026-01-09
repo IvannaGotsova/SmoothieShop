@@ -2,6 +2,9 @@
 
 namespace SmoothieShop.Controllers
 {
+    /// <summary>
+    /// Controls Error functionalities.
+    /// </summary>
     public class ErrorController : Controller
     {
         public ActionResult PageNotFoundError()

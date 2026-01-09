@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.ApplicationUserModels;
 using static SmoothieShop.Common.Common.GetCurrentUser;
-
 
 namespace SmoothieShop.Controllers
 {
@@ -37,12 +35,12 @@ namespace SmoothieShop.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
         /// <summary>
         /// This method creates form to register a user.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Register()
         {
             //check if the user is login already
@@ -57,12 +55,12 @@ namespace SmoothieShop.Controllers
 
             return View(modelToBeRegistered);
         }
+        [AllowAnonymous]
         /// <summary>
         /// This method is used to register user.
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterModelView modelToBeRegistered)
         {
             //check if the model state is valid
@@ -92,16 +90,14 @@ namespace SmoothieShop.Controllers
                 return View(modelToBeRegistered);
             }
 
-
-
             return RedirectToAction("Login", "ApplicationUser");
         }
+        [AllowAnonymous]
         /// <summary>
         /// This method creates form for login.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Login()
         {
 
@@ -122,13 +118,13 @@ namespace SmoothieShop.Controllers
 
             return View(modelToBeLogin);
         }
+        [AllowAnonymous]
         /// <summary>
         /// This method is used to login user.
         /// </summary>
         /// <param name="modelToBeLogin"></param>
         /// <returns></returns>
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginModelView modelToBeLogin)
         {   //check if the model state is valid
             if (!ModelState.IsValid)
@@ -148,13 +144,11 @@ namespace SmoothieShop.Controllers
                 {
                     return RedirectToAction("Index", "Home");
                 }
-
             }
 
             ModelState.AddModelError("", "Invalid login attempt.");
 
             return View(modelToBeLogin);
-
         }
         /// <summary>
         /// This method is used to logout user
@@ -168,6 +162,10 @@ namespace SmoothieShop.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        /// <summary>
+        /// This method is used to change the password of user
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> ChangePasswordApplicationUser(string id)
         {
@@ -182,7 +180,10 @@ namespace SmoothieShop.Controllers
 
             return View(changePasswordApplicationUserModel);
         }
-
+        /// <summary>
+        /// This method is used to change the password of user
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> ChangePasswordApplicationUser(ChangePasswordApplicationUserModel changePasswordApplicationUserModel)
         {
@@ -197,8 +198,11 @@ namespace SmoothieShop.Controllers
 
             return BadRequest(result.Errors);
         }
-
         [Authorize]
+        /// <summary>
+        /// This method is used to access the profile of user
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> ApplicationUserMyProfile()
         {
             string currentUserId = User.GetCurrentUserId();

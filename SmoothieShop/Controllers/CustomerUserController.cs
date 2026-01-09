@@ -1,10 +1,6 @@
-﻿using System.Web;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
-using SmoothieShop.Core.Services;
-using SmoothieShop.Data.Data.Entites;
-using SmoothieShop.Data.Models.CustomerModels;
 using SmoothieShop.Data.Models.CustomerUserModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
@@ -18,10 +14,11 @@ namespace SmoothieShop.Controllers
     {
         private readonly ICustomerUserService customerUserService;
         private readonly IApplicationUserService applicationUserService;
-        public CustomerUserController(ICustomerUserService customerUserService, IApplicationUserService applicationUserService)
+        public CustomerUserController(ICustomerUserService customerUserService,
+                                      IApplicationUserService applicationUserService)
         {
             this.customerUserService = customerUserService;
-            this.applicationUserService = applicationUserService;   
+            this.applicationUserService = applicationUserService;
         }
         /// <summary>
         /// This method returns index view.
@@ -47,10 +44,13 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// This method is used to add a customerUser.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddCustomerUser()
         {
@@ -94,7 +94,6 @@ namespace SmoothieShop.Controllers
 
                 return View(addCustomerUserModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular customerUser with a given id.
@@ -121,10 +120,8 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This metod creates a form for editing a particular customerUser with a given id.
@@ -153,9 +150,6 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
-
-
         }
         /// <summary>
         /// This method is used to edit a particular customerUser with given id.
@@ -216,7 +210,6 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This method is used to delete a particular customerUser.
@@ -237,7 +230,7 @@ namespace SmoothieShop.Controllers
             {
                 await customerUserService
                     .Delete(deleteCustomerUserModel.CustomerUserId);
-                
+
                 TempData["message"] = $"You have successfully deleted a customer user!";
 
                 return RedirectToAction("AllCustomerUsers", "CustomerUser");
@@ -249,6 +242,5 @@ namespace SmoothieShop.Controllers
                 return View(deleteCustomerUserModel);
             }
         }
-
     }
 }

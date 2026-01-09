@@ -15,7 +15,8 @@ namespace SmoothieShop.Controllers
         private readonly IProductUserService productUserService;
         private readonly IApplicationUserService applicationUserService;
 
-        public ProductUserController(IProductUserService productUserService, IApplicationUserService applicationUserService)
+        public ProductUserController(IProductUserService productUserService,
+                                     IApplicationUserService applicationUserService)
         {
             this.productUserService = productUserService;
             this.applicationUserService = applicationUserService;
@@ -49,6 +50,10 @@ namespace SmoothieShop.Controllers
             }
         }
         [HttpGet]
+        /// <summary>
+        /// This method is used to add a productUser.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> AddProductUser()
         {
             var modelProductUser = new AddProductUserModel()
@@ -91,7 +96,6 @@ namespace SmoothieShop.Controllers
 
                 return View(addProductUserModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular productUser with a given id.
@@ -118,10 +122,8 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This metod creates a form for editing a particular productUser with a given id.
@@ -150,9 +152,6 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
-
-
         }
         /// <summary>
         /// This method is used to edit a particular productUser with given id.
@@ -213,7 +212,6 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This method is used to delete a particular productUser.
@@ -246,6 +244,11 @@ namespace SmoothieShop.Controllers
                 return View(deleteProductUserModel);
             }
         }
+        /// <summary>
+        /// This method returns all menus by a productUser
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> ProductUserMenus(int id)
         {
             try

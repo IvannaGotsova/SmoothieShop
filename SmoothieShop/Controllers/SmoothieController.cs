@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
-using SmoothieShop.Core.Services;
-using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.SmoothieModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
@@ -15,7 +13,8 @@ namespace SmoothieShop.Controllers
     {
         private readonly ISmoothieService smoothieService;
         private readonly IIngredientService ingredientService;
-        public SmoothieController(ISmoothieService smoothieService, IIngredientService ingredientService)
+        public SmoothieController(ISmoothieService smoothieService,
+                                  IIngredientService ingredientService)
         {
             this.smoothieService = smoothieService;
             this.ingredientService = ingredientService;
@@ -44,11 +43,14 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
         [Authorize(Roles = "ProductUser, Admin")]
+        /// <summary>
+        /// This method is used to add a smoothie.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddSmoothie()
         {
@@ -60,12 +62,12 @@ namespace SmoothieShop.Controllers
 
             return View(modelSmoothie);
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This method is used to add a smoothie.
         /// </summary>
         /// <param name="addSmoothieModel"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> AddSmoothie(AddSmoothieModel addSmoothieModel)
         {
@@ -96,7 +98,6 @@ namespace SmoothieShop.Controllers
 
                 return View(addSmoothieModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular smoothie with a given id.
@@ -123,17 +124,15 @@ namespace SmoothieShop.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This metod creates a form for editing a particular smoothie with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> EditSmoothie(int id)
         {
@@ -162,17 +161,14 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
-
-
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This method is used to edit a particular smoothie with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="editSmoothieModel"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> EditSmoothie(int id, EditSmoothieModel editSmoothieModel)
         {
@@ -203,12 +199,12 @@ namespace SmoothieShop.Controllers
                 return View(editSmoothieModel);
             }
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This metod creates a form for deleting a particular smoothie with a given id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpGet]
         public async Task<IActionResult> DeleteSmoothie(int id)
         {
@@ -231,14 +227,13 @@ namespace SmoothieShop.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
+        [Authorize(Roles = "ProductUser, Admin")]
         /// <summary>
         /// This method is used to delete a particular smoothie.
         /// </summary>
         /// <param name="deleteSmoothieModel"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProductUser, Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteSmoothie(DeleteSmoothieModel deleteSmoothieModel)
         {
@@ -266,6 +261,11 @@ namespace SmoothieShop.Controllers
             }
         }
         [Authorize]
+        /// <summary>
+        /// This method returns all ingredients in a smoothie
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> SmoothieIngredients(int id)
         {
             //check if the smoothie is null
@@ -289,6 +289,11 @@ namespace SmoothieShop.Controllers
             }
         }
         [Authorize]
+        /// <summary>
+        /// This method returns all menus by a smoothie
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> SmoothieMenus(int id)
         {
             //check if the smoothie is null
@@ -313,6 +318,11 @@ namespace SmoothieShop.Controllers
         }
 
         [Authorize]
+        /// <summary>
+        /// This method returns all orders by a smoothie
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> SmoothieOrders(int id)
         {
             //check if the smoothie is null
@@ -335,8 +345,12 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("AllSmoothies", "Smoothie", new { area = "" });
             }
         }
-
         [Authorize(Roles = "CustomerUser, Admin")]
+        /// <summary>
+        /// This method returns all smoothies by a customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> SmoothiesCustomer(int id)
         {
             //check if the customer is null
