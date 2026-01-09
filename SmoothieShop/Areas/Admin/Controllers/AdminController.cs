@@ -21,7 +21,15 @@ namespace SmoothieShop.Areas.Admin.Controllers
         private readonly IProductUserService productUserService;
         private readonly ISmoothieService smoothieService;
 
-        public AdminController(IApplicationUserService applicationUser, ICustomerService customerService, ICustomerUserService customerUserService, IFeedbackService feedbackService, IIngredientService ingredientService, IMenuService menuService, IOrderService orderService, IProductUserService productUserService, ISmoothieService smoothieService)
+        public AdminController(IApplicationUserService applicationUser, 
+                               ICustomerService customerService, 
+                               ICustomerUserService customerUserService, 
+                               IFeedbackService feedbackService, 
+                               IIngredientService ingredientService, 
+                               IMenuService menuService, 
+                               IOrderService orderService, 
+                               IProductUserService productUserService, 
+                               ISmoothieService smoothieService)
         {
             this.applicationUser = applicationUser;
             this.customerService = customerService;
@@ -33,17 +41,18 @@ namespace SmoothieShop.Areas.Admin.Controllers
             this.productUserService = productUserService;
             this.smoothieService = smoothieService;
         }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+        /// <summary>
+        /// Returns Index page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AllCounts()
         {
             return View();
         }
-
+        /// <summary>
+        /// Returns AllApplicationUsersCount page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AllApplicationUsersCount()
         {
             try
@@ -60,7 +69,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
-
+        /// <summary>
+        /// Returns AllCustomerUsersCount page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AllCustomersCount()
         {
             try
@@ -77,6 +89,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// Returns AllCustomerUsersCount page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AllCustomerUsersCount()
         {
             try
@@ -93,6 +109,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// Returns AllFeedbacksCount page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AllFeedbacksCount()
         {
             try
@@ -109,6 +129,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// Returns AllIngredientsCount page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AllIngredientsCount()
         {
             try
@@ -125,6 +149,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// Returns AllMenusCount page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AllMenusCount()
         {
             try
@@ -141,6 +169,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// Returns AllOrdersCount page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AllOrdersCount()
         {
             try
@@ -157,6 +189,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// Returns AllProductUsersCount page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AllProductUsersCount()
         {
             try
@@ -173,6 +209,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// Returns AllSmoothiesCount page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AllSmoothiesCount()
         {
             try

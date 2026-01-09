@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
-using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.SmoothieModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
@@ -18,7 +17,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
         private readonly IMenuService menuService;
         private readonly IOrderService orderService;
         private readonly IIngredientService ingredientService;
-        public SmoothieController(ISmoothieService smoothieService, IMenuService menuUserService, IOrderService orderService, IIngredientService ingredientService)
+        public SmoothieController(ISmoothieService smoothieService,
+                                  IMenuService menuUserService,
+                                  IOrderService orderService,
+                                  IIngredientService ingredientService)
         {
             this.smoothieService = smoothieService;
             this.menuService = menuUserService;
@@ -49,10 +51,13 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// This method is used to add a smoothie.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddSmoothie()
         {
@@ -111,7 +116,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
                 return View(addSmoothieModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular smoothie with a given id.
@@ -138,10 +142,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This metod creates a form for editing a particular smoothie with a given id.
@@ -170,9 +172,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
-
-
         }
         /// <summary>
         /// This method is used to edit a particular smoothie with a given id.
@@ -266,6 +265,5 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return View(deleteSmoothieModel);
             }
         }
-
     }
 }

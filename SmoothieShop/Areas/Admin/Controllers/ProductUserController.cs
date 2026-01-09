@@ -16,7 +16,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
         private readonly IProductUserService productUserService;
         private readonly IApplicationUserService applicationUserService;
 
-        public ProductUserController(IProductUserService productUserService, IApplicationUserService applicationUserService)
+        public ProductUserController(IProductUserService productUserService,
+                                     IApplicationUserService applicationUserService)
         {
             this.productUserService = productUserService;
             this.applicationUserService = applicationUserService;
@@ -45,10 +46,13 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// This method is used to add a productUser.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddProductUser()
         {
@@ -92,7 +96,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
                 return View(addProductUserModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular productUser with a given id.
@@ -119,7 +122,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
 
@@ -151,9 +153,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
-
-
         }
         /// <summary>
         /// This method is used to edit a particular productUser with given id.
@@ -214,7 +213,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This method is used to delete a particular productUser.
@@ -247,6 +245,5 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return View(deleteProductUserModel);
             }
         }
-
     }
 }

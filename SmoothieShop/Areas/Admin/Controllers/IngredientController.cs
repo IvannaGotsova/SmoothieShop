@@ -42,10 +42,13 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// This method is used to add a ingredient.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddIngredient()
         {
@@ -109,10 +112,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This metod creates a form for editing a particular ingredient with a given id.
@@ -141,7 +142,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This method is used to edit a particular ingredient with a given id.
@@ -202,7 +202,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This method is used to delete a particular ingredient.
@@ -235,7 +234,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return View(deleteIngredientModel);
             }
         }
-
     }
 }
 

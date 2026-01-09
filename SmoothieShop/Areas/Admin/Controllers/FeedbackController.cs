@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
-using SmoothieShop.Core.Services;
-using SmoothieShop.Data.Data.Entites;
-using SmoothieShop.Data.Models.CustomerModels;
 using SmoothieShop.Data.Models.FeedbackModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
 
@@ -45,14 +42,16 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// This method is used to add a feedback.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddFeedback()
         {
-            
             var modelFeedback = await Task.Run(() => new AddFeedbackModel());
 
             return View(modelFeedback);
@@ -86,7 +85,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
                 return View(addFeedbackModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular feedback with a given id.
@@ -113,10 +111,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This metod creates a form for editing a particular feedback with a given id.
@@ -239,7 +235,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return View(deleteFeedbackModel);
             }
         }
-
     }
 }
 

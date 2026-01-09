@@ -42,10 +42,13 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// This method is used to add a menu.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddMenu()
         {
@@ -82,7 +85,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
                 return View(addMenuModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular menu with a given id.
@@ -109,10 +111,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This metod creates a form for editing a particular menu with a given id.
@@ -141,9 +141,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
-
-
         }
         /// <summary>
         /// This method is used to edit a particular menu with a given id.
@@ -237,7 +234,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return View(deleteMenuModel);
             }
         }
-
     }
 }
 

@@ -16,7 +16,9 @@ namespace SmoothieShop.Areas.Admin.Controllers
         private readonly IOrderService orderService;
         private readonly IMenuService menuService;
         private readonly ISmoothieService smoothiesService;
-        public OrderController(IOrderService orderService, IMenuService menuService, ISmoothieService smoothiesService)
+        public OrderController(IOrderService orderService,
+                               IMenuService menuService,
+                               ISmoothieService smoothiesService)
         {
             this.orderService = orderService;
             this.menuService = menuService;
@@ -46,10 +48,13 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// This method is used to add a order.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddOrder()
         {
@@ -102,7 +107,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
                 return View(addOrderModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular order with a given id.
@@ -129,10 +133,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This metod creates a form for editing a particular order with a given id.
@@ -161,9 +163,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
-
-
         }
         /// <summary>
         /// This method is used to edit a particular order with a given id.
@@ -224,7 +223,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This method is used to delete a particular order.
@@ -257,6 +255,5 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return View(deleteOrderModel);
             }
         }
-
     }
 }

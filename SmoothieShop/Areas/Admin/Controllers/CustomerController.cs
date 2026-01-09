@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SmoothieShop.Common;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Models.CustomerModels;
 using static SmoothieShop.ErrorConstants.ErrorConstants.GlobalErrorConstants;
@@ -16,7 +15,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
     {
         private readonly ICustomerService customerService;
         private readonly IApplicationUserService applicationUserService;
-        public CustomerController(ICustomerService customerService, IApplicationUserService applicationUserService)
+        public CustomerController(ICustomerService customerService,
+                                  IApplicationUserService applicationUserService)
         {
             this.customerService = customerService;
             this.applicationUserService = applicationUserService;
@@ -49,6 +49,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// This method is used to add a customer.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> AddCustomer()
         {
@@ -95,7 +99,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
                 return View(addCustomerModel);
             }
-
         }
         /// <summary>
         /// This method returns a details about particular customer with a given id.
@@ -154,9 +157,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
-
-
         }
         /// <summary>
         /// This method is used to edit a particular customer with a given id.
@@ -217,7 +217,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             {
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
         /// <summary>
         /// This method is used to delete a particular customer.
@@ -250,6 +249,5 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return View(deleteCustomerModel);
             }
         }
-
     }
 }

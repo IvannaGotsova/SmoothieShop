@@ -1,9 +1,7 @@
-﻿using DocumentFormat.OpenXml.Wordprocessing;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SmoothieShop.Core.Contracts;
-using SmoothieShop.Core.Services;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.ApplicationUserModels;
 
@@ -19,9 +17,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly IApplicationUserService applicationUser;
-        private readonly ICustomerService customerService;
-        private readonly ICustomerUserService customerUserService;
-        private readonly IProductUserService productUserService;
 
         public ApplicationUserController(
             UserManager<ApplicationUser> userManager,
@@ -34,9 +29,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.applicationUser = applicationUser;
-            this.customerService = customerService;
-            this.customerUserService = customerUserService;
-            this.productUserService = productUserService;
         }
         /// <summary>
         /// This method creates index page for a user.
@@ -101,8 +93,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return View(modelToBeRegistered);
             }
 
-
-
             return RedirectToAction("Login", "ApplicationUsers");
         }
         /// <summary>
@@ -163,7 +153,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
             ModelState.AddModelError("", "Invalid login attempt.");
 
             return View(modelToBeLogin);
-
         }
         /// <summary>
         /// This method is used to logout user
@@ -177,11 +166,11 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-        [HttpGet]
         /// <summary>
         /// This method returns all available application users.
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public async Task<IActionResult> AllApplicationUsers()
         {
             try
@@ -198,7 +187,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
         }
-
+        /// <summary>
+        /// This method edits particular application user.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> EditApplicationUser(string id)
         {
@@ -211,12 +203,15 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 NewUserName = user.UserName,
                 NewFirstName = user.FirstName,
                 NewLastName = user.LastName
-              
+
             };
 
             return View(editApplicationUserModel);
         }
-
+        /// <summary>
+        /// This method edits particular application user.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> EditApplicationUser(Models.EditApplicationUserModel editApplicationUserModel)
         {
@@ -229,7 +224,7 @@ namespace SmoothieShop.Areas.Admin.Controllers
             user.FirstName = editApplicationUserModel.NewFirstName; ;
             user.NormalizedUserName = userManager.NormalizeName(editApplicationUserModel.NewFirstName);
 
-            user.LastName = editApplicationUserModel.NewLastName; 
+            user.LastName = editApplicationUserModel.NewLastName;
             user.NormalizedUserName = userManager.NormalizeName(editApplicationUserModel.NewLastName);
 
             var result = await userManager.UpdateAsync(user);
@@ -241,7 +236,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             return BadRequest(result.Errors);
         }
-
+        /// <summary>
+        /// This method changes the password of particular application user.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> ChangePasswordApplicationUser(string id)
         {
@@ -256,7 +254,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             return View(changePasswordApplicationUserModel);
         }
-
+        /// <summary>
+        /// This method changes the password of particular application user.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> ChangePasswordApplicationUser(Models.ChangePasswordApplicationUserModel changePasswordApplicationUserModel)
         {
@@ -271,7 +272,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             return BadRequest(result.Errors);
         }
-
+        /// <summary>
+        /// This method deletes of particular application user.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> DeleteApplicationUser(string id)
         {
@@ -286,7 +290,10 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             return View(deleteApplicationUserModel);
         }
-
+        /// <summary>
+        /// This method deletes of particular application user.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> DeleteApplicationUser(Models.DeleteApplicationUserModel deleteApplicationUserModel)
         {
@@ -302,7 +309,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             return BadRequest(result.Errors);
         }
-
         /// <summary>
         /// This method returns a details about particular application user with a given id.
         /// </summary>
@@ -331,10 +337,6 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
                 return RedirectToAction("Error", "Home", new { area = "" });
             }
-
         }
-
-
-
     }
 }
