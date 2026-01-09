@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using static SmoothieShop.Data.Data.DataConstants.DataConstants.ApplicationUserConstants;
 
 namespace SmoothieShop.Areas.Admin.Models
 {
+    /// <summary>
+    /// Holds DetailsApplicationUserModel class.
+    /// </summary>
     public class DetailsApplicationUserModel
     {
         public string Id { get; set; } = null!;

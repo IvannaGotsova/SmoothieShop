@@ -2,6 +2,9 @@
 
 namespace SmoothieShop.Areas.Admin.Models
 {
+    /// <summary>
+    /// Holds ChangePasswordApplicationUserModel class.
+    /// </summary>
     public class ChangePasswordApplicationUserModel
     {
         public string Id { get; set; }

@@ -3,6 +3,9 @@ using static SmoothieShop.Data.Data.DataConstants.DataConstants.ApplicationUserC
 
 namespace SmoothieShop.Areas.Admin.Models
 {
+    /// <summary>
+    /// Holds EditApplicationUserModel class.
+    /// </summary>
     public class EditApplicationUserModel
     {
         public string Id { get; set; } = null!;
@@ -24,6 +27,5 @@ namespace SmoothieShop.Areas.Admin.Models
         [Required]
         [StringLength(ApplicationUserMaxLengthName, MinimumLength = ApplicationUserMinLengthName)]
         public string? NewLastName { get; set; }
-
     }
 }
