@@ -11,6 +11,7 @@
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
         <form method="post">
             <input type="hidden" asp-for="@Model.MenuId" />
+
             <div class="form-group">
                 <label asp-for="MenuName">Menu Name</label>
                 <input asp-for="MenuName" class="form-control" placeholder="Menu Name...">
@@ -46,11 +47,12 @@
                 <button type="button" id="calculateBtn" class="btn btn-primary mt-2">Calculate Calories For the Menu</button>
 
                 <div id="caloriesResult" class="mt-2 text-success fw-bold"></div>
-
             </div>
+
             <div class="text-center">
                 <input class="btn btn-primary mt-3" type="submit" value="Save" />
             </div>
+
         </form>
     </div>
 </div>
@@ -71,5 +73,4 @@
                 "Total Calories: " + totalCalories;
         });
     </script>
-
 }
