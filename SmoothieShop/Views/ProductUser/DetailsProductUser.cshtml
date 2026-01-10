@@ -4,7 +4,6 @@
     ViewBag.Title = $"Product User - {Model.ApplicationUserId}";
 }
 
-
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
@@ -12,17 +11,21 @@
    <div class="card col-4" style="width: 20rem; ">
        <div class="card-body">
             <input type="hidden" asp-for="@Model.ProductUserId" />
-          <h5 class="card-title mt-1">Application User ID: @Model.ApplicationUserId</h5>
+
+            <h5 class="card-title mt-1">Application User ID: @Model.ApplicationUserId</h5>
 
             <a class="btn btn-warning" asp-controller="ProductUser" asp-action="EditProductUser" asp-route-id="@Model.ProductUserId"
                sp-route-information="" class="btn btn-success">Edit ProductUser</a>
             <hr />
+
             <a class="btn btn-warning" asp-controller="ProductUser" asp-action="DeleteProductUser" asp-route-id="@Model.ProductUserId"
                sp-route-information="" class="btn btn-success">Delete ProductUser</a>
             <hr />
+
             <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="DetailsApplicationUser" asp-route-id="@Model.ApplicationUserId"
                sp-route-information="" class="btn btn-success">Details ApplicationUser</a>
             <hr />
+
             <a class="btn btn-warning" asp-area="" asp-controller="ProductUser" asp-action="ProductUserMenus" asp-route-id="@Model.ProductUserId"
                sp-route-information="" class="btn btn-success">Menus ProductUser</a>
             <hr />

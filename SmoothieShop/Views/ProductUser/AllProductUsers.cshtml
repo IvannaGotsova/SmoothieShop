@@ -1,46 +1,47 @@
 ﻿@model IEnumerable<AllProductUsersModel>
 
-
 @{
     ViewBag.Title = "All Product Users";
 }
-
 
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
 <a class="btn btn-warning" asp-controller="Home" asp-action="Index"
    sp-route-information="" class="btn btn-success">HOME</a>
+
 <a class="btn btn-warning" asp-controller="ProductUser" asp-action="AddProductUser"
    sp-route-information="" class="btn btn-success">Add Product User</a>
 <hr />
 
 <div class="text-center row">
-    @if (Model.Count()  > 0)
+@if (Model.Count()  > 0)
+{
+    @foreach (var productUser in Model)
     {
-        @foreach (var productUser in Model)
-        {
-            <div class="card col-4" style="width: 20rem;">
-                <div class="card-body">
+        <div class="card col-4" style="width: 20rem;">
+            <div class="card-body">
 
-                    <h5 class="card-title mt-1">Product User ID: @productUser.ProductUserId</h5>
-                    <h5 class="card-title mt-1">Application User ID: @productUser.ApplicationUserId</h5>
-                </div>
-                <a class="btn btn-warning" asp-controller="ProductUser" asp-action="DetailsProductUser" asp-route-id="@productUser.ProductUserId"
-                   sp-route-information="" class="btn btn-success">Details ProductUser</a>
-                <hr />
-                <a class="btn btn-warning" asp-controller="ProductUser" asp-action="EditProductUser" asp-route-id="@productUser.ProductUserId"
-                   sp-route-information="" class="btn btn-success">Edit ProductUser</a>
-                <hr />
-                <a class="btn btn-warning" asp-controller="ProductUser" asp-action="DeleteProductUser" asp-route-id="@productUser.ProductUserId"
-                   sp-route-information="" class="btn btn-success">Delete ProductUser</a>
-                <hr />
+                <h5 class="card-title mt-1">Product User ID: @productUser.ProductUserId</h5>
+                <h5 class="card-title mt-1">Application User ID: @productUser.ApplicationUserId</h5>
             </div>
-        }
+
+            <a class="btn btn-warning" asp-controller="ProductUser" asp-action="DetailsProductUser" asp-route-id="@productUser.ProductUserId"
+               sp-route-information="" class="btn btn-success">Details ProductUser</a>
+            <hr />
+
+            <a class="btn btn-warning" asp-controller="ProductUser" asp-action="EditProductUser" asp-route-id="@productUser.ProductUserId"
+               sp-route-information="" class="btn btn-success">Edit ProductUser</a>
+            <hr />
+
+            <a class="btn btn-warning" asp-controller="ProductUser" asp-action="DeleteProductUser" asp-route-id="@productUser.ProductUserId"
+               sp-route-information="" class="btn btn-success">Delete ProductUser</a>
+            <hr />
+        </div>
     }
-    else 
-    {
-        <p class="mb-0">There are no Product users yet!</p>
-    }
- 
+}
+else 
+{
+    <p class="mb-0">There are no Product users yet!</p>
+}
 </div>
