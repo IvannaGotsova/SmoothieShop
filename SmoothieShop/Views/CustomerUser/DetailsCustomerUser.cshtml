@@ -4,7 +4,6 @@
     ViewBag.Title = $"Customer User - {Model.ApplicationUserId}";
 }
 
-
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
@@ -17,28 +16,15 @@
             <a class="btn btn-warning" asp-controller="CustomerUser" asp-action="DetailsCustomerUser" asp-route-id="@Model.CustomerUserId"
                sp-route-information="" class="btn btn-success">Details Customer User</a>
             <hr />
+
             <a class="btn btn-warning" asp-controller="CustomerUser" asp-action="EditCustomerUser" asp-route-id="@Model.CustomerUserId"
                sp-route-information="" class="btn btn-success">Edit Customer User</a>
             <hr />
+
             <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="DetailsApplicationUser" asp-route-id="@Model.ApplicationUserId"
                sp-route-information="" class="btn btn-success">Details ApplicationUser</a>
             <hr />
+
        </div>
     </div>
 </div>
-
-@foreach (var order in @Model.Customers)
-{
-    <div class="text-center row">
-        <div class="card col-4" style="width: 20rem; ">
-            <input type="hidden" asp-for="@Model.Customers" />
-            <div class="card-body">
-
-                <p class="mb-0">Customer ID: @order.CustomerId</p>
-                <p class="mb-0">First Name: @order.FirstName</p>
-                <p class="mb-0">Last Name @order.LastName</p>
-
-            </div>
-        </div>
-    </div>
-}
