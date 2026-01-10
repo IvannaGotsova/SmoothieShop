@@ -11,19 +11,24 @@
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
         <form method="post">
             <input type="hidden" asp-for="@Model.SmoothieId" />
+
             <div class="form-group">
                 <label asp-for="SmoothieName">Smoothie Name</label>
                 <input asp-for="SmoothieName" class="form-control" placeholder="Smoothie Name...">
                 <span asp-validation-for="SmoothieName" class="small text-danger"></span>
+
                 <label asp-for="Price">Smoothie Price</label>
                 <input asp-for="Price" class="form-control" placeholder="Smoothie Price...">
                 <span asp-validation-for="Price" class="small text-danger"></span>
+
                 <label asp-for="Size">Smoothie Size</label>
                 <input asp-for="Size" class="form-control" placeholder="Smoothie Size...">
                 <span asp-validation-for="Size" class="small text-danger"></span>
+
                 <label asp-for="Calories">Smoothie Calories</label>
                 <input asp-for="Calories" class="form-control" placeholder="Smoothie Calories...">
                 <span asp-validation-for="Calories" class="small text-danger"></span>
+
                 <label asp-for="@Model.IngredientsIds" class="form-label">Add Ingredients for the Smoothie</label>
                 <br>
                 <select multiple="multiple" class="multi-select form-control"
@@ -40,12 +45,12 @@
             </div>
 
             <button type="button" id="calculateBtn" class="btn btn-primary mt-2">Calculate Calories Per 100g</button>
-
             <div id="caloriesResult" class="mt-2 text-success fw-bold"></div>
 
             <div class="text-center">
                 <input class="btn btn-primary mt-3" type="submit" value="Save" />
             </div>
+
         </form>
     </div>
 </div>

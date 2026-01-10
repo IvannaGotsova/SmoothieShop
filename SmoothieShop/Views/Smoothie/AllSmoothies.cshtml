@@ -1,17 +1,15 @@
 ﻿@model IEnumerable<AllSmoothiesModel>
 
-
 @{
     ViewBag.Title = "All Smoothies";
 }
 
-
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-
 <a class="btn btn-warning" asp-controller="Home" asp-action="Index"
    sp-route-information="" class="btn btn-success">HOME</a>
+
 @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
 {
     <a class="btn btn-warning" asp-controller="Smoothie" asp-action="AddSmoothie"
@@ -20,45 +18,50 @@
 <hr />
 
 <div class="text-center row">
-    @if (Model.Count()  > 0)
+@if (Model.Count()  > 0)
+{
+    @foreach (var smoothie in Model)
     {
-        @foreach (var smoothie in Model)
-        {
-            <div class="card col-4" style="width: 20rem;">
-                <div class="card-body">
+        <div class="card col-4" style="width: 20rem;">
+            <div class="card-body">
 
-                    <h5 class="card-title mt-1">Smoothie Name: @smoothie.SmoothieName</h5>
-                    <p class="card-title mt-1">Smoothie Price: @smoothie.Price</p>
-                     <p class="card-title mt-1">Smoothie Size: @smoothie.Size</p>
-                    <p class="card-title mt-1">Smoothie Calories: @smoothie.Calories</p>
-                </div>
-                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="DetailsSmoothie" asp-route-id="@smoothie.SmoothieId"
-                   sp-route-information="" class="btn btn-success">Details Smoothie</a>
-                <hr />
-                @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
-                {
-                    <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieIngredients" asp-route-id="@smoothie.SmoothieId"
-                       sp-route-information="" class="btn btn-success">Ingredients</a>
-                    <hr />
-                    <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieMenus" asp-route-id="@smoothie.SmoothieId"
-                       sp-route-information="" class="btn btn-success">Menus</a>
-                    <hr />
-                    <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieOrders" asp-route-id="@smoothie.SmoothieId"
-                       sp-route-information="" class="btn btn-success">Orders</a>
-                    <hr />
-                    <a class="btn btn-warning" asp-controller="Smoothie" asp-action="EditSmoothie" asp-route-id="@smoothie.SmoothieId"
-                       sp-route-information="" class="btn btn-success">Edit Smoothie</a>
-                    <hr />
-                    <a class="btn btn-warning" asp-controller="Smoothie" asp-action="DeleteSmoothie" asp-route-id="@smoothie.SmoothieId"
-                       sp-route-information="" class="btn btn-success">Delete Smoothie</a>
-                    <hr />
-                }
+                <h5 class="card-title mt-1">Smoothie Name: @smoothie.SmoothieName</h5>
+                <p class="card-title mt-1">Smoothie Price: @smoothie.Price</p>
+                 <p class="card-title mt-1">Smoothie Size: @smoothie.Size</p>
+                <p class="card-title mt-1">Smoothie Calories: @smoothie.Calories</p>
             </div>
-        }
+
+            <a class="btn btn-warning" asp-controller="Smoothie" asp-action="DetailsSmoothie" asp-route-id="@smoothie.SmoothieId"
+               sp-route-information="" class="btn btn-success">Details Smoothie</a>
+            <hr />
+
+            @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+            {
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieIngredients" asp-route-id="@smoothie.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Ingredients</a>
+                <hr />
+
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieMenus" asp-route-id="@smoothie.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Menus</a>
+                <hr />
+
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="SmoothieOrders" asp-route-id="@smoothie.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Orders</a>
+                <hr />
+
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="EditSmoothie" asp-route-id="@smoothie.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Edit Smoothie</a>
+                <hr />
+
+                <a class="btn btn-warning" asp-controller="Smoothie" asp-action="DeleteSmoothie" asp-route-id="@smoothie.SmoothieId"
+                   sp-route-information="" class="btn btn-success">Delete Smoothie</a>
+                <hr />
+            }
+        </div>
     }
-    else 
-    {
-        <p class="mb-0">There are no smoothies yet!</p>
-    }
- 
+}
+else 
+{
+    <p class="mb-0">There are no smoothies yet!</p>
+}
 </div>
