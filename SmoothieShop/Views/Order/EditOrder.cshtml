@@ -12,9 +12,11 @@
         <form method="post">
             <input type="hidden" asp-for="@Model.OrderId" />
             <div class="form-group">
+
                 <label asp-for="Price">Order Price</label>
                 <input asp-for="Price" class="form-control" placeholder="Price...">
                 <span asp-validation-for="Price" class="small text-danger"></span>
+
                 <label asp-for="Date">Order Date</label>
                 <input asp-for="Date" class="form-control" placeholder="Date..">
                 <span asp-validation-for="Date" class="small text-danger"></span>
@@ -30,43 +32,44 @@
                             }
                         </select>
                         <span asp-validation-for="CustomerId" class="text-danger"></span>
+
+                        <label asp-for="@Model.SelectedMenusIds" class="form-label">Add Menus for the Order</label>
+                        <select multiple="multiple" class="multi-select form-control"
+                                asp-for="SelectedMenusIds" id="menusSelect">
+                            @foreach (var menu in Model.Menus)
+                            {
+                                <option value="@menu.MenuId" data-price="@menu.Price"
+                                        (Model.SelectedMenusIds.Contains(menu.MenuId) ? "selected" : "" )>
+                                    @menu.MenuName
+                                </option>
+                            }
+                        </select>
+                        <span asp-validation-for="MenusIds" class="text-danger"></span>
+
+                        <label asp-for="@Model.SelectedSmoothiesIds" class="form-label">Add Smoothies for the Order</label>
+                        <select multiple="multiple" class="multi-select form-control"
+                                asp-for="SelectedSmoothiesIds" id="smoothiesSelect">
+                            @foreach (var smoothie in Model.Smoothies)
+                            {
+                                <option value="@smoothie.SmoothieId" data-price="@smoothie.Price"
+                                        (Model.SelectedSmoothiesIds.Contains(smoothie.SmoothieId) ? "selected" : "" )>
+                                    @smoothie.SmoothieName
+                                </option>
+                            }
+                        </select>
+                        <span asp-validation-for="SmoothiesIds" class="text-danger"></span>
                     </div>
-
-                    <label asp-for="@Model.SelectedMenusIds" class="form-label">Add Menus for the Order</label>
-                    <select multiple="multiple" class="multi-select form-control"
-                            asp-for="SelectedMenusIds" id="menusSelect">
-                        @foreach (var menu in Model.Menus)
-                        {
-                            <option value="@menu.MenuId" data-price="@menu.Price"
-                                    (Model.SelectedMenusIds.Contains(menu.MenuId) ? "selected" : "" )>
-                                @menu.MenuName
-                            </option>
-                        }
-                    </select>
-                    <span asp-validation-for="MenusIds" class="text-danger"></span>
-
-                    <label asp-for="@Model.SelectedSmoothiesIds" class="form-label">Add Smoothies for the Order</label>
-                    <select multiple="multiple" class="multi-select form-control"
-                            asp-for="SelectedSmoothiesIds" id="smoothiesSelect">
-                        @foreach (var smoothie in Model.Smoothies)
-                        {
-                            <option value="@smoothie.SmoothieId" data-price="@smoothie.Price"
-                                    (Model.SelectedSmoothiesIds.Contains(smoothie.SmoothieId) ? "selected" : "" )>
-                                @smoothie.SmoothieName
-                            </option>
-                        }
-                    </select>
-                    <span asp-validation-for="SmoothiesIds" class="text-danger"></span>
                     <br />
                 }
 
                 <button type="button" id="calculateBtn" class="btn btn-primary mt-2">Calculate Price</button>
                 <div id="priceResult" class="mt-2 text-success fw-bold"></div>
-
             </div>
+
             <div class="text-center">
                 <input class="btn btn-primary mt-3" type="submit" value="Save" />
             </div>
+
         </form>
     </div>
 </div>
@@ -91,5 +94,5 @@
             document.getElementById("priceResult").innerText =
                 "Total Price: " + totalprice.toFixed(2);
         });
-    </script>
+     </script>
 }

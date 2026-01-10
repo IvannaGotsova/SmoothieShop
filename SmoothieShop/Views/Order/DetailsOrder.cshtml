@@ -4,7 +4,6 @@
     ViewBag.Title = $"Order {Model.OrderId}";
 }
 
-
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
@@ -12,7 +11,9 @@
    <div class="card col-4" style="width: 20rem; ">
        <div class="card-body">
             <input type="hidden" asp-for="@Model.OrderId" />
+
           <h5 class="card-title mt-1">Order Customer ID: @Model.CustomerId</h5>
+
             <div class="card-body">
                 <h5 class="card-title mt-1">Order ID: @Model.OrderId</h5>
                 <p class="card-title mt-1">Order Date: @Model.Date</p>
@@ -21,6 +22,7 @@
                 <p class="card-title mt-1">Order Customer UserName: @Model.CustomerUserName</p>
             </div>
             <hr />
+
             @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
             {
                 <a class="btn btn-warning" asp-controller="Order" asp-action="OrderMenus" asp-route-id="@Model.OrderId"
@@ -37,6 +39,5 @@
                 <hr />
             }
        </div>
-
     </div>
 </div>
