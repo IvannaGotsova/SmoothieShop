@@ -4,7 +4,6 @@
     ViewBag.Title = $"Ingredient - {Model.IngredientName}";
 }
 
-
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
@@ -12,17 +11,18 @@
    <div class="card col-4" style="width: 20rem; ">
        <div class="card-body">
             <input type="hidden" asp-for="@Model.IngredientId" />
+
           <h5 class="card-title mt-1">Ingredient ID: @Model.IngredientId</h5>
           <p class="mb-0">Ingredient Name: @Model.IngredientName</p>
           <p class="mb-0">Ingredient Information: @Model.IngredientInfo</p>
           <p class="mb-0">Ingredient Calories Per 100g: @Model.Calories</p>
           <br>
 
-            @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
-            {
-                <a class="btn btn-warning" asp-controller="Ingredient" asp-action="IngredientSmoothies" asp-route-id="@Model.IngredientId"
-                   sp-route-information="" class="btn btn-success">Smoothies</a>
-            }
+          @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+          {
+              <a class="btn btn-warning" asp-controller="Ingredient" asp-action="IngredientSmoothies" asp-route-id="@Model.IngredientId"
+                 sp-route-information="" class="btn btn-success">Smoothies</a>
+          }
        </div>
     </div>
 </div>
