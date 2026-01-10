@@ -4,52 +4,51 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome!</h1>
+
     <p>
         This is the place for the healthiest and most delicious smoothies.
     </p>
+
     <p>
         Here you can find everything you need.
     </p>
+
     <a class="btn btn-warning" asp-area="" asp-controller="Smoothie" asp-action="Index"
     sp-route-information="" class="btn btn-success">Smoothies</a>
 
     <a class="btn btn-warning" asp-area="" asp-controller="Menu" asp-action="Index"
     sp-route-information="" class="btn btn-success">Menus</a>
 
-    @if (this.User?.Identity?.IsAuthenticated ?? false)
-    {
-        <a class="btn btn-warning" asp-area="" asp-controller="Feedback" asp-action="Index"
-        sp-route-information="" class="btn btn-success">Feedbacks</a>
+@if (this.User?.Identity?.IsAuthenticated ?? false)
+{
+    <a class="btn btn-warning" asp-area="" asp-controller="Feedback" asp-action="Index"
+    sp-route-information="" class="btn btn-success">Feedbacks</a>
 
-        <a class="btn btn-warning" asp-area="" asp-controller="Ingredient" asp-action="Index"
-           sp-route-information="" class="btn btn-success">Ingredients</a>
+    <a class="btn btn-warning" asp-area="" asp-controller="Ingredient" asp-action="Index"
+       sp-route-information="" class="btn btn-success">Ingredients</a>
+}
+@if (this.User.IsInRole("Admin"))
+{
+    <a class="btn btn-warning" asp-controller="Admin" asp-action="Home"
+       sp-route-information="" class="btn btn-success">Admin Page</a>
 
-    }
+    <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="Index"
+    sp-route-information="" class="btn btn-success">All Users</a>
 
-    @if (this.User.IsInRole("Admin"))
-    {
-        <a class="btn btn-warning" asp-controller="Admin" asp-action="Home"
-           sp-route-information="" class="btn btn-success">Admin Page</a>
+    <a class="btn btn-warning" asp-area="" asp-controller="CustomerUser" asp-action="Index"
+    sp-route-information="" class="btn btn-success">Customer Users</a>
 
-        <a class="btn btn-warning" asp-area="Admin" asp-controller="ApplicationUser" asp-action="Index"
-        sp-route-information="" class="btn btn-success">All Users</a>
-
-        <a class="btn btn-warning" asp-area="" asp-controller="CustomerUser" asp-action="Index"
-        sp-route-information="" class="btn btn-success">Customer Users</a>
-
-        <a class="btn btn-warning" asp-area="" asp-controller="ProductUser" asp-action="Index"
-        sp-route-information="" class="btn btn-success">Product Users</a>
-    }
-
-    @if (this.User.IsInRole("CustomerUser") || this.User.IsInRole("Admin"))
-    {
-        <a class="btn btn-warning" asp-area="" asp-controller="Customer" asp-action="Index"
-           sp-route-information="" class="btn btn-success">Customers</a>
-    }
-
-    @if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
-    {
-        <a class="btn btn-warning" asp-area="" asp-controller="Order" asp-action="AllOrders"
-           sp-route-information="" class="btn btn-success">Orders</a>
-    }
+    <a class="btn btn-warning" asp-area="" asp-controller="ProductUser" asp-action="Index"
+    sp-route-information="" class="btn btn-success">Product Users</a>
+}
+@if (this.User.IsInRole("CustomerUser") || this.User.IsInRole("Admin"))
+{
+    <a class="btn btn-warning" asp-area="" asp-controller="Customer" asp-action="Index"
+       sp-route-information="" class="btn btn-success">Customers</a>
+}
+@if (this.User.IsInRole("ProductUser") || this.User.IsInRole("Admin"))
+{
+    <a class="btn btn-warning" asp-area="" asp-controller="Order" asp-action="AllOrders"
+       sp-route-information="" class="btn btn-success">Orders</a>
+}
 </div>
