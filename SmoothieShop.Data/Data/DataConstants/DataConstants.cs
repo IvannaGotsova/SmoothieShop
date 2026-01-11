@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SmoothieShop.Data.Data.DataConstants
+﻿namespace SmoothieShop.Data.Data.DataConstants
 {
     /// <summary>
     /// Holds Constants for Data Entities.
     /// </summary>
-    public static class DataConstants      
+    public static class DataConstants
     {
         /// <summary>
         /// Holds Constants for Smoothie class.
@@ -71,7 +65,7 @@ namespace SmoothieShop.Data.Data.DataConstants
         public class MenuConstants
         {
             public const int MenutMinLengthName = 1;
-            public const int MenuMaxLengthName = 100;        
+            public const int MenuMaxLengthName = 100;
         }
     }
 }
