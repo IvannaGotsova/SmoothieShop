@@ -2,13 +2,7 @@
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.IngredientModels;
-using SmoothieShop.Data.Models.SmoothieModels;
 using SmoothieShop.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Services
 {
@@ -40,7 +34,10 @@ namespace SmoothieShop.Core.Services
             await this.data.AddAsync(ingredientToBeAdded);
             await this.data.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// This method returns count of all Ingredients.
+        /// </summary>
+        /// <returns></returns>
         public int Count()
         {
             return
@@ -205,7 +202,11 @@ namespace SmoothieShop.Core.Services
                 .AllReadonly<Ingredient>()
                 .ToListAsync();
         }
-
+        /// <summary>
+        /// This method get smoothies by Ingredient ID.
+        /// </summary>
+        /// <param name="ingredientId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Smoothie>> GetSmoothiesByIngredient(int ingredientId)
         {
             var smoothies = await data

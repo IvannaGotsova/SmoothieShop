@@ -3,11 +3,6 @@ using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.SmoothieModels;
 using SmoothieShop.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Services
 {
@@ -44,7 +39,7 @@ namespace SmoothieShop.Core.Services
                 var ingredientSmoothieToBeAdded = new IngredientSmoothie()
                 {
                     IngredientId = ingredient,
-                    Smoothie  = smoothieToBeAdded
+                    Smoothie = smoothieToBeAdded
 
                 };
 
@@ -53,7 +48,10 @@ namespace SmoothieShop.Core.Services
 
             await this.data.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// This method returns count of all Smoothies.
+        /// </summary>
+        /// <returns></returns>
         public int Count()
         {
             return
@@ -61,7 +59,6 @@ namespace SmoothieShop.Core.Services
                 .AllReadonly<Smoothie>()
                 .Count();
         }
-
         /// <summary>
         /// This method deletes a particular smoothie with a given id.
         /// </summary>
@@ -118,7 +115,6 @@ namespace SmoothieShop.Core.Services
                .ToListAsync();
 
             this.data.DeleteRange<IngredientSmoothie>(ingredietsSmoothisToDelete);
-
 
             foreach (var ingredient in editSmoothieModel.SelectedIngredientsIds)
             {
@@ -177,7 +173,11 @@ namespace SmoothieShop.Core.Services
                 })
                 .ToList();
         }
-
+        /// <summary>
+        /// This method gets all smoothies by customer ID.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Smoothie>> GetAllSmoothiesByCustomer(int customerId)
         {
             var smoothies = await data
@@ -191,10 +191,13 @@ namespace SmoothieShop.Core.Services
 
             return smoothies;
         }
-
-        public async Task<IEnumerable<Ingredient>>GetIngredientsBySmoothie(int smoothieId)
+        /// <summary>
+        /// This method gets ingredients by smoothie.
+        /// </summary>
+        /// <param name="smoothieId"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<Ingredient>> GetIngredientsBySmoothie(int smoothieId)
         {
-
             var ingredients = await data
                 .AllReadonly<IngredientSmoothie>()
                 .Where(ism => ism.SmoothieId == smoothieId)
@@ -203,7 +206,11 @@ namespace SmoothieShop.Core.Services
 
             return ingredients;
         }
-
+        /// <summary>
+        /// This method gets ingredients Ids by smoothie.
+        /// </summary>
+        /// <param name="smoothieId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<int>> GetIngredientsIdsBySmoothie(int smoothieId)
         {
             var ingredientsIds = await data
@@ -214,7 +221,11 @@ namespace SmoothieShop.Core.Services
 
             return ingredientsIds;
         }
-
+        /// <summary>
+        /// This method gets menus by smoothie.
+        /// </summary>
+        /// <param name="smoothieId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Menu>> GetMenusBySmoothie(int smoothieId)
         {
             var menus = await data
@@ -225,7 +236,11 @@ namespace SmoothieShop.Core.Services
 
             return menus;
         }
-
+        /// <summary>
+        /// This method gets orders by smoothie.
+        /// </summary>
+        /// <param name="smoothieId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Order>> GetOrdersBySmoothie(int smoothieId)
         {
             var orders = await data
@@ -236,8 +251,6 @@ namespace SmoothieShop.Core.Services
 
             return orders;
         }
-
-
         /// <summary>
         /// This method returns a particular smoothie with a given id.
         /// </summary>
@@ -293,8 +306,6 @@ namespace SmoothieShop.Core.Services
 
             return smoothie;
         }
-
-
         /// <summary>
         /// This method returns IEnumerable of all smoothies used for Select.
         /// </summary>

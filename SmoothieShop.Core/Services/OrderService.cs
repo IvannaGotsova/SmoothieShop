@@ -1,23 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SmoothieShop.Common.Common;
+﻿using Microsoft.EntityFrameworkCore;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.OrderModels;
-using SmoothieShop.Data.Models.SmoothieModels;
 using SmoothieShop.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Security.Claims;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using static SmoothieShop.Common.Common.GetCurrentUser;
 
 namespace SmoothieShop.Core.Services
 {
@@ -42,7 +27,7 @@ namespace SmoothieShop.Core.Services
             var orderToBeAdded = new Order()
             {
                 Price = addOrderModel.Price,
-                Date = DateTime.Now         
+                Date = DateTime.Now
             };
 
             await this.data.AddAsync(orderToBeAdded);
@@ -73,7 +58,10 @@ namespace SmoothieShop.Core.Services
 
             await this.data.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// This method returns count of all Orders.
+        /// </summary>
+        /// <returns></returns>
         public int Count()
         {
             return
@@ -81,7 +69,6 @@ namespace SmoothieShop.Core.Services
                  .AllReadonly<Order>()
                  .Count();
         }
-
         /// <summary>
         /// This method deletes a particular order with a given id.
         /// </summary>
@@ -153,10 +140,9 @@ namespace SmoothieShop.Core.Services
 
             this.data.DeleteRange<MenuOrder>(menusOrdersToDelete);
 
-
             foreach (var menu in editOrderModel.SelectedMenusIds)
             {
-                var menusOrdersToBeEdited = new MenuOrder ()
+                var menusOrdersToBeEdited = new MenuOrder()
                 {
                     MenuId = menu,
                     Order = orderToBeEdited
@@ -166,7 +152,6 @@ namespace SmoothieShop.Core.Services
                 await this.data.AddAsync(menusOrdersToBeEdited);
             }
 
-
             var smoothiesOrderToDelete = await
               this.data
               .AllReadonly<OrderSmoothie>()
@@ -174,7 +159,6 @@ namespace SmoothieShop.Core.Services
               .ToListAsync();
 
             this.data.DeleteRange<OrderSmoothie>(smoothiesOrderToDelete);
-
 
             foreach (var smoothie in editOrderModel.SelectedSmoothiesIds)
             {
@@ -209,12 +193,9 @@ namespace SmoothieShop.Core.Services
                 MenusOrders = new List<MenuOrder>(),
                 SmoothiesIds = orderToBeEdited.OrdersSmoothies.Select(os => os.OrderId).ToList(),
                 OrdersSmoothies = new List<OrderSmoothie>()
-
             };
 
             return editOrderModel;
-
-
         }
         /// <summary>
         /// This method returns IEnumerable of all orders.
@@ -236,7 +217,11 @@ namespace SmoothieShop.Core.Services
                 })
                 .ToList();
         }
-
+        /// <summary>
+        /// /// This method get all orders by customer ID.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Order>> GetAllOrdersByCustomer(int customerId)
         {
             var orders = await data
@@ -247,7 +232,11 @@ namespace SmoothieShop.Core.Services
 
             return orders;
         }
-
+        /// <summary>
+        /// /// This method get menus by order ID.
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Menu>> GetMenusByOrder(int orderId)
         {
             var menus = await data
@@ -258,7 +247,11 @@ namespace SmoothieShop.Core.Services
 
             return menus;
         }
-
+        /// <summary>
+        /// /// This method get menus Ids by order ID.
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<int>> GetMenusIdsByOrder(int orderId)
         {
             var menusIds = await data
@@ -269,7 +262,6 @@ namespace SmoothieShop.Core.Services
 
             return menusIds;
         }
-
         /// <summary>
         /// This method returns a particular order with a given id.
         /// </summary>
@@ -338,7 +330,11 @@ namespace SmoothieShop.Core.Services
                 .AllReadonly<Order>()
                 .ToListAsync();
         }
-
+        /// <summary>
+        /// This method get smoothies by order ID.
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Smoothie>> GetSmoothiesByOrder(int orderId)
         {
             var smoothies = await data
@@ -349,7 +345,11 @@ namespace SmoothieShop.Core.Services
 
             return smoothies;
         }
-
+        /// <summary>
+        /// /// This method get smoothies Ids by order ID.
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<int>> GetSmoothiesIdsByOrder(int orderId)
         {
             var smoothiesIds = await data

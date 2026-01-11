@@ -3,14 +3,12 @@ using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.SearchModels;
 using SmoothieShop.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Services
 {
+    /// <summary>
+    /// Holds Service for Search functionality.
+    /// </summary>
     public class SearchService : ISearchService
     {
         private readonly IRepository data;
@@ -19,6 +17,11 @@ namespace SmoothieShop.Core.Services
         {
             this.data = data;
         }
+        /// <summary>
+        /// This method is used for search functionality.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public SearchResultModel Search(string query)
         {
 

@@ -2,13 +2,7 @@
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.ApplicationUserModels;
-using SmoothieShop.Data.Models.CustomerUserModels;
 using SmoothieShop.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Services
 {
@@ -29,7 +23,6 @@ namespace SmoothieShop.Core.Services
         /// <returns></returns>
         public async Task Delete(string userId)
         {
-
             await this.data
                 .DeleteAsync<ApplicationUser>(userId);
             await this.data
@@ -97,7 +90,6 @@ namespace SmoothieShop.Core.Services
 
                 })
                 .ToList();
-
         }
         /// <summary>
         /// This method returns IEnumerable of all VIP users.
@@ -134,7 +126,6 @@ namespace SmoothieShop.Core.Services
                 .AllReadonly<ApplicationUser>()
                 .ToListAsync();
         }
-
         /// <summary>
         /// This method returns Details of particular applicationUser with a given id.
         /// </summary>
@@ -163,7 +154,10 @@ namespace SmoothieShop.Core.Services
 
             return applicationUser;
         }
-
+        /// <summary>
+        /// This method returns count of all ApplicationUsers.
+        /// </summary>
+        /// <returns></returns>
         public int Count()
         {
             return

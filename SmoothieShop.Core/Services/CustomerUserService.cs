@@ -1,14 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
-using SmoothieShop.Data.Models.CustomerModels;
 using SmoothieShop.Data.Models.CustomerUserModels;
 using SmoothieShop.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Services
 {
@@ -38,7 +32,10 @@ namespace SmoothieShop.Core.Services
             await this.data.AddAsync(customerUserToBeAdded);
             await this.data.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// This method returns count of all CustomerUsers.
+        /// </summary>
+        /// <returns></returns>
         public int Count()
         {
             return
@@ -46,7 +43,6 @@ namespace SmoothieShop.Core.Services
                 .AllReadonly<CustomerUser>()
                 .Count();
         }
-
         /// <summary>
         /// This method deletes a particular customerUser with a given id.
         /// </summary>
@@ -123,7 +119,7 @@ namespace SmoothieShop.Core.Services
                 .Select(cu => new AllCustomerUsersModel()
                 {
                     CustomerUserId = cu.CustomerUserId,
-                    ApplicationUserId= cu.ApplicationUserId
+                    ApplicationUserId = cu.ApplicationUserId
 
                 })
                 .ToList();

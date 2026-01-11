@@ -4,11 +4,6 @@ using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.MenuModels;
 using SmoothieShop.Data.Models.ProductUserModels;
 using SmoothieShop.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Services
 {
@@ -38,7 +33,10 @@ namespace SmoothieShop.Core.Services
             await this.data.AddAsync(productUserToBeAdded);
             await this.data.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// This method returns count of all ProductUsers.
+        /// </summary>
+        /// <returns></returns>
         public int Count()
         {
             return
@@ -118,7 +116,7 @@ namespace SmoothieShop.Core.Services
                  .AllReadonly<ProductUser>()
                  .Include(pu => pu.ApplicationUser)
                  .ToListAsync();
-                 
+
 
             return productUsers
                 .Select(pu => new AllProductUsersModel()
@@ -129,7 +127,11 @@ namespace SmoothieShop.Core.Services
                 })
                 .ToList();
         }
-
+        /// <summary>
+        /// This method gets menus by ProductUser ID.
+        /// </summary>
+        /// <param name="productUserId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<DetailsMenuModel>> GetMenusByProductUserId(int productUserId)
         {
             var menus = await
@@ -144,9 +146,7 @@ namespace SmoothieShop.Core.Services
                 }).ToListAsync();
 
             return menus;
-
         }
-
         /// <summary>
         /// This method returns a particular productUser with a given id.
         /// </summary>

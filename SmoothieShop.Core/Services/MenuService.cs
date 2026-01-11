@@ -2,14 +2,7 @@
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.MenuModels;
-using SmoothieShop.Data.Models.OrderModels;
-using SmoothieShop.Data.Models.SmoothieModels;
 using SmoothieShop.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Providers.Entities;
 
 namespace SmoothieShop.Core.Services
 {
@@ -54,7 +47,10 @@ namespace SmoothieShop.Core.Services
 
             await this.data.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// This method returns count of all Menus.
+        /// </summary>
+        /// <returns></returns>
         public int Count()
         {
             return
@@ -62,7 +58,6 @@ namespace SmoothieShop.Core.Services
                 .AllReadonly<Menu>()
                 .Count();
         }
-
         /// <summary>
         /// This method deletes a particular menu with a given id.
         /// </summary>
@@ -180,7 +175,11 @@ namespace SmoothieShop.Core.Services
                 })
                 .ToList();
         }
-
+        /// <summary>
+        /// This method gets all menus by customer ID.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Menu>> GetAllMenusByCustomer(int customerId)
         {
             var menus = await data
@@ -194,7 +193,6 @@ namespace SmoothieShop.Core.Services
 
             return menus;
         }
-
         /// <summary>
         /// This method returns a particular menu with a given id.
         /// </summary>
@@ -258,7 +256,11 @@ namespace SmoothieShop.Core.Services
                 .AllReadonly<Menu>()
                 .ToListAsync();
         }
-
+        /// <summary>
+        /// This method gets orders by menu.
+        /// </summary>
+        /// <param name="menuId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Order>> GetOrdersByMenu(int menuId)
         {
             var orders = await data
@@ -269,7 +271,11 @@ namespace SmoothieShop.Core.Services
 
             return orders;
         }
-
+        /// <summary>
+        /// This method gets smoothies by menu.
+        /// </summary>
+        /// <param name="menuId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Smoothie>> GetSmoothiesByMenu(int menuId)
         {
             var smoothies = await data
@@ -280,7 +286,11 @@ namespace SmoothieShop.Core.Services
 
             return smoothies;
         }
-
+        /// <summary>
+        /// This method gets smoothies Ids by menu.
+        /// </summary>
+        /// <param name="menuId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<int>> GetSmoothiesIdsByMenu(int menuId)
         {
             var smoothiesIds = await data

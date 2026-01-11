@@ -1,14 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
-using SmoothieShop.Data.Models.CustomerModels;
 using SmoothieShop.Data.Models.FeedbackModels;
 using SmoothieShop.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Services
 {
@@ -37,12 +31,13 @@ namespace SmoothieShop.Core.Services
                 CustomerId = addFeedbackModel.CustomerId
             };
 
-
-
             await this.data.AddAsync(feedbackToBeAdded);
             await this.data.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// This method returns count of all Feedbacks.
+        /// </summary>
+        /// <returns></returns>
         public int Count()
         {
             return
@@ -50,7 +45,6 @@ namespace SmoothieShop.Core.Services
                 .AllReadonly<Feedback>()
                 .Count();
         }
-
         /// <summary>
         /// This method deletes a particular feddback with a given id.
         /// </summary>
@@ -139,7 +133,11 @@ namespace SmoothieShop.Core.Services
                 })
                 .ToList();
         }
-
+        /// <summary>
+        /// This method gets all Feedbacks by customer ID.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Feedback>> GetAllFeedbacksByCustomer(int customerId)
         {
             var feedbacks = await data
@@ -150,7 +148,6 @@ namespace SmoothieShop.Core.Services
 
             return feedbacks;
         }
-
         /// <summary>
         /// This method returns a particular feedback with a given id.
         /// </summary>
@@ -211,7 +208,11 @@ namespace SmoothieShop.Core.Services
                 .AllReadonly<Feedback>()
                 .ToListAsync();
         }
-
+        /// <summary>
+        /// This method geed username for the Feedback.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public async Task<string> GetFeedbackUserName(int customerId)
         {
             var customer = await

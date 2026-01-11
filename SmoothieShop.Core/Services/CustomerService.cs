@@ -3,13 +3,6 @@ using SmoothieShop.Core.Contracts;
 using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.CustomerModels;
 using SmoothieShop.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Services
 {
@@ -208,7 +201,11 @@ namespace SmoothieShop.Core.Services
                 .AllReadonly<Customer>()
                 .ToListAsync();
         }
-
+        /// <summary>
+        /// This method makes customer vip.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public async Task VipCustomer(int customerId)
         {
             var customer = await
@@ -228,7 +225,11 @@ namespace SmoothieShop.Core.Services
             this.data.Update<Customer>(customer);
             await this.data.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// This method makes customer not vip.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public async Task NotVipCustomer(int customerId)
         {
             var customer = await
@@ -248,7 +249,10 @@ namespace SmoothieShop.Core.Services
             this.data.Update<Customer>(customer);
             await this.data.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// This method returns count of all Customers.
+        /// </summary>
+        /// <returns></returns>
         public int Count()
         {
             return
@@ -256,7 +260,11 @@ namespace SmoothieShop.Core.Services
                 .AllReadonly<Customer>()
                 .Count();
         }
-
+        /// <summary>
+        /// This method get current user customer ID.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public int GetCurrentUserCustomerId(string currentUserId)
         {
             return 
@@ -268,7 +276,11 @@ namespace SmoothieShop.Core.Services
                 .FirstOrDefault();
 
         }
-
+        /// <summary>
+        /// This method get customer application username.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public string GetCustomerApplicationUsername(int customerId)
         {
             var applicationUser =
