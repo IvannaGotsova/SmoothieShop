@@ -2,6 +2,9 @@
 
 namespace SmoothieShop.Data.Models.ApplicationUserModels
 {
+    /// <summary>
+    /// Holds ChangePasswordApplicationUserModel class.
+    /// </summary>
     public class ChangePasswordApplicationUserModel
     {
         public string Id { get; set; }
