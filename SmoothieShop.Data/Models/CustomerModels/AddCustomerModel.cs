@@ -1,11 +1,6 @@
-﻿using SmoothieShop.Data.Data.Entites;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SmoothieShop.Data.Data.Entites;
 using static SmoothieShop.Data.Data.DataConstants.DataConstants.CustomerConstants;
 
 namespace SmoothieShop.Data.Models.CustomerModels
@@ -36,6 +31,5 @@ namespace SmoothieShop.Data.Models.CustomerModels
         [ForeignKey(nameof(ApplicationUserId))]
         public ApplicationUser? ApplicationUser { get; set; }
         public IEnumerable<ApplicationUser> ApplicationUsers { get; set; } = new List<ApplicationUser>();
-
     }
 }
