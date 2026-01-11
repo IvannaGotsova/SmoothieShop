@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using static SmoothieShop.Data.Data.DataConstants.DataConstants.SmoothieConstants;
 
 namespace SmoothieShop.Data.Data.Entites
@@ -24,19 +17,18 @@ namespace SmoothieShop.Data.Data.Entites
         public double Size { get; set; }
         [Required]
         [Range(typeof(decimal), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
-        public decimal Price{ get; set; }
+        public decimal Price { get; set; }
         [Required]
         [Range(typeof(double), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
         public double Calories { get; set; }
         [Required]
         public IEnumerable<Menu> Menus { get; set; } = new List<Menu> { };
+        public IEnumerable<MenuSmoothie> MenusSmoothies { get; set; } = new List<MenuSmoothie>();
         [Required]
         public IEnumerable<Order> Orders { get; set; } = new List<Order> { };
+        public IEnumerable<OrderSmoothie> OrdersSmoothies { get; set; } = new List<OrderSmoothie>();
         [Required]
         public IEnumerable<Ingredient> Ingredients { get; set; } = new List<Ingredient> { };
         public IEnumerable<IngredientSmoothie> IngredientsSmoothies { get; set; } = new List<IngredientSmoothie>();
-        public IEnumerable<OrderSmoothie> OrdersSmoothies { get; set; } = new List<OrderSmoothie>();
-        public IEnumerable<MenuSmoothie> MenusSmoothies { get; set; } = new List<MenuSmoothie>();
-
     }
 }

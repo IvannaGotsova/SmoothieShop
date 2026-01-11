@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static SmoothieShop.Data.Data.DataConstants.DataConstants.CustomerConstants;
 
 namespace SmoothieShop.Data.Data.Entites
@@ -41,6 +36,5 @@ namespace SmoothieShop.Data.Data.Entites
         public IEnumerable<Order> Orders { get; set; } = new List<Order>();
         [Required]
         public IEnumerable<Feedback> Feedbacks { get; set; } = new List<Feedback>();
-
     }
 }

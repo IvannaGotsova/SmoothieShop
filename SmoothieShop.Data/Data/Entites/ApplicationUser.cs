@@ -1,12 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static SmoothieShop.Data.Data.DataConstants.DataConstants.ApplicationUserConstants;
 
 namespace SmoothieShop.Data.Data.Entites
@@ -16,7 +9,6 @@ namespace SmoothieShop.Data.Data.Entites
     /// </summary>
     public class ApplicationUser : IdentityUser
     {
-
         [Required]
         [StringLength(ApplicationUserMaxLengthName)]
         public string? FirstName { get; set; }

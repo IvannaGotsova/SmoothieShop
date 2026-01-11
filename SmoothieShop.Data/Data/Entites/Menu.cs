@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using static SmoothieShop.Data.Data.DataConstants.DataConstants.MenuConstants;
 
 namespace SmoothieShop.Data.Data.Entites
@@ -26,8 +20,8 @@ namespace SmoothieShop.Data.Data.Entites
         [Range(typeof(double), "0.00", "10000.00", ConvertValueInInvariantCulture = true)]
         public double Calories { get; set; }
         public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
-        public IEnumerable<Order> Orders { get; set; } = new List<Order> { };
         public IEnumerable<MenuSmoothie> MenusSmoothies { get; set; } = new List<MenuSmoothie>();
+        public IEnumerable<Order> Orders { get; set; } = new List<Order> { };
         public IEnumerable<MenuOrder> MenusOrders { get; set; } = new List<MenuOrder>();
 
 
