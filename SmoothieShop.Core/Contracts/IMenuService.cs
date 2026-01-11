@@ -1,10 +1,5 @@
 ﻿using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.MenuModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Contracts
 {
@@ -66,13 +61,34 @@ namespace SmoothieShop.Core.Contracts
         /// <param name="menuId"></param>
         /// <returns></returns>
         Task Delete(int menuId);
-
+        /// <summary>
+        /// This method returns count of all Menus.
+        /// </summary>
+        /// <returns></returns>
         int Count();
-
+        /// <summary>
+        /// This method gets smoothies by menu.
+        /// </summary>
+        /// <param name="menuId"></param>
+        /// <returns></returns>
         Task<IEnumerable<Smoothie>> GetSmoothiesByMenu(int menuId);
+        /// <summary>
+        /// This method gets orders by menu.
+        /// </summary>
+        /// <param name="menuId"></param>
+        /// <returns></returns>
         Task<IEnumerable<Order>> GetOrdersByMenu(int menuId);
+        /// <summary>
+        /// This method gets smoothies Ids by menu.
+        /// </summary>
+        /// <param name="menuId"></param>
+        /// <returns></returns>
         Task<IEnumerable<int>> GetSmoothiesIdsByMenu(int menuId);
-
+        /// <summary>
+        /// This method gets all menus by customer ID.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         Task<IEnumerable<Menu>> GetAllMenusByCustomer(int customerId);
     }
 }

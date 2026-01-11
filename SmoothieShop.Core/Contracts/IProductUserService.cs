@@ -1,11 +1,6 @@
 ﻿using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.MenuModels;
 using SmoothieShop.Data.Models.ProductUserModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Contracts
 {
@@ -67,9 +62,16 @@ namespace SmoothieShop.Core.Contracts
         /// <param name="productUserId"></param>
         /// <returns></returns>
         Task Delete(int productUserId);
-
+        /// <summary>
+        /// This method returns count of all ProductUsers.
+        /// </summary>
+        /// <returns></returns>
         int Count();
-
+        /// <summary>
+        /// This method gets menus by ProductUser ID.
+        /// </summary>
+        /// <param name="productUserId"></param>
+        /// <returns></returns>
         Task<IEnumerable<DetailsMenuModel>> GetMenusByProductUserId(int productUserId);
     }
 }

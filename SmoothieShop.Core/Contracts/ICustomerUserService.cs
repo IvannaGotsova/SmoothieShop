@@ -1,11 +1,5 @@
 ﻿using SmoothieShop.Data.Data.Entites;
-using SmoothieShop.Data.Models.CustomerModels;
 using SmoothieShop.Data.Models.CustomerUserModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Contracts
 {
@@ -67,7 +61,10 @@ namespace SmoothieShop.Core.Contracts
         /// <param name="customerUserId"></param>
         /// <returns></returns>
         Task Delete(int customerUserId);
-
+        /// <summary>
+        /// This method returns count of all CustomerUsers.
+        /// </summary>
+        /// <returns></returns>
         int Count();
     }
 }

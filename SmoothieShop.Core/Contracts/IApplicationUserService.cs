@@ -1,10 +1,5 @@
 ﻿using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.ApplicationUserModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Contracts
 {
@@ -52,9 +47,10 @@ namespace SmoothieShop.Core.Contracts
         /// <param name="applicationUserId"></param>
         /// <returns></returns>
         Task<DetailsApplicationUserModel> GetApplicationUserDetailsById(string applicationUserId);
-
+        /// <summary>
+        /// This method returns count of all ApplicationUsers.
+        /// </summary>
+        /// <returns></returns>
         int Count();
-
-
     }
 }

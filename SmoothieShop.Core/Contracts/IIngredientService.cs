@@ -1,10 +1,5 @@
 ﻿using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.IngredientModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Contracts
 {
@@ -66,9 +61,16 @@ namespace SmoothieShop.Core.Contracts
         /// <param name="ingredientId"></param>
         /// <returns></returns>
         Task Delete(int ingredientId);
-
+        /// <summary>
+        /// This method returns count of all Ingredients.
+        /// </summary>
+        /// <returns></returns>
         int Count();
-
+        /// <summary>
+        /// This method get smoothies by Ingredient ID.
+        /// </summary>
+        /// <param name="ingredientId"></param>
+        /// <returns></returns>
         Task<IEnumerable<Smoothie>> GetSmoothiesByIngredient(int ingredientId);
     }
 }

@@ -1,11 +1,5 @@
 ﻿using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.CustomerModels;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Contracts
 {
@@ -67,15 +61,34 @@ namespace SmoothieShop.Core.Contracts
         /// <param name="customerId"></param>
         /// <returns></returns>
         Task Delete(int customerId);
-
+        /// <summary>
+        /// This method makes customer vip.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         Task VipCustomer(int customerId);
-
+        /// <summary>
+        /// This method makes customer not vip.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         Task NotVipCustomer(int customerId);
-
+        /// <summary>
+        /// This method returns count of all Customers.
+        /// </summary>
+        /// <returns></returns>
         int Count();
-
+        /// <summary>
+        /// This method get current user customer ID.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         int GetCurrentUserCustomerId(string currentUserId);
-
+        /// <summary>
+        /// This method get customer application username.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         string GetCustomerApplicationUsername(int customerId);
     }
 }

@@ -1,11 +1,5 @@
 ﻿using SmoothieShop.Data.Data.Entites;
-using SmoothieShop.Data.Models.IngredientModels;
 using SmoothieShop.Data.Models.SmoothieModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Contracts
 {
@@ -67,14 +61,40 @@ namespace SmoothieShop.Core.Contracts
         /// <param name="smoothieId"></param>
         /// <returns></returns>
         Task Delete(int smoothieId);
-
+        /// <summary>
+        /// This method returns count of all Smoothies.
+        /// </summary>
+        /// <returns></returns>
         int Count();
-
+        /// <summary>
+        /// This method gets menus by smoothie.
+        /// </summary>
+        /// <param name="smoothieId"></param>
+        /// <returns></returns>
         Task<IEnumerable<Menu>> GetMenusBySmoothie(int smoothieId);
+        /// <summary>
+        /// This method gets orders by smoothie.
+        /// </summary>
+        /// <param name="smoothieId"></param>
+        /// <returns></returns>
         Task<IEnumerable<Order>> GetOrdersBySmoothie(int smoothieId);
+        /// <summary>
+        /// This method gets ingredients by smoothie.
+        /// </summary>
+        /// <param name="smoothieId"></param>
+        /// <returns></returns>
         Task<IEnumerable<Ingredient>> GetIngredientsBySmoothie(int smoothieId);
+        /// <summary>
+        /// This method gets ingredients Ids by smoothie.
+        /// </summary>
+        /// <param name="smoothieId"></param>
+        /// <returns></returns>
         Task<IEnumerable<int>> GetIngredientsIdsBySmoothie(int smoothieId);
-
+        /// <summary>
+        /// This method gets all smoothies by customer ID.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         Task<IEnumerable<Smoothie>> GetAllSmoothiesByCustomer(int customerId);
     }
 }

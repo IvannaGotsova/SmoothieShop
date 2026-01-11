@@ -1,10 +1,5 @@
 ﻿using SmoothieShop.Data.Data.Entites;
 using SmoothieShop.Data.Models.OrderModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Contracts
 {
@@ -66,16 +61,40 @@ namespace SmoothieShop.Core.Contracts
         /// <param name="orderId"></param>
         /// <returns></returns>
         Task Delete(int orderId);
-
+        /// <summary>
+        /// This method returns count of all Orders.
+        /// </summary>
+        /// <returns></returns>
         int Count();
-
+        /// <summary>
+        /// This method get smoothies by order ID.
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         Task<IEnumerable<Smoothie>> GetSmoothiesByOrder(int orderId);
+        /// <summary>
+        /// /// This method get menus by order ID.
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         Task<IEnumerable<Menu>> GetMenusByOrder(int orderId);
-
-
+        /// <summary>
+        /// /// This method get menus Ids by order ID.
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         Task<IEnumerable<int>> GetMenusIdsByOrder(int orderId);
+        /// <summary>
+        /// /// This method get smoothies Ids by order ID.
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         Task<IEnumerable<int>> GetSmoothiesIdsByOrder(int orderId);
-
+        /// <summary>
+        /// /// This method get all orders by customer ID.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         Task<IEnumerable<Order>> GetAllOrdersByCustomer(int customerId);
     }
 }

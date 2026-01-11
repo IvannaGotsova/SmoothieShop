@@ -1,11 +1,5 @@
 ﻿using SmoothieShop.Data.Data.Entites;
-using SmoothieShop.Data.Models.CustomerModels;
 using SmoothieShop.Data.Models.FeedbackModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Core.Contracts
 {
@@ -67,11 +61,22 @@ namespace SmoothieShop.Core.Contracts
         /// <param name="feedbackId"></param>
         /// <returns></returns>
         Task Delete(int feedbackId);
-
+        /// <summary>
+        /// This method returns count of all Feedbacks.
+        /// </summary>
+        /// <returns></returns>
         int Count();
-
-        Task <string> GetFeedbackUserName(int customerId);
-
+        /// <summary>
+        /// This method geed username for the Feedback.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        Task<string> GetFeedbackUserName(int customerId);
+        /// <summary>
+        /// This method gets all Feedbacks by customer ID.
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         Task<IEnumerable<Feedback>> GetAllFeedbacksByCustomer(int customerId);
     }
 }
