@@ -1,10 +1,5 @@
-﻿using SmoothieShop.Data.Data.Entites;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using SmoothieShop.Data.Data.Entites;
 using static SmoothieShop.Data.Data.DataConstants.DataConstants.IngredientConstants;
 
 namespace SmoothieShop.Data.Models.IngredientModels
