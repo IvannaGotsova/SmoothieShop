@@ -1,10 +1,5 @@
-﻿using SmoothieShop.Data.Data.Entites;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using SmoothieShop.Data.Data.Entites;
 using static SmoothieShop.Data.Data.DataConstants.DataConstants.SmoothieConstants;
 
 namespace SmoothieShop.Data.Models.SmoothieModels
@@ -29,12 +24,12 @@ namespace SmoothieShop.Data.Models.SmoothieModels
         public double Calories { get; set; }
         [Required]
         public IEnumerable<Menu> Menus { get; set; } = new List<Menu> { };
+        public int MenusCount { get; set; }
         [Required]
         public IEnumerable<Order> Orders { get; set; } = new List<Order> { };
+        public int OrdersCount { get; set; }
         [Required]
         public IEnumerable<Ingredient> Ingredients { get; set; } = new List<Ingredient> { };
-        public int MenusCount { get; set; }
-        public int OrdersCount { get; set; }
         public int IngredientsCount { get; set; }
     }
 }
