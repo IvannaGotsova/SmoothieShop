@@ -1,11 +1,6 @@
-﻿using SmoothieShop.Data.Data.Entites;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SmoothieShop.Data.Data.Entites;
 
 namespace SmoothieShop.Data.Models.OrderModels
 {
@@ -25,11 +20,17 @@ namespace SmoothieShop.Data.Models.OrderModels
         public int CustomerId { get; set; }
         [ForeignKey(nameof(CustomerId))]
         public Customer? Customer { get; set; }
+        public IEnumerable<Customer> Customers { get; set; } = new List<Customer>();
+        public List<int>? CustomersIds { get; set; } = new List<int>();
+        public IEnumerable<int> SelectedCustomersIds { get; set; } = new List<int>();
         public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
+        public List<int>? SmoothiesIds { get; set; } = new List<int>();
+        public IEnumerable<int> SelectedSmoothiesIds { get; set; } = new List<int>();
+        public IEnumerable<OrderSmoothie> OrdersSmoothies { get; set; } = new List<OrderSmoothie> { };
         public IEnumerable<Menu> Menus { get; set; } = new List<Menu>();
         public List<int>? MenusIds { get; set; } = new List<int>();
-        public List<int>? SmoothiesIds { get; set; } = new List<int>();
-
+        public IEnumerable<int> SelectedMenusIds { get; set; } = new List<int>();
+        public IEnumerable<MenuOrder> MenusOrders { get; set; } = new List<MenuOrder> { };
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if ((MenusIds == null || !MenusIds.Any()) &&
@@ -40,15 +41,5 @@ namespace SmoothieShop.Data.Models.OrderModels
                     new[] { nameof(MenusIds), nameof(SmoothiesIds) });
             }
         }
-
-        public IEnumerable<Customer> Customers { get; set; } = new List<Customer>();
-        public IEnumerable<int> SelectedMenusIds { get; set; } = new List<int>();
-        public IEnumerable<OrderSmoothie> OrdersSmoothies { get; set; } = new List<OrderSmoothie> { };
-        public IEnumerable<int> SelectedSmoothiesIds { get; set; } = new List<int>();
-        public IEnumerable<MenuOrder> MenusOrders { get; set; } = new List<MenuOrder> { };
-        public List<int>? CustomersIds { get; set; } = new List<int>();
-
-        public IEnumerable<int> SelectedCustomersIds { get; set; } = new List<int>();
-
     }
 }

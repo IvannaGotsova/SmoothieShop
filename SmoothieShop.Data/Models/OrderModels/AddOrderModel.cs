@@ -1,11 +1,6 @@
-﻿using SmoothieShop.Data.Data.Entites;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SmoothieShop.Data.Data.Entites;
 
 namespace SmoothieShop.Data.Models.OrderModels
 {
@@ -23,11 +18,11 @@ namespace SmoothieShop.Data.Models.OrderModels
         public int CustomerId { get; set; }
         [ForeignKey(nameof(CustomerId))]
         public Customer? Customer { get; set; }
+        public IEnumerable<Customer> Customers { get; set; } = new List<Customer>();
         public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
+        public List<int>? SmoothiesIds { get; set; } = new List<int>();
         public IEnumerable<Menu> Menus { get; set; } = new List<Menu>();
         public List<int>? MenusIds { get; set; } = new List<int>();
-        public List<int>? SmoothiesIds { get; set; } = new List<int>();
-
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if ((MenusIds == null || !MenusIds.Any()) &&
@@ -38,7 +33,5 @@ namespace SmoothieShop.Data.Models.OrderModels
                     new[] { nameof(MenusIds), nameof(SmoothiesIds) });
             }
         }
-
-        public IEnumerable<Customer> Customers { get; set; } = new List<Customer>();
     }
 }

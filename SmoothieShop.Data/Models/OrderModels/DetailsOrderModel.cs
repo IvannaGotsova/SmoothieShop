@@ -1,11 +1,6 @@
-﻿using SmoothieShop.Data.Data.Entites;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SmoothieShop.Data.Data.Entites;
 
 namespace SmoothieShop.Data.Models.OrderModels
 {
@@ -25,12 +20,12 @@ namespace SmoothieShop.Data.Models.OrderModels
         public int CustomerId { get; set; }
         [ForeignKey(nameof(CustomerId))]
         public Customer? Customer { get; set; }
-        public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
-        public IEnumerable<Menu> Menus { get; set; } = new List<Menu>();
-        public int SmoothiesCount { get; set; }
-        public int MenusCount { get; set; }
         [Required]
         public string CustomerName { get; set; }
         public string CustomerUserName { get; set; }
+        public IEnumerable<Smoothie> Smoothies { get; set; } = new List<Smoothie>();
+        public int SmoothiesCount { get; set; }
+        public IEnumerable<Menu> Menus { get; set; } = new List<Menu>();
+        public int MenusCount { get; set; }
     }
 }
