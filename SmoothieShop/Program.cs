@@ -1,10 +1,6 @@
-using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using SmoothieShop.Common.Common;
-using SmoothieShop.Core;
 using SmoothieShop.Core.Contracts;
 using SmoothieShop.Core.Services;
 using SmoothieShop.Data;
