@@ -1,14 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SmoothieShop.Data.Data.Entites;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace SmoothieShop.Data.Seeds
 {
@@ -47,7 +39,7 @@ namespace SmoothieShop.Data.Seeds
                    PhoneNumber = "0000000000",
                    Address = "Bulgaria",
                    ApplicationUserId = "guest2@guest.com"
-                },
+                }
             };
 
             return customers;

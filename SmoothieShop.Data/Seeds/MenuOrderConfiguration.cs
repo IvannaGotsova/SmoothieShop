@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmoothieShop.Data.Data.Entites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Seeds
 {
@@ -29,11 +24,11 @@ namespace SmoothieShop.Data.Seeds
                    OrderId = 1
                 },
 
-                 new MenuOrder()
+                new MenuOrder()
                 {
                    MenuId = 1,
                    OrderId = 2
-                },
+                }
             };
 
             return menuOrders;

@@ -1,12 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using SmoothieShop.Data.Data.Entites;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SmoothieShop.Data.Data.Entites;
 
 namespace SmoothieShop.Data.Seeds
 {
@@ -38,8 +33,7 @@ namespace SmoothieShop.Data.Seeds
                    Price = 5.50M,
                    Date = DateTime.ParseExact("12/12/2023", "dd/MM/yyyy", CultureInfo.InvariantCulture),
                    CustomerId = 2
-                },
-
+                }
             };
 
             return orders;

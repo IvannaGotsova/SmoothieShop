@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SmoothieShop.Data.Data.Entites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmoothieShop.Data.Seeds
 {
@@ -32,15 +27,13 @@ namespace SmoothieShop.Data.Seeds
                    Comment = "That was great smoothie."
                 },
 
-                 new Feedback()
+                new Feedback()
                 {
                    FeedbackId = 2,
                    CustomerId = 2,
                    Rating = 10,
                    Comment = "That was amazing smoothie."
-                },
-
-
+                }
             };
 
             return feedbacks;
