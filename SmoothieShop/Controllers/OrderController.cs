@@ -18,25 +18,16 @@ namespace SmoothieShop.Controllers
         private readonly IMenuService menuService;
         private readonly ISmoothieService smoothiesService;
         private readonly ICustomerService customerService;
-        private readonly IApplicationUserService applicationUser;
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly SignInManager<ApplicationUser> signInManager;
 
         public OrderController(IOrderService orderService,
                                IMenuService menuService,
                                ISmoothieService smoothiesService,
-                               ICustomerService customerService,
-                               UserManager<ApplicationUser> userManager,
-                               SignInManager<ApplicationUser> signInManager,
-                               IApplicationUserService applicationUserService)
+                               ICustomerService customerService)
         {
             this.orderService = orderService;
             this.menuService = menuService;
             this.smoothiesService = smoothiesService;
             this.customerService = customerService;
-            this.userManager = userManager;
-            this.signInManager = signInManager;
-            this.applicationUser = applicationUserService;
         }
         /// <summary>
         /// This method returns index view.
@@ -44,6 +35,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Order Index!";
+
             return View();
         }
         /// <summary>
@@ -57,6 +50,8 @@ namespace SmoothieShop.Controllers
                 var orders = await
                     orderService
                    .GetAllOrders();
+
+                TempData["message"] = $"All Orders!";
 
                 return View(orders);
             }
@@ -84,6 +79,8 @@ namespace SmoothieShop.Controllers
                 Customers = await
                 customerService.GetCustomersForSelect()
             };
+
+            TempData["message"] = $"Here you can add an order!";
 
             return View(modelOrder);
         }
@@ -153,6 +150,8 @@ namespace SmoothieShop.Controllers
                 orderService
                 .GetOrderDetailsById(id);
 
+                TempData["message"] = $"Here you can see order details";
+
                 return View(orderModel);
             }
             catch (Exception)
@@ -195,6 +194,8 @@ namespace SmoothieShop.Controllers
 
                 editFormModel.Customers = await
                 customerService.GetCustomersForSelect();
+
+                TempData["message"] = $"Here you can edit an order!";
 
                 return View(editFormModel);
             }
@@ -258,11 +259,13 @@ namespace SmoothieShop.Controllers
 
             try
             {
-                var editFormModel = await
+                var deleteFormModel = await
                orderService
                .DeleteOrderForm(id);
 
-                return View(editFormModel);
+                TempData["message"] = $"Here you can delete an order!";
+
+                return View(deleteFormModel);
             }
             catch (Exception)
             {
@@ -318,6 +321,8 @@ namespace SmoothieShop.Controllers
             {
                 var menus = await orderService.GetMenusByOrder(id);
 
+                TempData["message"] = $"Here you can see all menus by order";
+
                 return View(menus);
             }
             catch (Exception)
@@ -344,6 +349,8 @@ namespace SmoothieShop.Controllers
             try
             {
                 var smoothies = await orderService.GetSmoothiesByOrder(id);
+
+                TempData["message"] = $"Here you can see all smoothies by order";
 
                 return View(smoothies);
             }
@@ -372,6 +379,8 @@ namespace SmoothieShop.Controllers
             try
             {
                 var orders = await orderService.GetAllOrdersByCustomer(id);
+
+                TempData["message"] = $"Here you can see all orders by customer";
 
                 return View(orders);
             }

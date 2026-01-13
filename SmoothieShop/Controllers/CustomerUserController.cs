@@ -26,6 +26,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Customer User Index!";
+
             return View();
         }
         /// <summary>
@@ -39,6 +41,8 @@ namespace SmoothieShop.Controllers
                 var customerUsers = await
                     customerUserService
                    .GetAllCustomerUsers();
+
+                TempData["message"] = $"All Customer Users!";
 
                 return View(customerUsers);
             }
@@ -59,6 +63,8 @@ namespace SmoothieShop.Controllers
                 ApplicationUsers = await
                 applicationUserService.GetApplicationUsersForSelect(),
             };
+
+            TempData["message"] = $"Here you can add a customer user!";
 
             return View(modelCustomerUser);
         }
@@ -116,6 +122,8 @@ namespace SmoothieShop.Controllers
                 customerUserService
                 .GetCustomerUserDetailsById(id);
 
+                TempData["message"] = $"Here you can see customer user details";
+
                 return View(customerUserModel);
             }
             catch (Exception)
@@ -143,6 +151,8 @@ namespace SmoothieShop.Controllers
                 var editFormModel = await
                        customerUserService
                        .EditCreateForm(id);
+
+                TempData["message"] = $"Here you can edit a customer user!";
 
                 return View(editFormModel);
             }
@@ -200,11 +210,13 @@ namespace SmoothieShop.Controllers
 
             try
             {
-                var editFormModel = await
+                var deleteFormModel = await
                customerUserService
                .DeleteCustomerUserForm(id);
 
-                return View(editFormModel);
+                TempData["message"] = $"Here you can delete a customer user!";
+
+                return View(deleteFormModel);
             }
             catch (Exception)
             {

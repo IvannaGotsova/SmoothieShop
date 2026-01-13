@@ -25,6 +25,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Smoothie Index!";
+
             return View();
         }
         /// <summary>
@@ -38,6 +40,8 @@ namespace SmoothieShop.Controllers
                 var smoothies = await
                     smoothieService
                    .GetAllSmoothies();
+
+                TempData["message"] = $"All Smoothies!";
 
                 return View(smoothies);
             }
@@ -59,6 +63,8 @@ namespace SmoothieShop.Controllers
                 Ingredients = await
                 ingredientService.GetIngredientsForSelect(),
             };
+
+            TempData["message"] = $"Here you can add a smoothie!";
 
             return View(modelSmoothie);
         }
@@ -120,6 +126,8 @@ namespace SmoothieShop.Controllers
                 smoothieService
                 .GetSmoothieDetailsById(id);
 
+                TempData["message"] = $"Here you can see smoothie details";
+
                 return View(smoothieModel);
             }
             catch (Exception)
@@ -154,6 +162,8 @@ namespace SmoothieShop.Controllers
 
                 editFormModel.SelectedIngredientsIds = await
                 smoothieService.GetIngredientsIdsBySmoothie(id);
+
+                TempData["message"] = $"Here you can edit a smoothie!";
 
                 return View(editFormModel);
             }
@@ -217,11 +227,13 @@ namespace SmoothieShop.Controllers
 
             try
             {
-                var editFormModel = await
+                var deleteFormModel = await
                smoothieService
                .DeleteSmoothieForm(id);
 
-                return View(editFormModel);
+                TempData["message"] = $"Here you can delete a smoothie!";
+
+                return View(deleteFormModel);
             }
             catch (Exception)
             {
@@ -279,6 +291,8 @@ namespace SmoothieShop.Controllers
             {
                 var ingredients = await smoothieService.GetIngredientsBySmoothie(id);
 
+                TempData["message"] = $"Here you can see all ingredients by smoothie";
+
                 return View(ingredients);
             }
             catch (Exception)
@@ -306,6 +320,8 @@ namespace SmoothieShop.Controllers
             try
             {
                 var menus = await smoothieService.GetMenusBySmoothie(id);
+
+                TempData["message"] = $"Here you can see all menus by smoothie";
 
                 return View(menus);
             }
@@ -336,6 +352,8 @@ namespace SmoothieShop.Controllers
             {
                 var orders = await smoothieService.GetOrdersBySmoothie(id);
 
+                TempData["message"] = $"Here you can see all orders by smoothie";
+
                 return View(orders);
             }
             catch (Exception)
@@ -363,6 +381,8 @@ namespace SmoothieShop.Controllers
             try
             {
                 var smoothes = await smoothieService.GetAllSmoothiesByCustomer(id);
+
+                TempData["message"] = $"Here you can see all smoothies by customer";
 
                 return View(smoothes);
             }

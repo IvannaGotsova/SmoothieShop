@@ -29,6 +29,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Feedback Index!";
+
             return View();
         }
         /// <summary>
@@ -47,6 +49,8 @@ namespace SmoothieShop.Controllers
                 {
                     feedback.FeedbackUserName = customerService.GetCustomerApplicationUsername(feedback.CustomerId);
                 }
+
+                TempData["message"] = $"All Feedbacks!";
 
                 return View(feedbacks);
             }
@@ -74,6 +78,8 @@ namespace SmoothieShop.Controllers
                 return RedirectToAction("Error", "Home", new { area = "" });
 
             var modelFeedback = await Task.Run(() => new AddFeedbackModel());
+
+            TempData["message"] = $"Here you can add a feedback!";
 
             return View(modelFeedback);
         }
@@ -138,6 +144,8 @@ namespace SmoothieShop.Controllers
 
                 feedbackModel.FeedbackUserName = customerService.GetCustomerApplicationUsername(feedbackModel.CustomerId);
 
+                TempData["message"] = $"Here you can see feedback details";
+
                 return View(feedbackModel);
             }
             catch (Exception)
@@ -166,6 +174,8 @@ namespace SmoothieShop.Controllers
                 var editFormModel = await
                        feedbackService
                        .EditCreateForm(id);
+
+                TempData["message"] = $"Here you can edit a feedback!";
 
                 return View(editFormModel);
             }
@@ -231,6 +241,8 @@ namespace SmoothieShop.Controllers
 
                 deleteFormModel.FeedbackUserName = customerService.GetCustomerApplicationUsername(deleteFormModel.CustomerId);
 
+                TempData["message"] = $"Here you can delete a feedback!";
+
                 return View(deleteFormModel);
             }
             catch (Exception)
@@ -290,6 +302,8 @@ namespace SmoothieShop.Controllers
             try
             {
                 var feedbacks = await feedbackService.GetAllFeedbacksByCustomer(id);
+
+                TempData["message"] = $"Here you can see all feedbacks by customer";
 
                 return View(feedbacks);
             }

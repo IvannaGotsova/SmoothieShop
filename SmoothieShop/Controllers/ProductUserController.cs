@@ -27,6 +27,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Product User Index!";
+
             return View();
         }
         /// <summary>
@@ -40,6 +42,8 @@ namespace SmoothieShop.Controllers
                 var productUsers = await
                     productUserService
                    .GetAllProductUsers();
+
+                TempData["message"] = $"All Product Users!";
 
                 return View(productUsers);
             }
@@ -61,6 +65,8 @@ namespace SmoothieShop.Controllers
                 ApplicationUsers = await
                 applicationUserService.GetApplicationUsersForSelect(),
             };
+
+            TempData["message"] = $"Here you can add a product user!";
 
             return View(modelProductUser);
         }
@@ -118,6 +124,8 @@ namespace SmoothieShop.Controllers
                 productUserService
                 .GetProductUserDetailsById(id);
 
+                TempData["message"] = $"Here you can see product user details";
+
                 return View(productUserModel);
             }
             catch (Exception)
@@ -145,6 +153,8 @@ namespace SmoothieShop.Controllers
                 var editFormModel = await
                        productUserService
                        .EditCreateForm(id);
+
+                TempData["message"] = $"Here you can edit a product user!";
 
                 return View(editFormModel);
             }
@@ -202,11 +212,13 @@ namespace SmoothieShop.Controllers
 
             try
             {
-                var editFormModel = await
+                var deleteFormModel = await
                productUserService
                .DeleteProductUserForm(id);
 
-                return View(editFormModel);
+                TempData["message"] = $"Here you can delete a product user!";
+
+                return View(deleteFormModel);
             }
             catch (Exception)
             {
@@ -256,6 +268,8 @@ namespace SmoothieShop.Controllers
                 var productUserMenus = await
                     productUserService
                    .GetMenusByProductUserId(id);
+
+                TempData["message"] = $"Here you can see all menus by product user";
 
                 return View(productUserMenus);
             }

@@ -19,6 +19,8 @@ namespace SmoothieShop.Controllers
         {
             var results = searchService.Search(query);
 
+            TempData["message"] = $"Here you can search";
+
             return View(results);
         }
     }

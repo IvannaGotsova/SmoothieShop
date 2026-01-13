@@ -23,6 +23,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Ingredient Index!";
+
             return View();
         }
         /// <summary>
@@ -36,6 +38,8 @@ namespace SmoothieShop.Controllers
                 var ingredients = await
                     ingredientService
                    .GetAllIngredients();
+
+                TempData["message"] = $"All Ingredients!";
 
                 return View(ingredients);
             }
@@ -53,6 +57,8 @@ namespace SmoothieShop.Controllers
         public async Task<IActionResult> AddIngredient()
         {
             var modelIngredient = await Task.Run(() => new AddIngredientModel());
+
+            TempData["message"] = $"Here you can add an ingredient!";
 
             return View(modelIngredient);
         }
@@ -76,7 +82,7 @@ namespace SmoothieShop.Controllers
                 await ingredientService
                     .Add(addIngredientModel);
 
-                TempData["message"] = $"You have successfully added a ingredient!";
+                TempData["message"] = $"You have successfully added an ingredient!";
 
                 return RedirectToAction("AllIngredients", "Ingredient");
             }
@@ -108,6 +114,8 @@ namespace SmoothieShop.Controllers
                 ingredientService
                 .GetIngredientDetailsById(id);
 
+                TempData["message"] = $"Here you can see ingredient details";
+
                 return View(ingredientModel);
             }
             catch (Exception)
@@ -136,6 +144,8 @@ namespace SmoothieShop.Controllers
                 var editFormModel = await
                        ingredientService
                        .EditCreateForm(id);
+
+                TempData["message"] = $"Here you can edit an ingredient!";
 
                 return View(editFormModel);
             }
@@ -166,7 +176,7 @@ namespace SmoothieShop.Controllers
                 await ingredientService
                     .Edit(id, editIngredientModel);
 
-                TempData["message"] = $"You have successfully edited a ingredient!";
+                TempData["message"] = $"You have successfully edited an ingredient!";
 
                 return RedirectToAction("AllIngredients", "Ingredient");
             }
@@ -199,6 +209,8 @@ namespace SmoothieShop.Controllers
                ingredientService
                .DeleteIngredientForm(id);
 
+                TempData["message"] = $"Here you can delete an ingredient!";
+
                 return View(deleteFormModel);
             }
             catch (Exception)
@@ -227,7 +239,7 @@ namespace SmoothieShop.Controllers
                 await ingredientService
                     .Delete(deleteIngredientModel.IngredientId);
 
-                TempData["message"] = $"You have successfully deleted a ingredient!";
+                TempData["message"] = $"You have successfully deleted an ingredient!";
 
                 return RedirectToAction("AllIngredients", "Ingredient");
             }
@@ -256,6 +268,8 @@ namespace SmoothieShop.Controllers
             try
             {
                 var smoothies = await ingredientService.GetSmoothiesByIngredient(id);
+
+                TempData["message"] = $"Here you can see all smoothies by ingredient";
 
                 return View(smoothies);
             }

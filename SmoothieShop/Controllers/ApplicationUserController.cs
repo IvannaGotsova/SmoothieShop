@@ -33,6 +33,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Application User Index!";
+
             return View();
         }
         [AllowAnonymous]
@@ -90,6 +92,8 @@ namespace SmoothieShop.Controllers
                 return View(modelToBeRegistered);
             }
 
+            TempData["message"] = $"You have successfully register! Please login!"; 
+
             return RedirectToAction("Login", "ApplicationUser");
         }
         [AllowAnonymous]
@@ -142,6 +146,8 @@ namespace SmoothieShop.Controllers
 
                 if (resultUserToBeLogin.Succeeded)
                 {
+                    TempData["message"] = $"You have successfully login!";
+
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -177,6 +183,8 @@ namespace SmoothieShop.Controllers
                 Id = user.Id
 
             };
+
+            TempData["message"] = $"Here you can change your password!";
 
             return View(changePasswordApplicationUserModel);
         }
@@ -222,6 +230,8 @@ namespace SmoothieShop.Controllers
                 FirstName = currentUser.FirstName,
                 LastName = currentUser.LastName
             };
+
+            TempData["message"] = $"Welcome to your profile!";
 
             return View(applicationUserMyProfile);
         }

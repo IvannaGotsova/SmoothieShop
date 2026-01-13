@@ -15,6 +15,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Home!";
+
             return View();
         }
         /// <summary>
@@ -23,6 +25,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult News()
         {
+            TempData["message"] = $"News!";
+
             return View();
         }
         /// <summary>
@@ -31,6 +35,7 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult Privacy()
         {
+            TempData["message"] = $"Privacy!";
             return View();
         }
         /// <summary>
@@ -39,6 +44,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult Contacts()
         {
+            TempData["message"] = $"Contacts!";
+
             return View();
         }
         /// <summary>
@@ -47,6 +54,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult FAQs()
         {
+            TempData["message"] = $"FAQs!";
+
             return View();
         }
         /// <summary>
@@ -55,6 +64,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult AboutUs()
         {
+            TempData["message"] = $"About Us!";
+
             return View();
         }
         /// <summary>
@@ -64,6 +75,8 @@ namespace SmoothieShop.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            TempData["message"] = $"Error!";
+
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

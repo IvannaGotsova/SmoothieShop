@@ -14,14 +14,11 @@ namespace SmoothieShop.Controllers
     {
         private readonly ICustomerService customerService;
         private readonly IApplicationUserService applicationUserService;
-        private readonly IFeedbackService feedbackService;
         public CustomerController(ICustomerService customerService,
-                                  IApplicationUserService applicationUserService,
-                                  IFeedbackService feedbackService)
+                                  IApplicationUserService applicationUserService)
         {
             this.customerService = customerService;
             this.applicationUserService = applicationUserService;
-            this.feedbackService = feedbackService;
         }
         /// <summary>
         /// This method returns index view.
@@ -29,6 +26,8 @@ namespace SmoothieShop.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Customer Index!";
+
             return View();
         }
         /// <summary>
@@ -42,6 +41,8 @@ namespace SmoothieShop.Controllers
                 var customers = await
                     customerService
                    .GetAllCustomers();
+
+                TempData["message"] = $"All Customers!";
 
                 return View(customers);
             }
@@ -63,6 +64,8 @@ namespace SmoothieShop.Controllers
                 ApplicationUsers = await
                 applicationUserService.GetApplicationUsersForSelect()
             };
+
+            TempData["message"] = $"Here you can add a customer!";
 
             return View(modelCustomer);
         }
@@ -123,6 +126,8 @@ namespace SmoothieShop.Controllers
                 customerService
                 .GetCustomerDetailsById(id);
 
+                TempData["message"] = $"Here you can see customer details";
+
                 return View(customerModel);
             }
             catch (Exception)
@@ -150,6 +155,8 @@ namespace SmoothieShop.Controllers
                 var editFormModel = await
                        customerService
                        .EditCreateForm(id);
+
+                TempData["message"] = $"Here you can edit a customer!";
 
                 return View(editFormModel);
             }
@@ -207,11 +214,13 @@ namespace SmoothieShop.Controllers
 
             try
             {
-                var editFormModel = await
+                var deleteFormModel = await
                customerService
                .DeleteCustomerForm(id);
 
-                return View(editFormModel);
+                TempData["message"] = $"Here you can delete a customer!";
+
+                return View(deleteFormModel);
             }
             catch (Exception)
             {
