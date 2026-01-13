@@ -12,6 +12,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
+            TempData["message"] = $"Home!";
+
             return View();
         }
     }

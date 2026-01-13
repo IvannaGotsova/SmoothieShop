@@ -28,6 +28,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Product User Index!";
+
             return View();
         }
         /// <summary>
@@ -41,6 +43,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var productUsers = await
                     productUserService
                    .GetAllProductUsers();
+
+                TempData["message"] = $"All Product Users!";
 
                 return View(productUsers);
             }
@@ -61,6 +65,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 ApplicationUsers = await
                 applicationUserService.GetApplicationUsersForSelect(),
             };
+
+            TempData["message"] = $"Here you can add a product user!";
 
             return View(modelProductUser);
         }
@@ -118,6 +124,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 productUserService
                 .GetProductUserDetailsById(id);
 
+                TempData["message"] = $"Here you can see product user details";
+
                 return View(productUserModel);
             }
             catch (Exception)
@@ -146,6 +154,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var editFormModel = await
                        productUserService
                        .EditCreateForm(id);
+
+                TempData["message"] = $"Here you can edit a product user!";
 
                 return View(editFormModel);
             }
@@ -203,11 +213,13 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             try
             {
-                var editFormModel = await
+                var deleteFormModel = await
                productUserService
                .DeleteProductUserForm(id);
 
-                return View(editFormModel);
+                TempData["message"] = $"Here you can delete a product user!";
+
+                return View(deleteFormModel);
             }
             catch (Exception)
             {

@@ -33,6 +33,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Smoothie Index!";
+
             return View();
         }
         /// <summary>
@@ -46,6 +48,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var smoothies = await
                     smoothieService
                    .GetAllSmoothies();
+
+                TempData["message"] = $"All Smoothies!";
 
                 return View(smoothies);
             }
@@ -70,6 +74,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 Ingredients = await
                 ingredientService.GetIngredientsForSelect(),
             };
+
+            TempData["message"] = $"Here you can add a smoothie!";
 
             return View(modelSmoothie);
         }
@@ -138,6 +144,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 smoothieService
                 .GetSmoothieDetailsById(id);
 
+                TempData["message"] = $"Here you can see smoothie details";
+
                 return View(smoothieModel);
             }
             catch (Exception)
@@ -165,6 +173,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var editFormModel = await
                        smoothieService
                        .EditCreateForm(id);
+
+                TempData["message"] = $"Here you can edit a smoothie!";
 
                 return View(editFormModel);
             }
@@ -222,11 +232,13 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             try
             {
-                var editFormModel = await
+                var deleteFormModel = await
                smoothieService
                .DeleteSmoothieForm(id);
 
-                return View(editFormModel);
+                TempData["message"] = $"Here you can delete a smoothie!";
+
+                return View(deleteFormModel);
             }
             catch (Exception)
             {

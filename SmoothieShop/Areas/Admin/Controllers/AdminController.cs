@@ -47,6 +47,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
         /// <returns></returns>
         public IActionResult AllCounts()
         {
+            TempData["message"] = $"All Counts Index";
+
             return View();
         }
         /// <summary>
@@ -60,6 +62,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var count =
                 applicationUser
                 .Count();
+
+                TempData["message"] = $"All Application Users Count";
 
                 return View(count);
             }
@@ -81,6 +85,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 customerService
                 .Count();
 
+                TempData["message"] = $"All Customers Count";
+
                 return View(count);
             }
             catch (Exception)
@@ -100,6 +106,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var count =
                 customerUserService
                 .Count();
+
+                TempData["message"] = $"All Customer Users Count";
 
                 return View(count);
             }
@@ -121,6 +129,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 feedbackService
                 .Count();
 
+                TempData["message"] = $"All Feedbacks Count";
+
                 return View(count);
             }
             catch (Exception)
@@ -140,6 +150,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var count =
                 ingredientService
                 .Count();
+
+                TempData["message"] = $"All Ingredients Count";
 
                 return View(count);
             }
@@ -161,6 +173,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 menuService
                 .Count();
 
+                TempData["message"] = $"All Menus Count";
+
                 return View(count);
             }
             catch (Exception)
@@ -180,6 +194,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var count =
                 orderService
                 .Count();
+
+                TempData["message"] = $"All Orders Count";
 
                 return View(count);
             }
@@ -201,6 +217,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 productUserService
                 .Count();
 
+                TempData["message"] = $"All Product Users Count";
+
                 return View(count);
             }
             catch (Exception)
@@ -220,6 +238,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var count =
                 smoothieService
                 .Count();
+
+                TempData["message"] = $"All Smoothies Count";
 
                 return View(count);
             }

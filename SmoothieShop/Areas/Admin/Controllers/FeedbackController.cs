@@ -24,6 +24,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Feedback Index!";
+
             return View();
         }
         /// <summary>
@@ -37,6 +39,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var feedbacks = await
                     feedbackService
                    .GetAllFeedbacks();
+
+                TempData["message"] = $"All Feedbacks!";
 
                 return View(feedbacks);
             }
@@ -53,6 +57,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
         public async Task<IActionResult> AddFeedback()
         {
             var modelFeedback = await Task.Run(() => new AddFeedbackModel());
+
+            TempData["message"] = $"Here you can add a feedback!";
 
             return View(modelFeedback);
         }
@@ -107,6 +113,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 feedbackService
                 .GetFeedbackDetailsById(id);
 
+                TempData["message"] = $"Here you can see feedback details";
+
                 return View(feedbackModel);
             }
             catch (Exception)
@@ -134,6 +142,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var editFormModel = await
                        feedbackService
                        .EditCreateForm(id);
+
+                TempData["message"] = $"Here you can edit a feedback!";
 
                 return View(editFormModel);
             }
@@ -192,11 +202,13 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             try
             {
-                var editFormModel = await
+                var deleteFormModel = await
                feedbackService
                .DeleteFeedbackForm(id);
 
-                return View(editFormModel);
+                TempData["message"] = $"Here you can delete a feedback!";
+
+                return View(deleteFormModel);
             }
             catch (Exception)
             {

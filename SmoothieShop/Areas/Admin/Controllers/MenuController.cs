@@ -24,6 +24,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Menu Index!";
+
             return View();
         }
         /// <summary>
@@ -37,6 +39,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var menus = await
                     menuService
                    .GetAllMenus();
+
+                TempData["message"] = $"All Menus!";
 
                 return View(menus);
             }
@@ -53,6 +57,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
         public async Task<IActionResult> AddMenu()
         {
             var modelMenu = await Task.Run(() => new AddMenuModel());
+
+            TempData["message"] = $"Here you can add a menu!";
 
             return View(modelMenu);
         }
@@ -107,6 +113,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 menuService
                 .GetMenuDetailsById(id);
 
+                TempData["message"] = $"Here you can see menu details";
+
                 return View(menuModel);
             }
             catch (Exception)
@@ -134,6 +142,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 var editFormModel = await
                        menuService
                        .EditCreateForm(id);
+
+                TempData["message"] = $"Here you can edit a menu!";
 
                 return View(editFormModel);
             }
@@ -191,11 +201,13 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             try
             {
-                var editFormModel = await
+                var deleteFormModel = await
                menuService
                .DeleteMenuForm(id);
 
-                return View(editFormModel);
+                TempData["message"] = $"Here you can delete a menu!";
+
+                return View(deleteFormModel);
             }
             catch (Exception)
             {

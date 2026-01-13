@@ -36,6 +36,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            TempData["message"] = $"Application User Index!";
+
             return View();
         }
         /// <summary>
@@ -89,6 +91,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("", error.Description);
                 }
+
+                TempData["message"] = $"You have successfully register! Please login!";
 
                 return View(modelToBeRegistered);
             }
@@ -152,6 +156,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
 
             ModelState.AddModelError("", "Invalid login attempt.");
 
+            TempData["message"] = $"You have successfully login!";
+
             return View(modelToBeLogin);
         }
         /// <summary>
@@ -179,6 +185,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                     applicationUser
                    .GetApplicationUsers();
 
+                TempData["message"] = $"All Application Users!";
+
                 return View(applicationUsers);
             }
             catch (Exception)
@@ -205,6 +213,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 NewLastName = user.LastName
 
             };
+
+            TempData["message"] = $"Here you can edit an application user!";
 
             return View(editApplicationUserModel);
         }
@@ -249,8 +259,9 @@ namespace SmoothieShop.Areas.Admin.Controllers
             var changePasswordApplicationUserModel = new Models.ChangePasswordApplicationUserModel
             {
                 Id = user.Id
-
             };
+
+            TempData["message"] = $"Here you can change your password!";
 
             return View(changePasswordApplicationUserModel);
         }
@@ -287,6 +298,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 Id = user.Id,
                 UserName = user.UserName,
             };
+
+            TempData["message"] = $"Here you can delete an application user!";
 
             return View(deleteApplicationUserModel);
         }
@@ -329,6 +342,8 @@ namespace SmoothieShop.Areas.Admin.Controllers
                 DetailsApplicationUserModel applicationUserModel = await
                 applicationUser
                 .GetApplicationUserDetailsById(id);
+
+                TempData["message"] = $"Here you can see application user details";
 
                 return View(applicationUserModel);
             }
